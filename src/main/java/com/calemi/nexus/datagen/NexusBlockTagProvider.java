@@ -1,0 +1,31 @@
+package com.calemi.nexus.datagen;
+
+import com.calemi.nexus.main.NexusRef;
+import com.calemi.nexus.regsitry.NexusLists;
+import com.calemi.nexus.regsitry.NexusTags;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.data.PackOutput;
+import net.minecraft.tags.BlockTags;
+import net.neoforged.neoforge.common.data.BlockTagsProvider;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import org.jetbrains.annotations.Nullable;
+
+import java.util.concurrent.CompletableFuture;
+
+public class NexusBlockTagProvider extends BlockTagsProvider {
+
+    public NexusBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
+        super(output, lookupProvider, NexusRef.MOD_ID, existingFileHelper);
+    }
+
+    @Override
+    protected void addTags(HolderLookup.Provider provider) {
+
+        tag(NexusTags.NEXUS_PORTAL_CORES).addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+        tag(NexusTags.NEXUS_PORTALS).addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
+
+        tag(BlockTags.MINEABLE_WITH_PICKAXE).addOptionalTag(NexusTags.NEXUS_PORTAL_CORES);
+
+        tag(BlockTags.NEEDS_STONE_TOOL).addOptionalTag(NexusTags.NEXUS_PORTAL_CORES);
+    }
+}

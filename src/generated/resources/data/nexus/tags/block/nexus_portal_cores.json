@@ -1,0 +1,10 @@
+{
+  "values": [
+    "nexus:nexus_portal_core",
+    "nexus:iron_nexus_portal_core",
+    "nexus:gold_nexus_portal_core",
+    "nexus:diamond_nexus_portal_core",
+    "nexus:netherite_nexus_portal_core",
+    "nexus:starlight_nexus_portal_core"
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nexus:block/netherite_nexus_portal_core"
+    }
+  }
+}

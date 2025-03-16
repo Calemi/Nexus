@@ -1,0 +1,20 @@
+{
+  "values": [
+    "nexus:white_nexus_portal",
+    "nexus:orange_nexus_portal",
+    "nexus:magenta_nexus_portal",
+    "nexus:light_blue_nexus_portal",
+    "nexus:yellow_nexus_portal",
+    "nexus:lime_nexus_portal",
+    "nexus:pink_nexus_portal",
+    "nexus:gray_nexus_portal",
+    "nexus:light_gray_nexus_portal",
+    "nexus:cyan_nexus_portal",
+    "nexus:purple_nexus_portal",
+    "nexus:blue_nexus_portal",
+    "nexus:brown_nexus_portal",
+    "nexus:green_nexus_portal",
+    "nexus:red_nexus_portal",
+    "nexus:black_nexus_portal"
+  ]
+}

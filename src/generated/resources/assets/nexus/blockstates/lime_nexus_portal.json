@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "nexus:block/lime_nexus_portal_ns"
+    },
+    "axis=z": {
+      "model": "nexus:block/lime_nexus_portal_ew"
+    }
+  }
+}

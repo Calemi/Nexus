@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nexus:block/iron_nexus_portal_core"
+    }
+  }
+}

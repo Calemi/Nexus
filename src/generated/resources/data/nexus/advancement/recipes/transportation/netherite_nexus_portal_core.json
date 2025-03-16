@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_chrono_shard": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nexus:chrono_shard"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nexus:netherite_nexus_portal_core"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_chrono_shard"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nexus:netherite_nexus_portal_core"
+    ]
+  }
+}

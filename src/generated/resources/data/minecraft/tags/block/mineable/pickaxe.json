@@ -1,0 +1,8 @@
+{
+  "values": [
+    {
+      "id": "#nexus:nexus_portal_cores",
+      "required": false
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nexus:block/gold_nexus_portal_core"
+    }
+  }
+}

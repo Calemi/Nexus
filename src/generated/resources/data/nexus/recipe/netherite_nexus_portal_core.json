@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "nexus:diamond_nexus_portal_core"
+    },
+    "I": {
+      "item": "nexus:chrono_shard"
+    },
+    "S": {
+      "item": "minecraft:ghast_tear"
+    },
+    "T": {
+      "tag": "c:ingots/netherite"
+    }
+  },
+  "pattern": [
+    "TCT",
+    "ISI",
+    "TCT"
+  ],
+  "result": {
+    "count": 2,
+    "id": "nexus:netherite_nexus_portal_core"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_top",
+  "textures": {
+    "side": "nexus:block/starlight_nexus_portal_core_side",
+    "top": "nexus:block/starlight_nexus_portal_core_top"
+  }
+}

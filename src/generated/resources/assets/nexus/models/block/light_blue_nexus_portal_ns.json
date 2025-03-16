@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/nether_portal_ns",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "particle": "nexus:block/light_blue_nexus_portal",
+    "portal": "nexus:block/light_blue_nexus_portal"
+  }
+}

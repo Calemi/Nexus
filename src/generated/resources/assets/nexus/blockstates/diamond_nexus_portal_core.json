@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nexus:block/diamond_nexus_portal_core"
+    }
+  }
+}

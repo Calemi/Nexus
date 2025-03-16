@@ -1,0 +1,69 @@
+package com.calemi.nexus.event.listener;
+
+import com.calemi.nexus.block.NexusPortalCoreBlock;
+import com.calemi.nexus.util.NexusHelper;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.VertexConsumer;
+import net.minecraft.client.Camera;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.player.LocalPlayer;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.phys.Vec3;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.bus.api.SubscribeEvent;
+import net.neoforged.neoforge.client.event.RenderLevelStageEvent;
+import org.joml.Matrix4f;
+
+public class NexusPortalCoreWorldOverlayEventListener {
+
+    @SubscribeEvent
+    @OnlyIn(Dist.CLIENT)
+    public void onRenderLevelStageEvent(RenderLevelStageEvent event) {
+
+        if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) {
+
+            Minecraft mc = Minecraft.getInstance();
+            LocalPlayer player = mc.player;
+
+            if (player == null) return;
+
+            if (NexusHelper.isInNexus(player)) return;
+
+            if (!(player.getMainHandItem().getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof NexusPortalCoreBlock originBlock)) return;
+
+            BlockPos destinationPosition = NexusHelper.getDynamicBlockDestination(player.level(), player.blockPosition(), originBlock.getCoordinateScale());
+            int coordinateScale = originBlock.getCoordinateScale();
+
+            PoseStack poseStack = event.getPoseStack();
+            Camera activeRenderInfo = mc.getEntityRenderDispatcher().camera;
+            Vec3 projectedView = activeRenderInfo.getPosition();
+
+            poseStack.pushPose();
+            poseStack.translate(destinationPosition.getX() * coordinateScale - projectedView.x, 0, destinationPosition.getZ() * coordinateScale - projectedView.z);
+
+            renderLine(0, 0, 1F, RenderType.debugLineStrip(2), poseStack, mc);
+
+            renderLine(0, coordinateScale, 1F, RenderType.debugLineStrip(2), poseStack, mc);
+
+            renderLine(coordinateScale, 0, 1F, RenderType.debugLineStrip(2), poseStack, mc);
+
+            renderLine(coordinateScale, coordinateScale, 1F, RenderType.debugLineStrip(2), poseStack, mc);
+
+            poseStack.popPose();
+        }
+    }
+
+    private void renderLine(float x, float z, float alpha, RenderType lineRenderType, PoseStack poseStack, Minecraft mc) {
+
+        VertexConsumer buffer = mc.renderBuffers().bufferSource().getBuffer(lineRenderType);
+        Matrix4f matrix = poseStack.last().pose();
+
+        buffer.addVertex(matrix, x, -100, z).setColor(1, 1, 1, alpha);
+        buffer.addVertex(matrix, x, 100, z).setColor(1, 1, 1, alpha);
+
+        mc.renderBuffers().bufferSource().endBatch(lineRenderType);
+    }
+}
