@@ -2,6 +2,7 @@ package com.calemi.nexus.packet;
 
 import com.calemi.ccore.api.location.Location;
 import com.calemi.nexus.block.NexusPortalBlock;
+import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.scanner.PortalBlockScanner;
@@ -79,6 +80,10 @@ public record NexusPortalCoreLightPortalPayload(BlockPos abovePortalCorePosition
 
                 collectedLocations.forEach(location -> {
                     location.getLevel().setBlock(location.getBlockPos(), NexusPortalBlock.fromDye(blockEntity.getPortalDyeColor()).defaultBlockState().setValue(NexusPortalBlock.AXIS, finalScanner.getAxis()), 3);
+
+                    if (location.getBlockEntity() instanceof NexusPortalBlockEntity portalBlockEntity) {
+                        portalBlockEntity.setCorePosition(abovePortalCorePosition.below());
+                    }
                 });
 
                 player.sendSystemMessage(Component.translatable("message.nexus.light_portal.success").withStyle(ChatFormatting.GREEN));

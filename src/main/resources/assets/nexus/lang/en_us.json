@@ -24,6 +24,13 @@
   "block.nexus.black_nexus_portal": "Black Nexus Portal",
   
   "item.nexus.chrono_shard": "Chrono Shard",
+  "item.nexus.chrono_upgrade_smithing_template": "Smithing Template",
+  
+  "upgrade.nexus.smithing_upgrade": "Chrono Upgrade",
+  "item.nexus.smithing_template.chrono_upgrade.applies_to": "Amethyst Shard",
+  "item.nexus.smithing_template.chrono_upgrade.ingredients": "Ender Pearl",
+  "item.nexus.smithing_template.chrono_upgrade.base_slot_description": "Add Amethyst Shard",
+  "item.nexus.smithing_template.chrono_upgrade.additions_slot_description": "Add Ender Pearl",
   
   "hover_text.nexus.nexus_portal_core": "Coordinate Scale",
   
@@ -33,7 +40,7 @@
   "message.nexus.invalid_dimension": "Destination dimension could not be found!",
   "message.nexus.invalid_destination": "Destination is outside the world border for that dimension!",
   "message.nexus.teleport.no_core": "Destination Nexus Portal Core could not be found! Removing link...",
-  "message.nexus.generate_link.no_core": "You do not have a Nexus Portal Core in your inventory!",
+  "message.nexus.generate_link.no_core": "You do not have a Nexus Portal Core in your main-hand!",
   "message.nexus.generate_link.no_valid_spawn": "Could not find suitable y-level to generate Destination Nexus Portal Core!",
   "message.nexus.generate_link.success": "New link generated successfully!",
   "message.nexus.find_link.searching": "Searching for similar Nexus Portal Core...",
@@ -59,8 +66,11 @@
   "screen.nexus.nexus_portal_core.button.unlink.info_1": "Unlink",
   "screen.nexus.nexus_portal_core.button.unlink.info_2": "Hold shift to take the linked Nexus Portal Core.",
   "screen.nexus.nexus_portal_core.button.close.title": "Close",
-  "screen.nexus.nexus_portal_core.text.no_link": "No Link",
+  "screen.nexus.nexus_portal_core.text.no_destination": "No Destination",
   "screen.nexus.nexus_portal_core.text.current_destination": "Current Destination",
   
-  "networking.nexus.unlocked_dimension_list_message.failed": "Failed to synchronize unlocked dimension list! %s"
+  "networking.nexus.unlocked_dimension_list_message.failed": "Failed to synchronize unlocked dimension list! %s",
+  
+  "config.jade.plugin_nexus.nexus_portal_core": "Nexus Portal Core",
+  "config.jade.plugin_nexus.nexus_portal": "Nexus Portal"
 }

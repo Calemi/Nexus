@@ -24,7 +24,7 @@ import java.util.List;
 
 public class NexusPortalCoreScreen extends BaseScreen {
 
-    private final NexusPortalCoreBlockEntity portalCoreBlockEntity;
+    private final NexusPortalCoreBlockEntity originBlockEntity;
 
     private CycleButton<ResourceLocation> dimensionSelectButton;
     private Button unlinkButton;
@@ -33,14 +33,23 @@ public class NexusPortalCoreScreen extends BaseScreen {
     private Button findLinkButton;
     private Button generateLinkButton;
 
+    private String destinationName;
+
     public NexusPortalCoreScreen(NexusPortalCoreBlockEntity portalCoreBlockEntity) {
         super(Component.translatable("screen.nexus.nexus_portal_core.title"));
-        this.portalCoreBlockEntity = portalCoreBlockEntity;
+        this.originBlockEntity = portalCoreBlockEntity;
+        this.destinationName = "";
+    }
+
+    public void setDestinationName(String destinationName) {
+        this.destinationName = destinationName;
     }
 
     @Override
     protected void init() {
         super.init();
+
+        PacketDistributor.sendToServer(new NexusPortalCoreDestinationNameSyncPayload(originBlockEntity.getBlockPos(), ""));
 
         List<ResourceLocation> dimensions = new ArrayList<>(UnlockedDimensionsList.get(player).getUnlockedDimensions());
 
@@ -49,10 +58,10 @@ public class NexusPortalCoreScreen extends BaseScreen {
         dimensionSelectButton = addRenderableWidget(
                 CycleButton.<ResourceLocation>builder((dimension) -> Component.literal(dimension.getPath().toUpperCase().replaceAll("_", " ")))
                         .withValues(dimensions)
-                        .withInitialValue(portalCoreBlockEntity.getDestinationDimResourceLocation())
+                        .withInitialValue(originBlockEntity.getDestinationDimResourceLocation())
                         .create(getScreenX() - 100, getScreenY() - 10 - 26, 200, 20,
                                 Component.translatable("screen.nexus.nexus_portal_core.button.dimension_select.title"),
-                                (btn, selected) -> PacketDistributor.sendToServer(new NexusPortalCoreDestinationDimensionSyncPayload(portalCoreBlockEntity.getBlockPos(), selected)))
+                                (btn, selected) -> PacketDistributor.sendToServer(new NexusPortalCoreDestinationDimensionSyncPayload(originBlockEntity.getBlockPos(), selected)))
         );
 
         lightPortalButton = addRenderableWidget(
@@ -89,40 +98,40 @@ public class NexusPortalCoreScreen extends BaseScreen {
     }
 
     private void lightPortalButtonPress() {
-        PacketDistributor.sendToServer(new NexusPortalCoreLightPortalPayload(portalCoreBlockEntity.getBlockPos().above()));
+        PacketDistributor.sendToServer(new NexusPortalCoreLightPortalPayload(originBlockEntity.getBlockPos().above()));
         onClose();
     }
 
     private void teleportButtonPress() {
-        PacketDistributor.sendToServer(new NexusPortalCoreTeleportPayload(portalCoreBlockEntity.getBlockPos()));
+        PacketDistributor.sendToServer(new NexusPortalCoreTeleportPayload(originBlockEntity.getBlockPos()));
         onClose();
     }
 
     private void unlinkButtonPress() {
-        PacketDistributor.sendToServer(new NexusPortalCoreUnlinkPayload(portalCoreBlockEntity.getBlockPos(), NexusPortalCoreScreen.hasShiftDown()));
+        PacketDistributor.sendToServer(new NexusPortalCoreUnlinkPayload(originBlockEntity.getBlockPos(), NexusPortalCoreScreen.hasShiftDown()));
         onClose();
     }
 
     private void findLinkButtonPress() {
-        PacketDistributor.sendToServer(new NexusPortalCoreFindLinkPayload(portalCoreBlockEntity.getBlockPos()));
+        PacketDistributor.sendToServer(new NexusPortalCoreFindLinkPayload(originBlockEntity.getBlockPos()));
         onClose();
     }
 
     private void generateLinkPress() {
-        PacketDistributor.sendToServer(new NexusPortalCoreGenerateLinkPayload(portalCoreBlockEntity.getBlockPos()));
+        PacketDistributor.sendToServer(new NexusPortalCoreGenerateLinkPayload(originBlockEntity.getBlockPos()));
         onClose();
     }
 
     private void buttonUpdate() {
 
         //NO DESTINATION POSITION
-        if (portalCoreBlockEntity.getDestinationPos() == null) {
+        if (originBlockEntity.getDestinationPos() == null) {
             dimensionSelectButton.active = NexusHelper.isInNexus(player);
             lightPortalButton.active = false;
             teleportButton.active = false;
             unlinkButton.active = false;
             findLinkButton.active = true;
-            generateLinkButton.active = player.getInventory().countItem(portalCoreBlockEntity.getBlockState().getBlock().asItem()) >= 1 || player.isCreative();
+            generateLinkButton.active = player.getInventory().countItem(originBlockEntity.getBlockState().getBlock().asItem()) >= 1 || player.isCreative();
             teleportButton.setMessage(teleportButton.getMessage().copy().withStyle(ChatFormatting.GRAY));
         }
 
@@ -152,11 +161,12 @@ public class NexusPortalCoreScreen extends BaseScreen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         super.render(graphics, mouseX, mouseY, partialTick);
 
-        BlockPos destinationPos = portalCoreBlockEntity.getDestinationPos();
+        ResourceLocation destinationDimResourceLocation = originBlockEntity.getDestinationDimResourceLocation();
+        BlockPos destinationPos = originBlockEntity.getDestinationPos();
 
         if (destinationPos == null) {
 
-            graphics.drawCenteredString(mc.font, Component.translatable("screen.nexus.nexus_portal_core.text.no_link").withStyle(ChatFormatting.RED), getScreenX(), getScreenY() - 50, 0xFFFFFF);
+            graphics.drawCenteredString(mc.font, Component.translatable("screen.nexus.nexus_portal_core.text.no_destination").withStyle(ChatFormatting.RED), getScreenX(), getScreenY() - 50, 0xFFFFFF);
 
             if (!NexusHelper.isInNexus(player)) {
                 ScreenHelper.drawTooltipHoverRect(graphics, dimensionSelectButton.getRectangle(), mouseX, mouseY,
@@ -173,21 +183,21 @@ public class NexusPortalCoreScreen extends BaseScreen {
                     Component.translatable("screen.nexus.nexus_portal_core.button.generate_link.requires")
                             .append(": ")
                             .append("1x ")
-                            .append(portalCoreBlockEntity.getBlockState().getBlock().getName())
+                            .append(originBlockEntity.getBlockState().getBlock().getName())
                             .withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.ITALIC));
         }
 
-        else {
-            graphics.drawCenteredString(mc.font, Component.translatable("screen.nexus.nexus_portal_core.text.current_destination").withStyle(ChatFormatting.UNDERLINE).withStyle(ChatFormatting.LIGHT_PURPLE), getScreenX(), getScreenY() - 76, 0xFFFFFF);
-            graphics.drawCenteredString(mc.font, Component.literal("[x" + ChatFormatting.GOLD + destinationPos.getX() + ChatFormatting.WHITE + ", y" + ChatFormatting.GOLD + destinationPos.getY() + ChatFormatting.WHITE + ", z" + ChatFormatting.GOLD + destinationPos.getZ() + ChatFormatting.WHITE + "]"), getScreenX(), getScreenY() - 64, 0xFFFFFF);
-            graphics.drawCenteredString(mc.font, Component.literal(portalCoreBlockEntity.getDestinationDimResourceKey().location().getPath().toUpperCase().replaceAll("_", " ")).withStyle(ChatFormatting.GOLD), getScreenX(), getScreenY() - 52, 0xFFFFFF);
+        else if (destinationDimResourceLocation != null) {
+            graphics.drawCenteredString(mc.font, NexusPortalCoreBlockEntity.getFormattedCurrentDestinationText().withStyle(ChatFormatting.UNDERLINE), getScreenX(), getScreenY() - 76, 0xFFFFFF);
+            graphics.drawCenteredString(mc.font, NexusPortalCoreBlockEntity.getFormattedDestinationNameText(destinationName, destinationDimResourceLocation.getPath(), ChatFormatting.GOLD, ChatFormatting.WHITE), getScreenX(), getScreenY() - 64, 0xFFFFFF);
+            graphics.drawCenteredString(mc.font, NexusPortalCoreBlockEntity.getFormattedDestinationPositionText(destinationPos, ChatFormatting.GOLD, ChatFormatting.WHITE), getScreenX(), getScreenY() - 52, 0xFFFFFF);
         }
 
         Item lightPortalItem = Items.FLINT_AND_STEEL;
         int xOffset = 1;
         Component lightPortalInfo = Component.translatable("screen.nexus.nexus_portal_core.button.light_portal.light_info");
 
-        if (player.level().getBlockState(portalCoreBlockEntity.getBlockPos().above()).getBlock() instanceof NexusPortalBlock) {
+        if (player.level().getBlockState(originBlockEntity.getBlockPos().above()).getBlock() instanceof NexusPortalBlock) {
             lightPortalItem = Items.WATER_BUCKET;
             xOffset = 2;
             lightPortalInfo = Component.translatable("screen.nexus.nexus_portal_core.button.light_portal.destroy_info");

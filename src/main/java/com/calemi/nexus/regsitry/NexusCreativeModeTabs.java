@@ -25,6 +25,7 @@ public class NexusCreativeModeTabs {
                 output.accept(NexusBlocks.NETHERITE_NEXUS_PORTAL_CORE.get());
                 output.accept(NexusBlocks.STARLIGHT_NEXUS_PORTAL_CORE.get());
                 output.accept(NexusItems.CHRONO_SHARD.get());
+                output.accept(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
             })
             .build()
     );

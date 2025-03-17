@@ -1,5 +1,6 @@
 package com.calemi.nexus.regsitry;
 
+import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
@@ -14,15 +15,11 @@ public class NexusBlockEntities {
 
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITY_TYPES = DeferredRegister.create(Registries.BLOCK_ENTITY_TYPE, NexusRef.MOD_ID);
 
-    public static final Supplier<BlockEntityType<NexusPortalCoreBlockEntity>> NEXUS_PORTAL_CORE =
-            BLOCK_ENTITY_TYPES.register("nexus_portal_core", () -> new BlockEntityType<>(NexusPortalCoreBlockEntity::new, Set.of(
-                    NexusBlocks.NEXUS_PORTAL_CORE.get(),
-                    NexusBlocks.IRON_NEXUS_PORTAL_CORE.get(),
-                    NexusBlocks.GOLD_NEXUS_PORTAL_CORE.get(),
-                    NexusBlocks.DIAMOND_NEXUS_PORTAL_CORE.get(),
-                    NexusBlocks.NETHERITE_NEXUS_PORTAL_CORE.get(),
-                    NexusBlocks.STARLIGHT_NEXUS_PORTAL_CORE.get()
-            ), null));
+    public static final Supplier<BlockEntityType<NexusPortalCoreBlockEntity>> NEXUS_PORTAL_CORE = BLOCK_ENTITY_TYPES.register("nexus_portal_core",
+            () -> new BlockEntityType<>(NexusPortalCoreBlockEntity::new, Set.copyOf(NexusLists.toBlockList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS)), null));
+
+    public static final Supplier<BlockEntityType<NexusPortalBlockEntity>> NEXUS_PORTAL = BLOCK_ENTITY_TYPES.register("nexus_portal",
+            () -> new BlockEntityType<>(NexusPortalBlockEntity::new, Set.copyOf(NexusLists.toBlockList(NexusLists.NEXUS_PORTAL_BLOCKS)), null));
 
     public static void init() {
         BLOCK_ENTITY_TYPES.register(Nexus.MOD_EVENT_BUS);

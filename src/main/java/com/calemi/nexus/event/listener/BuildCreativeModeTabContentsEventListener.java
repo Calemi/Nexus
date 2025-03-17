@@ -28,6 +28,8 @@ public class BuildCreativeModeTabContentsEventListener {
             add(event, Items.AMETHYST_SHARD,
                     NexusItems.CHRONO_SHARD.get()
             );
+            add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
+                    NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
         }
     }
 

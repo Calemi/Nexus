@@ -15,5 +15,6 @@ public class NexusItemModelProvider extends ItemModelProvider {
     @Override
     protected void registerModels() {
         basicItem(NexusItems.CHRONO_SHARD.get());
+        basicItem(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
     }
 }

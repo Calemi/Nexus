@@ -37,6 +37,8 @@ public class NexusPortalCoreWorldOverlayEventListener {
             BlockPos destinationPosition = NexusHelper.getDynamicBlockDestination(player.level(), player.blockPosition(), originBlock.getCoordinateScale());
             int coordinateScale = originBlock.getCoordinateScale();
 
+            if (coordinateScale == 1) return;
+
             PoseStack poseStack = event.getPoseStack();
             Camera activeRenderInfo = mc.getEntityRenderDispatcher().camera;
             Vec3 projectedView = activeRenderInfo.getPosition();

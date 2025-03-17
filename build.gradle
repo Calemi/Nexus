@@ -61,6 +61,8 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
     implementation "curse.maven:ccore-573646:${project.ccore_file_id}"
+    implementation "curse.maven:jade-324717:${project.jade_file_id}"
+
     runtimeOnly "curse.maven:jei-238222:${project.jei_file_id}"
     runtimeOnly "curse.maven:sodium-394468:${project.sodium_file_id}"
 }

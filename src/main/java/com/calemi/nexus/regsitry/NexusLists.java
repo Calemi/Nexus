@@ -68,4 +68,8 @@ public class NexusLists {
     public static List<ResourceKey<Block>> toResourceKeyList(List<DeferredBlock<Block>> blocks) {
         return new ArrayList<>(blocks.stream().map(DeferredBlock::getKey).toList());
     }
+
+    public static List<Block> toBlockList(List<DeferredBlock<Block>> blocks) {
+        return new ArrayList<>(blocks.stream().map(DeferredHolder::get).toList());
+    }
 }

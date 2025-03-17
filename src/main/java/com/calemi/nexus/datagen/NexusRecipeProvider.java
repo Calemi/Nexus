@@ -9,6 +9,7 @@ import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 
 import java.util.concurrent.CompletableFuture;
@@ -71,7 +72,7 @@ public class NexusRecipeProvider extends RecipeProvider {
         );
 
         SmithingTransformRecipeBuilder.smithing(
-                        Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
+                        Ingredient.of(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(Tags.Items.GEMS_AMETHYST),
                         Ingredient.of(Tags.Items.ENDER_PEARLS),
                         RecipeCategory.MISC,
@@ -79,6 +80,16 @@ public class NexusRecipeProvider extends RecipeProvider {
                 )
                 .unlocks("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
                 .save(recipeOutput, NexusRef.rl("chrono_shard"));
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE, 2)
+                .define('T', NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE)
+                .define('M', Items.AMETHYST_SHARD)
+                .define('B', Blocks.CALCITE)
+                .pattern("MTM")
+                .pattern("MBM")
+                .pattern("MMM")
+                .unlockedBy("has_chrono_upgrade", has(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE))
+                .save(recipeOutput);
     }
 
     private void portalCore(ItemLike output, Ingredient prevPortalCore, Ingredient tier, Ingredient center, RecipeOutput recipeOutput) {

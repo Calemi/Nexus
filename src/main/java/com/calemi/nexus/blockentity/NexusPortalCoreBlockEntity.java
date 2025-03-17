@@ -9,9 +9,11 @@ import com.calemi.nexus.util.TeleportHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -20,7 +22,10 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+
+import javax.annotation.Nullable;
 
 public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
 
@@ -28,29 +33,24 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
     private BlockPos destinationPos;
     private DyeColor portalDyeColor;
 
+    @Nullable
+    private Component poiName;
+
     public NexusPortalCoreBlockEntity(BlockPos pos, BlockState blockState) {
         super(NexusBlockEntities.NEXUS_PORTAL_CORE.get(), pos, blockState);
         portalDyeColor = DyeColor.PURPLE;
-    }
-
-    public BlockPos getDestinationPos() {
-        return destinationPos;
     }
 
     public ResourceLocation getDestinationDimResourceLocation() {
         return destinationDimResourceLocation;
     }
 
-    public ResourceKey<Level> getDestinationDimResourceKey() {
-        return ResourceKey.create(Registries.DIMENSION, getDestinationDimResourceLocation());
-    }
-
-    public DyeColor getPortalDyeColor() {
-        return portalDyeColor;
-    }
-
     public void setDestinationDimResourceLocation(ResourceLocation destinationDimResourceLocation) {
         this.destinationDimResourceLocation = destinationDimResourceLocation;
+    }
+
+    public BlockPos getDestinationPos() {
+        return destinationPos;
     }
 
     public void setDestinationPos(BlockPos destinationPos) {
@@ -64,30 +64,53 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
         }
     }
 
-    public Level getDestinationLevel() {
-
-        if (level != null && !level.isClientSide() && level instanceof ServerLevel serverLevel) {
-            return serverLevel.getServer().getLevel(getDestinationDimResourceKey());
-        }
-
-        return null;
+    public DyeColor getPortalDyeColor() {
+        return portalDyeColor;
     }
 
     public void setPortalDyeColor(DyeColor portalDyeColor) {
         this.portalDyeColor = portalDyeColor;
     }
 
+    @Nullable
+    public Component getPoiName() {
+        return poiName;
+    }
+
+    public void setPoiName(@Nullable Component poiName) {
+        this.poiName = poiName;
+    }
+
+    public ResourceKey<Level> getDestinationDimResourceKey() {
+        return ResourceKey.create(Registries.DIMENSION, getDestinationDimResourceLocation());
+    }
+
+    public Level getDestinationLevel() {
+
+        if (level != null && !level.isClientSide() && level instanceof ServerLevel serverLevel && getDestinationDimResourceLocation() != null) {
+            return serverLevel.getServer().getLevel(getDestinationDimResourceKey());
+        }
+
+        return null;
+    }
+
     public boolean hasPortalCoreAtDestination() {
+        return getDestinationPortalCore() != null;
+    }
 
-        if (getDestinationDimResourceLocation() == null || getDestinationPos() == null) return false;
+    public NexusPortalCoreBlockEntity getDestinationPortalCore() {
 
-        if (!(level instanceof ServerLevel serverLevel)) return false;
+        BlockPos destinationPos = getDestinationPos();
 
-        Level destinationLevel = serverLevel.getServer().getLevel(getDestinationDimResourceKey());
+        if (destinationPos == null) return null;
 
-        if (destinationLevel == null) return false;
+        Level destinationLevel = getDestinationLevel();
 
-        return destinationLevel.getBlockState(getDestinationPos()).getBlock().equals(getBlockState().getBlock());
+        if (destinationLevel == null) return null;
+
+        if (!(destinationLevel.getBlockEntity(getDestinationPos()) instanceof NexusPortalCoreBlockEntity destinationBlockEntity)) return null;
+
+        return destinationBlockEntity;
     }
 
     public void teleportEntity(Entity entity) {
@@ -124,6 +147,40 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
         if (player != null) NexusSoundHelper.playTeleportSound(player);
     }
 
+    public static MutableComponent getFormattedCurrentDestinationText() {
+        return Component.translatable("screen.nexus.nexus_portal_core.text.current_destination").withStyle(ChatFormatting.LIGHT_PURPLE);
+    }
+
+    public static MutableComponent getFormattedDestinationNameText(String destinationPOIName, String destinationDimensionPath, ChatFormatting highlight, ChatFormatting normal) {
+
+        if (!destinationPOIName.isEmpty()) {
+            return Component.empty()
+                    .append(highlight + destinationPOIName)
+                    .append(" (")
+                    .append(getFormattedDestinationDimensionText(destinationDimensionPath))
+                    .append(")")
+                    .withStyle(normal);
+        }
+
+        return getFormattedDestinationDimensionText(destinationDimensionPath).withStyle(highlight);
+    }
+
+    public static MutableComponent getFormattedDestinationDimensionText(String destinationDimensionPath) {
+        return Component.literal(destinationDimensionPath.toUpperCase().replaceAll("_", " "));
+    }
+
+    public static MutableComponent getFormattedDestinationPositionText(BlockPos destinationPos, ChatFormatting highlight, ChatFormatting normal) {
+        return Component
+                .literal("[x")
+                .append(String.valueOf(highlight) + destinationPos.getX())
+                .append(", y")
+                .append(String.valueOf(highlight) + destinationPos.getY())
+                .append(", z")
+                .append(String.valueOf(highlight) + destinationPos.getZ())
+                .append("]")
+                .withStyle(normal);
+    }
+
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
@@ -140,6 +197,10 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
         }
 
         tag.putInt("DyeColorId", portalDyeColor.getId());
+
+        if (poiName != null) {
+            tag.putString("POIName", Component.Serializer.toJson(poiName, registries));
+        }
     }
 
     @Override
@@ -159,5 +220,15 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
         }
 
         portalDyeColor = DyeColor.byId(tag.getInt("DyeColorId"));
+
+        if (tag.contains("POIName", 8)) {
+            poiName = parseCustomNameSafe(tag.getString("POIName"), registries);
+        }
+    }
+
+    @Override
+    protected void applyImplicitComponents(BlockEntity.DataComponentInput componentInput) {
+        super.applyImplicitComponents(componentInput);
+        poiName = componentInput.get(DataComponents.CUSTOM_NAME);
     }
 }

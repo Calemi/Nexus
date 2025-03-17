@@ -4,12 +4,14 @@ import com.calemi.ccore.api.location.Location;
 import com.calemi.ccore.api.scanner2.VeinBlockScanner2;
 import com.calemi.nexus.block.NexusPortalBlock;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
@@ -59,6 +61,8 @@ public class DyeNexusPortalBlockEventListener {
     }
 
     private void dyePortalBlock(Block dyedPortalBlock, BlockPos pos, BlockState originalState, Level level) {
+        CompoundTag tag = level.getBlockEntity(pos).saveWithoutMetadata(level.registryAccess());
         level.setBlock(pos, dyedPortalBlock.defaultBlockState().setValue(NexusPortalBlock.AXIS, originalState.getValue(NexusPortalBlock.AXIS)), 1 | 2);
+        level.getBlockEntity(pos).loadCustomOnly(tag, level.registryAccess());
     }
 }

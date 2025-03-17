@@ -7,6 +7,7 @@ import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.util.NexusSoundHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -47,11 +48,32 @@ public record NexusPortalCoreUnlinkPayload(BlockPos portalCorePosition, boolean 
             }
 
             if (payload.takeLinkedPortalCore()) {
+
+                NexusPortalCoreBlockEntity destinationBlockEntity = originBlockEntity.getDestinationPortalCore();
+
+                if (destinationBlockEntity != null) {
+
+                    Level destinationLevel = destinationBlockEntity.getLevel();
+
+                    if (destinationLevel != null) {
+
+                        ItemStack stackToGive = new ItemStack(destinationLevel.getBlockState(destinationBlockEntity.getBlockPos()).getBlock().asItem());
+
+                        Component destinationPOIName = destinationBlockEntity.getPoiName();
+
+                        if (destinationBlockEntity.getPoiName() != null) {
+                            stackToGive.set(DataComponents.CUSTOM_NAME, destinationPOIName);
+                        }
+
+                        ItemHelper.giveItem(player, stackToGive);
+                        destinationLevel.setBlock(originBlockEntity.getDestinationPos(), Blocks.AIR.defaultBlockState(), 3);
+                    }
+                }
+
                 Level destinationLevel = originBlockEntity.getDestinationLevel();
 
                 if (destinationLevel.getBlockState(originBlockEntity.getDestinationPos()).getBlock() instanceof NexusPortalCoreBlock destinationPortalCore) {
-                    ItemHelper.giveItem(player, new ItemStack(destinationPortalCore.asItem()));
-                    destinationLevel.setBlock(originBlockEntity.getDestinationPos(), Blocks.AIR.defaultBlockState(), 3);
+
                 }
             }
 

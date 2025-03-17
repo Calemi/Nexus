@@ -11,6 +11,6 @@
     "id": "nexus:chrono_shard"
   },
   "template": {
-    "item": "minecraft:netherite_upgrade_smithing_template"
+    "item": "nexus:chrono_upgrade_smithing_template"
   }
 }

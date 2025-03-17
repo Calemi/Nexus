@@ -28,6 +28,7 @@ public class Nexus {
         NexusBlocks.init();
         NexusBlockEntities.init();
         NexusCreativeModeTabs.init();
+        NexusLootModifiers.init();
         NexusAttachments.init();
         NexusParticles.init();
 
@@ -57,5 +58,6 @@ public class Nexus {
         registrar.playToServer(NexusPortalCoreFindLinkPayload.TYPE, NexusPortalCoreFindLinkPayload.CODEC, NexusPortalCoreFindLinkPayload::handle);
         registrar.playToServer(NexusPortalCoreLightPortalPayload.TYPE, NexusPortalCoreLightPortalPayload.CODEC, NexusPortalCoreLightPortalPayload::handle);
         registrar.playToServer(NexusPortalCoreUnlinkPayload.TYPE, NexusPortalCoreUnlinkPayload.CODEC, NexusPortalCoreUnlinkPayload::handle);
+        registrar.playBidirectional(NexusPortalCoreDestinationNameSyncPayload.TYPE, NexusPortalCoreDestinationNameSyncPayload.CODEC, NexusPortalCoreDestinationNameSyncPayload::handle);
     }
 }

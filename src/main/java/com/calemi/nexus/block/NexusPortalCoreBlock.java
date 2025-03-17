@@ -10,9 +10,11 @@ import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -25,6 +27,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import org.jetbrains.annotations.Nullable;
 
@@ -55,6 +59,37 @@ public class NexusPortalCoreBlock extends BaseEntityBlock {
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
         tooltipComponents.add(Component.translatable("hover_text.nexus.nexus_portal_core").append(": x" + getCoordinateScale()).withStyle(ChatFormatting.GRAY));
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @javax.annotation.Nullable LivingEntity placer, ItemStack stack) {
+
+        if (stack.has(DataComponents.CUSTOM_NAME)) {
+
+            if (level.getBlockEntity(pos) instanceof NexusPortalCoreBlockEntity blockEntity) {
+
+                blockEntity.setPoiName(stack.get(DataComponents.CUSTOM_NAME));
+            }
+        }
+
+        super.setPlacedBy(level, pos, state, placer, stack);
+    }
+
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+
+        List<ItemStack> drops = super.getDrops(state, builder);
+
+        if (builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY) instanceof NexusPortalCoreBlockEntity blockEntity && blockEntity.getPoiName() != null) {
+
+            ItemStack drop = new ItemStack(this);
+            drop.set(DataComponents.CUSTOM_NAME, blockEntity.getPoiName());
+
+            drops.clear();
+            drops.add(drop);
+        }
+
+        return drops;
     }
 
     @Override

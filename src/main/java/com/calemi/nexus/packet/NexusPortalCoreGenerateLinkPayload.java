@@ -8,6 +8,7 @@ import com.calemi.nexus.util.NexusHelper;
 import com.calemi.nexus.util.NexusSoundHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -15,6 +16,7 @@ import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.neoforged.neoforge.network.handling.IPayloadContext;
 
@@ -45,7 +47,9 @@ public record NexusPortalCoreGenerateLinkPayload(BlockPos portalCorePosition) im
 
             NexusPortalCoreBlock originBlock = (NexusPortalCoreBlock) originBlockEntity.getBlockState().getBlock();
 
-            if (player.getInventory().countItem(originBlock.asItem()) < 1 && !player.isCreative()) {
+            ItemStack heldStack = player.getMainHandItem();
+
+            if (!heldStack.getItem().equals(originBlock.asItem()) && !player.isCreative()) {
                 player.sendSystemMessage(Component.translatable("message.nexus.generate_link.no_core").withStyle(ChatFormatting.RED));
                 NexusSoundHelper.playErrorSound(player);
                 return;
@@ -90,6 +94,10 @@ public record NexusPortalCoreGenerateLinkPayload(BlockPos portalCorePosition) im
                 destinationBlockEntity.setDestinationDimResourceLocation(originLevel.dimension().location());
                 destinationBlockEntity.setDestinationPos(originBlockEntity.getBlockPos());
                 destinationBlockEntity.markUpdated();
+
+                if (heldStack.has(DataComponents.CUSTOM_NAME)) {
+                    destinationBlockEntity.setPoiName(heldStack.get(DataComponents.CUSTOM_NAME));
+                }
             }
 
             if (!player.isCreative()) CContainerHelper.consumeItems(player.getInventory(), originBlock.asItem(), 1);

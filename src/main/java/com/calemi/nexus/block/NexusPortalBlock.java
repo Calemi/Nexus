@@ -1,7 +1,6 @@
 package com.calemi.nexus.block;
 
-import com.calemi.ccore.api.location.Location;
-import com.calemi.ccore.api.scanner2.VeinBlockScanner2;
+import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.regsitry.NexusLists;
 import com.calemi.nexus.regsitry.NexusParticles;
@@ -20,10 +19,8 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.Portal;
-import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -37,7 +34,7 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 
 import javax.annotation.Nullable;
 
-public class NexusPortalBlock extends Block implements Portal {
+public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 
     public static final MapCodec<NexusPortalBlock> CODEC = simpleCodec(NexusPortalBlock::new);
     public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
@@ -69,6 +66,23 @@ public class NexusPortalBlock extends Block implements Portal {
         return NexusLists.NEXUS_PORTAL_BLOCKS.stream().map(m -> (NexusPortalBlock)m.get()).filter(block -> block.getColor() == color).findFirst().orElse(null);
     }
 
+    public static NexusPortalCoreBlockEntity getPortalCore(Level level, BlockPos pos) {
+
+        if (level.getBlockEntity(pos) instanceof NexusPortalBlockEntity portalBlockEntity) {
+
+            BlockPos corePosition = portalBlockEntity.getCorePosition();
+
+            if (corePosition != null) {
+
+                if (level.getBlockEntity(corePosition) instanceof NexusPortalCoreBlockEntity coreBlockEntity) {
+                    return coreBlockEntity;
+                }
+            }
+        }
+
+        return null;
+    }
+
     @Override
     protected void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
         if (entity.canUsePortal(false)) {
@@ -80,18 +94,11 @@ public class NexusPortalBlock extends Block implements Portal {
     @Override
     public DimensionTransition getPortalDestination(ServerLevel level, Entity entity, BlockPos pos) {
 
-        VeinBlockScanner2 scanner = new VeinBlockScanner2(new Location(level, pos), 1000);
-        scanner.start();
+        NexusPortalCoreBlockEntity coreBlockEntity = getPortalCore(level, pos);
 
-        for (Location scan : scanner.collectedLocations) {
+        if (coreBlockEntity == null) return null;
 
-            scan.relative(Direction.DOWN);
-
-            if (scan.getBlockEntity() instanceof NexusPortalCoreBlockEntity blockEntity) {
-                blockEntity.teleportEntity(entity);
-                return null;
-            }
-        }
+        coreBlockEntity.teleportEntity(entity);
 
         return null;
     }
@@ -198,8 +205,19 @@ public class NexusPortalBlock extends Block implements Portal {
         return ItemStack.EMPTY;
     }
 
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return new NexusPortalBlockEntity(pos, state);
+    }
+
     @Override
     public MapCodec<NexusPortalBlock> codec() {
         return CODEC;
+    }
+
+    @Override
+    protected RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
     }
 }
