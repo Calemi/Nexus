@@ -1,28 +1,28 @@
 package com.calemi.nexus.util;
 
-import net.minecraft.core.Holder;
+import com.calemi.ccore.api.location.Location;
+import com.calemi.ccore.api.sound.SoundHelper;
+import com.calemi.ccore.api.sound.SoundProfile;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.entity.player.Player;
-
-import java.util.Random;
+import org.jetbrains.annotations.Nullable;
 
 public class NexusSoundHelper {
 
-    public static void playSuccessSound(Player player) {
-        playSound(player, SoundEvents.CONDUIT_ACTIVATE);
+    public static void playSuccessSound(@Nullable Location location) {
+        playSound(location, SoundEvents.CONDUIT_ACTIVATE);
     }
 
-    public static void playErrorSound(Player player) {
-        playSound(player, SoundEvents.CONDUIT_DEACTIVATE);
+    public static void playErrorSound(@Nullable Location location) {
+        playSound(location, SoundEvents.CONDUIT_DEACTIVATE);
     }
 
-    public static void playTeleportSound(Player player) {
-        playSound(player, SoundEvents.ENDERMAN_TELEPORT);
+    public static void playTeleportSound(@Nullable Location location) {
+        playSound(location, SoundEvents.ENDERMAN_TELEPORT);
     }
 
-    public static void playSound(Player player, SoundEvent soundEvent) {
-        player.level().playSeededSound(null, player.getX(), player.getY(), player.getZ(), Holder.direct(SoundEvent.createVariableRangeEvent(soundEvent.getLocation())), SoundSource.PLAYERS, 1, 1, new Random().nextInt());
+    public static void playSound(@Nullable Location location, SoundEvent soundEvent) {
+        if (location != null) SoundHelper.playAtLocation(location, new SoundProfile(soundEvent).setSource(SoundSource.BLOCKS));
     }
 }

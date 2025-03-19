@@ -1,8 +1,6 @@
 package com.calemi.nexus.loot;
 
-import com.calemi.ccore.api.log.LogHelper;
 import com.calemi.ccore.api.math.MathHelper;
-import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.regsitry.NexusItems;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
@@ -21,8 +19,6 @@ public class ChronoUpgradeLootModifier extends LootModifier {
 
     @Override
     protected ObjectArrayList<ItemStack> doApply(ObjectArrayList<ItemStack> generatedLoot, LootContext context) {
-
-        LogHelper.log(NexusRef.MOD_ID, context.getQueriedLootTableId().getPath());
 
         if (context.getQueriedLootTableId().getPath().equals("chests/trial_chambers/corridor") ||
                 context.getQueriedLootTableId().getPath().equals("chests/trial_chambers/intersection") ||

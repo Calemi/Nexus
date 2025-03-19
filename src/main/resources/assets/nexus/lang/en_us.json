@@ -38,8 +38,10 @@
   
   "message.nexus.unlock_dimension": "You can now travel to this dimension from The Nexus.",
   "message.nexus.invalid_dimension": "Destination dimension could not be found!",
-  "message.nexus.invalid_destination": "Destination is outside the world border for that dimension!",
-  "message.nexus.teleport.no_core": "Destination Nexus Portal Core could not be found! Removing link...",
+  "message.nexus.invalid_destination": "Destination is outside the world border for that dimension! Removing invalid link...",
+  "message.nexus.no_core": "Destination Nexus Portal Core could not be found! Removing invalid link...",
+  "message.nexus.no_link": "Destination Nexus Portal Core is not linked to this one! Removing invalid link...",
+  "message.nexus.teleport.locked_dimension": "You can't travel to this dimension. You haven't been there before!",
   "message.nexus.generate_link.no_core": "You do not have a Nexus Portal Core in your main-hand!",
   "message.nexus.generate_link.no_valid_spawn": "Could not find suitable y-level to generate Destination Nexus Portal Core!",
   "message.nexus.generate_link.success": "New link generated successfully!",
@@ -72,5 +74,9 @@
   "networking.nexus.unlocked_dimension_list_message.failed": "Failed to synchronize unlocked dimension list! %s",
   
   "config.jade.plugin_nexus.nexus_portal_core": "Nexus Portal Core",
-  "config.jade.plugin_nexus.nexus_portal": "Nexus Portal"
+  "config.jade.plugin_nexus.nexus_portal": "Nexus Portal",
+  
+  "description.nexus.chrono_upgrade_smithing_template": "Used to craft Chrono Shards. Found in Trial Chamber Chest & Vaults.",
+  "description.nexus.chrono_shard": "Used to craft Nexus Portal Cores.",
+  "description.nexus.nexus_portal_core": "Allows traversal to The Nexus. Each portal core has its own coordinate scale. The blocks traveled in The Nexus are multiplied by this scale when leaving the dimension. You can use it in an Anvil to give your portal a name when placed. You can also disguise this block as another by using with a held block."
 }

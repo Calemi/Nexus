@@ -17,6 +17,6 @@ public class NexusDimensionTypeProvider extends DatapackBuiltinEntriesProvider {
 		.add(Registries.DIMENSION_TYPE, NexusDimensions::init);
 
 	public NexusDimensionTypeProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> provider) {
-		super(output, provider, BUILDER, Set.of("minecraft", NexusRef.MOD_ID));
+		super(output, provider, BUILDER, Set.of("minecraft", NexusRef.ID));
 	}
 }

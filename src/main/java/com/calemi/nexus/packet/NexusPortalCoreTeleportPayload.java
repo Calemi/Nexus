@@ -35,17 +35,17 @@ public record NexusPortalCoreTeleportPayload(BlockPos portalCorePosition) implem
             BlockPos originPos = payload.portalCorePosition();
             BlockState originState = originLevel.getBlockState(originPos);
 
-            if (!(originLevel.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originBlockEntity)) {
-                return;
+            if (!(originLevel.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originPortalCore)) return;
+
+            NexusPortalCoreBlockEntity destinationPortalCore = originPortalCore.getDestinationPortalCore();
+
+            if (destinationPortalCore == null) return;
+
+            if (destinationPortalCore.isPortalActive()) {
+                player.setPortalCooldown();
             }
 
-            BlockPos aboveOriginPos = originPos.above();
-
-            if (player.canUsePortal(false)) {
-                player.setPortalCooldown(100000);
-            }
-
-            originBlockEntity.teleportEntity(player);
+            originPortalCore.teleportEntity(player);
         });
     }
 

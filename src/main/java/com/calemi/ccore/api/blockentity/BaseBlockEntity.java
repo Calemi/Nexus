@@ -4,9 +4,11 @@ import com.calemi.ccore.api.location.Location;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.Connection;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,27 +20,43 @@ public abstract class BaseBlockEntity extends BlockEntity {
         super(type, pos, state);
     }
 
+    @Nullable
     public Location getLocation() {
+
+        Level level = getLevel();
+
+        if (level == null) return null;
+
         return new Location(getLevel(), getBlockPos());
     }
 
-    public void markUpdated() {
+    @Override
+    public void setChanged() {
+        super.setChanged();
+
         if (getLevel() != null) {
-            setChanged();
             getLevel().sendBlockUpdated(getBlockPos(), getBlockState(), getBlockState(), 3);
         }
     }
 
-    @Nullable
+    @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider holder) {
+        return saveCustomOnly(holder);
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider holder) {
+        super.handleUpdateTag(tag, holder);
+        setChanged();
+    }
+
     @Override
     public Packet<ClientGamePacketListener> getUpdatePacket() {
         return ClientboundBlockEntityDataPacket.create(this);
     }
 
     @Override
-    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
-        CompoundTag tag = new CompoundTag();
-        this.saveAdditional(tag, registries);
-        return tag;
+    public void onDataPacket(Connection net, ClientboundBlockEntityDataPacket pkt, HolderLookup.Provider holder) {
+        handleUpdateTag(pkt.getTag(), holder);
     }
 }

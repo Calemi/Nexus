@@ -35,8 +35,8 @@ public record NexusPortalCoreDestinationDimensionSyncPayload(BlockPos portalCore
                     return;
                 }
 
-                portalCoreBlockEntity.setDestinationDimResourceLocation(payload.destinationDimension());
-                portalCoreBlockEntity.markUpdated();
+                portalCoreBlockEntity.setDestinationDimensionRL(payload.destinationDimension());
+                portalCoreBlockEntity.setChanged();
             }
         });
     }

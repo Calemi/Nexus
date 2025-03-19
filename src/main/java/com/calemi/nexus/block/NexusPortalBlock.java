@@ -21,7 +21,6 @@ import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -37,17 +36,19 @@ import javax.annotation.Nullable;
 public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 
     public static final MapCodec<NexusPortalBlock> CODEC = simpleCodec(NexusPortalBlock::new);
-    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.HORIZONTAL_AXIS;
+    public static final EnumProperty<Direction.Axis> AXIS = BlockStateProperties.AXIS;
+
     protected static final int AABB_OFFSET = 2;
     protected static final VoxelShape X_AXIS_AABB = Block.box(0.0, 0.0, 6.0, 16.0, 16.0, 10.0);
     protected static final VoxelShape Z_AXIS_AABB = Block.box(6.0, 0.0, 0.0, 10.0, 16.0, 16.0);
+    protected static final VoxelShape Y_AXIS_AABB = Block.box(0.0, 6.0, 0.0, 16.0, 10.0, 16.0);
 
     private final DyeColor color;
     private final DeferredHolder<ParticleType<?>, SimpleParticleType> particleType;
 
     public NexusPortalBlock(DyeColor color, DeferredHolder<ParticleType<?>, SimpleParticleType> particleType) {
-        super(BlockBehaviour.Properties.ofFullCopy(Blocks.NETHER_PORTAL));
-        registerDefaultState(this.stateDefinition.any().setValue(AXIS, Direction.Axis.X));
+        super(Properties.ofFullCopy(Blocks.NETHER_PORTAL).noOcclusion());
+        registerDefaultState(stateDefinition.any().setValue(AXIS, Direction.Axis.X));
         this.color = color;
         this.particleType = particleType;
     }
@@ -104,8 +105,8 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
     }
 
     @Override
-    public Portal.Transition getLocalTransition() {
-        return Portal.Transition.CONFUSION;
+    public Transition getLocalTransition() {
+        return Transition.CONFUSION;
     }
 
     @Override
@@ -128,14 +129,19 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 
             int j = random.nextInt(2) * 2 - 1;
 
-            if (!level.getBlockState(pos.west()).is(this) && !level.getBlockState(pos.east()).is(this)) {
+            if (state.getValue(AXIS) == Direction.Axis.Z) {
                 x = (double) pos.getX() + 0.5 + 0.25 * (double) j;
                 speedX = random.nextFloat() * 2.0F * (float) j;
             }
 
-            else {
+            else if (state.getValue(AXIS) == Direction.Axis.X) {
                 z = (double) pos.getZ() + 0.5 + 0.25 * (double) j;
                 speedZ = random.nextFloat() * 2.0F * (float) j;
+            }
+
+            else {
+                y = (double) pos.getY() + 0.5 + 0.25 * (double) j;
+                speedY = random.nextFloat() * 2.0F * (float) j;
             }
 
             level.addParticle(particleType.get(), x, y, z, speedX, speedY, speedZ);;
@@ -152,13 +158,27 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
-        return state.getValue(AXIS) == Direction.Axis.Z ? Z_AXIS_AABB : X_AXIS_AABB;
+        return switch (state.getValue(AXIS)) {
+            case X -> X_AXIS_AABB;
+            case Z -> Z_AXIS_AABB;
+            case Y -> Y_AXIS_AABB;
+        };
     }
 
     @Override
     protected boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
 
         Direction.Axis axis = state.getValue(AXIS);
+
+        if (axis.isVertical()) {
+
+            BlockPos north = pos.relative(Direction.NORTH);
+            BlockPos south = pos.relative(Direction.SOUTH);
+            BlockPos east = pos.relative(Direction.EAST);
+            BlockPos west = pos.relative(Direction.WEST);
+
+            return isSuitableNeighbor(level, north) && isSuitableNeighbor(level, south) && isSuitableNeighbor(level, east) && isSuitableNeighbor(level, west);
+        }
 
         BlockPos up = pos.above();
         BlockPos down = pos.below();
@@ -170,7 +190,7 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 
     private boolean isSuitableNeighbor(LevelReader level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
-        return state.getBlock() instanceof NexusPortalBlock || state.isViewBlocking(level, pos);
+        return state.getBlock() instanceof NexusPortalBlock || state.isCollisionShapeFullBlock(level, pos);
     }
 
     @Override
@@ -185,6 +205,7 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 
     @Override
     protected BlockState rotate(BlockState state, Rotation rot) {
+
         return switch (rot) {
             case COUNTERCLOCKWISE_90, CLOCKWISE_90 -> switch (state.getValue(AXIS)) {
                 case Z -> state.setValue(AXIS, Direction.Axis.X);
@@ -203,6 +224,16 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
         return ItemStack.EMPTY;
+    }
+
+    @Override
+    public boolean supportsExternalFaceHiding(BlockState state) {
+        return true;
+    }
+
+    @Override
+    protected boolean skipRendering(BlockState state, BlockState adjacentBlockState, Direction side) {
+        return adjacentBlockState.getBlock() instanceof NexusPortalBlock || super.skipRendering(state, adjacentBlockState, side);
     }
 
     @Nullable

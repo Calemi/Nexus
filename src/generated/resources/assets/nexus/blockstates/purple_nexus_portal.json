@@ -1,10 +1,16 @@
 {
   "variants": {
     "axis=x": {
-      "model": "nexus:block/purple_nexus_portal_ns"
+      "model": "nexus:block/purple_nexus_portal",
+      "x": 90
+    },
+    "axis=y": {
+      "model": "nexus:block/purple_nexus_portal"
     },
     "axis=z": {
-      "model": "nexus:block/purple_nexus_portal_ew"
+      "model": "nexus:block/purple_nexus_portal",
+      "x": 90,
+      "y": 90
     }
   }
 }

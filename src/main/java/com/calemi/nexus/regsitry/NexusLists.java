@@ -3,6 +3,7 @@ package com.calemi.nexus.regsitry;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -71,5 +72,13 @@ public class NexusLists {
 
     public static List<Block> toBlockList(List<DeferredBlock<Block>> blocks) {
         return new ArrayList<>(blocks.stream().map(DeferredHolder::get).toList());
+    }
+
+    public static Block[] toBlockArray(List<DeferredBlock<Block>> blocks) {
+        return blocks.stream().map(DeferredHolder::get).toArray(Block[]::new);
+    }
+
+    public static List<ItemStack> toItemStackList(List<DeferredBlock<Block>> blocks) {
+        return new ArrayList<>(blocks.stream().map(block -> new ItemStack(block.asItem())).toList());
     }
 }

@@ -1,10 +1,12 @@
 package com.calemi.nexus.packet;
 
 import com.calemi.ccore.api.container.CContainerHelper;
+import com.calemi.ccore.api.location.Location;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.util.NexusHelper;
+import com.calemi.nexus.regsitry.NexusMessengers;
+import com.calemi.nexus.util.NexusDimensionHelper;
 import com.calemi.nexus.util.NexusSoundHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -38,10 +40,12 @@ public record NexusPortalCoreGenerateLinkPayload(BlockPos portalCorePosition) im
 
         context.enqueueWork(() -> {
 
+            BlockPos originPos = payload.portalCorePosition();
             Player player = context.player();
             ServerLevel originLevel = (ServerLevel) player.level();
+            Location originLocation = new Location(originLevel, originPos);
 
-            if (!(originLevel.getBlockEntity(payload.portalCorePosition()) instanceof NexusPortalCoreBlockEntity originBlockEntity)) {
+            if (!(originLevel.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originBlockEntity)) {
                 return;
             }
 
@@ -50,60 +54,61 @@ public record NexusPortalCoreGenerateLinkPayload(BlockPos portalCorePosition) im
             ItemStack heldStack = player.getMainHandItem();
 
             if (!heldStack.getItem().equals(originBlock.asItem()) && !player.isCreative()) {
-                player.sendSystemMessage(Component.translatable("message.nexus.generate_link.no_core").withStyle(ChatFormatting.RED));
-                NexusSoundHelper.playErrorSound(player);
+                NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.generate_link.no_core").withStyle(ChatFormatting.RED), player);
+                NexusSoundHelper.playErrorSound(originLocation);
                 return;
             }
 
             Level destinationLevel = originBlockEntity.getDestinationLevel();
 
             if (destinationLevel == null) {
-                player.sendSystemMessage(Component.translatable("message.nexus.invalid_dimension").withStyle(ChatFormatting.RED));
-                NexusSoundHelper.playErrorSound(player);
+                NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.invalid_dimension").withStyle(ChatFormatting.RED), player);
+                NexusSoundHelper.playErrorSound(originLocation);
                 return;
             }
 
-            BlockPos calcPos = NexusHelper.getDynamicBlockDestination(player.level(), originBlockEntity.getBlockPos(), originBlock.getCoordinateScale());
+            BlockPos calcPos = NexusDimensionHelper.getDynamicBlockDestination(player.level(), originBlockEntity.getBlockPos(), originBlock.getCoordinateScale());
 
-            if (!NexusHelper.isDestinationValid(destinationLevel, calcPos)) {
-                player.sendSystemMessage(Component.translatable("message.nexus.invalid_destination").withStyle(ChatFormatting.RED));
-                NexusSoundHelper.playErrorSound(player);
+            if (!NexusDimensionHelper.isDestinationValid(destinationLevel, calcPos)) {
+                NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.invalid_destination").withStyle(ChatFormatting.RED), player);
+                NexusSoundHelper.playErrorSound(originLocation);
                 return;
             }
 
-            int yLevel = NexusHelper.getSolidGroundLevel(destinationLevel, calcPos);
+            int yLevel = NexusDimensionHelper.getSolidGroundLevel(destinationLevel, calcPos);
 
             //REMEMBER TO CHECK WORLD BORDER
 
             if (yLevel == Integer.MAX_VALUE) {
-                player.sendSystemMessage(Component.translatable("message.nexus.generate_link.no_valid_spawn").withStyle(ChatFormatting.RED));
-                NexusSoundHelper.playErrorSound(player);
+                NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.generate_link.no_valid_spawn").withStyle(ChatFormatting.RED), player);
+                NexusSoundHelper.playErrorSound(originLocation);
                 return;
             }
 
             BlockPos destinationPos = calcPos.atY(yLevel);
 
-            originBlockEntity.setDestinationDimResourceLocation(destinationLevel.dimension().location());
+            originBlockEntity.setDestinationDimensionRL(destinationLevel.dimension().location());
             originBlockEntity.setDestinationPos(destinationPos);
-            originBlockEntity.markUpdated();
+            originBlockEntity.setChanged();
 
             destinationLevel.setBlockAndUpdate(destinationPos, originBlock.defaultBlockState());
 
             if (destinationLevel.getBlockEntity(destinationPos) instanceof NexusPortalCoreBlockEntity destinationBlockEntity) {
 
-                destinationBlockEntity.setDestinationDimResourceLocation(originLevel.dimension().location());
+                destinationBlockEntity.setDestinationDimensionRL(originLevel.dimension().location());
                 destinationBlockEntity.setDestinationPos(originBlockEntity.getBlockPos());
-                destinationBlockEntity.markUpdated();
 
                 if (heldStack.has(DataComponents.CUSTOM_NAME)) {
                     destinationBlockEntity.setPoiName(heldStack.get(DataComponents.CUSTOM_NAME));
                 }
+
+                destinationBlockEntity.setChanged();
             }
 
             if (!player.isCreative()) CContainerHelper.consumeItems(player.getInventory(), originBlock.asItem(), 1);
 
-            player.sendSystemMessage(Component.translatable("message.nexus.generate_link.success").withStyle(ChatFormatting.GREEN));
-            NexusSoundHelper.playSuccessSound(player);
+            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.generate_link.success").withStyle(ChatFormatting.GREEN), player);
+            NexusSoundHelper.playSuccessSound(originLocation);
         });
     }
 

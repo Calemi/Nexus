@@ -1,9 +1,10 @@
 package com.calemi.nexus.packet;
 
 import com.calemi.ccore.api.item.ItemHelper;
-import com.calemi.nexus.block.NexusPortalCoreBlock;
+import com.calemi.ccore.api.location.Location;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
+import com.calemi.nexus.regsitry.NexusMessengers;
 import com.calemi.nexus.util.NexusSoundHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -41,9 +42,11 @@ public record NexusPortalCoreUnlinkPayload(BlockPos portalCorePosition, boolean 
 
             Player player = context.player();
             ServerLevel originLevel = (ServerLevel) player.level();
-            BlockPos abovePortalCorePosition = payload.portalCorePosition.above();
+            BlockPos originPos = payload.portalCorePosition();
+            BlockPos abovePortalCorePosition = originPos.above();
+            Location originLocation = new Location(originLevel, originPos);
 
-            if (!(originLevel.getBlockEntity(payload.portalCorePosition()) instanceof NexusPortalCoreBlockEntity originBlockEntity)) {
+            if (!(originLevel.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originBlockEntity)) {
                 return;
             }
 
@@ -69,18 +72,13 @@ public record NexusPortalCoreUnlinkPayload(BlockPos portalCorePosition, boolean 
                         destinationLevel.setBlock(originBlockEntity.getDestinationPos(), Blocks.AIR.defaultBlockState(), 3);
                     }
                 }
-
-                Level destinationLevel = originBlockEntity.getDestinationLevel();
-
-                if (destinationLevel.getBlockState(originBlockEntity.getDestinationPos()).getBlock() instanceof NexusPortalCoreBlock destinationPortalCore) {
-
-                }
             }
 
             originBlockEntity.setDestinationPos(null);
-            originBlockEntity.markUpdated();
-            player.sendSystemMessage(Component.translatable("message.nexus.unlink.success").withStyle(ChatFormatting.GREEN));
-            NexusSoundHelper.playErrorSound(player);
+            originBlockEntity.setChanged();
+
+            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.unlink.success").withStyle(ChatFormatting.GREEN), player);
+            NexusSoundHelper.playErrorSound(originLocation);
         });
     }
 

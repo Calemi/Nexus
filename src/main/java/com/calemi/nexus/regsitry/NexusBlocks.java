@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 
 public class NexusBlocks {
 
-    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(NexusRef.MOD_ID);
+    public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(NexusRef.ID);
 
     public static final DeferredBlock<Block> NEXUS_PORTAL_CORE           = regBlock("nexus_portal_core", () -> new NexusPortalCoreBlock(1));
     public static final DeferredBlock<Block> IRON_NEXUS_PORTAL_CORE      = regBlock("iron_nexus_portal_core", () -> new NexusPortalCoreBlock(8));
@@ -52,6 +52,8 @@ public class NexusBlocks {
     }
 
     public static void init() {
+        Nexus.LOGGER.info("Registering: Blocks - Start");
         BLOCKS.register(Nexus.MOD_EVENT_BUS);
+        Nexus.LOGGER.info("Registering: Blocks - End");
     }
 }

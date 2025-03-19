@@ -2,7 +2,7 @@ package com.calemi.nexus.event.listener;
 
 import com.calemi.ccore.api.message.OverlayMessageHelper;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
-import com.calemi.nexus.util.NexusHelper;
+import com.calemi.nexus.util.NexusDimensionHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
@@ -23,7 +23,7 @@ public class NexusPortalCoreHUDOverlayEventListener {
 
             if (serverPlayer.getMainHandItem().getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof NexusPortalCoreBlock originBlock) {
 
-                BlockPos destinationPosition = NexusHelper.getDynamicBlockDestination(serverPlayer.level(), player.blockPosition(), originBlock.getCoordinateScale());
+                BlockPos destinationPosition = NexusDimensionHelper.getDynamicBlockDestination(serverPlayer.level(), player.blockPosition(), originBlock.getCoordinateScale());
 
                 OverlayMessageHelper.displayMsg(Component.literal("Calculated Destination: [x").append(destinationPosition.getX() + " z" + destinationPosition.getZ() + "]"),  serverPlayer);
             }

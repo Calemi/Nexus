@@ -1,10 +1,11 @@
 package com.calemi.nexus.packet;
 
-import com.calemi.ccore.api.log.LogHelper;
+import com.calemi.ccore.api.location.Location;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.util.NexusHelper;
+import com.calemi.nexus.regsitry.NexusMessengers;
+import com.calemi.nexus.util.NexusDimensionHelper;
 import com.calemi.nexus.util.NexusSoundHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
@@ -43,38 +44,33 @@ public record NexusPortalCoreFindLinkPayload(BlockPos portalCorePosition) implem
             BlockPos originPos = payload.portalCorePosition();
             Player player = context.player();
             ServerLevel originLevel = (ServerLevel) player.level();
+            Location originLocation = new Location(originLevel, originPos);
 
-            if (!(originLevel.getBlockState(originPos).getBlock() instanceof NexusPortalCoreBlock originBlock)) {
-                return;
-            }
-
-            int coordinateScale = originBlock.getCoordinateScale();
-
-            if (!(originLevel.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originBlockEntity)) {
-                return;
-            }
+            if (!(originLevel.getBlockState(originPos).getBlock() instanceof NexusPortalCoreBlock originBlock)) return;
+            if (!(originLevel.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originBlockEntity)) return;
 
             Level destinationLevel = originBlockEntity.getDestinationLevel();
 
             if (destinationLevel == null) {
-                player.sendSystemMessage(Component.translatable("message.nexus.invalid_dimension").withStyle(ChatFormatting.RED));
-                NexusSoundHelper.playErrorSound(player);
+                NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.invalid_dimension").withStyle(ChatFormatting.RED), player);
+                NexusSoundHelper.playErrorSound(originLocation);
                 return;
             }
 
-            BlockPos calcPos = NexusHelper.getDynamicBlockDestination(originLevel, originPos, coordinateScale);
+            int coordinateScale = originBlock.getCoordinateScale();
+            BlockPos calcPos = NexusDimensionHelper.getDynamicBlockDestination(originLevel, originPos, coordinateScale);
 
-            if (!NexusHelper.isDestinationValid(destinationLevel, calcPos)) {
-                player.sendSystemMessage(Component.translatable("message.nexus.invalid_destination").withStyle(ChatFormatting.RED));
-                NexusSoundHelper.playErrorSound(player);
+            if (!NexusDimensionHelper.isDestinationValid(destinationLevel, calcPos)) {
+                NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.invalid_destination").withStyle(ChatFormatting.RED), player);
+                NexusSoundHelper.playErrorSound(originLocation);
                 return;
             }
 
-            if (!NexusHelper.isInNexus(originLevel)) {
+            if (!NexusDimensionHelper.isInNexus(originLevel)) {
                 coordinateScale = 1;
             }
 
-            player.sendSystemMessage(Component.translatable("message.nexus.find_link.searching").withStyle(ChatFormatting.GRAY));
+            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.find_link.searching").withStyle(ChatFormatting.GRAY), player);
 
             List<BlockPos> collectedBlockEntityPositions = new ArrayList<>();
 
@@ -84,14 +80,10 @@ public record NexusPortalCoreFindLinkPayload(BlockPos portalCorePosition) implem
 
                     ChunkAccess checkChunk = destinationLevel.getChunk(new BlockPos(calcPos.getX() + x, originPos.getY(), calcPos.getZ() + z));
                     collectedBlockEntityPositions.addAll(checkChunk.getBlockEntitiesPos());
-
-                    LogHelper.log(NexusRef.MOD_NAME, "Checking chunk at: " + calcPos.getX() + " " + calcPos.getZ());
                 }
             }
 
             final int finalCoordinateScale = coordinateScale;
-
-            LogHelper.log(NexusRef.MOD_NAME, collectedBlockEntityPositions.toString());
 
             collectedBlockEntityPositions.removeIf(
                     pos -> pos.getX() < calcPos.getX() || pos.getX() >= calcPos.getX() + finalCoordinateScale ||
@@ -114,22 +106,22 @@ public record NexusPortalCoreFindLinkPayload(BlockPos portalCorePosition) implem
                 if (destinationBlockEntity != null) {
 
                     originBlockEntity.setDestinationPos(destinationPos);
-                    originBlockEntity.markUpdated();
+                    originBlockEntity.setChanged();
 
-                    destinationBlockEntity.setDestinationDimResourceLocation(originLevel.dimension().location());
+                    destinationBlockEntity.setDestinationDimensionRL(originLevel.dimension().location());
                     destinationBlockEntity.setDestinationPos(originBlockEntity.getBlockPos());
-                    destinationBlockEntity.markUpdated();
+                    destinationBlockEntity.setChanged();
 
-                    player.sendSystemMessage(Component.translatable("message.nexus.find_link.success").withStyle(ChatFormatting.GREEN));
-                    NexusSoundHelper.playSuccessSound(player);
+                    NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.find_link.success").withStyle(ChatFormatting.GREEN), player);
+                    NexusSoundHelper.playSuccessSound(originLocation);
 
                     return;
                 }
             }
 
-            player.sendSystemMessage(Component.translatable("message.nexus.find_link.failure").withStyle(ChatFormatting.RED));
+            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.find_link.failure").withStyle(ChatFormatting.RED), player);
 
-            NexusSoundHelper.playErrorSound(player);
+            NexusSoundHelper.playErrorSound(originLocation);
         });
     }
 

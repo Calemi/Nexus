@@ -1,7 +1,7 @@
 package com.calemi.nexus.event.listener;
 
 import com.calemi.nexus.block.NexusPortalCoreBlock;
-import com.calemi.nexus.util.NexusHelper;
+import com.calemi.nexus.util.NexusDimensionHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.Camera;
@@ -30,11 +30,11 @@ public class NexusPortalCoreWorldOverlayEventListener {
 
             if (player == null) return;
 
-            if (NexusHelper.isInNexus(player)) return;
+            if (NexusDimensionHelper.isInNexus(player)) return;
 
             if (!(player.getMainHandItem().getItem() instanceof BlockItem blockItem && blockItem.getBlock() instanceof NexusPortalCoreBlock originBlock)) return;
 
-            BlockPos destinationPosition = NexusHelper.getDynamicBlockDestination(player.level(), player.blockPosition(), originBlock.getCoordinateScale());
+            BlockPos destinationPosition = NexusDimensionHelper.getDynamicBlockDestination(player.level(), player.blockPosition(), originBlock.getCoordinateScale());
             int coordinateScale = originBlock.getCoordinateScale();
 
             if (coordinateScale == 1) return;

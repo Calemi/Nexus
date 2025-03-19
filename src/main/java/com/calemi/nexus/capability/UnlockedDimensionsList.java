@@ -32,13 +32,13 @@ public class UnlockedDimensionsList implements INBTSerializable<CompoundTag> {
         return unlockedDimensions;
     }
 
-    public boolean isDimensionUnlocked(ResourceLocation dimensionResourceLocation) {
+    public boolean isUnlocked(ResourceLocation dimensionResourceLocation) {
         return unlockedDimensions.contains(dimensionResourceLocation);
     }
 
     public boolean unlock(ResourceLocation dimensionResourceLocation) {
 
-        if (!isDimensionUnlocked(dimensionResourceLocation)) {
+        if (!isUnlocked(dimensionResourceLocation)) {
 
             unlockedDimensions.add(dimensionResourceLocation);
             return true;

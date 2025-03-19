@@ -11,12 +11,14 @@ import java.util.function.Supplier;
 
 public class NexusAttachments {
 
-    private static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, NexusRef.MOD_ID);
+    private static final DeferredRegister<AttachmentType<?>> ATTACHMENT_TYPES = DeferredRegister.create(NeoForgeRegistries.Keys.ATTACHMENT_TYPES, NexusRef.ID);
 
     public static final Supplier<AttachmentType<UnlockedDimensionsList>> UNLOCKED_DIMENSIONS_ATTACHMENT = ATTACHMENT_TYPES.register("unlocked_dimensions", () ->
             AttachmentType.serializable(UnlockedDimensionsList::new).build());
 
     public static void init() {
+        Nexus.LOGGER.info("Registering: Attachment Types - Start");
         ATTACHMENT_TYPES.register(Nexus.MOD_EVENT_BUS);
+        Nexus.LOGGER.info("Registering: Attachment Types - End");
     }
 }

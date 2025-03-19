@@ -15,7 +15,7 @@ import java.util.concurrent.CompletableFuture;
 public class NexusBlockTagProvider extends BlockTagsProvider {
 
     public NexusBlockTagProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> lookupProvider, @Nullable ExistingFileHelper existingFileHelper) {
-        super(output, lookupProvider, NexusRef.MOD_ID, existingFileHelper);
+        super(output, lookupProvider, NexusRef.ID, existingFileHelper);
     }
 
     @Override

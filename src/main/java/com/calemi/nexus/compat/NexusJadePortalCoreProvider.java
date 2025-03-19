@@ -62,8 +62,8 @@ public enum NexusJadePortalCoreProvider implements IBlockComponentProvider, ISer
                 data.putInt("DestinationPosZ", coreBlockEntity.getDestinationPos().getZ());
             }
 
-            if (coreBlockEntity.getDestinationDimResourceLocation() != null) {
-                data.putString("DestinationDimPath", coreBlockEntity.getDestinationDimResourceLocation().getPath());
+            if (coreBlockEntity.getDestinationDimensionRL() != null) {
+                data.putString("DestinationDimPath", coreBlockEntity.getDestinationDimensionRL().getPath());
             }
 
             NexusPortalCoreBlockEntity destinationBlockEntity = coreBlockEntity.getDestinationPortalCore();

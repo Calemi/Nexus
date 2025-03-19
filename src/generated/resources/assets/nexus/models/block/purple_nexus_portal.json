@@ -1,0 +1,8 @@
+{
+  "parent": "nexus:block/nexus_portal",
+  "render_type": "minecraft:translucent",
+  "textures": {
+    "particle": "nexus:block/purple_nexus_portal",
+    "portal": "nexus:block/purple_nexus_portal"
+  }
+}

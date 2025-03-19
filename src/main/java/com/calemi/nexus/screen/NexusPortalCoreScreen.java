@@ -6,7 +6,7 @@ import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.capability.UnlockedDimensionsList;
 import com.calemi.nexus.packet.*;
-import com.calemi.nexus.util.NexusHelper;
+import com.calemi.nexus.util.NexusDimensionHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
@@ -58,7 +58,7 @@ public class NexusPortalCoreScreen extends BaseScreen {
         dimensionSelectButton = addRenderableWidget(
                 CycleButton.<ResourceLocation>builder((dimension) -> Component.literal(dimension.getPath().toUpperCase().replaceAll("_", " ")))
                         .withValues(dimensions)
-                        .withInitialValue(originBlockEntity.getDestinationDimResourceLocation())
+                        .withInitialValue(originBlockEntity.getDestinationDimensionRL())
                         .create(getScreenX() - 100, getScreenY() - 10 - 26, 200, 20,
                                 Component.translatable("screen.nexus.nexus_portal_core.button.dimension_select.title"),
                                 (btn, selected) -> PacketDistributor.sendToServer(new NexusPortalCoreDestinationDimensionSyncPayload(originBlockEntity.getBlockPos(), selected)))
@@ -98,7 +98,7 @@ public class NexusPortalCoreScreen extends BaseScreen {
     }
 
     private void lightPortalButtonPress() {
-        PacketDistributor.sendToServer(new NexusPortalCoreLightPortalPayload(originBlockEntity.getBlockPos().above()));
+        PacketDistributor.sendToServer(new NexusPortalCoreLightPortalPayload(originBlockEntity.getBlockPos()));
         onClose();
     }
 
@@ -126,7 +126,7 @@ public class NexusPortalCoreScreen extends BaseScreen {
 
         //NO DESTINATION POSITION
         if (originBlockEntity.getDestinationPos() == null) {
-            dimensionSelectButton.active = NexusHelper.isInNexus(player);
+            dimensionSelectButton.active = NexusDimensionHelper.isInNexus(player);
             lightPortalButton.active = false;
             teleportButton.active = false;
             unlinkButton.active = false;
@@ -161,14 +161,14 @@ public class NexusPortalCoreScreen extends BaseScreen {
     public void render(GuiGraphics graphics, int mouseX, int mouseY, float partialTick) {
         super.render(graphics, mouseX, mouseY, partialTick);
 
-        ResourceLocation destinationDimResourceLocation = originBlockEntity.getDestinationDimResourceLocation();
+        ResourceLocation destinationDimResourceLocation = originBlockEntity.getDestinationDimensionRL();
         BlockPos destinationPos = originBlockEntity.getDestinationPos();
 
         if (destinationPos == null) {
 
             graphics.drawCenteredString(mc.font, Component.translatable("screen.nexus.nexus_portal_core.text.no_destination").withStyle(ChatFormatting.RED), getScreenX(), getScreenY() - 50, 0xFFFFFF);
 
-            if (!NexusHelper.isInNexus(player)) {
+            if (!NexusDimensionHelper.isInNexus(player)) {
                 ScreenHelper.drawTooltipHoverRect(graphics, dimensionSelectButton.getRectangle(), mouseX, mouseY,
                         Component.translatable("screen.nexus.nexus_portal_core.button.dimension_select.cant_set")
                                 .withStyle(ChatFormatting.GRAY)
@@ -197,7 +197,7 @@ public class NexusPortalCoreScreen extends BaseScreen {
         int xOffset = 1;
         Component lightPortalInfo = Component.translatable("screen.nexus.nexus_portal_core.button.light_portal.light_info");
 
-        if (player.level().getBlockState(originBlockEntity.getBlockPos().above()).getBlock() instanceof NexusPortalBlock) {
+        if (originBlockEntity.isPortalActive()) {
             lightPortalItem = Items.WATER_BUCKET;
             xOffset = 2;
             lightPortalInfo = Component.translatable("screen.nexus.nexus_portal_core.button.light_portal.destroy_info");

@@ -11,15 +11,21 @@ import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import net.neoforged.neoforge.network.registration.PayloadRegistrar;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
-@Mod(NexusRef.MOD_ID)
+@Mod(NexusRef.ID)
 public class Nexus {
 
     public static final IEventBus FORGE_EVENT_BUS = NeoForge.EVENT_BUS;
     public static IEventBus MOD_EVENT_BUS;
     public static ModContainer MOD_CONTAINER;
 
+    public static final Logger LOGGER = LogManager.getLogger(NexusRef.NAME);
+
     public Nexus(IEventBus modEventBus, ModContainer modContainer) {
+
+        LOGGER.info("Registering: Main - Start");
 
         MOD_EVENT_BUS = modEventBus;
         MOD_CONTAINER = modContainer;
@@ -36,20 +42,35 @@ public class Nexus {
         MOD_EVENT_BUS.addListener(this::clientSetup);
         MOD_EVENT_BUS.addListener(this::registerPackets);
         MOD_EVENT_BUS.addListener(NexusParticles::registerParticleProviders);
+
+        LOGGER.info("Registering: Main - End");
     }
 
     public void commonSetup(final FMLCommonSetupEvent event) {
+
+        LOGGER.info("Registering: Common - Start");
+
         MOD_EVENT_BUS.register(new BuildCreativeModeTabContentsEventListener());
         FORGE_EVENT_BUS.register(new NexusPortalCoreHUDOverlayEventListener());
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockEventListener());
+
+        LOGGER.info("Registering: Common - End");
     }
 
     public void clientSetup(final FMLClientSetupEvent event) {
+
+        LOGGER.info("Registering: Client - Start");
+
         FORGE_EVENT_BUS.register(new NexusPortalCoreWorldOverlayEventListener());
+
+        LOGGER.info("Registering: Client - End");
     }
 
     public void registerPackets(RegisterPayloadHandlersEvent event) {
-        final PayloadRegistrar registrar = event.registrar(NexusRef.MOD_ID);
+
+        LOGGER.info("Registering: Packets - Start");
+
+        final PayloadRegistrar registrar = event.registrar(NexusRef.ID);
 
         registrar.playToClient(UnlockedDimensionsListSyncPayload.TYPE, UnlockedDimensionsListSyncPayload.CODEC, UnlockedDimensionsListSyncPayload::handle);
         registrar.playToServer(NexusPortalCoreDestinationDimensionSyncPayload.TYPE, NexusPortalCoreDestinationDimensionSyncPayload.CODEC, NexusPortalCoreDestinationDimensionSyncPayload::handle);
@@ -59,5 +80,7 @@ public class Nexus {
         registrar.playToServer(NexusPortalCoreLightPortalPayload.TYPE, NexusPortalCoreLightPortalPayload.CODEC, NexusPortalCoreLightPortalPayload::handle);
         registrar.playToServer(NexusPortalCoreUnlinkPayload.TYPE, NexusPortalCoreUnlinkPayload.CODEC, NexusPortalCoreUnlinkPayload::handle);
         registrar.playBidirectional(NexusPortalCoreDestinationNameSyncPayload.TYPE, NexusPortalCoreDestinationNameSyncPayload.CODEC, NexusPortalCoreDestinationNameSyncPayload::handle);
+
+        LOGGER.info("Registering: Packets - End");
     }
 }

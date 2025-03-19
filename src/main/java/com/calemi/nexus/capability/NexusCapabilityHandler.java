@@ -3,8 +3,10 @@ package com.calemi.nexus.capability;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.packet.UnlockedDimensionsListSyncPayload;
 import com.calemi.nexus.regsitry.NexusAttachments;
+import com.calemi.nexus.regsitry.NexusMessengers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.player.Player;
@@ -15,13 +17,13 @@ import net.neoforged.neoforge.capabilities.EntityCapability;
 import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.event.entity.player.PlayerEvent;
 
-@EventBusSubscriber(modid = NexusRef.MOD_ID)
+@EventBusSubscriber(modid = NexusRef.ID)
 public class NexusCapabilityHandler {
 
     public static final EntityCapability<UnlockedDimensionsList, Void> unlockedDimensionsCapability = EntityCapability.createVoid(
             NexusRef.rl("unlocked_dimensions"), UnlockedDimensionsList.class);
 
-    @EventBusSubscriber(modid = NexusRef.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+    @EventBusSubscriber(modid = NexusRef.ID, bus = EventBusSubscriber.Bus.MOD)
     private static final class Setup {
 
         @SubscribeEvent
@@ -56,9 +58,14 @@ public class NexusCapabilityHandler {
 
             if (!level.isClientSide()) {
 
-                player.sendSystemMessage(Component.translatable("message.nexus.unlock_dimension").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC));
+                NexusMessengers.MAIN.send(Component.translatable("message.nexus.unlock_dimension").withStyle(ChatFormatting.GRAY).withStyle(ChatFormatting.ITALIC), player);
             }
         }
+    }
+
+    public static boolean isDimensionUnlocked(Player player, ResourceLocation dimensionRL) {
+        UnlockedDimensionsList unlockedDimensions = UnlockedDimensionsList.get(player);
+        return unlockedDimensions.isUnlocked(dimensionRL);
     }
 
     public static void syncUnlockedDimensionList(Player player) {

@@ -15,7 +15,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
-@EventBusSubscriber(modid = NexusRef.MOD_ID, bus = EventBusSubscriber.Bus.MOD)
+@EventBusSubscriber(modid = NexusRef.ID, bus = EventBusSubscriber.Bus.MOD)
 public class NexusDataGen {
 
     @SubscribeEvent

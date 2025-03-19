@@ -13,7 +13,7 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 
 public class NexusParticles {
 
-    private static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(Registries.PARTICLE_TYPE, NexusRef.MOD_ID);
+    private static final DeferredRegister<ParticleType<?>> PARTICLE_TYPES = DeferredRegister.create(Registries.PARTICLE_TYPE, NexusRef.ID);
 
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WHITE_PORTAL_PARTICLES = PARTICLE_TYPES.register("white_portal", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> ORANGE_PORTAL_PARTICLES = PARTICLE_TYPES.register("orange_portal", () -> new SimpleParticleType(false));
@@ -33,7 +33,9 @@ public class NexusParticles {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BLACK_PORTAL_PARTICLES = PARTICLE_TYPES.register("black_portal", () -> new SimpleParticleType(false));
 
     public static void init() {
+        Nexus.LOGGER.info("Registering: Particles Types - Start");
         PARTICLE_TYPES.register(Nexus.MOD_EVENT_BUS);
+        Nexus.LOGGER.info("Registering: Particles Types - End");
     }
 
     @SubscribeEvent

@@ -12,12 +12,14 @@ import java.util.function.Supplier;
 
 public class NexusLootModifiers {
 
-    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, NexusRef.MOD_ID);
+    public static final DeferredRegister<MapCodec<? extends IGlobalLootModifier>> LOOT_MODIFIERS = DeferredRegister.create(NeoForgeRegistries.Keys.GLOBAL_LOOT_MODIFIER_SERIALIZERS, NexusRef.ID);
 
     public static final Supplier<MapCodec<ChronoUpgradeLootModifier>> CHRONO_UPGRADE  =
             LOOT_MODIFIERS.register("chrono_upgrade", () -> ChronoUpgradeLootModifier.CODEC);
 
     public static void init() {
+        Nexus.LOGGER.info("Registering: Loot Modifiers - Start");
         LOOT_MODIFIERS.register(Nexus.MOD_EVENT_BUS);
+        Nexus.LOGGER.info("Registering: Loot Modifiers - End");
     }
 }

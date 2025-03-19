@@ -9,7 +9,7 @@ import net.neoforged.neoforge.common.data.ExistingFileHelper;
 public class NexusItemModelProvider extends ItemModelProvider {
 
     public NexusItemModelProvider(PackOutput output, ExistingFileHelper existingFileHelper) {
-        super(output, NexusRef.MOD_ID, existingFileHelper);
+        super(output, NexusRef.ID, existingFileHelper);
     }
 
     @Override

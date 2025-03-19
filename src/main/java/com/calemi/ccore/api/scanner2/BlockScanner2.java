@@ -1,6 +1,8 @@
 package com.calemi.ccore.api.scanner2;
 
 import com.calemi.ccore.api.location.Location;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,45 +12,87 @@ import java.util.List;
  */
 public abstract class BlockScanner2 {
 
-    public final ArrayList<Location> collectedLocations = new ArrayList<>();
+    private final ArrayList<BlockPos> collectedPositions = new ArrayList<>();
 
-    public final Location origin;
-    public final int maxScanSize;
-    public boolean halted = false;
+    private final Level level;
+    private final BlockPos originPosition;
+    private final int maxCollectionSize;
+    private boolean halted = false;
 
     /**
      * Creates a BlockScanner
-     * @param origin The origin Location of the scan.
-     * @param maxScanSize The maximum amount of Blocks to scan.
+     * @param level The Level to scan in.
+     * @param originPosition The BlockPos to start the scan at.
+     * @param maxCollectionSize The maximum amount of Blocks to collect.
      */
-    public BlockScanner2(Location origin, int maxScanSize) {
-        this.origin = origin;
-        this.maxScanSize = maxScanSize;
+    public BlockScanner2(Level level, BlockPos originPosition, int maxCollectionSize) {
+        this.level = level;
+        this.originPosition = originPosition;
+        this.maxCollectionSize = maxCollectionSize;
     }
 
     /**
-     * @param scannedLocation The currently scanned Location.
-     * @return whether the scanner should collect this location or not.
+     * Creates a BlockScanner
+     * @param originLocation The Location to start the scan at.
+     * @param maxCollectionSize The maximum amount of Blocks to collect.
      */
-    public abstract boolean shouldCollect(Location scannedLocation);
+    public BlockScanner2(Location originLocation, int maxCollectionSize) {
+        this(originLocation.getLevel(), originLocation.getBlockPos(), maxCollectionSize);
+    }
 
+    public ArrayList<BlockPos> getCollectedPositions() {
+        return collectedPositions;
+    }
+
+    public Level getLevel() {
+        return level;
+    }
+
+    public BlockPos getOriginPosition() {
+        return originPosition;
+    }
+
+    public int getMaxCollectionSize() {
+        return maxCollectionSize;
+    }
+
+    public boolean isHalted() {
+        return halted;
+    }
+
+    public void setHalted(boolean halted) {
+        this.halted = halted;
+    }
+
+    /**
+     * @param scannedLocation The currently scanned BlockPos.
+     * @return whether the scanner should collect this BlockPos or not.
+     */
+    public abstract boolean shouldCollect(BlockPos scannedBlockPos);
+
+    /**
+     * @return whether the scanner should scan further BlockPos from a previously scanned BlockPos if it failed to collect it.
+     */
     public abstract boolean branchOnFailedCollect();
 
-    public abstract List<Location> nextLocationsToScan(Location scannedLocation);
+    /**
+     * @return the next BlockPos to scan.
+     */
+    public abstract List<BlockPos> nextLocationsToScan(BlockPos prevBlockPos);
 
     /**
      * Starts a scan that will search adjacent Blocks.
      */
     public void start() {
         reset();
-        scan(origin);
+        scan(originPosition);
     }
 
     /**
      * Clears the buffer.
      */
     public void reset() {
-        collectedLocations.clear();
+        collectedPositions.clear();
         halted = false;
     }
 
@@ -56,41 +100,25 @@ public abstract class BlockScanner2 {
      * Recursive method used to search through similar Blocks.
      * @param location The Location to search.
      */
-    public void scan(Location location) {
+    public void scan(BlockPos location) {
 
-        if (halted || collectedLocations.size() >= maxScanSize) {
+        if (halted || collectedPositions.size() >= maxCollectionSize) {
             return;
         }
 
-        if (!collectedLocations.contains(location)) {
+        if (!collectedPositions.contains(location)) {
 
             if (shouldCollect(location)) {
-                collectedLocations.add(location);
+                collectedPositions.add(location);
             }
 
             else if (!branchOnFailedCollect()) {
                 return;
             }
 
-            for (Location nextLocationToScan : nextLocationsToScan(location)) {
+            for (BlockPos nextLocationToScan : nextLocationsToScan(location)) {
                 scan(nextLocationToScan);
             }
         }
-    }
-
-    /**
-     * @param location The Location to test.
-     * @return True, if the given location is in the buffer.
-     */
-    public boolean contains(Location location) {
-
-        for (Location nextLocation : collectedLocations) {
-
-            if (nextLocation.equals(location)) {
-                return true;
-            }
-        }
-
-        return false;
     }
 }

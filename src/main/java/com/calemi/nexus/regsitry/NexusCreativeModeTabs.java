@@ -12,10 +12,10 @@ import java.util.function.Supplier;
 
 public class NexusCreativeModeTabs {
 
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, NexusRef.MOD_ID);
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, NexusRef.ID);
 
     public static final Supplier<CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("nexus_main", () -> CreativeModeTab.builder()
-            .title(Component.translatable("itemGroup." + NexusRef.MOD_ID + ".main"))
+            .title(Component.translatable("itemGroup." + NexusRef.ID + ".main"))
             .icon(() -> new ItemStack(NexusBlocks.NEXUS_PORTAL_CORE.get()))
             .displayItems((params, output) -> {
                 output.accept(NexusBlocks.NEXUS_PORTAL_CORE.get());
@@ -31,6 +31,8 @@ public class NexusCreativeModeTabs {
     );
 
     public static void init() {
+        Nexus.LOGGER.info("Registering: Creative Mode Tabs - Start");
         CREATIVE_MODE_TABS.register(Nexus.MOD_EVENT_BUS);
+        Nexus.LOGGER.info("Registering: Creative Mode Tabs - End");
     }
 }

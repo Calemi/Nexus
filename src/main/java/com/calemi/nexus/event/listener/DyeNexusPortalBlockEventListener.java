@@ -1,8 +1,11 @@
 package com.calemi.nexus.event.listener;
 
 import com.calemi.ccore.api.location.Location;
-import com.calemi.ccore.api.scanner2.VeinBlockScanner2;
 import com.calemi.nexus.block.NexusPortalBlock;
+import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
+import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.main.Nexus;
+import com.calemi.nexus.scanner.PortalScanner;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.ItemInteractionResult;
@@ -11,7 +14,6 @@ import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.entity.player.UseItemOnBlockEvent;
@@ -24,12 +26,13 @@ public class DyeNexusPortalBlockEventListener {
         if (event.getUsePhase() == UseItemOnBlockEvent.UsePhase.ITEM_BEFORE_BLOCK) {
 
             Level level = event.getLevel();
+
+            if (event.getLevel().isClientSide()) return;
+
             BlockPos pos = event.getPos();
             BlockState state = level.getBlockState(pos);
 
-            if (!(state.getBlock() instanceof NexusPortalBlock)) {
-                return;
-            }
+            if (!(state.getBlock() instanceof NexusPortalBlock)) return;
 
             Player player = event.getPlayer();
 
@@ -41,22 +44,30 @@ public class DyeNexusPortalBlockEventListener {
 
             Block dyedPortalBlock = NexusPortalBlock.fromDye(dyeItem.getDyeColor());
 
-            if (dyedPortalBlock != null) {
+            if (dyedPortalBlock != null && !state.getBlock().equals(dyedPortalBlock)) {
 
                 if (player.isCrouching()) {
                     dyePortalBlock(dyedPortalBlock, pos, state, level);
                 }
 
                 else {
-                    VeinBlockScanner2 scanner = new VeinBlockScanner2(new Location(level, pos), 1000);
+                    PortalScanner scanner = new PortalScanner(new Location(level, pos), state.getValue(NexusPortalBlock.AXIS), false,1000);
                     scanner.start();
-                    scanner.collectedLocations.forEach(location -> dyePortalBlock(dyedPortalBlock, location.getBlockPos(), state, level));
+                    scanner.getCollectedPositions().forEach(blockPos -> dyePortalBlock(dyedPortalBlock, blockPos, state, level));
                 }
 
                 if (!player.isCreative()) stack.shrink(1);
 
                 event.cancelWithResult(ItemInteractionResult.SUCCESS);
             }
+
+            if (!(level.getBlockEntity(pos) instanceof NexusPortalBlockEntity portalBlockEntity)) return;
+
+            if (!(level.getBlockEntity(portalBlockEntity.getCorePosition()) instanceof NexusPortalCoreBlockEntity portalCoreBlockEntity)) return;
+
+            portalCoreBlockEntity.savePortalColorPattern(portalCoreBlockEntity.getPortalPositions());
+
+            Nexus.LOGGER.debug("SAVING PATTERN");
         }
     }
 
