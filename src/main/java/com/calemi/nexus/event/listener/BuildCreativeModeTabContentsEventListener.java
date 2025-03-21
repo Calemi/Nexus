@@ -26,10 +26,23 @@ public class BuildCreativeModeTabContentsEventListener {
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             add(event, Items.AMETHYST_SHARD,
-                    NexusItems.CHRONO_SHARD.get()
-            );
+                    NexusItems.CHRONO_SHARD.get());
             add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
                     NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
+            add(event, Items.MYCELIUM,
+                    NexusBlocks.CHRONOWARPED_GRASS.get().asItem());
+            add(event, Items.MUD,
+                    NexusBlocks.CHRONOWARPED_DIRT.get().asItem());
+            add(event, Items.DEEPSLATE,
+                    NexusBlocks.WARPSLATE.get().asItem());
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+            add(event, Items.REINFORCED_DEEPSLATE,
+                    NexusBlocks.COBBLED_WARPSLATE.get().asItem());
         }
     }
 

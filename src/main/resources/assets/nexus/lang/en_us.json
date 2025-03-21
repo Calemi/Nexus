@@ -23,6 +23,11 @@
   "block.nexus.red_nexus_portal": "Red Nexus Portal",
   "block.nexus.black_nexus_portal": "Black Nexus Portal",
   
+  "block.nexus.chronowarped_grass": "Chronowarped Grass",
+  "block.nexus.chronowarped_dirt": "Chronowarped Dirt",
+  "block.nexus.warpslate": "Warpslate",
+  "block.nexus.cobbled_warpslate": "Cobbled Warpslate",
+  
   "item.nexus.chrono_shard": "Chrono Shard",
   "item.nexus.chrono_upgrade_smithing_template": "Smithing Template",
   
@@ -78,5 +83,7 @@
   
   "description.nexus.chrono_upgrade_smithing_template": "Used to craft Chrono Shards. Found in Trial Chamber Chest & Vaults.",
   "description.nexus.chrono_shard": "Used to craft Nexus Portal Cores.",
-  "description.nexus.nexus_portal_core": "Allows traversal to The Nexus. Each portal core has its own coordinate scale. The blocks traveled in The Nexus are multiplied by this scale when leaving the dimension. You can use it in an Anvil to give your portal a name when placed. You can also disguise this block as another by using with a held block."
+  "description.nexus.nexus_portal_core": "Allows traversal to The Nexus. Each portal core has its own coordinate scale. The blocks traveled in The Nexus are multiplied by this scale when leaving the dimension. You can use it in an Anvil to give your portal a name when placed. You can also disguise this block as another by using with a held block.",
+  
+  "biome.nexus.chronowarped_fields": "Chronowarped Fields"
 }

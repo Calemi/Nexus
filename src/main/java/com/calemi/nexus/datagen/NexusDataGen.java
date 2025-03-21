@@ -25,12 +25,10 @@ public class NexusDataGen {
         PackOutput output = event.getGenerator().getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
+        NexusBlockTagProvider blockTagProvider = new NexusBlockTagProvider(output, lookupProvider, existingFileHelper);
 
         //BLOCKSTATES
         generator.addProvider(event.includeClient(), new NexusBlockStateProvider(output, existingFileHelper));
-
-        //BLOCK TAGS
-        generator.addProvider(event.includeServer(), new NexusBlockTagProvider(output, lookupProvider, existingFileHelper));
 
         //BLOCK LOOT TABLES
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
@@ -39,8 +37,11 @@ public class NexusDataGen {
         //ITEM MODELS
         generator.addProvider(event.includeClient(), new NexusItemModelProvider(output, existingFileHelper));
 
-        //DIMENSION TYPE
-        generator.addProvider(true, new NexusDimensionTypeProvider(output, event.getLookupProvider()));
+        //BLOCK TAGS
+        generator.addProvider(event.includeServer(), blockTagProvider);
+
+        //ITEM TAGS
+        generator.addProvider(event.includeServer(), new NexusItemTagProvider(output, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
 
         //PARTICLES
         generator.addProvider(event.includeClient(), new NexusParticleDescriptionProvider(output, existingFileHelper));

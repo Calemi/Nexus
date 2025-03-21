@@ -1,18 +1,11 @@
 {
-  "type": "nexus:the_nexus_type",
+  "type": "nexus:the_nexus",
   "generator": {
-	"type": "minecraft:flat",
-	"settings": {
-	  "biome": "minecraft:the_void",
-	  "lakes": false,
-	  "features": false,
-	  "layers": [
-		{
-		"height": 64,
-		"block": "minecraft:stone"
-	  	}
-	  ],
-	  "structure_overrides": []
-	}
+	"type": "minecraft:noise",
+	"biome_source": {
+	  "type": "minecraft:fixed",
+	  "biome": "nexus:chronowarped_fields"
+	},
+	"settings": "nexus:the_nexus"
   }
 }

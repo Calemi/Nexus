@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "axis=x": [
+      {
+        "model": "nexus:block/warpslate",
+        "x": 90,
+        "y": 90
+      },
+      {
+        "model": "nexus:block/warpslate_mirrored",
+        "x": 90,
+        "y": 90
+      }
+    ],
+    "axis=y": [
+      {
+        "model": "nexus:block/warpslate"
+      },
+      {
+        "model": "nexus:block/warpslate_mirrored"
+      },
+      {
+        "model": "nexus:block/warpslate",
+        "y": 180
+      },
+      {
+        "model": "nexus:block/warpslate_mirrored",
+        "y": 180
+      }
+    ],
+    "axis=z": [
+      {
+        "model": "nexus:block/warpslate",
+        "x": 90
+      },
+      {
+        "model": "nexus:block/warpslate_mirrored",
+        "x": 90
+      },
+      {
+        "model": "nexus:block/warpslate",
+        "x": 90,
+        "y": 180
+      },
+      {
+        "model": "nexus:block/warpslate_mirrored",
+        "x": 90,
+        "y": 180
+      }
+    ]
+  }
+}

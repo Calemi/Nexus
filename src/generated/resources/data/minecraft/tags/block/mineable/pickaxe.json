@@ -1,5 +1,7 @@
 {
   "values": [
+    "nexus:warpslate",
+    "nexus:cobbled_warpslate",
     {
       "id": "#nexus:nexus_portal_cores",
       "required": false

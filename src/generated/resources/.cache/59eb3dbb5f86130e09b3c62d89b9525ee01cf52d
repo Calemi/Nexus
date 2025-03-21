@@ -1,7 +1,10 @@
-// 1.21.1	2025-03-14T15:47:44.6192329	Loot Tables
+// 1.21.1	2025-03-21T07:32:41.0937292	Loot Tables
 93ffdf1f32405ab207db0f8286f7428bd256908f data/nexus/loot_table/blocks/black_nexus_portal.json
 a974bda0c332511a28710c029742702a1d8679f7 data/nexus/loot_table/blocks/blue_nexus_portal.json
 0be69c72cd9ad0ae7003e4a81a86710c395d7206 data/nexus/loot_table/blocks/brown_nexus_portal.json
+1ad3e44377cc2f50e5e94e06e6471c125a20a4d7 data/nexus/loot_table/blocks/chronowarped_dirt.json
+c75182791fc28730bfed4a7290d1cdf7b1cc03ea data/nexus/loot_table/blocks/chronowarped_grass.json
+bf4765418efc9945a15b3c262b64f35c11300359 data/nexus/loot_table/blocks/cobbled_warpslate.json
 c778bb482ce41ad3259ad53610f9ab514292e44f data/nexus/loot_table/blocks/cyan_nexus_portal.json
 ec6a18bc257db475bf99ff855a0cf60940fb8c11 data/nexus/loot_table/blocks/diamond_nexus_portal_core.json
 aacf833294c6c8d02fe9123d7c07222343fab48f data/nexus/loot_table/blocks/gold_nexus_portal_core.json
@@ -19,5 +22,6 @@ d974535fce3655db8869b55332da18e89eccbb1b data/nexus/loot_table/blocks/pink_nexus
 ff74ec79b5eda336cffd50285b98d54d7c993ddb data/nexus/loot_table/blocks/purple_nexus_portal.json
 7bf6e64da1f52d218fe7a49195ab687295f8b98b data/nexus/loot_table/blocks/red_nexus_portal.json
 0964ab1d785954cd33542df6f72a849d510f7bf9 data/nexus/loot_table/blocks/starlight_nexus_portal_core.json
+2922c779018d15093b113dc7f76290657ead8e65 data/nexus/loot_table/blocks/warpslate.json
 36a78ca5ac5c4d971454e78f88aeb5ad74dc3f84 data/nexus/loot_table/blocks/white_nexus_portal.json
 541dccd695a6762dd91cc14fcdc2ec62d3bf9b13 data/nexus/loot_table/blocks/yellow_nexus_portal.json

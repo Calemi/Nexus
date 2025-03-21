@@ -26,6 +26,10 @@ public class NexusCreativeModeTabs {
                 output.accept(NexusBlocks.STARLIGHT_NEXUS_PORTAL_CORE.get());
                 output.accept(NexusItems.CHRONO_SHARD.get());
                 output.accept(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+                output.accept(NexusBlocks.CHRONOWARPED_GRASS.get());
+                output.accept(NexusBlocks.CHRONOWARPED_DIRT.get());
+                output.accept(NexusBlocks.WARPSLATE.get());
+                output.accept(NexusBlocks.COBBLED_WARPSLATE.get());
             })
             .build()
     );
