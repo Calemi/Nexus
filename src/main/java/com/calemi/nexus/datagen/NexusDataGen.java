@@ -48,5 +48,11 @@ public class NexusDataGen {
 
         //RECIPES
         generator.addProvider(event.includeServer(), new NexusRecipeProvider(output, lookupProvider));
+
+        //DATAMAPS
+        generator.addProvider(event.includeServer(), new NexusDataMapProvider(output, lookupProvider));
+
+        //DATAPACK
+        generator.addProvider(event.includeServer(), new NexusDatapackProvider(output, lookupProvider));
     }
 }

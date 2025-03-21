@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "nexus:block/stripped_warpblossom_log_top",
+    "side": "nexus:block/stripped_warpblossom_log"
+  }
+}

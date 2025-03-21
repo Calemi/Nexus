@@ -5,6 +5,7 @@ import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
+import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
@@ -98,7 +99,8 @@ public class NexusBlocks {
     public static final DeferredBlock<Block> CHRONOWARPED_DIRT           = regBlock("chronowarped_dirt", () ->
             new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT).mapColor(MapColor.TERRACOTTA_BLUE)));
 
-
+    public static final DeferredBlock<Block> CHRONOWARPED_SAND           = regBlock("chronowarped_sand", () ->
+            new ColoredFallingBlock(new ColorRGBA(5324121), BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.TERRACOTTA_BLUE)));
 
     public static final DeferredBlock<Block> WARPSLATE                   = regBlock("warpslate", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE).strength(1.25F, 6.0F).mapColor(MapColor.TERRACOTTA_CYAN)));
@@ -172,6 +174,26 @@ public class NexusBlocks {
 
 
 
+    public static final DeferredBlock<Block> WARPBLOSSOM_LOG              = regBlock("warpblossom_log", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
+
+    public static final DeferredBlock<Block> WARPBLOSSOM_WOOD             = regBlock("warpblossom_wood", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_WOOD)));
+
+    public static final DeferredBlock<Block> STRIPPED_WARPBLOSSOM_LOG     = regBlock("stripped_warpblossom_log", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_LOG)));
+
+    public static final DeferredBlock<Block> STRIPPED_WARPBLOSSOM_WOOD    = regBlock("stripped_warpblossom_wood", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
+
+    public static final DeferredBlock<Block> WARPBLOSSOM_LEAVES           = regBlock("warpblossom_leaves", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LEAVES)));
+
+    public static final DeferredBlock<Block> WARPBLOSSOM_SAPLING          = regBlock("warpblossom_sapling", () ->
+            new SaplingBlock(NexusConfiguredFeatures.WARPBLOSSOM, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)));
+
+
+
     private static DeferredBlock<Block> regBlock(String name, Supplier<Block> supplier) {
         DeferredBlock<Block> registeredBlock = BLOCKS.register(name, supplier);
         NexusItems.ITEMS.register(name, () -> new BlockItem(registeredBlock.get(), new Item.Properties()));
@@ -197,6 +219,7 @@ public class NexusBlocks {
     public static void init() {
         Nexus.LOGGER.info("Registering: Blocks - Start");
         BLOCKS.register(Nexus.MOD_EVENT_BUS);
+
         Nexus.LOGGER.info("Registering: Blocks - End");
     }
 }

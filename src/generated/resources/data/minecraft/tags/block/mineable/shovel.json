@@ -1,6 +1,8 @@
 {
   "values": [
-    "nexus:chronowarped_dirt",
-    "nexus:chronowarped_grass"
+    {
+      "id": "#nexus:dirtlike",
+      "required": false
+    }
   ]
 }

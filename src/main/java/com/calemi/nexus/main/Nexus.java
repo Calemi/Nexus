@@ -50,7 +50,9 @@ public class Nexus {
 
         LOGGER.info("Registering: Common - Start");
 
-        MOD_EVENT_BUS.register(new BuildCreativeModeTabContentsEventListener());
+        NexusStrippables.init();
+
+        MOD_EVENT_BUS.register(new CreativeTabContentsEventListener());
         FORGE_EVENT_BUS.register(new NexusPortalCoreHUDOverlayEventListener());
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockEventListener());
 

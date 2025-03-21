@@ -53,6 +53,15 @@ public class NexusLists {
         NEXUS_PORTAL_BLOCKS.add(NexusBlocks.BLACK_NEXUS_PORTAL);
     }
 
+    public static final List<DeferredBlock<Block>> CHRONOWARPED_LOGS = new ArrayList<>();
+
+    static {
+        CHRONOWARPED_LOGS.add(NexusBlocks.WARPBLOSSOM_LOG);
+        CHRONOWARPED_LOGS.add(NexusBlocks.WARPBLOSSOM_WOOD);
+        CHRONOWARPED_LOGS.add(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG);
+        CHRONOWARPED_LOGS.add(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD);
+    }
+
     /*
         BLOCK SETS
      */
@@ -105,11 +114,15 @@ public class NexusLists {
         ALL_BLOCKS.addAll(NEXUS_PORTAL_BLOCKS);
         ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_GRASS);
         ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_DIRT);
+        ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_SAND);
         ALL_BLOCKS.add(NexusBlocks.WARPSLATE);
         ALL_BLOCKS.addAll(toDefBlockListFromBlockSet(ALL_BLOCKSETS));
         ALL_BLOCKS.add(NexusBlocks.CHISELED_WARPSLATE);
         ALL_BLOCKS.add(NexusBlocks.CRACKED_WARPSLATE_BRICKS);
         ALL_BLOCKS.add(NexusBlocks.CRACKED_WARPSLATE_TILES);
+        ALL_BLOCKS.addAll(CHRONOWARPED_LOGS);
+        ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
+        ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
     }
 
     public static final List<DeferredItem<Item>> ALL_ITEMS = new ArrayList<>();

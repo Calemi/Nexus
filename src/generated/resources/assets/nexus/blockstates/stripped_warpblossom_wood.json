@@ -1,0 +1,16 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "nexus:block/stripped_warpblossom_wood",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "nexus:block/stripped_warpblossom_wood"
+    },
+    "axis=z": {
+      "model": "nexus:block/stripped_warpblossom_wood",
+      "x": 90
+    }
+  }
+}

@@ -1,6 +1,7 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.block.NexusPortalBlock;
+import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.regsitry.NexusBlocks;
 import com.calemi.nexus.regsitry.NexusLists;
 import net.minecraft.core.Direction;
@@ -26,17 +27,25 @@ public class NexusBlockStateProvider extends BlockStateProvider {
 
     @Override
     protected void registerStatesAndModels() {
-        NexusLists.NEXUS_PORTAL_CORE_BLOCKS.forEach(this::nexusPortalCoreBlock);
-        NexusLists.NEXUS_PORTAL_BLOCKS.forEach(this::nexusPortalBlock);
+        NexusLists.NEXUS_PORTAL_CORE_BLOCKS.forEach(this::nexusPortalCore);
+        NexusLists.NEXUS_PORTAL_BLOCKS.forEach(this::nexusPortal);
 
-        grassBlock(NexusBlocks.CHRONOWARPED_GRASS, "chronowarped_dirt");
-        allBlock(NexusBlocks.CHRONOWARPED_DIRT);
+        grass(NexusBlocks.CHRONOWARPED_GRASS, "chronowarped_dirt");
+        all(NexusBlocks.CHRONOWARPED_DIRT);
+        all(NexusBlocks.CHRONOWARPED_SAND);
 
-        deepslateBlock(NexusBlocks.WARPSLATE);
+        deepslate(NexusBlocks.WARPSLATE);
 
         NexusLists.ALL_BLOCKSETS.forEach(this::blockSet);
 
-        allBlock(NexusBlocks.CHISELED_WARPSLATE);
+        all(NexusBlocks.CHISELED_WARPSLATE);
+
+        log(NexusBlocks.WARPBLOSSOM_LOG, NexusBlocks.WARPBLOSSOM_WOOD);
+        log(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG, NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD);
+
+        allCutout(NexusBlocks.WARPBLOSSOM_LEAVES);
+
+        sapling(NexusBlocks.WARPBLOSSOM_SAPLING);
     }
 
     private void blockSet(NexusLists.BlockSet blockSet) {
@@ -47,18 +56,18 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         DeferredBlock<Block> slab = blockSet.getSlab();
         DeferredBlock<Block> wall = blockSet.getWall();
 
-        if (block != null) allBlock(block);
-        if (crackedBlock != null) allBlock(crackedBlock);
-        if (stairs != null) stairsBlock(stairs, block);
-        if (slab != null) slabBlock(slab, block);
-        if (wall != null) wallBlock(wall, block);
+        if (block != null) all(block);
+        if (crackedBlock != null) all(crackedBlock);
+        if (stairs != null) stairs(stairs, block);
+        if (slab != null) slab(slab, block);
+        if (wall != null) wall(wall, block);
     }
 
-    private void allBlock(DeferredBlock<?> deferredBlock) {
+    private void all(DeferredBlock<?> deferredBlock) {
 
         Block block = deferredBlock.get();
-
         String blockName = name(block);
+
         String blockPath = "block/" + blockName;
 
         ModelFile model = models().cubeAll(blockName, rl(blockPath));
@@ -66,7 +75,58 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(block, model);
     }
 
-    private void stairsBlock(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+    private void allCutout(DeferredBlock<?> deferredBlock) {
+
+        Block block = deferredBlock.get();
+        String blockName = name(block);
+
+        String blockPath = "block/" + blockName;
+
+        ModelFile model = models().cubeAll(blockName, rl(blockPath)).renderType("cutout");
+
+        simpleBlockWithItem(block, model);
+    }
+
+    private void sapling(DeferredBlock<?> deferredBlock) {
+
+        Block block = deferredBlock.get();
+        String blockName = name(block);
+
+        String blockPath = "block/" + blockName;
+
+        ModelFile model = models().cross(blockName, rl(blockPath)).renderType("cutout");
+
+        String itemParent = "item/generated";
+
+        simpleBlock(block, model);
+        itemModels().getBuilder(blockName)
+                .parent(new ModelFile.UncheckedModelFile(itemParent))
+                .texture("layer0", NexusRef.rl(blockPath));
+    }
+
+    private void log(DeferredBlock<?> deferredLog, DeferredBlock<?> deferredWood) {
+
+        RotatedPillarBlock log = (RotatedPillarBlock) deferredLog.get();
+        RotatedPillarBlock wood = (RotatedPillarBlock) deferredWood.get();
+
+        String logName = name(log);
+        String woodName = name(wood);
+
+        String logPath = "block/" + logName;
+
+        ModelFile logModel = models().cubeColumn(logName, rl(logPath), rl(logPath + "_top"));
+        ModelFile logHorizontalModel = models().cubeColumn(logName + "_horizontal", rl(logPath), rl(logPath + "_top"));
+
+        ModelFile woodModel = models().cubeColumn(woodName, rl(logPath), rl(logPath));
+
+        axisBlock(log, logModel, logHorizontalModel);
+        simpleBlockItem(log, logModel);
+
+        axisBlock(wood, woodModel, woodModel);
+        simpleBlockItem(wood, woodModel);
+    }
+
+    private void stairs(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
 
         StairBlock block = (StairBlock) deferredBlock.get();
         Block blockMaterial = deferredBlockMaterial.get();
@@ -83,7 +143,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void slabBlock(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+    private void slab(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
 
         SlabBlock block = (SlabBlock) deferredBlock.get();
         Block blockMaterial = deferredBlockMaterial.get();
@@ -100,7 +160,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void wallBlock(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+    private void wall(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
 
         WallBlock block = (WallBlock) deferredBlock.get();
         Block blockMaterial = deferredBlockMaterial.get();
@@ -117,7 +177,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void deepslateBlock(DeferredBlock<?> deferredBlock) {
+    private void deepslate(DeferredBlock<?> deferredBlock) {
 
         RotatedPillarBlock block = (RotatedPillarBlock) deferredBlock.get();
         String blockName = name(block);
@@ -125,7 +185,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         String blockSidePath = "block/" + blockName;
         String blockTopPath = "block/" + blockName + "_top";
 
-        String parent = "minecraft:block/cube_column_mirrored";
+        String parent = "block/cube_column_mirrored";
 
         ModelFile model = models().cubeColumn(blockName, rl(blockSidePath), rl(blockTopPath));
         ModelFile mirroredModel = models().
@@ -151,7 +211,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, model);
     }
 
-    private void grassBlock(DeferredBlock<?> deferredBlock, String dirtName) {
+    private void grass(DeferredBlock<?> deferredBlock, String dirtName) {
 
         Block block = deferredBlock.get();
         String blockName = name(block);
@@ -165,7 +225,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(block, model);
     }
 
-    private void nexusPortalCoreBlock(DeferredBlock<?> deferredBlock) {
+    private void nexusPortalCore(DeferredBlock<?> deferredBlock) {
 
         Block block = deferredBlock.get();
         String blockName = name(block);
@@ -190,7 +250,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, model);
     }
 
-    private void nexusPortalBlock(DeferredBlock<?> deferredBlock) {
+    private void nexusPortal(DeferredBlock<?> deferredBlock) {
 
         Block block = deferredBlock.get();
         String blockName = name(block);
@@ -212,7 +272,11 @@ public class NexusBlockStateProvider extends BlockStateProvider {
                 .modelForState().modelFile(model).addModel();
     }
 
+    private ResourceLocation key(Block block) {
+        return BuiltInRegistries.BLOCK.getKey(block);
+    }
+
     private String name(Block block) {
-        return BuiltInRegistries.BLOCK.getKey(block).getPath();
+        return key(block).getPath();
     }
 }

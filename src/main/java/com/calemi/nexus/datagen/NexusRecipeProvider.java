@@ -104,6 +104,9 @@ public class NexusRecipeProvider extends RecipeProvider {
 
         stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, NexusBlocks.CHISELED_WARPSLATE, NexusBlocks.COBBLED_WARPSLATE);
         oneByTwoVertical(NexusBlocks.CHISELED_WARPSLATE, 1, NexusBlocks.COBBLED_WARPSLATE_SLAB, recipeOutput);
+
+        log(NexusBlocks.WARPBLOSSOM_LOG, NexusBlocks.WARPBLOSSOM_WOOD, recipeOutput);
+        log(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG, NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD, recipeOutput);
     }
 
     private void twoByTwo(DeferredBlock<Block> result, int count, DeferredBlock<Block> ingredient, RecipeOutput recipeOutput) {
@@ -122,6 +125,10 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .pattern("X")
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(recipeOutput);
+    }
+
+    private void log(DeferredBlock<Block> log, DeferredBlock<Block> wood, RecipeOutput recipeOutput) {
+        twoByTwo(wood, 3, log, recipeOutput);
     }
 
     private void blockSet(NexusLists.BlockSet blockSet, RecipeOutput recipeOutput) {

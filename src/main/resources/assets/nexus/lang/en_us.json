@@ -25,6 +25,7 @@
   
   "block.nexus.chronowarped_grass": "Chronowarped Grass",
   "block.nexus.chronowarped_dirt": "Chronowarped Dirt",
+  "block.nexus.chronowarped_sand": "Chronowarped Sand",
   "block.nexus.warpslate": "Warpslate",
   "block.nexus.cobbled_warpslate": "Cobbled Warpslate",
   "block.nexus.cobbled_warpslate_stairs": "Cobbled Warpslate Stairs",
@@ -45,6 +46,12 @@
   "block.nexus.warpslate_brick_stairs": "Warpslate Brick Stairs",
   "block.nexus.warpslate_brick_slab": "Warpslate Brick Slab",
   "block.nexus.warpslate_brick_wall": "Warpslate Brick Wall",
+  "block.nexus.warpblossom_log": "Warpblossom Log",
+  "block.nexus.warpblossom_wood": "Warpblossom Wood",
+  "block.nexus.stripped_warpblossom_log": "Stripped Warpblossom Log",
+  "block.nexus.stripped_warpblossom_wood": "Stripped Warpblossom Wood",
+  "block.nexus.warpblossom_leaves": "Warpblossom Leaves",
+  "block.nexus.warpblossom_sapling": "Warpblossom Sapling",
   
   "item.nexus.chrono_shard": "Chrono Shard",
   "item.nexus.chrono_upgrade_smithing_template": "Smithing Template",

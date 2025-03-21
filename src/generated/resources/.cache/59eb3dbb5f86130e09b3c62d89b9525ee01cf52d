@@ -1,10 +1,11 @@
-// 1.21.1	2025-03-21T13:13:37.1055157	Loot Tables
+// 1.21.1	2025-03-21T17:41:42.4442929	Loot Tables
 93ffdf1f32405ab207db0f8286f7428bd256908f data/nexus/loot_table/blocks/black_nexus_portal.json
 a974bda0c332511a28710c029742702a1d8679f7 data/nexus/loot_table/blocks/blue_nexus_portal.json
 0be69c72cd9ad0ae7003e4a81a86710c395d7206 data/nexus/loot_table/blocks/brown_nexus_portal.json
 73b49000c84b42ee93dabd71baf82d2e63cb6016 data/nexus/loot_table/blocks/chiseled_warpslate.json
 1ad3e44377cc2f50e5e94e06e6471c125a20a4d7 data/nexus/loot_table/blocks/chronowarped_dirt.json
 c75182791fc28730bfed4a7290d1cdf7b1cc03ea data/nexus/loot_table/blocks/chronowarped_grass.json
+720bf43c3534b6b5e8991bac52abece326b57705 data/nexus/loot_table/blocks/chronowarped_sand.json
 bf4765418efc9945a15b3c262b64f35c11300359 data/nexus/loot_table/blocks/cobbled_warpslate.json
 a6974b37b7f0d91a37668f35f4aa05afcf2f1654 data/nexus/loot_table/blocks/cobbled_warpslate_slab.json
 640f6b2382fa67a75227bc547de849ee6cbb4487 data/nexus/loot_table/blocks/cobbled_warpslate_stairs.json
@@ -32,6 +33,12 @@ ad6736d78ce45ab3826e51371a39812d576e20d8 data/nexus/loot_table/blocks/polished_w
 ff74ec79b5eda336cffd50285b98d54d7c993ddb data/nexus/loot_table/blocks/purple_nexus_portal.json
 7bf6e64da1f52d218fe7a49195ab687295f8b98b data/nexus/loot_table/blocks/red_nexus_portal.json
 0964ab1d785954cd33542df6f72a849d510f7bf9 data/nexus/loot_table/blocks/starlight_nexus_portal_core.json
+1c12c34cc784abac223478f9443edd934c0c6b3c data/nexus/loot_table/blocks/stripped_warpblossom_log.json
+3a01f889ac12edf6bf35d3222fe9319000003446 data/nexus/loot_table/blocks/stripped_warpblossom_wood.json
+54008a832b357c2854235547ff73dec88eaad2b9 data/nexus/loot_table/blocks/warpblossom_leaves.json
+19058f98e36ed5309a9d7185396ddde9a42f9e17 data/nexus/loot_table/blocks/warpblossom_log.json
+0717f9c642bd08f19d3701b9e36cf259bddee234 data/nexus/loot_table/blocks/warpblossom_sapling.json
+b354315074bf149088888bcc99ae1388cf0cd9db data/nexus/loot_table/blocks/warpblossom_wood.json
 2922c779018d15093b113dc7f76290657ead8e65 data/nexus/loot_table/blocks/warpslate.json
 8fcf9f313d7a228b979b061bc55b4ec447070248 data/nexus/loot_table/blocks/warpslate_bricks.json
 7cf133db786f3f5e3a8c0774cafb23cff7fb708b data/nexus/loot_table/blocks/warpslate_brick_slab.json

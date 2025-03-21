@@ -24,11 +24,20 @@ public class NexusBlockLootTableProvider extends BlockLootSubProvider {
 
         add(NexusBlocks.CHRONOWARPED_GRASS.get(), createSingleItemTableWithSilkTouch(NexusBlocks.CHRONOWARPED_GRASS.get(), NexusBlocks.CHRONOWARPED_DIRT.get()));
         dropSelf(NexusBlocks.CHRONOWARPED_DIRT.get());
+        dropSelf(NexusBlocks.CHRONOWARPED_SAND.get());
 
         add(NexusBlocks.WARPSLATE.get(), createSingleItemTableWithSilkTouch(NexusBlocks.WARPSLATE.get(), NexusBlocks.COBBLED_WARPSLATE.get()));
 
         NexusLists.ALL_BLOCKSETS.forEach(set -> set.getAll().forEach(block -> dropSelf(block.get())));
         dropSelf(NexusBlocks.CHISELED_WARPSLATE.get());
+
+        dropSelf(NexusBlocks.WARPBLOSSOM_LOG.get());
+        dropSelf(NexusBlocks.WARPBLOSSOM_WOOD.get());
+        dropSelf(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG.get());
+        dropSelf(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.get());
+
+        add(NexusBlocks.WARPBLOSSOM_LEAVES.get(), createLeavesDrops(NexusBlocks.WARPBLOSSOM_LEAVES.get(), NexusBlocks.WARPBLOSSOM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+        dropSelf(NexusBlocks.WARPBLOSSOM_SAPLING.get());
     }
 
     @Override

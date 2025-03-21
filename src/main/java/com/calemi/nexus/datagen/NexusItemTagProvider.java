@@ -7,6 +7,7 @@ import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
 import net.minecraft.data.tags.TagsProvider;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
@@ -25,30 +26,21 @@ public class NexusItemTagProvider extends ItemTagsProvider {
     protected void addTags(HolderLookup.Provider provider) {
 
         tag(ItemTags.STONE_CRAFTING_MATERIALS)
-                .add(NexusBlocks.COBBLED_WARPSLATE.get().asItem());
+                .add(NexusBlocks.COBBLED_WARPSLATE.asItem());
 
         tag(ItemTags.STONE_TOOL_MATERIALS)
-                .add(NexusBlocks.COBBLED_WARPSLATE.get().asItem());
+                .add(NexusBlocks.COBBLED_WARPSLATE.asItem());
 
-        tag(Tags.Items.COBBLESTONES_DEEPSLATE)
-                .add(NexusBlocks.COBBLED_WARPSLATE.get().asItem());
-
-        tag(ItemTags.DIRT)
-                .add(NexusBlocks.CHRONOWARPED_DIRT.get().asItem(), NexusBlocks.CHRONOWARPED_GRASS.get().asItem());
-
-        for (NexusLists.BlockSet blockSet : NexusLists.ALL_BLOCKSETS) {
-
-            if (blockSet.getStairs() != null) {
-                tag(ItemTags.STAIRS).add(blockSet.getStairs().asItem());
-            }
-
-            if (blockSet.getSlab() != null) {
-                tag(ItemTags.SLABS).add(blockSet.getSlab().asItem());
-            }
-
-            if (blockSet.getWall() != null) {
-                tag(ItemTags.WALLS).add(blockSet.getWall().asItem());
-            }
-        }
+        copy(Tags.Blocks.SANDS, Tags.Items.SANDS);
+        copy(BlockTags.DIRT, ItemTags.DIRT);
+        copy(BlockTags.SAND, ItemTags.SAND);
+        copy(BlockTags.SMELTS_TO_GLASS, ItemTags.SMELTS_TO_GLASS);
+        copy(Tags.Blocks.COBBLESTONES_DEEPSLATE, Tags.Items.COBBLESTONES_DEEPSLATE);
+        copy(BlockTags.STAIRS, ItemTags.STAIRS);
+        copy(BlockTags.SLABS, ItemTags.SLABS);
+        copy(BlockTags.WALLS, ItemTags.WALLS);
+        copy(BlockTags.LOGS_THAT_BURN, ItemTags.LOGS_THAT_BURN);
+        copy(BlockTags.LEAVES, ItemTags.LEAVES);
+        copy(BlockTags.SAPLINGS, ItemTags.SAPLINGS);
     }
 }

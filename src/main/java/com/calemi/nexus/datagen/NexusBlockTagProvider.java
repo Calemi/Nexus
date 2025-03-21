@@ -23,11 +23,14 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        tag(NexusTags.NEXUS_PORTAL_CORES)
-                .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+        /*
+            NEXUS TAGS
+         */
 
-        tag(NexusTags.NEXUS_PORTALS)
-                .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
+        tag(NexusTags.DIRTLIKE)
+                .add(NexusBlocks.CHRONOWARPED_GRASS.get())
+                .add(NexusBlocks.CHRONOWARPED_DIRT.get())
+                .add(NexusBlocks.CHRONOWARPED_SAND.get());
 
         tag(NexusTags.STONELIKE)
                 .add(NexusBlocks.WARPSLATE.get())
@@ -35,16 +38,50 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .addOptionalTag(NexusTags.NEXUS_PORTAL_CORES)
                 .addAll(NexusLists.toResourceKeyList((NexusLists.toDefBlockListFromBlockSet(NexusLists.ALL_STONE_BLOCKSETS))));
 
+        tag(NexusTags.WARPBLOSSOM_LOGS)
+                .add(NexusBlocks.WARPBLOSSOM_LOG.get())
+                .add(NexusBlocks.WARPBLOSSOM_WOOD.get())
+                .add(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG.get())
+                .add(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.get());
+
+        tag(NexusTags.WOODLIKE)
+                .addOptionalTag(NexusTags.WARPBLOSSOM_LOGS);
+
+        tag(NexusTags.NEXUS_PORTAL_CORES)
+                .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+
+        tag(NexusTags.NEXUS_PORTALS)
+                .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
+
+        /*
+            MINECRAFT TAGS
+         */
+
+        tag(BlockTags.MINEABLE_WITH_SHOVEL).addOptionalTag(NexusTags.DIRTLIKE);
+
         tag(BlockTags.MINEABLE_WITH_PICKAXE).addOptionalTag(NexusTags.STONELIKE);
 
-        tag(BlockTags.MINEABLE_WITH_SHOVEL)
-                .add(NexusBlocks.CHRONOWARPED_DIRT.get(), NexusBlocks.CHRONOWARPED_GRASS.get());
+        tag(BlockTags.MINEABLE_WITH_AXE).addOptionalTag(NexusTags.WOODLIKE);
+
+        tag(BlockTags.MINEABLE_WITH_HOE).add(NexusBlocks.WARPBLOSSOM_LEAVES.get());
 
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .addOptionalTag(NexusTags.NEXUS_PORTAL_CORES);
 
         tag(BlockTags.DIRT)
                 .add(NexusBlocks.CHRONOWARPED_DIRT.get(), NexusBlocks.CHRONOWARPED_GRASS.get());
+
+        tag(BlockTags.SAND)
+                .add(NexusBlocks.CHRONOWARPED_SAND.get());
+
+        tag(BlockTags.SMELTS_TO_GLASS)
+                .add(NexusBlocks.CHRONOWARPED_SAND.get());
+
+        tag(Tags.Blocks.SANDS)
+                .add(NexusBlocks.CHRONOWARPED_SAND.get());
+
+        tag(BlockTags.SCULK_REPLACEABLE)
+                .add(NexusBlocks.CHRONOWARPED_SAND.get());
 
         tag(BlockTags.SNIFFER_DIGGABLE_BLOCK)
                 .add(NexusBlocks.CHRONOWARPED_DIRT.get(), NexusBlocks.CHRONOWARPED_GRASS.get());
@@ -66,5 +103,20 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 tag(BlockTags.WALLS).add(blockSet.getWall().get());
             }
         }
+
+        tag(BlockTags.LOGS_THAT_BURN)
+                .add(NexusBlocks.WARPBLOSSOM_LOG.get());
+
+        tag(Tags.Blocks.STRIPPED_LOGS)
+                .add(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG.get());
+
+        tag(Tags.Blocks.STRIPPED_WOODS)
+                .add(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.get());
+
+        tag(BlockTags.LEAVES)
+                .add(NexusBlocks.WARPBLOSSOM_LEAVES.get());
+
+        tag(BlockTags.SAPLINGS)
+                .add(NexusBlocks.WARPBLOSSOM_SAPLING.get());
     }
 }

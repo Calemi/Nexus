@@ -10,7 +10,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BuildCreativeModeTabContentsEventListener {
+public class CreativeTabContentsEventListener {
 
     @SubscribeEvent
     public void onBuildCreativeModeTabContentsEvent(final BuildCreativeModeTabContentsEvent event) {
@@ -33,8 +33,16 @@ public class BuildCreativeModeTabContentsEventListener {
                     NexusBlocks.CHRONOWARPED_GRASS.get().asItem());
             add(event, Items.MUD,
                     NexusBlocks.CHRONOWARPED_DIRT.get().asItem());
+            add(event, Items.RED_SAND,
+                    NexusBlocks.CHRONOWARPED_SAND.get().asItem());
             add(event, Items.DEEPSLATE,
                     NexusBlocks.WARPSLATE.get().asItem());
+            add(event, Items.WARPED_STEM,
+                    NexusBlocks.WARPBLOSSOM_LOG.get().asItem());
+            add(event, Items.CHERRY_LEAVES,
+                    NexusBlocks.WARPBLOSSOM_LEAVES.get().asItem());
+            add(event, Items.CHERRY_SAPLING,
+                    NexusBlocks.WARPBLOSSOM_SAPLING.get().asItem());
         }
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
@@ -47,6 +55,8 @@ public class BuildCreativeModeTabContentsEventListener {
             entries.addAll(NexusLists.toItemListFromDefBlock(NexusLists.WARPSLATE_TILE_BLOCKSET.getAll()));
 
             add(event, Items.REINFORCED_DEEPSLATE, entries);
+
+            add(event, Items.WARPED_BUTTON, NexusLists.toItemListFromDefBlock(NexusLists.CHRONOWARPED_LOGS));
         }
     }
 

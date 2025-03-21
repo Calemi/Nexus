@@ -9,6 +9,7 @@ pluginManagement {
             url "https://maven.architectury.dev/"
         }
     }
+
 }
 
 plugins {
