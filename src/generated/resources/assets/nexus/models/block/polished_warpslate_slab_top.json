@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/slab_top",
+  "textures": {
+    "bottom": "nexus:block/polished_warpslate",
+    "side": "nexus:block/polished_warpslate",
+    "top": "nexus:block/polished_warpslate"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "nexus:block/warpslate_brick_slab"
+    },
+    "type=double": {
+      "model": "nexus:block/warpslate_bricks"
+    },
+    "type=top": {
+      "model": "nexus:block/warpslate_brick_slab_top"
+    }
+  }
+}

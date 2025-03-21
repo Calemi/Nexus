@@ -1,0 +1,28 @@
+{
+  "values": [
+    "nexus:warpslate",
+    "nexus:chiseled_warpslate",
+    {
+      "id": "#nexus:nexus_portal_cores",
+      "required": false
+    },
+    "nexus:cobbled_warpslate",
+    "nexus:cobbled_warpslate_stairs",
+    "nexus:cobbled_warpslate_slab",
+    "nexus:cobbled_warpslate_wall",
+    "nexus:polished_warpslate",
+    "nexus:polished_warpslate_stairs",
+    "nexus:polished_warpslate_slab",
+    "nexus:polished_warpslate_wall",
+    "nexus:warpslate_tiles",
+    "nexus:cracked_warpslate_tiles",
+    "nexus:warpslate_tile_stairs",
+    "nexus:warpslate_tile_slab",
+    "nexus:warpslate_tile_wall",
+    "nexus:warpslate_bricks",
+    "nexus:cracked_warpslate_bricks",
+    "nexus:warpslate_brick_stairs",
+    "nexus:warpslate_brick_slab",
+    "nexus:warpslate_brick_wall"
+  ]
+}

@@ -6,8 +6,8 @@ import com.calemi.nexus.regsitry.NexusLists;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
@@ -31,20 +31,90 @@ public class NexusBlockStateProvider extends BlockStateProvider {
 
         grassBlock(NexusBlocks.CHRONOWARPED_GRASS, "chronowarped_dirt");
         allBlock(NexusBlocks.CHRONOWARPED_DIRT);
+
         deepslateBlock(NexusBlocks.WARPSLATE);
-        allBlock(NexusBlocks.COBBLED_WARPSLATE);
+
+        NexusLists.ALL_BLOCKSETS.forEach(this::blockSet);
+
+        allBlock(NexusBlocks.CHISELED_WARPSLATE);
+    }
+
+    private void blockSet(NexusLists.BlockSet blockSet) {
+
+        DeferredBlock<Block> block = blockSet.getBlock();
+        DeferredBlock<Block> crackedBlock = blockSet.getCrackedBlock();
+        DeferredBlock<Block> stairs = blockSet.getStairs();
+        DeferredBlock<Block> slab = blockSet.getSlab();
+        DeferredBlock<Block> wall = blockSet.getWall();
+
+        if (block != null) allBlock(block);
+        if (crackedBlock != null) allBlock(crackedBlock);
+        if (stairs != null) stairsBlock(stairs, block);
+        if (slab != null) slabBlock(slab, block);
+        if (wall != null) wallBlock(wall, block);
     }
 
     private void allBlock(DeferredBlock<?> deferredBlock) {
 
         Block block = deferredBlock.get();
 
-        String blockName = BuiltInRegistries.BLOCK.getKey(deferredBlock.get()).getPath();
+        String blockName = name(block);
         String blockPath = "block/" + blockName;
 
         ModelFile model = models().cubeAll(blockName, rl(blockPath));
 
         simpleBlockWithItem(block, model);
+    }
+
+    private void stairsBlock(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+
+        StairBlock block = (StairBlock) deferredBlock.get();
+        Block blockMaterial = deferredBlockMaterial.get();
+
+        String blockName = name(block);
+        String blockMaterialName = name(blockMaterial);
+
+        String blockMaterialPath = "block/" + blockMaterialName;
+        ResourceLocation blockMaterialRL = rl(blockMaterialPath);
+
+        ModelFile itemModel = models().stairs(blockName, blockMaterialRL, blockMaterialRL, blockMaterialRL);
+
+        stairsBlock(block, blockMaterialRL);
+        simpleBlockItem(block, itemModel);
+    }
+
+    private void slabBlock(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+
+        SlabBlock block = (SlabBlock) deferredBlock.get();
+        Block blockMaterial = deferredBlockMaterial.get();
+
+        String blockName = name(block);
+        String blockMaterialName = name(blockMaterial);
+
+        String blockMaterialPath = "block/" + blockMaterialName;
+        ResourceLocation blockMaterialRL = rl(blockMaterialPath);
+
+        ModelFile itemModel = models().slab(blockName, blockMaterialRL, blockMaterialRL, blockMaterialRL);
+
+        slabBlock(block, blockMaterialRL, blockMaterialRL);
+        simpleBlockItem(block, itemModel);
+    }
+
+    private void wallBlock(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+
+        WallBlock block = (WallBlock) deferredBlock.get();
+        Block blockMaterial = deferredBlockMaterial.get();
+
+        String blockName = name(block);
+        String blockMaterialName = name(blockMaterial);
+
+        String blockMaterialPath = "block/" + blockMaterialName;
+        ResourceLocation blockMaterialRL = rl(blockMaterialPath);
+
+        ModelFile itemModel = models().wallInventory(blockName, blockMaterialRL);
+
+        wallBlock(block, blockMaterialRL);
+        simpleBlockItem(block, itemModel);
     }
 
     private void deepslateBlock(DeferredBlock<?> deferredBlock) {

@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:smelting",
+  "category": "blocks",
+  "cookingtime": 200,
+  "experience": 0.1,
+  "ingredient": {
+    "item": "nexus:cobbled_warpslate"
+  },
+  "result": {
+    "count": 1,
+    "id": "nexus:warpslate"
+  }
+}

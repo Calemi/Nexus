@@ -2,9 +2,13 @@ package com.calemi.nexus.event.listener;
 
 import com.calemi.nexus.regsitry.NexusBlocks;
 import com.calemi.nexus.regsitry.NexusItems;
+import com.calemi.nexus.regsitry.NexusLists;
 import net.minecraft.world.item.*;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class BuildCreativeModeTabContentsEventListener {
 
@@ -14,14 +18,7 @@ public class BuildCreativeModeTabContentsEventListener {
         CreativeModeTab tab = event.getTab();
 
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            add(event, Items.END_PORTAL_FRAME,
-                    NexusBlocks.NEXUS_PORTAL_CORE.get().asItem(),
-                    NexusBlocks.IRON_NEXUS_PORTAL_CORE.get().asItem(),
-                    NexusBlocks.GOLD_NEXUS_PORTAL_CORE.get().asItem(),
-                    NexusBlocks.DIAMOND_NEXUS_PORTAL_CORE.get().asItem(),
-                    NexusBlocks.NETHERITE_NEXUS_PORTAL_CORE.get().asItem(),
-                    NexusBlocks.STARLIGHT_NEXUS_PORTAL_CORE.get().asItem()
-            );
+            add(event, Items.END_PORTAL_FRAME, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
@@ -41,8 +38,15 @@ public class BuildCreativeModeTabContentsEventListener {
         }
 
         if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            add(event, Items.REINFORCED_DEEPSLATE,
-                    NexusBlocks.COBBLED_WARPSLATE.get().asItem());
+
+            List<Item> entries = new ArrayList<>();
+
+            entries.addAll(NexusLists.toItemListFromDefBlock(NexusLists.COBBLED_WARPSLATE_BLOCKSET.getAll()));
+            entries.add(NexusBlocks.CHISELED_WARPSLATE.asItem());
+            entries.addAll(NexusLists.toItemListFromDefBlock(NexusLists.POLISHED_WARPSLATE_BLOCKSET.getAll()));
+            entries.addAll(NexusLists.toItemListFromDefBlock(NexusLists.WARPSLATE_TILE_BLOCKSET.getAll()));
+
+            add(event, Items.REINFORCED_DEEPSLATE, entries);
         }
     }
 
@@ -52,5 +56,9 @@ public class BuildCreativeModeTabContentsEventListener {
             Item itemToAdd = itemsToAdd[i];
             event.insertAfter(new ItemStack(i == 0 ? item : itemsToAdd[i - 1]), new ItemStack(itemToAdd), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
+    }
+
+    private void add(BuildCreativeModeTabContentsEvent event, Item item, List<Item> itemsToAdd) {
+        add(event, item, itemsToAdd.toArray(Item[]::new));
     }
 }

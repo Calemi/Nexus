@@ -1,4 +1,8 @@
-// 1.21.1	2025-03-21T08:32:44.1475788	Tags for minecraft:item mod id nexus
+// 1.21.1	2025-03-21T12:38:22.7382905	Tags for minecraft:item mod id nexus
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/c/tags/item/cobblestones/deepslate.json
+15aea02a6a3db8cb56ad1cad21cf988cff4f07c6 data/minecraft/tags/item/dirt.json
+8a08ad54a19828b6080cfe9300aaf5127521e8df data/minecraft/tags/item/slabs.json
+42aaef7b01a874f93bd66e9cdcb1b85153d0b809 data/minecraft/tags/item/stairs.json
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/minecraft/tags/item/stone_crafting_materials.json
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/minecraft/tags/item/stone_tool_materials.json
+de39fe73e379409c187ec02450e23a507fd08778 data/minecraft/tags/item/walls.json

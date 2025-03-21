@@ -81,7 +81,7 @@
 								"invert": {
 									"type": "minecraft:y_above",
 									"anchor": {
-										"absolute": 61
+										"absolute": 62
 									},
 									"surface_depth_multiplier": 1,
 									"add_stone_depth": false
@@ -160,7 +160,7 @@
 			"argument1": {
 				"type": "minecraft:y_clamped_gradient",
 				"from_y": 55,
-				"to_y": 75,
+				"to_y": 80,
 				"from_value": 1,
 				"to_value": -1
 			},

@@ -18,18 +18,7 @@ public class NexusCreativeModeTabs {
             .title(Component.translatable("itemGroup." + NexusRef.ID + ".main"))
             .icon(() -> new ItemStack(NexusBlocks.NEXUS_PORTAL_CORE.get()))
             .displayItems((params, output) -> {
-                output.accept(NexusBlocks.NEXUS_PORTAL_CORE.get());
-                output.accept(NexusBlocks.IRON_NEXUS_PORTAL_CORE.get());
-                output.accept(NexusBlocks.GOLD_NEXUS_PORTAL_CORE.get());
-                output.accept(NexusBlocks.DIAMOND_NEXUS_PORTAL_CORE.get());
-                output.accept(NexusBlocks.NETHERITE_NEXUS_PORTAL_CORE.get());
-                output.accept(NexusBlocks.STARLIGHT_NEXUS_PORTAL_CORE.get());
-                output.accept(NexusItems.CHRONO_SHARD.get());
-                output.accept(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
-                output.accept(NexusBlocks.CHRONOWARPED_GRASS.get());
-                output.accept(NexusBlocks.CHRONOWARPED_DIRT.get());
-                output.accept(NexusBlocks.WARPSLATE.get());
-                output.accept(NexusBlocks.COBBLED_WARPSLATE.get());
+                output.acceptAll(NexusLists.toItemStackListFromItem(NexusLists.ALL_BLOCKS_AND_ITEMS));
             })
             .build()
     );

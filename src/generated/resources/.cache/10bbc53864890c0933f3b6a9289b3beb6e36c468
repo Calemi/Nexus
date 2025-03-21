@@ -1,9 +1,13 @@
-// 1.21.1	2025-03-21T08:35:31.8990877	Tags for minecraft:block mod id nexus
+// 1.21.1	2025-03-21T13:22:42.3526664	Tags for minecraft:block mod id nexus
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/c/tags/block/cobblestones/deepslate.json
 15aea02a6a3db8cb56ad1cad21cf988cff4f07c6 data/minecraft/tags/block/dirt.json
-ed36391e9ab0de6e05384ce45658087492a6be86 data/minecraft/tags/block/mineable/pickaxe.json
+383fcfeea53ee0ac19cf12ea06cff1d25d01c007 data/minecraft/tags/block/mineable/pickaxe.json
 15aea02a6a3db8cb56ad1cad21cf988cff4f07c6 data/minecraft/tags/block/mineable/shovel.json
 e96705aaead90901a8f7f61f57bc3a95b3904105 data/minecraft/tags/block/needs_stone_tool.json
-dc007a8a4e0b4be92284fd4d000a415b8d587c43 data/minecraft/tags/block/sniffer_diggable_block.json
+8a08ad54a19828b6080cfe9300aaf5127521e8df data/minecraft/tags/block/slabs.json
+15aea02a6a3db8cb56ad1cad21cf988cff4f07c6 data/minecraft/tags/block/sniffer_diggable_block.json
+42aaef7b01a874f93bd66e9cdcb1b85153d0b809 data/minecraft/tags/block/stairs.json
+de39fe73e379409c187ec02450e23a507fd08778 data/minecraft/tags/block/walls.json
 f26dc240901feafa860046c88cf99c20e743207f data/nexus/tags/block/nexus_portals.json
 e0656899361f4de718357ecb86dc639da33f05c0 data/nexus/tags/block/nexus_portal_cores.json
+5731b4e7fc19d17ba3249396a3831527f1298086 data/nexus/tags/block/stonelike.json

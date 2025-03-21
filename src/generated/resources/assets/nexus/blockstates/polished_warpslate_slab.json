@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "nexus:block/polished_warpslate_slab"
+    },
+    "type=double": {
+      "model": "nexus:block/polished_warpslate"
+    },
+    "type=top": {
+      "model": "nexus:block/polished_warpslate_slab_top"
+    }
+  }
+}

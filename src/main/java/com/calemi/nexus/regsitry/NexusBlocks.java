@@ -8,9 +8,7 @@ import com.calemi.nexus.main.NexusRef;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.neoforged.neoforge.registries.DeferredBlock;
@@ -100,11 +98,77 @@ public class NexusBlocks {
     public static final DeferredBlock<Block> CHRONOWARPED_DIRT           = regBlock("chronowarped_dirt", () ->
             new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.DIRT).mapColor(MapColor.TERRACOTTA_BLUE)));
 
+
+
     public static final DeferredBlock<Block> WARPSLATE                   = regBlock("warpslate", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE).strength(1.25F, 6.0F).mapColor(MapColor.TERRACOTTA_CYAN)));
 
+
+
     public static final DeferredBlock<Block> COBBLED_WARPSLATE           = regBlock("cobbled_warpslate", () ->
             new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.COBBLED_DEEPSLATE).strength(1.75F, 6.0F).mapColor(MapColor.TERRACOTTA_CYAN)));
+
+    public static final DeferredBlock<Block> COBBLED_WARPSLATE_STAIRS    = regBlock("cobbled_warpslate_stairs", () ->
+            stair(COBBLED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> COBBLED_WARPSLATE_SLAB      = regBlock("cobbled_warpslate_slab", () ->
+            slab(COBBLED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> COBBLED_WARPSLATE_WALL      = regBlock("cobbled_warpslate_wall", () ->
+            wall(COBBLED_WARPSLATE.get()));
+
+
+
+    public static final DeferredBlock<Block> CHISELED_WARPSLATE           = regBlock("chiseled_warpslate", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.DEEPSLATE_BRICKS)));
+
+
+
+    public static final DeferredBlock<Block> POLISHED_WARPSLATE          = regBlock("polished_warpslate", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.POLISHED_DEEPSLATE)));
+
+    public static final DeferredBlock<Block> POLISHED_WARPSLATE_STAIRS   = regBlock("polished_warpslate_stairs", () ->
+            stair(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> POLISHED_WARPSLATE_SLAB     = regBlock("polished_warpslate_slab", () ->
+            slab(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block>POLISHED_WARPSLATE_WALL      = regBlock("polished_warpslate_wall", () ->
+            wall(POLISHED_WARPSLATE.get()));
+
+
+
+    public static final DeferredBlock<Block> WARPSLATE_TILES             = regBlock("warpslate_tiles", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.DEEPSLATE_TILES)));
+
+    public static final DeferredBlock<Block> CRACKED_WARPSLATE_TILES      = regBlock("cracked_warpslate_tiles", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(WARPSLATE_TILES.get())));
+
+    public static final DeferredBlock<Block> WARPSLATE_TILE_STAIRS       = regBlock("warpslate_tile_stairs", () ->
+            stair(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> WARPSLATE_TILE_SLAB         = regBlock("warpslate_tile_slab", () ->
+            slab(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> WARPSLATE_TILE_WALL         = regBlock("warpslate_tile_wall", () ->
+            wall(POLISHED_WARPSLATE.get()));
+
+
+
+    public static final DeferredBlock<Block> WARPSLATE_BRICKS             = regBlock("warpslate_bricks", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.DEEPSLATE_TILES)));
+
+    public static final DeferredBlock<Block> CRACKED_WARPSLATE_BRICKS     = regBlock("cracked_warpslate_bricks", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(WARPSLATE_BRICKS.get())));
+
+    public static final DeferredBlock<Block> WARPSLATE_BRICK_STAIRS       = regBlock("warpslate_brick_stairs", () ->
+            stair(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> WARPSLATE_BRICK_SLAB         = regBlock("warpslate_brick_slab", () ->
+            slab(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> WARPSLATE_BRICK_WALL         = regBlock("warpslate_brick_wall", () ->
+            wall(POLISHED_WARPSLATE.get()));
 
 
 
@@ -116,6 +180,18 @@ public class NexusBlocks {
 
     private static DeferredBlock<Block> regBlockSolo(String name, Supplier<Block> supplier) {
         return BLOCKS.register(name, supplier);
+    }
+
+    private static Block stair(Block baseBlock) {
+        return new StairBlock(baseBlock.defaultBlockState(), BlockBehaviour.Properties.ofFullCopy(baseBlock));
+    }
+
+    private static Block slab(Block baseBlock) {
+        return new SlabBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock));
+    }
+
+    private static Block wall(Block baseBlock) {
+        return new WallBlock(BlockBehaviour.Properties.ofFullCopy(baseBlock));
     }
 
     public static void init() {

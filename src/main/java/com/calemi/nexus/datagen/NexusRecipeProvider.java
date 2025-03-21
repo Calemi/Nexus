@@ -3,14 +3,17 @@ package com.calemi.nexus.datagen;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.regsitry.NexusBlocks;
 import com.calemi.nexus.regsitry.NexusItems;
+import com.calemi.nexus.regsitry.NexusLists;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
+import net.neoforged.neoforge.registries.DeferredBlock;
 
 import java.util.concurrent.CompletableFuture;
 
@@ -90,6 +93,70 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .pattern("MMM")
                 .unlockedBy("has_chrono_upgrade", has(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE))
                 .save(recipeOutput);
+
+        smeltingResultFromBase(recipeOutput, NexusBlocks.WARPSLATE, NexusBlocks.COBBLED_WARPSLATE);
+
+        twoByTwo(NexusBlocks.POLISHED_WARPSLATE, 4, NexusBlocks.COBBLED_WARPSLATE, recipeOutput);
+        twoByTwo(NexusBlocks.WARPSLATE_BRICKS, 4, NexusBlocks.POLISHED_WARPSLATE, recipeOutput);
+        twoByTwo(NexusBlocks.WARPSLATE_TILES, 4, NexusBlocks.WARPSLATE_BRICKS, recipeOutput);
+
+        NexusLists.ALL_BLOCKSETS.forEach(set -> blockSet(set, recipeOutput));
+
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, NexusBlocks.CHISELED_WARPSLATE, NexusBlocks.COBBLED_WARPSLATE);
+        oneByTwoVertical(NexusBlocks.CHISELED_WARPSLATE, 1, NexusBlocks.COBBLED_WARPSLATE_SLAB, recipeOutput);
+    }
+
+    private void twoByTwo(DeferredBlock<Block> result, int count, DeferredBlock<Block> ingredient, RecipeOutput recipeOutput) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, count)
+                .define('#', ingredient)
+                .pattern("##")
+                .pattern("##")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
+
+    private void oneByTwoVertical(DeferredBlock<Block> result, int count, DeferredBlock<Block> ingredient, RecipeOutput recipeOutput) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, result, count)
+                .define('X', ingredient)
+                .pattern("X")
+                .pattern("X")
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+    }
+
+    private void blockSet(NexusLists.BlockSet blockSet, RecipeOutput recipeOutput) {
+
+        DeferredBlock<Block> block = blockSet.getBlock();
+        DeferredBlock<Block> crackedBlock = blockSet.getCrackedBlock();
+        DeferredBlock<Block> stairs = blockSet.getStairs();
+        DeferredBlock<Block> slab = blockSet.getSlab();
+        DeferredBlock<Block> wall = blockSet.getWall();
+
+        if (crackedBlock != null) smeltingResultFromBase(recipeOutput, crackedBlock, block);
+        if (stairs != null) stairs(stairs, block, recipeOutput);
+        if (slab != null) slab(slab, block, recipeOutput);
+        if (wall != null) wall(wall, block, recipeOutput);
+    }
+
+    private void stairs(DeferredBlock<Block> result, DeferredBlock<Block> ingredient, RecipeOutput recipeOutput) {
+        stairBuilder(result, Ingredient.of(ingredient))
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+    }
+
+    private void slab(DeferredBlock<Block> result, DeferredBlock<Block> ingredient, RecipeOutput recipeOutput) {
+        slabBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(ingredient))
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+    }
+
+    private void wall(DeferredBlock<Block> result, DeferredBlock<Block> ingredient, RecipeOutput recipeOutput) {
+        wallBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(ingredient))
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput);
+        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
     }
 
     private void portalCore(ItemLike output, Ingredient prevPortalCore, Ingredient tier, Ingredient center, RecipeOutput recipeOutput) {
