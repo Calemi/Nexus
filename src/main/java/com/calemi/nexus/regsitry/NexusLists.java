@@ -118,8 +118,6 @@ public class NexusLists {
         ALL_BLOCKS.add(NexusBlocks.WARPSLATE);
         ALL_BLOCKS.addAll(toDefBlockListFromBlockSet(ALL_BLOCKSETS));
         ALL_BLOCKS.add(NexusBlocks.CHISELED_WARPSLATE);
-        ALL_BLOCKS.add(NexusBlocks.CRACKED_WARPSLATE_BRICKS);
-        ALL_BLOCKS.add(NexusBlocks.CRACKED_WARPSLATE_TILES);
         ALL_BLOCKS.addAll(CHRONOWARPED_LOGS);
         ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
         ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_SAPLING);

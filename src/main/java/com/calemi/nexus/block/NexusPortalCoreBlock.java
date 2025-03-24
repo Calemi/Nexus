@@ -124,7 +124,7 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
                 }
 
                 else {
-                    originBlockEntity.setDestinationDimensionRL(NexusDimensions.NEXUS_RESOURCE_LOCATION);
+                    originBlockEntity.setDestinationDimensionRL(NexusDimensions.NEXUS_RL);
                 }
             }
         }

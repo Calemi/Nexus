@@ -2,7 +2,9 @@ package com.calemi.nexus.regsitry;
 
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.particle.NexusParticleProvider;
+import com.calemi.nexus.particle.ColoredPortalParticleProvider;
+import com.calemi.nexus.particle.WarpblossomParticleProvider;
+import net.minecraft.client.particle.CherryParticle;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.core.registries.Registries;
@@ -32,29 +34,33 @@ public class NexusParticles {
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BROWN_PORTAL_PARTICLES = PARTICLE_TYPES.register("brown_portal", () -> new SimpleParticleType(false));
     public static final DeferredHolder<ParticleType<?>, SimpleParticleType> BLACK_PORTAL_PARTICLES = PARTICLE_TYPES.register("black_portal", () -> new SimpleParticleType(false));
 
+    public static final DeferredHolder<ParticleType<?>, SimpleParticleType> WARPBLOSSOM_PARTICLES = PARTICLE_TYPES.register("warpblossom", () -> new SimpleParticleType(false));
+
+    @SubscribeEvent
+    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
+        event.registerSpriteSet(NexusParticles.WHITE_PORTAL_PARTICLES.get(),      sprites -> new ColoredPortalParticleProvider(sprites, 1.0F, 1.0F, 1.0F));
+        event.registerSpriteSet(NexusParticles.ORANGE_PORTAL_PARTICLES.get(),     sprites -> new ColoredPortalParticleProvider(sprites, 1.0F, 0.5F, 0.0F));
+        event.registerSpriteSet(NexusParticles.YELLOW_PORTAL_PARTICLES.get(),     sprites -> new ColoredPortalParticleProvider(sprites, 1.0F, 1.0F, 0.0F));
+        event.registerSpriteSet(NexusParticles.PURPLE_PORTAL_PARTICLES.get(),     sprites -> new ColoredPortalParticleProvider(sprites, 0.5F, 0.0F, 1.0F));
+        event.registerSpriteSet(NexusParticles.CYAN_PORTAL_PARTICLES.get(),       sprites -> new ColoredPortalParticleProvider(sprites, 0.0F, 1.0F, 1.0F));
+        event.registerSpriteSet(NexusParticles.LIGHT_GRAY_PORTAL_PARTICLES.get(), sprites -> new ColoredPortalParticleProvider(sprites, 0.75F, 0.75F, 0.75F));
+        event.registerSpriteSet(NexusParticles.GRAY_PORTAL_PARTICLES.get(),       sprites -> new ColoredPortalParticleProvider(sprites, 0.5F, 0.5F, 0.5F));
+        event.registerSpriteSet(NexusParticles.PINK_PORTAL_PARTICLES.get(),       sprites -> new ColoredPortalParticleProvider(sprites, 1.0F, 0.5F, 1.0F));
+        event.registerSpriteSet(NexusParticles.LIME_PORTAL_PARTICLES.get(),       sprites -> new ColoredPortalParticleProvider(sprites, 0.5F, 1.0F, 0.5F));
+        event.registerSpriteSet(NexusParticles.LIGHT_BLUE_PORTAL_PARTICLES.get(), sprites -> new ColoredPortalParticleProvider(sprites, 0.4F, 0.4F, 0.9F));
+        event.registerSpriteSet(NexusParticles.MAGENTA_PORTAL_PARTICLES.get(),    sprites -> new ColoredPortalParticleProvider(sprites, 0.75F, 0.5F, 1.0F));
+        event.registerSpriteSet(NexusParticles.GREEN_PORTAL_PARTICLES.get(),      sprites -> new ColoredPortalParticleProvider(sprites, 0.0F, 0.5F, 0.0F));
+        event.registerSpriteSet(NexusParticles.BLUE_PORTAL_PARTICLES.get(),       sprites -> new ColoredPortalParticleProvider(sprites, 0.25F, 0.25F, 1.0F));
+        event.registerSpriteSet(NexusParticles.RED_PORTAL_PARTICLES.get(),        sprites -> new ColoredPortalParticleProvider(sprites, 1.0F, 0.0F, 0.0F));
+        event.registerSpriteSet(NexusParticles.BROWN_PORTAL_PARTICLES.get(),      sprites -> new ColoredPortalParticleProvider(sprites, 0.5F, 0.25F, 0.0F));
+        event.registerSpriteSet(NexusParticles.BLACK_PORTAL_PARTICLES.get(),      sprites -> new ColoredPortalParticleProvider(sprites, 0.0F, 0.0F, 0.0F));
+
+        event.registerSpriteSet(NexusParticles.WARPBLOSSOM_PARTICLES.get(), WarpblossomParticleProvider::new);
+    }
+
     public static void init() {
         Nexus.LOGGER.info("Registering: Particles Types - Start");
         PARTICLE_TYPES.register(Nexus.MOD_EVENT_BUS);
         Nexus.LOGGER.info("Registering: Particles Types - End");
-    }
-
-    @SubscribeEvent
-    public static void registerParticleProviders(RegisterParticleProvidersEvent event) {
-        event.registerSpriteSet(NexusParticles.WHITE_PORTAL_PARTICLES.get(),      sprites -> new NexusParticleProvider(sprites, 1.0F, 1.0F, 1.0F));
-        event.registerSpriteSet(NexusParticles.ORANGE_PORTAL_PARTICLES.get(),     sprites -> new NexusParticleProvider(sprites, 1.0F, 0.5F, 0.0F));
-        event.registerSpriteSet(NexusParticles.YELLOW_PORTAL_PARTICLES.get(),     sprites -> new NexusParticleProvider(sprites, 1.0F, 1.0F, 0.0F));
-        event.registerSpriteSet(NexusParticles.PURPLE_PORTAL_PARTICLES.get(),     sprites -> new NexusParticleProvider(sprites, 0.5F, 0.0F, 1.0F));
-        event.registerSpriteSet(NexusParticles.CYAN_PORTAL_PARTICLES.get(),       sprites -> new NexusParticleProvider(sprites, 0.0F, 1.0F, 1.0F));
-        event.registerSpriteSet(NexusParticles.LIGHT_GRAY_PORTAL_PARTICLES.get(), sprites -> new NexusParticleProvider(sprites, 0.75F, 0.75F, 0.75F));
-        event.registerSpriteSet(NexusParticles.GRAY_PORTAL_PARTICLES.get(),       sprites -> new NexusParticleProvider(sprites, 0.5F, 0.5F, 0.5F));
-        event.registerSpriteSet(NexusParticles.PINK_PORTAL_PARTICLES.get(),       sprites -> new NexusParticleProvider(sprites, 1.0F, 0.5F, 1.0F));
-        event.registerSpriteSet(NexusParticles.LIME_PORTAL_PARTICLES.get(),       sprites -> new NexusParticleProvider(sprites, 0.5F, 1.0F, 0.5F));
-        event.registerSpriteSet(NexusParticles.LIGHT_BLUE_PORTAL_PARTICLES.get(), sprites -> new NexusParticleProvider(sprites, 0.4F, 0.4F, 0.9F));
-        event.registerSpriteSet(NexusParticles.MAGENTA_PORTAL_PARTICLES.get(),    sprites -> new NexusParticleProvider(sprites, 0.75F, 0.5F, 1.0F));
-        event.registerSpriteSet(NexusParticles.GREEN_PORTAL_PARTICLES.get(),      sprites -> new NexusParticleProvider(sprites, 0.0F, 0.5F, 0.0F));
-        event.registerSpriteSet(NexusParticles.BLUE_PORTAL_PARTICLES.get(),       sprites -> new NexusParticleProvider(sprites, 0.25F, 0.25F, 1.0F));
-        event.registerSpriteSet(NexusParticles.RED_PORTAL_PARTICLES.get(),        sprites -> new NexusParticleProvider(sprites, 1.0F, 0.0F, 0.0F));
-        event.registerSpriteSet(NexusParticles.BROWN_PORTAL_PARTICLES.get(),      sprites -> new NexusParticleProvider(sprites, 0.5F, 0.25F, 0.0F));
-        event.registerSpriteSet(NexusParticles.BLACK_PORTAL_PARTICLES.get(),      sprites -> new NexusParticleProvider(sprites, 0.0F, 0.0F, 0.0F));
     }
 }

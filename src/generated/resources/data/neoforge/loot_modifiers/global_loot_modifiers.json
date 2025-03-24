@@ -1,0 +1,8 @@
+{
+  "entries": [
+    "nexus:chrono_shard_from_chamber_vault",
+    "nexus:chrono_upgrade_from_chamber_vault",
+    "nexus:chrono_upgrade_from_chamber_chest"
+  ],
+  "replace": false
+}

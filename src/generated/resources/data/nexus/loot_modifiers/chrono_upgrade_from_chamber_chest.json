@@ -1,0 +1,18 @@
+{
+  "type": "nexus:bonus_item",
+  "bonus_item": {
+    "count": 2,
+    "id": "nexus:chrono_upgrade_smithing_template"
+  },
+  "chance": 0.25,
+  "conditions": [
+    {
+      "condition": "nexus:loot_table_check",
+      "loot_table_paths": [
+        "minecraft:chests/trial_chambers/corridor",
+        "minecraft:chests/trial_chambers/intersection",
+        "minecraft:chests/trial_chambers/intersection_barrel"
+      ]
+    }
+  ]
+}

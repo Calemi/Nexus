@@ -17,7 +17,6 @@ public class NexusJEIPlugin implements IModPlugin {
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
         registration.addIngredientInfo(new ItemStack(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get()), VanillaTypes.ITEM_STACK, Component.translatable("description.nexus.chrono_upgrade_smithing_template"));
-        registration.addIngredientInfo(new ItemStack(NexusItems.CHRONO_SHARD.get()), VanillaTypes.ITEM_STACK, Component.translatable("description.nexus.chrono_shard"));
         registration.addIngredientInfo(NexusLists.toItemStackListFromDefBlock(NexusLists.NEXUS_PORTAL_CORE_BLOCKS), VanillaTypes.ITEM_STACK, Component.translatable("description.nexus.nexus_portal_core"));
     }
 

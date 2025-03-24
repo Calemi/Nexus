@@ -49,6 +49,12 @@ public class NexusDataGen {
         //RECIPES
         generator.addProvider(event.includeServer(), new NexusRecipeProvider(output, lookupProvider));
 
+        //GLOBAL LOOT MODIFIERS
+        generator.addProvider(event.includeServer(), new NexusGlobalLootModifierProvider(output, lookupProvider));
+
+        //LANGUAGE
+        generator.addProvider(event.includeClient(), new NexusEnglishLanguageProvider(output));
+
         //DATAMAPS
         generator.addProvider(event.includeServer(), new NexusDataMapProvider(output, lookupProvider));
 

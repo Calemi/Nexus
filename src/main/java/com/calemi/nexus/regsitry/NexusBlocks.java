@@ -3,6 +3,7 @@ package com.calemi.nexus.regsitry;
 import com.calemi.nexus.block.ChronowarpedGrassBlock;
 import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
+import com.calemi.nexus.block.WarpblossomLeaves;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
 import net.minecraft.util.ColorRGBA;
@@ -186,11 +187,11 @@ public class NexusBlocks {
     public static final DeferredBlock<Block> STRIPPED_WARPBLOSSOM_WOOD    = regBlock("stripped_warpblossom_wood", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.STRIPPED_OAK_WOOD)));
 
-    public static final DeferredBlock<Block> WARPBLOSSOM_LEAVES           = regBlock("warpblossom_leaves", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_LEAVES)));
+    public static final DeferredBlock<Block> WARPBLOSSOM_LEAVES           = regBlock("warpblossom_leaves",
+            WarpblossomLeaves::new);
 
     public static final DeferredBlock<Block> WARPBLOSSOM_SAPLING          = regBlock("warpblossom_sapling", () ->
-            new SaplingBlock(NexusConfiguredFeatures.WARPBLOSSOM, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)));
+            new SaplingBlock(NexusTreeGrowers.WARPBLOSSOM, BlockBehaviour.Properties.ofFullCopy(Blocks.CHERRY_SAPLING)));
 
 
 

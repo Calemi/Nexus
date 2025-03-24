@@ -1,7 +1,7 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusConfiguredFeatures;
+import com.calemi.nexus.regsitry.*;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -14,7 +14,12 @@ import java.util.concurrent.CompletableFuture;
 public class NexusDatapackProvider extends DatapackBuiltinEntriesProvider {
 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(Registries.CONFIGURED_FEATURE, NexusConfiguredFeatures::init);
+            .add(Registries.CONFIGURED_FEATURE, NexusConfiguredFeatures::init)
+            .add(Registries.PLACED_FEATURE, NexusPlacedFeatures::init)
+            .add(Registries.BIOME, NexusBiomes::init)
+            .add(Registries.DIMENSION_TYPE, NexusDimensions::initDimensionType)
+            .add(Registries.LEVEL_STEM, NexusDimensions::initLevelStem)
+            .add(Registries.NOISE_SETTINGS, NexusNoiseSettings::init);
 
     public NexusDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(NexusRef.ID));

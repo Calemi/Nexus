@@ -21,7 +21,7 @@ public class UnlockedDimensionsList implements INBTSerializable<CompoundTag> {
 
     public UnlockedDimensionsList() {
         unlockedDimensions.add(Level.OVERWORLD.location());
-        unlockedDimensions.add(NexusDimensions.NEXUS_RESOURCE_LOCATION);
+        unlockedDimensions.add(NexusDimensions.NEXUS_RL);
     }
 
     public static UnlockedDimensionsList get(Player player) {

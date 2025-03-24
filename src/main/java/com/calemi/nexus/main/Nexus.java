@@ -35,8 +35,10 @@ public class Nexus {
         NexusBlockEntities.init();
         NexusCreativeModeTabs.init();
         NexusLootModifiers.init();
+        NexusLootItemConditions.init();
         NexusAttachments.init();
         NexusParticles.init();
+        NexusFoliagePlacers.init();
 
         MOD_EVENT_BUS.addListener(this::commonSetup);
         MOD_EVENT_BUS.addListener(this::clientSetup);

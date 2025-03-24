@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-15T00:36:18.8077722	Particle Descriptions
+// 1.21.1	2025-03-22T18:19:55.992326	Particle Descriptions
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/black_portal.json
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/blue_portal.json
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/brown_portal.json
@@ -13,5 +13,6 @@
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/pink_portal.json
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/purple_portal.json
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/red_portal.json
+204f47c1f8065f19020a1105a26096bcfe7b1c3c assets/nexus/particles/warpblossom.json
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/white_portal.json
 1a47faf07d9475ed4d40b18efe5b11373333e581 assets/nexus/particles/yellow_portal.json

@@ -1,0 +1,5 @@
+// 1.21.1	2025-03-23T22:12:21.8466155	Global Loot Modifiers : nexus
+f9cc8b841ad8e5609cb4274f7d6db6d233536830 data/neoforge/loot_modifiers/global_loot_modifiers.json
+0af5fb76e14658205a2c66bb41d00d26ca30eaa3 data/nexus/loot_modifiers/chrono_shard_from_chamber_vault.json
+e762934e3dfab3d51e5d38bad6b46ccbdf4b2eca data/nexus/loot_modifiers/chrono_upgrade_from_chamber_chest.json
+03cebb9d5dae0a5521d7b7800a838f5b891e03ee data/nexus/loot_modifiers/chrono_upgrade_from_chamber_vault.json

@@ -14,7 +14,7 @@ public class NexusDimensionHelper {
     }
 
     public static boolean isInNexus(Level level) {
-        return level.dimension().equals(NexusDimensions.NEXUS_KEY);
+        return level.dimension().equals(NexusDimensions.NEXUS_LEVEL);
     }
 
     public static boolean isDestinationValid(Level destinationLevel, BlockPos destinationPosition) {
