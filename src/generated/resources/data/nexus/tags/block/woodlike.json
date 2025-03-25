@@ -3,6 +3,23 @@
     {
       "id": "#nexus:warpblossom_logs",
       "required": false
-    }
+    },
+    "nexus:warpblossom_planks",
+    "nexus:warpblossom_log",
+    "nexus:warpblossom_wood",
+    "nexus:stripped_warpblossom_log",
+    "nexus:stripped_warpblossom_wood",
+    "nexus:warpblossom_stairs",
+    "nexus:warpblossom_slab",
+    "nexus:warpblossom_fence",
+    "nexus:warpblossom_fence_gate",
+    "nexus:warpblossom_door",
+    "nexus:warpblossom_trapdoor",
+    "nexus:warpblossom_pressure_plate",
+    "nexus:warpblossom_button",
+    "nexus:warpblossom_sign",
+    "nexus:warpblossom_wall_sign",
+    "nexus:warpblossom_hanging_sign",
+    "nexus:warpblossom_wall_hanging_sign"
   ]
 }

@@ -1,5 +1,8 @@
 {
   "values": [
-    "nexus:warpblossom_log"
+    "nexus:warpblossom_log",
+    "nexus:warpblossom_wood",
+    "nexus:stripped_warpblossom_log",
+    "nexus:stripped_warpblossom_wood"
   ]
 }

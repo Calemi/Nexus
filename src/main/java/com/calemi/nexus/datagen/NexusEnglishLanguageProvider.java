@@ -1,8 +1,11 @@
 package com.calemi.nexus.datagen;
 
+import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
+import com.calemi.nexus.regsitry.NexusBlocks;
 import com.calemi.nexus.regsitry.NexusItems;
 import com.calemi.nexus.regsitry.NexusLists;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -14,7 +17,7 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
     private final String SCREEN = getPrefixedKey("screen", "");
     private final String SCREEN_NEXUS_PORTAL_CORE = SCREEN + "nexus_portal_core.";
-    private final String SCREEN_NEXUS_PORTAL_CORE_TEXT = SCREEN + "text.";
+    private final String SCREEN_NEXUS_PORTAL_CORE_TEXT = SCREEN_NEXUS_PORTAL_CORE + "text.";
     private final String SCREEN_NEXUS_PORTAL_CORE_BUTTON = SCREEN_NEXUS_PORTAL_CORE + "button.";
     private final String SCREEN_NEXUS_PORTAL_CORE_BUTTON_DIMENSION_SELECT = SCREEN_NEXUS_PORTAL_CORE_BUTTON + "dimension_select.";
     private final String SCREEN_NEXUS_PORTAL_CORE_BUTTON_TELEPORT = SCREEN_NEXUS_PORTAL_CORE_BUTTON + "teleport.";
@@ -45,10 +48,37 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
             BLOCKS & ITEMS
          */
 
-        NexusLists.ALL_BLOCKS.forEach(block -> addAutoBlock(block.get()));
+        NexusLists.ALL_BLOCKS.forEach(block -> {
+
+            if (block.equals(NexusBlocks.WARPBLOSSOM_SIGN)) {
+                addBlock(block, "Warpblossom Sign");
+                return;
+            }
+
+            if (block.equals(NexusBlocks.WARPBLOSSOM_WALL_SIGN)) {
+                return;
+            }
+
+            if (block.equals(NexusBlocks.WARPBLOSSOM_HANGING_SIGN)) {
+                addBlock(block, "Warpblossom Hanging Sign");
+                return;
+            }
+
+            if (block.equals(NexusBlocks.WARPBLOSSOM_WALL_HANGING_SIGN)) {
+                return;
+            }
+
+            addAutoBlock(block.get());
+        });
+
         NexusLists.ALL_ITEMS.forEach(item -> {
-            if (item.equals(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE)) addItem(item, "Smithing Template");
-            else addAutoItem(item.get());
+
+            if (item.equals(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE)) {
+                addItem(item, "Smithing Template");
+                return;
+            }
+
+            addAutoItem(item.get());
         });
 
         /*
@@ -133,11 +163,11 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
     }
 
     private void addAutoBlock(Block block) {
-        add(block, autoString(block.getDescriptionId(), "block"));
+        add(block, autoString(BuiltInRegistries.BLOCK.getKey(block).getPath(), "block"));
     }
 
     private void addAutoItem(Item item) {
-        add(item, autoString(item.getDescriptionId(), "item"));
+        add(item, autoString(BuiltInRegistries.ITEM.getKey(item).getPath(), "item"));
     }
 
     private String getPrefixedKey(String prefix, String name) {

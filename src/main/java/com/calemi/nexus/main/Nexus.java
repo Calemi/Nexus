@@ -43,7 +43,9 @@ public class Nexus {
         MOD_EVENT_BUS.addListener(this::commonSetup);
         MOD_EVENT_BUS.addListener(this::clientSetup);
         MOD_EVENT_BUS.addListener(this::registerPackets);
+
         MOD_EVENT_BUS.addListener(NexusParticles::registerParticleProviders);
+        MOD_EVENT_BUS.addListener(BlockEntityTypeAddBlocksEventListener::addBlockEntityTypes);
 
         LOGGER.info("Registering: Main - End");
     }

@@ -2,7 +2,8 @@
   "values": [
     "nexus:cobbled_warpslate_slab",
     "nexus:polished_warpslate_slab",
+    "nexus:warpslate_brick_slab",
     "nexus:warpslate_tile_slab",
-    "nexus:warpslate_brick_slab"
+    "nexus:warpblossom_slab"
   ]
 }

@@ -19,25 +19,45 @@ public class NexusBlockLootTableProvider extends BlockLootSubProvider {
     @Override
     protected void generate() {
 
-        NexusLists.NEXUS_PORTAL_CORE_BLOCKS.forEach(deferredBlock -> dropSelf(deferredBlock.get()));
-        NexusLists.NEXUS_PORTAL_BLOCKS.forEach(deferredBlock -> add(deferredBlock.get(), noDrop()));
+        NexusLists.ALL_BLOCKS.forEach(block -> {
 
-        add(NexusBlocks.CHRONOWARPED_GRASS.get(), createSingleItemTableWithSilkTouch(NexusBlocks.CHRONOWARPED_GRASS.get(), NexusBlocks.CHRONOWARPED_DIRT.get()));
-        dropSelf(NexusBlocks.CHRONOWARPED_DIRT.get());
-        dropSelf(NexusBlocks.CHRONOWARPED_SAND.get());
+            if (NexusLists.NEXUS_PORTAL_BLOCKS.contains(block)) {
+                add(block.get(), noDrop());
+                return;
+            }
 
-        add(NexusBlocks.WARPSLATE.get(), createSingleItemTableWithSilkTouch(NexusBlocks.WARPSLATE.get(), NexusBlocks.COBBLED_WARPSLATE.get()));
+            Block chronowarpedGrass = NexusBlocks.CHRONOWARPED_GRASS.get();
+            if (block.get().equals(chronowarpedGrass)) {
+                add(chronowarpedGrass, createSingleItemTableWithSilkTouch(chronowarpedGrass, NexusBlocks.CHRONOWARPED_DIRT.get()));
+                return;
+            }
 
-        NexusLists.ALL_BLOCKSETS.forEach(set -> set.getAll().forEach(block -> dropSelf(block.get())));
-        dropSelf(NexusBlocks.CHISELED_WARPSLATE.get());
+            Block warpslate = NexusBlocks.WARPSLATE.get();
+            if (block.get().equals(warpslate)) {
+                add(warpslate, createSingleItemTableWithSilkTouch(warpslate, NexusBlocks.COBBLED_WARPSLATE.get()));
+                return;
+            }
 
-        dropSelf(NexusBlocks.WARPBLOSSOM_LOG.get());
-        dropSelf(NexusBlocks.WARPBLOSSOM_WOOD.get());
-        dropSelf(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG.get());
-        dropSelf(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.get());
+            Block pottedWarpblossomSapling = NexusBlocks.POTTED_WARPBLOSSOM_SAPLING.get();
+            if (block.get().equals(pottedWarpblossomSapling)) {
+                add(pottedWarpblossomSapling, createPotFlowerItemTable(NexusBlocks.WARPBLOSSOM_SAPLING));
+                return;
+            }
 
-        add(NexusBlocks.WARPBLOSSOM_LEAVES.get(), createLeavesDrops(NexusBlocks.WARPBLOSSOM_LEAVES.get(), NexusBlocks.WARPBLOSSOM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
-        dropSelf(NexusBlocks.WARPBLOSSOM_SAPLING.get());
+            Block warpblossomLeaves = NexusBlocks.WARPBLOSSOM_LEAVES.get();
+            if (block.get().equals(warpblossomLeaves)) {
+                add(warpblossomLeaves, createLeavesDrops(warpblossomLeaves, NexusBlocks.WARPBLOSSOM_SAPLING.get(), NORMAL_LEAVES_SAPLING_CHANCES));
+                return;
+            }
+
+            Block warpblossomDoor = NexusBlocks.WARPBLOSSOM_DOOR.get();
+            if (block.get().equals(warpblossomDoor)) {
+                add(warpblossomDoor, createDoorTable(warpblossomDoor));
+                return;
+            }
+
+            dropSelf(block.get());
+        });
     }
 
     @Override

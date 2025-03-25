@@ -4,8 +4,10 @@ import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.FlowerPotBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.function.Supplier;
@@ -18,7 +20,15 @@ public class NexusCreativeModeTabs {
             .title(Component.translatable("itemGroup." + NexusRef.ID + ".main"))
             .icon(() -> new ItemStack(NexusBlocks.NEXUS_PORTAL_CORE.get()))
             .displayItems((params, output) -> {
-                output.acceptAll(NexusLists.toItemStackListFromItem(NexusLists.ALL_BLOCKS_AND_ITEMS));
+                output.acceptAll(NexusLists.toItemStackListFromItem(NexusLists.ALL_BLOCKS_AND_ITEMS.stream().filter(item -> {
+
+                    if (item instanceof BlockItem blockItem) {
+                        return !(blockItem.getBlock() instanceof FlowerPotBlock);
+                    }
+
+                    return true;
+
+                }).toList()));
             })
             .build()
     );

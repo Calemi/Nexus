@@ -1,5 +1,6 @@
 package com.calemi.nexus.event.listener;
 
+import com.calemi.nexus.regsitry.NexusBlockFamilies;
 import com.calemi.nexus.regsitry.NexusBlocks;
 import com.calemi.nexus.regsitry.NexusItems;
 import com.calemi.nexus.regsitry.NexusLists;
@@ -17,15 +18,28 @@ public class CreativeTabContentsEventListener {
 
         CreativeModeTab tab = event.getTab();
 
-        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
-            add(event, Items.END_PORTAL_FRAME, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
-        }
+        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
 
-        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            add(event, Items.AMETHYST_SHARD,
-                    NexusItems.CHRONO_SHARD.get());
-            add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
-                    NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+            List<Item> entries = new ArrayList<>();
+
+            entries.addAll(NexusLists.toItemListFromDefBlock(NexusBlockFamilies.COBBLED_WARPSLATE.getAllBlocks()));
+            entries.addAll(NexusLists.toItemListFromDefBlock(NexusBlockFamilies.POLISHED_WARPSLATE.getAllBlocks()));
+            entries.addAll(NexusLists.toItemListFromDefBlock(NexusBlockFamilies.WARPSLATE_TILE.getAllBlocks()));
+
+            add(event, Items.REINFORCED_DEEPSLATE, entries);
+
+            add(event, Items.WARPED_BUTTON, NexusLists.toItemListFromDefBlock(NexusLists.CHRONOWARPED_LOGS));
+            add(event, NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.asItem(),
+                    NexusBlocks.WARPBLOSSOM_PLANKS.asItem(),
+                    NexusBlocks.WARPBLOSSOM_STAIRS.asItem(),
+                    NexusBlocks.WARPBLOSSOM_SLAB.asItem(),
+                    NexusBlocks.WARPBLOSSOM_FENCE.asItem(),
+                    NexusBlocks.WARPBLOSSOM_FENCE_GATE.asItem(),
+                    NexusBlocks.WARPBLOSSOM_DOOR.asItem(),
+                    NexusBlocks.WARPBLOSSOM_TRAPDOOR.asItem(),
+                    NexusBlocks.WARPBLOSSOM_PRESSURE_PLATE.asItem(),
+                    NexusBlocks.WARPBLOSSOM_BUTTON.asItem()
+            );
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
@@ -45,18 +59,24 @@ public class CreativeTabContentsEventListener {
                     NexusBlocks.WARPBLOSSOM_SAPLING.get().asItem());
         }
 
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            add(event, Items.END_PORTAL_FRAME, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
 
-            List<Item> entries = new ArrayList<>();
+            add(event, Items.WARPED_HANGING_SIGN.asItem(),
+                    NexusBlocks.WARPBLOSSOM_SIGN.asItem(),
+                    NexusBlocks.WARPBLOSSOM_HANGING_SIGN.asItem()
+            );
+        }
 
-            entries.addAll(NexusLists.toItemListFromDefBlock(NexusLists.COBBLED_WARPSLATE_BLOCKSET.getAll()));
-            entries.add(NexusBlocks.CHISELED_WARPSLATE.asItem());
-            entries.addAll(NexusLists.toItemListFromDefBlock(NexusLists.POLISHED_WARPSLATE_BLOCKSET.getAll()));
-            entries.addAll(NexusLists.toItemListFromDefBlock(NexusLists.WARPSLATE_TILE_BLOCKSET.getAll()));
+        if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
+            add(event, Items.CAULDRON, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+        }
 
-            add(event, Items.REINFORCED_DEEPSLATE, entries);
-
-            add(event, Items.WARPED_BUTTON, NexusLists.toItemListFromDefBlock(NexusLists.CHRONOWARPED_LOGS));
+        if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
+            add(event, Items.AMETHYST_SHARD,
+                    NexusItems.CHRONO_SHARD.get());
+            add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
+                    NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
         }
     }
 

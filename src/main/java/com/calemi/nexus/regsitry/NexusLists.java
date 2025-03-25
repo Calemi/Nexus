@@ -1,6 +1,7 @@
 package com.calemi.nexus.regsitry;
 
 import com.calemi.nexus.main.Nexus;
+import com.calemi.ccore.api.family.CBlockFamily;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.resources.ResourceKey;
@@ -62,51 +63,6 @@ public class NexusLists {
         CHRONOWARPED_LOGS.add(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD);
     }
 
-    /*
-        BLOCK SETS
-     */
-
-    public static final BlockSet COBBLED_WARPSLATE_BLOCKSET = new BlockSet()
-            .setBlock(NexusBlocks.COBBLED_WARPSLATE)
-            .addStairs(NexusBlocks.COBBLED_WARPSLATE_STAIRS)
-            .addSlab(NexusBlocks.COBBLED_WARPSLATE_SLAB)
-            .addWall(NexusBlocks.COBBLED_WARPSLATE_WALL);
-
-    public static final BlockSet POLISHED_WARPSLATE_BLOCKSET = new BlockSet()
-            .setBlock(NexusBlocks.POLISHED_WARPSLATE)
-            .addStairs(NexusBlocks.POLISHED_WARPSLATE_STAIRS)
-            .addSlab(NexusBlocks.POLISHED_WARPSLATE_SLAB)
-            .addWall(NexusBlocks.POLISHED_WARPSLATE_WALL);
-
-    public static final BlockSet WARPSLATE_BRICK_BLOCKSET = new BlockSet()
-            .setBlock(NexusBlocks.WARPSLATE_BRICKS)
-            .setCrackedBlock(NexusBlocks.CRACKED_WARPSLATE_BRICKS)
-            .addStairs(NexusBlocks.WARPSLATE_BRICK_STAIRS)
-            .addSlab(NexusBlocks.WARPSLATE_BRICK_SLAB)
-            .addWall(NexusBlocks.WARPSLATE_BRICK_WALL);
-
-    public static final BlockSet WARPSLATE_TILE_BLOCKSET = new BlockSet()
-            .setBlock(NexusBlocks.WARPSLATE_TILES)
-            .setCrackedBlock(NexusBlocks.CRACKED_WARPSLATE_TILES)
-            .addStairs(NexusBlocks.WARPSLATE_TILE_STAIRS)
-            .addSlab(NexusBlocks.WARPSLATE_TILE_SLAB)
-            .addWall(NexusBlocks.WARPSLATE_TILE_WALL);
-
-    public static final List<BlockSet> ALL_STONE_BLOCKSETS = new ArrayList<>();
-
-    static {
-        ALL_STONE_BLOCKSETS.add(COBBLED_WARPSLATE_BLOCKSET);
-        ALL_STONE_BLOCKSETS.add(POLISHED_WARPSLATE_BLOCKSET);
-        ALL_STONE_BLOCKSETS.add(WARPSLATE_TILE_BLOCKSET);
-        ALL_STONE_BLOCKSETS.add(WARPSLATE_BRICK_BLOCKSET);
-    }
-
-    public static final List<BlockSet> ALL_BLOCKSETS = new ArrayList<>();
-
-    static {
-        ALL_BLOCKSETS.addAll(ALL_STONE_BLOCKSETS);
-    }
-
     public static final List<DeferredBlock<Block>> ALL_BLOCKS = new ArrayList<>();
 
     static {
@@ -116,11 +72,14 @@ public class NexusLists {
         ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_DIRT);
         ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_SAND);
         ALL_BLOCKS.add(NexusBlocks.WARPSLATE);
-        ALL_BLOCKS.addAll(toDefBlockListFromBlockSet(ALL_BLOCKSETS));
-        ALL_BLOCKS.add(NexusBlocks.CHISELED_WARPSLATE);
-        ALL_BLOCKS.addAll(CHRONOWARPED_LOGS);
-        ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
+        ALL_BLOCKS.addAll(NexusBlockFamilies.COBBLED_WARPSLATE.getAllBlocks());
+        ALL_BLOCKS.addAll(NexusBlockFamilies.POLISHED_WARPSLATE.getAllBlocks());
+        ALL_BLOCKS.addAll(NexusBlockFamilies.WARPSLATE_BRICK.getAllBlocks());
+        ALL_BLOCKS.addAll(NexusBlockFamilies.WARPSLATE_TILE.getAllBlocks());
         ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
+        ALL_BLOCKS.add(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING);
+        ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
+        ALL_BLOCKS.addAll(NexusBlockFamilies.WARPBLOSSOM.getAllBlocks());
     }
 
     public static final List<DeferredItem<Item>> ALL_ITEMS = new ArrayList<>();
@@ -177,9 +136,9 @@ public class NexusLists {
         return new ArrayList<>(blocks.stream().map(DeferredHolder::get).toList());
     }
 
-    public static List<DeferredBlock<Block>> toDefBlockListFromBlockSet(List<BlockSet> blockSet) {
+    public static List<DeferredBlock<Block>> toDefBlockListFromBlockSet(List<CBlockFamily> blockSet) {
         List<DeferredBlock<Block>> list = new ArrayList<>();
-        blockSet.forEach(set -> list.addAll(set.getAll()));
+        blockSet.forEach(set -> list.addAll(set.getAllBlocks()));
         return list;
     }
 
@@ -205,75 +164,6 @@ public class NexusLists {
 
     public static List<ItemStack> toItemStackListFromItem(List<Item> items) {
         return new ArrayList<>(items.stream().map(ItemStack::new).toList());
-    }
-
-    /*
-        BLOCKSET
-     */
-
-    public static class BlockSet {
-
-        List<DeferredBlock<Block>> all = new ArrayList<>();
-
-        private DeferredBlock<Block> block;
-        private DeferredBlock<Block> crackedBlock;
-        private DeferredBlock<Block> stairs;
-        private DeferredBlock<Block> slab;
-        private DeferredBlock<Block> wall;
-
-        public BlockSet setBlock(DeferredBlock<Block> block) {
-            this.block = block;
-            all.add(block);
-            return this;
-        }
-
-        public DeferredBlock<Block> getBlock() {
-            return block;
-        }
-
-        public BlockSet setCrackedBlock(DeferredBlock<Block> crackedBlock) {
-            this.crackedBlock = crackedBlock;
-            all.add(crackedBlock);
-            return this;
-        }
-
-        public DeferredBlock<Block> getCrackedBlock() {
-            return crackedBlock;
-        }
-
-        public DeferredBlock<Block> getStairs() {
-            return stairs;
-        }
-
-        private BlockSet addStairs(DeferredBlock<Block> stairs) {
-            this.stairs = stairs;
-            all.add(stairs);
-            return this;
-        }
-
-        public DeferredBlock<Block> getSlab() {
-            return slab;
-        }
-
-        private BlockSet addSlab(DeferredBlock<Block> slab) {
-            this.slab = slab;
-            all.add(slab);
-            return this;
-        }
-
-        public DeferredBlock<Block> getWall() {
-            return wall;
-        }
-
-        private BlockSet addWall(DeferredBlock<Block> wall) {
-            this.wall = wall;
-            all.add(wall);
-            return this;
-        }
-
-        public List<DeferredBlock<Block>> getAll() {
-            return all;
-        }
     }
 }
 

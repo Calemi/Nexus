@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nexus:warpblossom_sign"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warpblossom_planks": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nexus:warpblossom_planks"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_warpblossom_planks"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nexus:warpblossom_sign"
+    ]
+  }
+}
