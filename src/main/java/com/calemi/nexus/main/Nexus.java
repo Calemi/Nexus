@@ -63,6 +63,7 @@ public class Nexus {
         MOD_EVENT_BUS.register(new CreativeTabContentsEventListener());
         FORGE_EVENT_BUS.register(new NexusPortalCoreHUDOverlayEventListener());
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockEventListener());
+        FORGE_EVENT_BUS.register(new HoleTeleportEventListener());
 
         LOGGER.info("Registering: Common - End");
     }
