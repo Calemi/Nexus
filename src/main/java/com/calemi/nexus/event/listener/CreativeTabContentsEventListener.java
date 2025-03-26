@@ -43,20 +43,14 @@ public class CreativeTabContentsEventListener {
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-            add(event, Items.MYCELIUM,
-                    NexusBlocks.CHRONOWARPED_GRASS.get().asItem());
-            add(event, Items.MUD,
-                    NexusBlocks.CHRONOWARPED_DIRT.get().asItem());
-            add(event, Items.RED_SAND,
-                    NexusBlocks.CHRONOWARPED_SAND.get().asItem());
-            add(event, Items.DEEPSLATE,
-                    NexusBlocks.WARPSLATE.get().asItem());
-            add(event, Items.WARPED_STEM,
-                    NexusBlocks.WARPBLOSSOM_LOG.get().asItem());
-            add(event, Items.CHERRY_LEAVES,
-                    NexusBlocks.WARPBLOSSOM_LEAVES.get().asItem());
-            add(event, Items.CHERRY_SAPLING,
-                    NexusBlocks.WARPBLOSSOM_SAPLING.get().asItem());
+            add(event, Items.MYCELIUM, NexusBlocks.CHRONOWARPED_GRASS.get().asItem());
+            add(event, Items.MUD, NexusBlocks.CHRONOWARPED_DIRT.get().asItem());
+            add(event, Items.RED_SAND, NexusBlocks.CHRONOWARPED_SAND.get().asItem());
+            add(event, Items.DEEPSLATE, NexusBlocks.WARPSLATE.get().asItem());
+            add(event, Items.WARPED_STEM, NexusBlocks.WARPBLOSSOM_LOG.get().asItem());
+            add(event, Items.CHERRY_LEAVES, NexusBlocks.WARPBLOSSOM_LEAVES.get().asItem());
+            add(event, Items.CHERRY_SAPLING, NexusBlocks.WARPBLOSSOM_SAPLING.get().asItem());
+            add(event, Items.PINK_PETALS, NexusBlocks.PURPLE_PETALS.get().asItem());
         }
 
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
@@ -72,11 +66,13 @@ public class CreativeTabContentsEventListener {
             add(event, Items.CAULDRON, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
         }
 
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            add(event, Items.CHERRY_CHEST_BOAT, NexusItems.WARPBLOSSOM_BOAT.get(), NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
+        }
+
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            add(event, Items.AMETHYST_SHARD,
-                    NexusItems.CHRONO_SHARD.get());
-            add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE,
-                    NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+            add(event, Items.AMETHYST_SHARD, NexusItems.CHRONO_SHARD.get());
+            add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
         }
     }
 

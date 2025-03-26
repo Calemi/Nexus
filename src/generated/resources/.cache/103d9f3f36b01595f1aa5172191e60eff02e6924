@@ -1,7 +1,9 @@
-// 1.21.1	2025-03-23T22:09:18.5635373	Registries
+// 1.21.1	2025-03-26T13:41:30.8465067	Registries
 935b732e9f183b3e303aa4d8a930415dee17b031 data/nexus/dimension/the_nexus.json
 bcce14ab7fd826f9432e14153ee93dea15d3e422 data/nexus/dimension_type/the_nexus.json
-0edace5be9bfa3e36afdd166099f65641d9b3a94 data/nexus/worldgen/biome/chronowarped_fields.json
+a17313eda896930c5ba284fe1af508550a1f68da data/nexus/worldgen/biome/chronowarped_fields.json
+f2c733a1ab6d0df685ae470dc13bc87788b8d64b data/nexus/worldgen/configured_feature/flower_purple_petal.json
 0904618d17aa932429b3b71eaa5a70540e77e07a data/nexus/worldgen/configured_feature/warpblossom.json
 601d42b234b16a79cb9ad46f4d5714a0dc3cde15 data/nexus/worldgen/noise_settings/the_nexus.json
+29c68e569a16d01bbeac55e95541249097bffea4 data/nexus/worldgen/placed_feature/flower_purple_petal.json
 2e851e1c4c5c4e3848691ce3b01f7aede9e6e31c data/nexus/worldgen/placed_feature/warpblossom.json

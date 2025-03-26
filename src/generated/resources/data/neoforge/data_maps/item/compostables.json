@@ -1,5 +1,8 @@
 {
   "values": {
+    "nexus:purple_petals": {
+      "chance": 0.3
+    },
     "nexus:warpblossom_leaves": {
       "chance": 0.3
     },

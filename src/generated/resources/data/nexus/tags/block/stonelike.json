@@ -7,10 +7,10 @@
       "required": false
     },
     "nexus:cobbled_warpslate",
-    "nexus:chiseled_warpslate",
     "nexus:cobbled_warpslate_stairs",
     "nexus:cobbled_warpslate_slab",
     "nexus:cobbled_warpslate_wall",
+    "nexus:chiseled_warpslate",
     "nexus:polished_warpslate",
     "nexus:polished_warpslate_stairs",
     "nexus:polished_warpslate_slab",

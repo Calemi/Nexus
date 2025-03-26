@@ -30,6 +30,10 @@ public class NexusRecipeProvider extends RecipeProvider {
     @Override
     protected void buildRecipes(RecipeOutput recipeOutput) {
 
+        /*
+            BLOCKS
+         */
+
         NexusBlockFamilies.ALL.forEach(set -> family(set, recipeOutput));
 
         portalCore(
@@ -105,6 +109,15 @@ public class NexusRecipeProvider extends RecipeProvider {
         twoByTwo(NexusBlocks.POLISHED_WARPSLATE, 4, NexusBlocks.COBBLED_WARPSLATE, null, recipeOutput);
         twoByTwo(NexusBlocks.WARPSLATE_BRICKS, 4, NexusBlocks.POLISHED_WARPSLATE, null, recipeOutput);
         twoByTwo(NexusBlocks.WARPSLATE_TILES, 4, NexusBlocks.WARPSLATE_BRICKS, null, recipeOutput);
+
+        /*
+            ITEMS
+         */
+
+        woodenBoat(recipeOutput, NexusItems.WARPBLOSSOM_BOAT, NexusBlocks.WARPBLOSSOM_PLANKS);
+        chestBoat(recipeOutput, NexusItems.WARPBLOSSOM_CHEST_BOAT, NexusItems.WARPBLOSSOM_BOAT);
+
+        oneToOneConversionRecipe(recipeOutput, Items.PURPLE_DYE, NexusBlocks.PURPLE_PETALS, "purple_dye", 1);
     }
 
     private void family(CBlockFamily family, RecipeOutput recipeOutput) {

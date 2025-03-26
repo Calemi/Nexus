@@ -1,11 +1,11 @@
 package com.calemi.nexus.datagen;
 
+import com.calemi.ccore.api.family.CBlockFamily;
 import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.regsitry.NexusBlockFamilies;
 import com.calemi.nexus.regsitry.NexusBlocks;
 import com.calemi.nexus.regsitry.NexusLists;
-import com.calemi.ccore.api.family.CBlockFamily;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -15,8 +15,11 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.registries.DeferredBlock;
+
+import java.util.Arrays;
 
 import static com.calemi.nexus.main.NexusRef.ID;
 import static com.calemi.nexus.main.NexusRef.rl;
@@ -45,6 +48,8 @@ public class NexusBlockStateProvider extends BlockStateProvider {
 
         sapling(NexusBlocks.WARPBLOSSOM_SAPLING);
         flowerPot(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING, NexusBlocks.WARPBLOSSOM_SAPLING);
+
+        petal(NexusBlocks.PURPLE_PETALS);
     }
 
     private void family(CBlockFamily family) {
@@ -122,12 +127,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         ModelFile model = models().cross(blockName, rl(blockPath)).renderType("cutout");
 
         simpleBlock(block, model);
-
-        String itemParent = "item/generated";
-
-        itemModels().getBuilder(blockName)
-                .parent(new ModelFile.UncheckedModelFile(itemParent))
-                .texture("layer0", NexusRef.rl(blockPath));
+        flatItem(blockName, "block");
     }
 
     private void log(DeferredBlock<?> deferredLog, DeferredBlock<?> deferredWood) {
@@ -248,12 +248,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         ResourceLocation topBlockRL = rl(blockPath + "_top");
 
         doorBlockWithRenderType(block, bottomBlockRL, topBlockRL, "cutout");
-
-        String itemParent = "item/generated";
-
-        itemModels().getBuilder(blockName)
-                .parent(new ModelFile.UncheckedModelFile(itemParent))
-                .texture("layer0", NexusRef.rl("item/" + blockName));
+        flatItem(blockName, "item");
     }
 
     private void trapDoor(DeferredBlock<?> deferredBlock) {
@@ -319,12 +314,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         ResourceLocation blockMaterialRL = rl(blockMaterialPath);
 
         signBlock(blockSign, blockWallSign, blockMaterialRL);
-
-        String itemParent = "item/generated";
-
-        itemModels().getBuilder(blockSignName)
-                .parent(new ModelFile.UncheckedModelFile(itemParent))
-                .texture("layer0", NexusRef.rl("item/" + blockSignName));
+        flatItem(blockSignName, "item");
     }
 
     private void hangingSign(DeferredBlock<?> deferredBlockHangingSign, DeferredBlock<?> deferredBlockHangingWallSign, DeferredBlock<?> deferredBlockMaterial) {
@@ -341,31 +331,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
 
         hangingSignBlock(blockHangingSign, blockHangingWallSign, blockMaterialRL);
 
-        String itemParent = "item/generated";
-
-        itemModels().getBuilder(blockHangingSignName)
-                .parent(new ModelFile.UncheckedModelFile(itemParent))
-                .texture("layer0", NexusRef.rl("item/" + blockHangingSignName));
-    }
-
-    private void flowerPot(DeferredBlock<?> deferredBlockPottedFlower, DeferredBlock<?> deferredBlockFlower) {
-
-        Block blockPottedFlower = deferredBlockPottedFlower.get();
-        Block blockFlower = deferredBlockFlower.get();
-
-        String pottedFlowerName = name(blockPottedFlower);
-        String flowerName = name(blockFlower);
-
-        String pottedFlowerPath = "block/" + pottedFlowerName;
-        String flowerPath = "block/" + flowerName;
-
-        ResourceLocation flowerTextureRL = rl(flowerPath);
-
-        String modelParent = "minecraft:block/flower_pot_cross";
-
-        ModelFile model = models().withExistingParent(pottedFlowerPath, modelParent).texture("plant", flowerTextureRL).renderType("cutout");
-
-        simpleBlock(blockPottedFlower, model);
+        flatItem(blockHangingSignName, "item");
     }
 
     private void deepslate(DeferredBlock<?> deferredBlock) {
@@ -416,6 +382,67 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(block, model);
     }
 
+    private void petal(DeferredBlock<?> deferredBlock) {
+
+        Block block = deferredBlock.get();
+        String blockName = name(block);
+
+        Direction[] directions = {Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
+        int[] flowerAmounts = {1, 2, 3, 4};
+        ModelFile[] models = {
+                petalModel(blockName, 1),
+                petalModel(blockName, 2),
+                petalModel(blockName, 3),
+                petalModel(blockName, 4)
+        };
+
+        MultiPartBlockStateBuilder builder = getMultipartBuilder(block);
+
+        for (int i = 0; i < models.length; i++) {
+
+            for (Direction direction : directions) {
+
+                int[] applicableAmounts = Arrays.copyOfRange(flowerAmounts, i, flowerAmounts.length);
+
+                builder.part().modelFile(models[i])
+                        .rotationY(direction.getCounterClockWise().getCounterClockWise().get2DDataValue() * 90)
+                        .addModel()
+                        .condition(BlockStateProperties.HORIZONTAL_FACING, direction)
+                        .condition(BlockStateProperties.FLOWER_AMOUNT, Arrays.stream(applicableAmounts).boxed().toArray(Integer[]::new))
+                        .end();
+            }
+        }
+
+        flatItem(blockName, "item");
+    }
+
+    private ModelFile petalModel(String blockName, int petalAmount) {
+        return models().withExistingParent(blockName + "_" + petalAmount, "minecraft:block/flowerbed_" + petalAmount)
+                .texture("flowerbed", "block/" + blockName)
+                .texture("stem", "block/" + blockName + "_stem")
+                .renderType("cutout");
+    }
+
+    private void flowerPot(DeferredBlock<?> deferredBlockPottedFlower, DeferredBlock<?> deferredBlockFlower) {
+
+        Block blockPottedFlower = deferredBlockPottedFlower.get();
+        Block blockFlower = deferredBlockFlower.get();
+
+        String pottedFlowerName = name(blockPottedFlower);
+        String flowerName = name(blockFlower);
+
+        String pottedFlowerPath = "block/" + pottedFlowerName;
+        String flowerPath = "block/" + flowerName;
+
+        ResourceLocation flowerTextureRL = rl(flowerPath);
+
+        String modelParent = "minecraft:block/flower_pot_cross";
+
+        ModelFile model = models().withExistingParent(pottedFlowerPath, modelParent).texture("plant", flowerTextureRL).renderType("cutout");
+
+        simpleBlock(blockPottedFlower, model);
+    }
+
     private void nexusPortalCore(DeferredBlock<?> deferredBlock) {
 
         Block block = deferredBlock.get();
@@ -425,18 +452,17 @@ public class NexusBlockStateProvider extends BlockStateProvider {
 
         ModelFile model = models().cubeTop(blockName, rl(blockPath + "_side"), rl(blockPath + "_top"));
 
-        getVariantBuilder(block)
-                .forAllStates(state -> {
+        getVariantBuilder(block).forAllStates(state -> {
 
-                    Direction facing = state.getValue(BlockStateProperties.FACING);
-                    Direction.Axis axis = state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
+            Direction facing = state.getValue(BlockStateProperties.FACING);
+            Direction.Axis axis = state.getValue(BlockStateProperties.HORIZONTAL_AXIS);
 
-                    return ConfiguredModel.builder()
-                            .modelFile(model)
-                            .rotationX(facing == Direction.DOWN ? 180 : facing.getAxis().isHorizontal() ? 90 : 0)
-                            .rotationY(facing.getAxis().isVertical() ? (axis == Direction.Axis.Z ? 90 : 0) : (((int) facing.toYRot() + 180)) % 360)
-                            .build();
-                });
+            return ConfiguredModel.builder()
+                    .modelFile(model)
+                    .rotationX(facing == Direction.DOWN ? 180 : facing.getAxis().isHorizontal() ? 90 : 0)
+                    .rotationY(facing.getAxis().isVertical() ? (axis == Direction.Axis.Z ? 90 : 0) : (((int) facing.toYRot() + 180)) % 360)
+                    .build();
+        });
 
         simpleBlockItem(block, model);
     }
@@ -461,6 +487,12 @@ public class NexusBlockStateProvider extends BlockStateProvider {
                 .modelForState().modelFile(model).rotationX(90).addModel()
                 .partialState().with(NexusPortalBlock.AXIS, Direction.Axis.Y)
                 .modelForState().modelFile(model).addModel();
+    }
+
+    private void flatItem(String name, String textureSource) {
+        itemModels().getBuilder(name)
+                .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                .texture("layer0", NexusRef.rl(textureSource + "/" + name));
     }
 
     private ResourceLocation key(Block block) {

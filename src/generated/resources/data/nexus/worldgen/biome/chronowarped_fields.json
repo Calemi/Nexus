@@ -21,6 +21,7 @@
     [],
     [
       "minecraft:patch_grass_plain",
+      "nexus:flower_purple_petal",
       "nexus:warpblossom"
     ]
   ],

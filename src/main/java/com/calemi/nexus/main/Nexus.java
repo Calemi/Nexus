@@ -1,5 +1,6 @@
 package com.calemi.nexus.main;
 
+import com.calemi.ccore.api.init.CEntities;
 import com.calemi.nexus.event.listener.*;
 import com.calemi.nexus.packet.*;
 import com.calemi.nexus.regsitry.*;
@@ -39,6 +40,9 @@ public class Nexus {
         NexusAttachments.init();
         NexusParticles.init();
         NexusFoliagePlacers.init();
+
+        //TODO: MOVE TO CCORE
+        CEntities.init();
 
         MOD_EVENT_BUS.addListener(this::commonSetup);
         MOD_EVENT_BUS.addListener(this::clientSetup);

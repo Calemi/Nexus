@@ -213,6 +213,8 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
 
         tag(BlockTags.MINEABLE_WITH_HOE).add(NexusBlocks.WARPBLOSSOM_LEAVES.get());
 
+        tag(BlockTags.SWORD_EFFICIENT).add(NexusBlocks.PURPLE_PETALS.get());
+
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .addOptionalTag(NexusTags.Blocks.NEXUS_PORTAL_CORES);
 
@@ -243,7 +245,16 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.LEAVES)
                 .add(NexusBlocks.WARPBLOSSOM_LEAVES.get());
 
+        tag(BlockTags.FLOWERS)
+                .add(NexusBlocks.PURPLE_PETALS.get());
+
         tag(BlockTags.SAPLINGS)
                 .add(NexusBlocks.WARPBLOSSOM_SAPLING.get());
+
+        tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
+                .add(NexusBlocks.PURPLE_PETALS.get());
+
+        tag(BlockTags.MINEABLE_WITH_HOE)
+                .add(NexusBlocks.PURPLE_PETALS.get());
     }
 }

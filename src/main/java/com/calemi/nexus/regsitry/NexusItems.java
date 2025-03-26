@@ -1,5 +1,6 @@
 package com.calemi.nexus.regsitry;
 
+import com.calemi.ccore.api.item2.CBoatItem;
 import com.calemi.ccore.api.item2.SmithingTemplateHelper;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
@@ -29,6 +30,12 @@ public class NexusItems {
 
     public static final DeferredItem<Item> WARPBLOSSOM_HANGING_SIGN = regItem("warpblossom_hanging_sign",
             () -> new HangingSignItem(NexusBlocks.WARPBLOSSOM_HANGING_SIGN.get(), NexusBlocks.WARPBLOSSOM_WALL_HANGING_SIGN.get(), new Item.Properties()));
+
+    public static final DeferredItem<Item> WARPBLOSSOM_BOAT = regItem("warpblossom_boat",
+            () -> new CBoatItem(NexusBoatTypes.WARPBLOSSOM, false, new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> WARPBLOSSOM_CHEST_BOAT = regItem("warpblossom_chest_boat",
+            () -> new CBoatItem(NexusBoatTypes.WARPBLOSSOM, true, new Item.Properties().stacksTo(1)));
 
     public static DeferredItem<Item> regItem(String name, Supplier<Item> sup) {
         return ITEMS.register(name, sup);

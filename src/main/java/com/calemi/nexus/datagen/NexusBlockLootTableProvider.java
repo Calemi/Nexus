@@ -50,6 +50,12 @@ public class NexusBlockLootTableProvider extends BlockLootSubProvider {
                 return;
             }
 
+            Block purplePetals = NexusBlocks.PURPLE_PETALS.get();
+            if (block.get().equals(purplePetals)) {
+                add(purplePetals, createPetalsDrops(purplePetals));
+                return;
+            }
+
             Block warpblossomDoor = NexusBlocks.WARPBLOSSOM_DOOR.get();
             if (block.get().equals(warpblossomDoor)) {
                 add(warpblossomDoor, createDoorTable(warpblossomDoor));

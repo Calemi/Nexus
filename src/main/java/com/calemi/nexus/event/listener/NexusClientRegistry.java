@@ -2,9 +2,12 @@ package com.calemi.nexus.event.listener;
 
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
+import com.calemi.nexus.regsitry.NexusBlocks;
 import com.calemi.nexus.regsitry.NexusLists;
 import com.calemi.nexus.render.CamoBlockColor;
 import com.calemi.nexus.render.NexusPortalCoreBakedModel;
+import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.world.level.GrassColor;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
@@ -16,8 +19,16 @@ public class NexusClientRegistry {
 
     @SubscribeEvent
     public static void onBlockColorHandlersRegistry(RegisterColorHandlersEvent.Block event) {
+
         Nexus.LOGGER.info("Registering: Block Colors - Start");
+
         event.register(new CamoBlockColor(), NexusLists.toBlockArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+
+        event.register((state, blockAndTintGetter, pos, tintIndex) -> {
+            if (tintIndex != 0) return blockAndTintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(blockAndTintGetter, pos) : GrassColor.getDefaultColor();
+            else return -1;
+        }, NexusBlocks.PURPLE_PETALS.get());
+
         Nexus.LOGGER.info("Registering: Block Colors - End");
     }
 

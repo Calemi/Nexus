@@ -8,6 +8,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredHolder;
@@ -79,6 +80,7 @@ public class NexusLists {
         ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
         ALL_BLOCKS.add(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING);
         ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
+        ALL_BLOCKS.add(NexusBlocks.PURPLE_PETALS);
         ALL_BLOCKS.addAll(NexusBlockFamilies.WARPBLOSSOM.getAllBlocks());
     }
 
@@ -87,6 +89,8 @@ public class NexusLists {
     static {
         ALL_ITEMS.add(NexusItems.CHRONO_SHARD);
         ALL_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE);
+        ALL_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT);
+        ALL_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT);
     }
 
     public static final List<Item> ALL_BLOCKS_AND_ITEMS = new ArrayList<>();
@@ -97,6 +101,28 @@ public class NexusLists {
 
         Nexus.LOGGER.debug("ALL BLOCKS AND ITEMS");
         ALL_BLOCKS_AND_ITEMS.forEach(item -> Nexus.LOGGER.debug("entry: {}", item.getDescriptionId()));
+    }
+
+    public static final List<ItemLike> TAB_NEXUS_MAIN_ITEMS = new ArrayList<>();
+
+    static {
+        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromDefBlock(NEXUS_PORTAL_CORE_BLOCKS));
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_SHARD);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_GRASS);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_DIRT);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_SAND);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPSLATE);
+        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.COBBLED_WARPSLATE));
+        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.POLISHED_WARPSLATE));
+        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.WARPSLATE_BRICK));
+        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.WARPSLATE_TILE));
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.PURPLE_PETALS);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
+        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.WARPBLOSSOM));
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT);
     }
 
     /*
@@ -158,11 +184,15 @@ public class NexusLists {
         return new ArrayList<>(items.stream().map(DeferredItem::get).toList());
     }
 
+    public static List<Item> toItemListFromFamily(CBlockFamily family) {
+        return toItemListFromDefBlock(family.getAllBlocks());
+    }
+
     public static List<ItemStack> toItemStackListFromDefBlock(List<DeferredBlock<Block>> blocks) {
         return new ArrayList<>(blocks.stream().map(block -> new ItemStack(block.asItem())).toList());
     }
 
-    public static List<ItemStack> toItemStackListFromItem(List<Item> items) {
+    public static List<ItemStack> toItemStackListFromItem(List<ItemLike> items) {
         return new ArrayList<>(items.stream().map(ItemStack::new).toList());
     }
 }

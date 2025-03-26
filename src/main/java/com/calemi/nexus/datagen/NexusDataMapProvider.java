@@ -21,6 +21,7 @@ public class NexusDataMapProvider extends DataMapProvider {
         builder(NeoForgeDataMaps.COMPOSTABLES)
                 .replace(false)
                 .add(NexusBlocks.WARPBLOSSOM_LEAVES.getId(), new Compostable(0.3F), false)
-                .add(NexusBlocks.WARPBLOSSOM_SAPLING.getId(), new Compostable(0.3F), false);
+                .add(NexusBlocks.WARPBLOSSOM_SAPLING.getId(), new Compostable(0.3F), false)
+                .add(NexusBlocks.PURPLE_PETALS.getId(), new Compostable(0.3F), false);
     }
 }

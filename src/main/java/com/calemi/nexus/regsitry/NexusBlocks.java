@@ -199,6 +199,9 @@ public class NexusBlocks {
     public static final DeferredBlock<Block> POTTED_WARPBLOSSOM_SAPLING    = regBlock("potted_warpblossom_sapling", () ->
             flowerPot(WARPBLOSSOM_SAPLING.get()));
 
+    public static final DeferredBlock<Block> PURPLE_PETALS                 = regBlock("purple_petals", () ->
+            new PinkPetalsBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.PINK_PETALS)));
+
 
 
     public static final DeferredBlock<Block> WARPBLOSSOM_PLANKS            = regBlock("warpblossom_planks", () ->

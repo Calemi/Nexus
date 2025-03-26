@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-25T16:54:52.5537691	Tags for minecraft:item mod id nexus
+// 1.21.1	2025-03-26T13:50:06.8981933	Tags for minecraft:item mod id nexus
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/c/tags/item/cobblestones/deepslate.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/c/tags/item/fences.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/c/tags/item/fences/wooden.json
@@ -7,9 +7,12 @@ d2ac2365e8f20a7fcbd83ee6557409d5d41a49e2 data/c/tags/item/fence_gates/wooden.jso
 d9376b938737560d696b410181953cac6267f19e data/c/tags/item/sands.json
 73a343b1a305200794277704c711fb60b44ac7f8 data/c/tags/item/stripped_logs.json
 1b2cef64a4688f4f5341a1d8ccdda5e4763a976b data/c/tags/item/stripped_woods.json
+21d7b15305a3d62976e49d6c2765002882d7d7e2 data/minecraft/tags/item/boats.json
+46f51084edc7029c563ea53d843f0387158769c7 data/minecraft/tags/item/chest_boats.json
 15aea02a6a3db8cb56ad1cad21cf988cff4f07c6 data/minecraft/tags/item/dirt.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/minecraft/tags/item/fences.json
 d2ac2365e8f20a7fcbd83ee6557409d5d41a49e2 data/minecraft/tags/item/fence_gates.json
+2ed485a47da04249991c553c7d73be387c76066f data/minecraft/tags/item/flowers.json
 ca88d3545330077fbbcb7c8b273942c3e896e713 data/minecraft/tags/item/hanging_signs.json
 7798cd1c3ddcb6c9079d7dd2c227ae3c39a815cf data/minecraft/tags/item/leaves.json
 5ab779a99ff22b6681fac922b544ccfd5dc454ca data/minecraft/tags/item/logs_that_burn.json

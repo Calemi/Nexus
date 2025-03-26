@@ -1,8 +1,7 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusBlocks;
-import com.calemi.nexus.regsitry.NexusItems;
+import com.calemi.nexus.regsitry.NexusLists;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
@@ -15,7 +14,7 @@ public class NexusItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-        basicItem(NexusItems.CHRONO_SHARD.get());
-        basicItem(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+
+        NexusLists.ALL_ITEMS.forEach(item -> basicItem(item.get()));
     }
 }

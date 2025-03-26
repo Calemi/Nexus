@@ -4,11 +4,11 @@
       "id": "#nexus:warpblossom_logs",
       "required": false
     },
-    "nexus:warpblossom_planks",
     "nexus:warpblossom_log",
     "nexus:warpblossom_wood",
     "nexus:stripped_warpblossom_log",
     "nexus:stripped_warpblossom_wood",
+    "nexus:warpblossom_planks",
     "nexus:warpblossom_stairs",
     "nexus:warpblossom_slab",
     "nexus:warpblossom_fence",

@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-25T12:27:45.6104248	Loot Tables
+// 1.21.1	2025-03-26T13:08:25.7345835	Loot Tables
 93ffdf1f32405ab207db0f8286f7428bd256908f data/nexus/loot_table/blocks/black_nexus_portal.json
 a974bda0c332511a28710c029742702a1d8679f7 data/nexus/loot_table/blocks/blue_nexus_portal.json
 0be69c72cd9ad0ae7003e4a81a86710c395d7206 data/nexus/loot_table/blocks/brown_nexus_portal.json
@@ -32,6 +32,7 @@ ad6736d78ce45ab3826e51371a39812d576e20d8 data/nexus/loot_table/blocks/polished_w
 617c3e99edd54cf040da22c76f8d060f611b7e3a data/nexus/loot_table/blocks/polished_warpslate_wall.json
 660a336a64af9639022e2969881d04277ff61d8b data/nexus/loot_table/blocks/potted_warpblossom_sapling.json
 ff74ec79b5eda336cffd50285b98d54d7c993ddb data/nexus/loot_table/blocks/purple_nexus_portal.json
+179b06de85414cbf8f890a0790227f0eb8a308f6 data/nexus/loot_table/blocks/purple_petals.json
 7bf6e64da1f52d218fe7a49195ab687295f8b98b data/nexus/loot_table/blocks/red_nexus_portal.json
 0964ab1d785954cd33542df6f72a849d510f7bf9 data/nexus/loot_table/blocks/starlight_nexus_portal_core.json
 1c12c34cc784abac223478f9443edd934c0c6b3c data/nexus/loot_table/blocks/stripped_warpblossom_log.json

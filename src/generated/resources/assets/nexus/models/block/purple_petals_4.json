@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/flowerbed_4",
+  "render_type": "minecraft:cutout",
+  "textures": {
+    "flowerbed": "nexus:block/purple_petals",
+    "stem": "nexus:block/purple_petals_stem"
+  }
+}

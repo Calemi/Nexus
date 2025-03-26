@@ -34,6 +34,9 @@ public class NexusItemTagProvider extends ItemTagsProvider {
         tag(ItemTags.STONE_TOOL_MATERIALS)
                 .add(NexusBlocks.COBBLED_WARPSLATE.asItem());
 
+        tag(ItemTags.BOATS).add(NexusItems.WARPBLOSSOM_BOAT.get());
+        tag(ItemTags.CHEST_BOATS).add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
+
         copy(Tags.Blocks.SANDS, Tags.Items.SANDS);
         copy(BlockTags.DIRT, ItemTags.DIRT);
         copy(BlockTags.SAND, ItemTags.SAND);
@@ -63,5 +66,6 @@ public class NexusItemTagProvider extends ItemTagsProvider {
         copy(BlockTags.WOODEN_BUTTONS, ItemTags.WOODEN_BUTTONS);
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
+        copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
     }
 }
