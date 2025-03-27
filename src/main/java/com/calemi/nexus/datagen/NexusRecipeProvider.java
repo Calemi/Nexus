@@ -2,9 +2,9 @@ package com.calemi.nexus.datagen;
 
 import com.calemi.ccore.api.family.CBlockFamily;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusBlockFamilies;
-import com.calemi.nexus.regsitry.NexusBlocks;
-import com.calemi.nexus.regsitry.NexusItems;
+import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.item.NexusItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;

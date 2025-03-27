@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "nexus:block/medium_chrono_bud",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "nexus:block/medium_chrono_bud",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "nexus:block/medium_chrono_bud",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "nexus:block/medium_chrono_bud",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "nexus:block/medium_chrono_bud"
+    },
+    "facing=west": {
+      "model": "nexus:block/medium_chrono_bud",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

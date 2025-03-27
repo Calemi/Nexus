@@ -1,6 +1,6 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.nexus.regsitry.NexusBlocks;
+import com.calemi.nexus.block.NexusBlocks;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.common.data.DataMapProvider;

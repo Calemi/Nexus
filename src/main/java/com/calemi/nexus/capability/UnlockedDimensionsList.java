@@ -1,7 +1,6 @@
 package com.calemi.nexus.capability;
 
-import com.calemi.nexus.regsitry.NexusAttachments;
-import com.calemi.nexus.regsitry.NexusDimensions;
+import com.calemi.nexus.world.dimension.NexusDimensions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;

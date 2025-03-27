@@ -3,9 +3,9 @@ package com.calemi.nexus.datagen;
 import com.calemi.ccore.api.family.CBlockFamily;
 import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusBlockFamilies;
-import com.calemi.nexus.regsitry.NexusBlocks;
-import com.calemi.nexus.regsitry.NexusLists;
+import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -41,6 +41,13 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         grass(NexusBlocks.CHRONOWARPED_GRASS, "chronowarped_dirt");
         all(NexusBlocks.CHRONOWARPED_DIRT);
         all(NexusBlocks.CHRONOWARPED_SAND);
+
+        all(NexusBlocks.CHRONO_BLOCK);
+        all(NexusBlocks.BUDDING_CHRONO);
+        crystal(NexusBlocks.SMALL_CHRONO_BUD);
+        crystal(NexusBlocks.MEDIUM_CHRONO_BUD);
+        crystal(NexusBlocks.LARGE_CHRONO_BUD);
+        crystal(NexusBlocks.CHRONO_CLUSTER);
 
         deepslate(NexusBlocks.WARPSLATE);
 
@@ -380,6 +387,33 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         ModelFile model = models().cubeBottomTop(blockName, rl(blockPath + "_side"), rl(dirtPath), rl(blockPath + "_top"));
 
         simpleBlockWithItem(block, model);
+    }
+
+    private void crystal(DeferredBlock<?> deferredBlock) {
+
+        Block blockCrystal = deferredBlock.get();
+
+        String blockCrystalName = name(blockCrystal);
+        String blockCrystalPath = "block/" + blockCrystalName;
+
+        String modelParent = "minecraft:block/cross";
+        ModelFile model = models().withExistingParent(blockCrystalPath, modelParent).texture("cross", rl(blockCrystalPath)).renderType("cutout");
+
+        getVariantBuilder(blockCrystal)
+                .partialState().with(BlockStateProperties.FACING, Direction.DOWN)
+                .modelForState().modelFile(model).rotationX(180).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.EAST)
+                .modelForState().modelFile(model).rotationX(90).rotationY(90).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.NORTH)
+                .modelForState().modelFile(model).rotationX(90).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.SOUTH)
+                .modelForState().modelFile(model).rotationX(90).rotationY(180).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.UP)
+                .modelForState().modelFile(model).addModel()
+                .partialState().with(BlockStateProperties.FACING, Direction.WEST)
+                .modelForState().modelFile(model).rotationX(90).rotationY(270).addModel();
+
+        flatItem(blockCrystalName, "block");
     }
 
     private void petal(DeferredBlock<?> deferredBlock) {

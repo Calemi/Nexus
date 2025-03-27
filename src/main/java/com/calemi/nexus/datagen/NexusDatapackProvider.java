@@ -1,7 +1,11 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.*;
+import com.calemi.nexus.world.biome.NexusBiomes;
+import com.calemi.nexus.world.dimension.NexusDimensions;
+import com.calemi.nexus.world.feature.configured.NexusConfiguredFeatures;
+import com.calemi.nexus.world.feature.placed.NexusPlacedFeatures;
+import com.calemi.nexus.world.noise.NexusNoiseSettings;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;

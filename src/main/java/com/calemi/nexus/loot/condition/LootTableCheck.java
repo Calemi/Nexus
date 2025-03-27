@@ -1,6 +1,5 @@
 package com.calemi.nexus.loot.condition;
 
-import com.calemi.nexus.regsitry.NexusLootItemConditions;
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.minecraft.resources.ResourceLocation;

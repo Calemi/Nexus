@@ -1,8 +1,8 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusLists;
-import com.calemi.nexus.regsitry.NexusParticles;
+import com.calemi.nexus.util.NexusLists;
+import com.calemi.nexus.client.partclie.NexusParticles;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

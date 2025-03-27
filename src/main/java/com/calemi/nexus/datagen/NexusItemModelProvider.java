@@ -1,7 +1,7 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusLists;
+import com.calemi.nexus.util.NexusLists;
 import net.minecraft.data.PackOutput;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;

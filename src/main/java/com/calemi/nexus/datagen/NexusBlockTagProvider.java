@@ -1,10 +1,10 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusBlockFamilies;
-import com.calemi.nexus.regsitry.NexusBlocks;
-import com.calemi.nexus.regsitry.NexusLists;
-import com.calemi.nexus.regsitry.NexusTags;
+import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.util.NexusLists;
+import com.calemi.nexus.tag.NexusTags;
 import com.calemi.ccore.api.family.CBlockFamily;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -37,9 +37,12 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.CHRONOWARPED_SAND.get());
 
         tag(NexusTags.Blocks.STONELIKE)
+                .add(NexusBlocks.CHRONO_BLOCK.get())
+                .add(NexusBlocks.BUDDING_CHRONO.get())
                 .add(NexusBlocks.WARPSLATE.get())
                 .add(NexusBlocks.CHISELED_WARPSLATE.get())
                 .addOptionalTag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
+                .addAll(NexusLists.toResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)))
                 .addAll(NexusLists.toResourceKeyList((NexusLists.toDefBlockListFromBlockSet(NexusBlockFamilies.getFamiliesOfType(CBlockFamily.Type.COBBLESTONE)))))
                 .addAll(NexusLists.toResourceKeyList((NexusLists.toDefBlockListFromBlockSet(NexusBlockFamilies.getFamiliesOfType(CBlockFamily.Type.STONE)))));
 
@@ -252,9 +255,24 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.WARPBLOSSOM_SAPLING.get());
 
         tag(BlockTags.INSIDE_STEP_SOUND_BLOCKS)
-                .add(NexusBlocks.PURPLE_PETALS.get());
+                .add(NexusBlocks.PURPLE_PETALS.get(), NexusBlocks.SMALL_CHRONO_BUD.get());
 
         tag(BlockTags.MINEABLE_WITH_HOE)
                 .add(NexusBlocks.PURPLE_PETALS.get());
+
+        tag(BlockTags.CRYSTAL_SOUND_BLOCKS)
+                .add(NexusBlocks.CHRONO_BLOCK.get(), NexusBlocks.BUDDING_CHRONO.get());
+
+        tag(Tags.Blocks.BUDDING_BLOCKS)
+                .add(NexusBlocks.BUDDING_CHRONO.get());
+
+        tag(Tags.Blocks.BUDS)
+                .add(NexusBlocks.SMALL_CHRONO_BUD.get(), NexusBlocks.MEDIUM_CHRONO_BUD.get(), NexusBlocks.LARGE_CHRONO_BUD.get());
+
+        tag(Tags.Blocks.CLUSTERS)
+                .add(NexusBlocks.CHRONO_CLUSTER.get());
+
+        tag(BlockTags.VIBRATION_RESONATORS)
+                .add(NexusBlocks.CHRONO_BLOCK.get());
     }
 }

@@ -24,7 +24,9 @@
       "nexus:flower_purple_petal",
       "nexus:warpblossom",
       "nexus:amethyst_cluster",
-      "nexus:amethyst_cluster_submerged"
+      "nexus:amethyst_cluster_submerged",
+      "nexus:chrono_cluster",
+      "nexus:chrono_cluster_submerged"
     ]
   ],
   "has_precipitation": true,

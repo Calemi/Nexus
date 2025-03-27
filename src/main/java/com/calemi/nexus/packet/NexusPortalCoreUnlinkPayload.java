@@ -4,7 +4,7 @@ import com.calemi.ccore.api.item.ItemHelper;
 import com.calemi.ccore.api.location.Location;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusMessengers;
+import com.calemi.nexus.util.NexusMessengers;
 import com.calemi.nexus.util.NexusSoundHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;

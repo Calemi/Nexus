@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "nexus:block/chrono_cluster",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "nexus:block/chrono_cluster",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "nexus:block/chrono_cluster",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "nexus:block/chrono_cluster",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "nexus:block/chrono_cluster"
+    },
+    "facing=west": {
+      "model": "nexus:block/chrono_cluster",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

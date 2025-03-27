@@ -1,7 +1,8 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.nexus.regsitry.NexusBlocks;
-import com.calemi.nexus.regsitry.NexusLists;
+import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.loot.BlockLootSubProvider;
@@ -29,6 +30,24 @@ public class NexusBlockLootTableProvider extends BlockLootSubProvider {
             Block chronowarpedGrass = NexusBlocks.CHRONOWARPED_GRASS.get();
             if (block.get().equals(chronowarpedGrass)) {
                 add(chronowarpedGrass, createSingleItemTableWithSilkTouch(chronowarpedGrass, NexusBlocks.CHRONOWARPED_DIRT.get()));
+                return;
+            }
+
+            Block buddingChrono = NexusBlocks.BUDDING_CHRONO.get();
+            if (block.get().equals(buddingChrono)) {
+                add(buddingChrono, noDrop());
+                return;
+            }
+
+            if (NexusLists.CHRONO_CLUSTER_BLOCKS.contains(block)) {
+
+                Block chronoCluster = NexusBlocks.CHRONO_CLUSTER.get();
+                if (block.get().equals(chronoCluster)) {
+                    add(chronoCluster, createSingleItemTableWithSilkTouch(chronoCluster, NexusItems.CHRONO_SHARD));
+                    return;
+                }
+
+                add(block.get(), createSilkTouchOnlyTable(block));
                 return;
             }
 

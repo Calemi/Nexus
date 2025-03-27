@@ -1,8 +1,8 @@
 package com.calemi.nexus.compat;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusItems;
-import com.calemi.nexus.regsitry.NexusLists;
+import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.util.NexusLists;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;

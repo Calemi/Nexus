@@ -1,4 +1,7 @@
-// 1.21.1	2025-03-26T13:28:27.5461966	Tags for minecraft:block mod id nexus
+// 1.21.1	2025-03-27T12:21:08.1794606	Tags for minecraft:block mod id nexus
+9d4136bd48a42e895b3730be0cbca7f8da6fec48 data/c/tags/block/budding_blocks.json
+2230eb61f10aa8dd9d43cc065c00ea621a26e5b3 data/c/tags/block/buds.json
+4d43007c8519b43c54452d6ef6b8d57dbae1bb39 data/c/tags/block/clusters.json
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/c/tags/block/cobblestones/deepslate.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/c/tags/block/fences.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/c/tags/block/fences/wooden.json
@@ -9,12 +12,13 @@ d9376b938737560d696b410181953cac6267f19e data/c/tags/block/sands.json
 1b2cef64a4688f4f5341a1d8ccdda5e4763a976b data/c/tags/block/stripped_woods.json
 11447634b78fe1c3ceb9ccf5fbb07d8e51f6958a data/minecraft/tags/block/buttons.json
 ca88d3545330077fbbcb7c8b273942c3e896e713 data/minecraft/tags/block/ceiling_hanging_signs.json
+e488e4ac2d5c8112f214028b3c6b8aa60116bc4c data/minecraft/tags/block/crystal_sound_blocks.json
 15aea02a6a3db8cb56ad1cad21cf988cff4f07c6 data/minecraft/tags/block/dirt.json
 36a3a5f7da66e78c9ea099721b78d8713b13fc30 data/minecraft/tags/block/doors.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/minecraft/tags/block/fences.json
 d2ac2365e8f20a7fcbd83ee6557409d5d41a49e2 data/minecraft/tags/block/fence_gates.json
 2ed485a47da04249991c553c7d73be387c76066f data/minecraft/tags/block/flowers.json
-2ed485a47da04249991c553c7d73be387c76066f data/minecraft/tags/block/inside_step_sound_blocks.json
+7503b74a451e25b1d14c4d818974e0b57b26fec7 data/minecraft/tags/block/inside_step_sound_blocks.json
 7798cd1c3ddcb6c9079d7dd2c227ae3c39a815cf data/minecraft/tags/block/leaves.json
 5ab779a99ff22b6681fac922b544ccfd5dc454ca data/minecraft/tags/block/logs_that_burn.json
 13fb0027400ec3ec4b3688dbe9a34f5386017bdc data/minecraft/tags/block/mineable/axe.json
@@ -35,6 +39,7 @@ d9376b938737560d696b410181953cac6267f19e data/minecraft/tags/block/smelts_to_gla
 50278897411770a9df12f0b120c2323f99dc49fc data/minecraft/tags/block/standing_signs.json
 2ed485a47da04249991c553c7d73be387c76066f data/minecraft/tags/block/sword_efficient.json
 fdf8ec281d3a67cb162e4d4a72809754aa567352 data/minecraft/tags/block/trapdoors.json
+3fef4116bcb15bb4bf670c1946635c6cee8bde24 data/minecraft/tags/block/vibration_resonators.json
 5e10e6b03dd40b640711bda33f2005d9ff2ba3d6 data/minecraft/tags/block/walls.json
 1afb61d7c6070276787eab0333d485aa3257c07c data/minecraft/tags/block/wall_hanging_signs.json
 f5239de4b5a3337d791034e1ebe24b99b99c5eee data/minecraft/tags/block/wall_signs.json
@@ -48,6 +53,6 @@ fdf8ec281d3a67cb162e4d4a72809754aa567352 data/minecraft/tags/block/wooden_trapdo
 a302615a2c754e3e388a89b2683a294ca1d35cda data/nexus/tags/block/dirtlike.json
 f26dc240901feafa860046c88cf99c20e743207f data/nexus/tags/block/nexus_portals.json
 e0656899361f4de718357ecb86dc639da33f05c0 data/nexus/tags/block/nexus_portal_cores.json
-d38c66114685636b7c0cd18a283d71526b5cf4fd data/nexus/tags/block/stonelike.json
+2fde0e3f5b60fc0a2ea0a270b84a5ec85d38bc1d data/nexus/tags/block/stonelike.json
 5ab779a99ff22b6681fac922b544ccfd5dc454ca data/nexus/tags/block/warpblossom_logs.json
 eef0fa1632018ad51d440022708a18df022baa78 data/nexus/tags/block/woodlike.json

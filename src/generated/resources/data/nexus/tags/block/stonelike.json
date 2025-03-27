@@ -1,11 +1,17 @@
 {
   "values": [
+    "nexus:chrono_block",
+    "nexus:budding_chrono",
     "nexus:warpslate",
     "nexus:chiseled_warpslate",
     {
       "id": "#nexus:nexus_portal_cores",
       "required": false
     },
+    "nexus:small_chrono_bud",
+    "nexus:medium_chrono_bud",
+    "nexus:large_chrono_bud",
+    "nexus:chrono_cluster",
     "nexus:cobbled_warpslate",
     "nexus:cobbled_warpslate_stairs",
     "nexus:cobbled_warpslate_slab",

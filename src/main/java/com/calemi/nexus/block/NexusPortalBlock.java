@@ -2,9 +2,8 @@ package com.calemi.nexus.block;
 
 import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
-import com.calemi.nexus.main.Nexus;
-import com.calemi.nexus.regsitry.NexusLists;
-import com.calemi.nexus.regsitry.NexusParticles;
+import com.calemi.nexus.util.NexusLists;
+import com.calemi.nexus.client.partclie.NexusParticles;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -33,7 +32,6 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import javax.annotation.Nullable;
-import java.util.List;
 
 public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 

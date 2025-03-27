@@ -1,9 +1,24 @@
 package com.calemi.nexus.main;
 
 import com.calemi.ccore.api.init.CEntities;
-import com.calemi.nexus.event.listener.*;
+import com.calemi.nexus.block.DyeNexusPortalBlockAction;
+import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.blockentity.BlockEntityTypeInjector;
+import com.calemi.nexus.blockentity.NexusBlockEntities;
+import com.calemi.nexus.capability.NexusAttachments;
+import com.calemi.nexus.client.render.RenderNexusPortalCoreHUDOverlay;
+import com.calemi.nexus.client.render.RenderNexusPortalCoreWorldOverlay;
+import com.calemi.nexus.client.partclie.NexusParticles;
+import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.item.axe.NexusStrippables;
+import com.calemi.nexus.loot.condition.NexusLootItemConditions;
+import com.calemi.nexus.loot.modifier.NexusLootModifiers;
 import com.calemi.nexus.packet.*;
-import com.calemi.nexus.regsitry.*;
+import com.calemi.nexus.tab.CreativeTabInjector;
+import com.calemi.nexus.tab.NexusCreativeModeTabs;
+import com.calemi.nexus.util.HoleTeleportAction;
+import com.calemi.nexus.world.feature.NexusFeatures;
+import com.calemi.nexus.world.feature.tree.NexusFoliagePlacers;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.Mod;
@@ -50,7 +65,7 @@ public class Nexus {
         MOD_EVENT_BUS.addListener(this::registerPackets);
 
         MOD_EVENT_BUS.addListener(NexusParticles::registerParticleProviders);
-        MOD_EVENT_BUS.addListener(BlockEntityTypeAddBlocksEventListener::addBlockEntityTypes);
+        MOD_EVENT_BUS.addListener(BlockEntityTypeInjector::addBlockEntityTypes);
 
         LOGGER.info("Registering: Main - End");
     }
@@ -61,10 +76,10 @@ public class Nexus {
 
         NexusStrippables.init();
 
-        MOD_EVENT_BUS.register(new CreativeTabContentsEventListener());
-        FORGE_EVENT_BUS.register(new NexusPortalCoreHUDOverlayEventListener());
-        FORGE_EVENT_BUS.register(new DyeNexusPortalBlockEventListener());
-        FORGE_EVENT_BUS.register(new HoleTeleportEventListener());
+        MOD_EVENT_BUS.register(new CreativeTabInjector());
+        FORGE_EVENT_BUS.register(new RenderNexusPortalCoreHUDOverlay());
+        FORGE_EVENT_BUS.register(new DyeNexusPortalBlockAction());
+        FORGE_EVENT_BUS.register(new HoleTeleportAction());
 
         LOGGER.info("Registering: Common - End");
     }
@@ -73,7 +88,7 @@ public class Nexus {
 
         LOGGER.info("Registering: Client - Start");
 
-        FORGE_EVENT_BUS.register(new NexusPortalCoreWorldOverlayEventListener());
+        FORGE_EVENT_BUS.register(new RenderNexusPortalCoreWorldOverlay());
 
         LOGGER.info("Registering: Client - End");
     }

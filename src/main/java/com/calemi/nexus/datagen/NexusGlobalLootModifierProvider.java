@@ -1,9 +1,9 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.nexus.loot.BonusItemLootModifier;
+import com.calemi.nexus.loot.modifier.BonusItemLootModifier;
 import com.calemi.nexus.loot.condition.LootTableCheck;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusItems;
+import com.calemi.nexus.item.NexusItems;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;

@@ -2,9 +2,9 @@ package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusBlocks;
-import com.calemi.nexus.regsitry.NexusItems;
-import com.calemi.nexus.regsitry.NexusLists;
+import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
 import net.minecraft.world.item.Item;
@@ -50,17 +50,9 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
         NexusLists.ALL_BLOCKS.forEach(block -> {
 
-            if (block.equals(NexusBlocks.WARPBLOSSOM_SIGN)) {
-                addBlock(block, "Warpblossom Sign");
-                return;
-            }
+            Nexus.LOGGER.debug("Generating en_us for " + BuiltInRegistries.BLOCK.getKey(block.get()).getPath());
 
             if (block.equals(NexusBlocks.WARPBLOSSOM_WALL_SIGN)) {
-                return;
-            }
-
-            if (block.equals(NexusBlocks.WARPBLOSSOM_HANGING_SIGN)) {
-                addBlock(block, "Warpblossom Hanging Sign");
                 return;
             }
 

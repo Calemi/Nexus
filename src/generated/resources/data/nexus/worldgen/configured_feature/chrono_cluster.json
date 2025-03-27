@@ -1,0 +1,57 @@
+{
+  "type": "nexus:crystal_cluster",
+  "config": {
+    "buddingBlock": {
+      "type": "minecraft:simple_state_provider",
+      "state": {
+        "Name": "nexus:budding_chrono"
+      }
+    },
+    "buddingChance": 0.05,
+    "clusterBlock": {
+      "type": "minecraft:weighted_state_provider",
+      "entries": [
+        {
+          "data": {
+            "Name": "nexus:small_chrono_bud",
+            "Properties": {
+              "facing": "up",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "nexus:medium_chrono_bud",
+            "Properties": {
+              "facing": "up",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "nexus:large_chrono_bud",
+            "Properties": {
+              "facing": "up",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 2
+        },
+        {
+          "data": {
+            "Name": "nexus:chrono_cluster",
+            "Properties": {
+              "facing": "up",
+              "waterlogged": "false"
+            }
+          },
+          "weight": 1
+        }
+      ]
+    }
+  }
+}

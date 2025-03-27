@@ -1,9 +1,9 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.regsitry.NexusBlocks;
-import com.calemi.nexus.regsitry.NexusItems;
-import com.calemi.nexus.regsitry.NexusTags;
+import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.tag.NexusTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -67,5 +67,8 @@ public class NexusItemTagProvider extends ItemTagsProvider {
         copy(BlockTags.STANDING_SIGNS, ItemTags.SIGNS);
         copy(BlockTags.CEILING_HANGING_SIGNS, ItemTags.HANGING_SIGNS);
         copy(BlockTags.FLOWERS, ItemTags.FLOWERS);
+        copy(Tags.Blocks.CLUSTERS, Tags.Items.CLUSTERS);
+        copy(Tags.Blocks.BUDDING_BLOCKS, Tags.Items.BUDDING_BLOCKS);
+        copy(Tags.Blocks.BUDS, Tags.Items.BUDS);
     }
 }

@@ -1,7 +1,7 @@
 package com.calemi.nexus.block;
 
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
-import com.calemi.nexus.render.NexusPortalCoreBakedModel;
+import com.calemi.nexus.client.model.NexusPortalCoreBakedModel;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;

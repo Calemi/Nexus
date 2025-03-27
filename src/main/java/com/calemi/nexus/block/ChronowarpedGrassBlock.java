@@ -1,6 +1,5 @@
 package com.calemi.nexus.block;
 
-import com.calemi.nexus.regsitry.NexusBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Holder;

@@ -2,11 +2,10 @@ package com.calemi.nexus.screen;
 
 import com.calemi.ccore.api.screen.BaseScreen;
 import com.calemi.ccore.api.screen.ScreenHelper;
-import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.capability.UnlockedDimensionsList;
 import com.calemi.nexus.packet.*;
-import com.calemi.nexus.util.NexusDimensionHelper;
+import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.Button;
