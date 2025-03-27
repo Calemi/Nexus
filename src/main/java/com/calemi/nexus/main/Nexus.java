@@ -39,6 +39,7 @@ public class Nexus {
         NexusLootItemConditions.init();
         NexusAttachments.init();
         NexusParticles.init();
+        NexusFeatures.init();
         NexusFoliagePlacers.init();
 
         //TODO: MOVE TO CCORE

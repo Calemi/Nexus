@@ -22,7 +22,9 @@
     [
       "minecraft:patch_grass_plain",
       "nexus:flower_purple_petal",
-      "nexus:warpblossom"
+      "nexus:warpblossom",
+      "nexus:amethyst_cluster",
+      "nexus:amethyst_cluster_submerged"
     ]
   ],
   "has_precipitation": true,

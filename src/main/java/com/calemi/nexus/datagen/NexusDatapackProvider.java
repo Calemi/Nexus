@@ -14,8 +14,8 @@ import java.util.concurrent.CompletableFuture;
 public class NexusDatapackProvider extends DatapackBuiltinEntriesProvider {
 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
-            .add(Registries.CONFIGURED_FEATURE, NexusConfiguredFeatures::init)
-            .add(Registries.PLACED_FEATURE, NexusPlacedFeatures::init)
+            .add(Registries.CONFIGURED_FEATURE, NexusConfiguredFeatures::bootstrap)
+            .add(Registries.PLACED_FEATURE, NexusPlacedFeatures::bootstrap)
             .add(Registries.BIOME, NexusBiomes::init)
             .add(Registries.DIMENSION_TYPE, NexusDimensions::initDimensionType)
             .add(Registries.LEVEL_STEM, NexusDimensions::initLevelStem)

@@ -43,6 +43,8 @@ public class NexusBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_GRASS_PLAIN)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.FLOWER_PURPLE_PETAL_PLACED_KEY)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.WARPBLOSSOM_PLACED_KEY)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.AMETHYST_CLUSTER_PLACED_KEY)
+                        .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.AMETHYST_CLUSTER_SUBMERGED_PLACED_KEY)
                         .build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder().build())
                 .build();
