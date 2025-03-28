@@ -6,14 +6,15 @@ import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.blockentity.BlockEntityTypeInjector;
 import com.calemi.nexus.blockentity.NexusBlockEntities;
 import com.calemi.nexus.capability.NexusAttachments;
+import com.calemi.nexus.client.partclie.NexusParticles;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreHUDOverlay;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreWorldOverlay;
-import com.calemi.nexus.client.partclie.NexusParticles;
+import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.item.NexusItems;
 import com.calemi.nexus.item.axe.NexusStrippables;
 import com.calemi.nexus.loot.condition.NexusLootItemConditions;
 import com.calemi.nexus.loot.modifier.NexusLootModifiers;
-import com.calemi.nexus.packet.*;
+import com.calemi.nexus.packet.NexusPackets;
 import com.calemi.nexus.tab.CreativeTabInjector;
 import com.calemi.nexus.tab.NexusCreativeModeTabs;
 import com.calemi.nexus.util.HoleTeleportAction;
@@ -25,8 +26,6 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
-import net.neoforged.neoforge.network.registration.PayloadRegistrar;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -46,6 +45,7 @@ public class Nexus {
         MOD_EVENT_BUS = modEventBus;
         MOD_CONTAINER = modContainer;
 
+        NexusConfig.init();
         NexusItems.init();
         NexusBlocks.init();
         NexusBlockEntities.init();
@@ -62,7 +62,6 @@ public class Nexus {
 
         MOD_EVENT_BUS.addListener(this::commonSetup);
         MOD_EVENT_BUS.addListener(this::clientSetup);
-        MOD_EVENT_BUS.addListener(this::registerPackets);
 
         MOD_EVENT_BUS.addListener(NexusParticles::registerParticleProviders);
         MOD_EVENT_BUS.addListener(BlockEntityTypeInjector::addBlockEntityTypes);
@@ -76,6 +75,7 @@ public class Nexus {
 
         NexusStrippables.init();
 
+        MOD_EVENT_BUS.register(new NexusPackets());
         MOD_EVENT_BUS.register(new CreativeTabInjector());
         FORGE_EVENT_BUS.register(new RenderNexusPortalCoreHUDOverlay());
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockAction());
@@ -91,23 +91,5 @@ public class Nexus {
         FORGE_EVENT_BUS.register(new RenderNexusPortalCoreWorldOverlay());
 
         LOGGER.info("Registering: Client - End");
-    }
-
-    public void registerPackets(RegisterPayloadHandlersEvent event) {
-
-        LOGGER.info("Registering: Packets - Start");
-
-        final PayloadRegistrar registrar = event.registrar(NexusRef.ID);
-
-        registrar.playToClient(UnlockedDimensionsListSyncPayload.TYPE, UnlockedDimensionsListSyncPayload.CODEC, UnlockedDimensionsListSyncPayload::handle);
-        registrar.playToServer(NexusPortalCoreDestinationDimensionSyncPayload.TYPE, NexusPortalCoreDestinationDimensionSyncPayload.CODEC, NexusPortalCoreDestinationDimensionSyncPayload::handle);
-        registrar.playToServer(NexusPortalCoreTeleportPayload.TYPE, NexusPortalCoreTeleportPayload.CODEC, NexusPortalCoreTeleportPayload::handle);
-        registrar.playToServer(NexusPortalCoreGenerateLinkPayload.TYPE, NexusPortalCoreGenerateLinkPayload.CODEC, NexusPortalCoreGenerateLinkPayload::handle);
-        registrar.playToServer(NexusPortalCoreFindLinkPayload.TYPE, NexusPortalCoreFindLinkPayload.CODEC, NexusPortalCoreFindLinkPayload::handle);
-        registrar.playToServer(NexusPortalCoreLightPortalPayload.TYPE, NexusPortalCoreLightPortalPayload.CODEC, NexusPortalCoreLightPortalPayload::handle);
-        registrar.playToServer(NexusPortalCoreUnlinkPayload.TYPE, NexusPortalCoreUnlinkPayload.CODEC, NexusPortalCoreUnlinkPayload::handle);
-        registrar.playBidirectional(NexusPortalCoreDestinationNameSyncPayload.TYPE, NexusPortalCoreDestinationNameSyncPayload.CODEC, NexusPortalCoreDestinationNameSyncPayload::handle);
-
-        LOGGER.info("Registering: Packets - End");
     }
 }
