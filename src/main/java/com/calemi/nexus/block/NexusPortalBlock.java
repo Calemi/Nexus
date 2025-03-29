@@ -2,6 +2,7 @@ package com.calemi.nexus.block;
 
 import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.util.NexusLists;
 import com.calemi.nexus.client.partclie.NexusParticles;
 import com.mojang.serialization.MapCodec;
@@ -111,7 +112,7 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
 
     @Override
     public int getPortalTransitionTime(ServerLevel level, Entity entity) {
-        return entity instanceof Player player ? player.getAbilities().invulnerable ? 1 : 80 : 0;
+        return entity instanceof Player player ? player.getAbilities().invulnerable ? 1 : NexusConfig.server.portalTransitionTime.get() : 0;
     }
 
     @Override

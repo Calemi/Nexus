@@ -65,7 +65,7 @@ public abstract class BlockScanner2 {
     }
 
     /**
-     * @param scannedLocation The currently scanned BlockPos.
+     * @param scannedBlockPos The currently scanned BlockPos.
      * @return whether the scanner should collect this BlockPos or not.
      */
     public abstract boolean shouldCollect(BlockPos scannedBlockPos);

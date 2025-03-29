@@ -43,11 +43,6 @@ public class PortalSpaceScanner extends BlockScanner2 {
     @Override
     public List<BlockPos> nextLocationsToScan(BlockPos prevBlockPos) {
 
-        if (getCollectedPositions().size() >= getMaxCollectionSize()) {
-            setHalted(true);
-            return new ArrayList<>();
-        }
-
         List<BlockPos> positions = new ArrayList<>();
 
         if (axis.isVertical()) {

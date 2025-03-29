@@ -34,6 +34,8 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
     private final String MESSAGE_LIGHT_PORTAL = MESSAGE + "light_portal.";
     private final String MESSAGE_UNLINK = MESSAGE + "unlink.";
 
+    private final String CONFIG = getPrefixedKey("config", "");
+
     private final String JEI_DESCRIPTION = getPrefixedKey("description", "");
     private final String JADE = "config.jade.plugin_" + NexusRef.ID + ".";
 
@@ -135,9 +137,30 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
         add(MESSAGE_FIND_LINK + "success", "Found similar Nexus Portal Core and successfully linked to it!");
         add(MESSAGE_FIND_LINK + "failure", "Could not find similar Nexus Portal Core!");
         add(MESSAGE_LIGHT_PORTAL + "success", "Successfully created portal!");
-        add(MESSAGE_LIGHT_PORTAL + "invalid_frame", "Invalid frame!");
-        add(MESSAGE_UNLINK + "invalid_frame", "Successfully unlinked!");
+        add(MESSAGE_LIGHT_PORTAL + "obstructed", "The projection position is obstructed!");
+        add(MESSAGE_LIGHT_PORTAL + "overflowing_frame", "The frame size is too large!");
+        add(MESSAGE_LIGHT_PORTAL + "invalid_frame", "Invalid frame! Make sure no non-full blocks are inside or make up the frame!");
+        add(MESSAGE_UNLINK + "success", "Successfully unlinked!");
         add(getPrefixedKey("networking", "unlocked_dimension_list_message.failed"), "Failed to synchronize unlocked dimension list! %s");
+
+        /*
+            CONFIG
+         */
+
+        //CLIENT
+        add(CONFIG + "portal_core_hud_overlay", "Portal Core HUD Overlay");
+        add(CONFIG + "portal_core_world_overlay", "Portal Core World Overlay");
+
+        //SERVER
+        add(CONFIG + "max_portal_size", "Max Portal Size");
+        add(CONFIG + "portal_transition_time", "Portal Transition Time");
+        add(CONFIG + "portal_core_camo", "Portal Core Camo");
+        add(CONFIG + "portal_core_coordinate_scale", "Portal Core Coordinate Scale");
+        add(CONFIG + "iron_portal_core_coordinate_scale", "Iron Portal Core Coordinate Scale");
+        add(CONFIG + "gold_portal_core_coordinate_scale", "Gold Portal Core Coordinate Scale");
+        add(CONFIG + "diamond_portal_core_coordinate_scale", "Diamond Portal Core Coordinate Scale");
+        add(CONFIG + "netherite_portal_core_coordinate_scale", "Netherite Portal Core Coordinate Scale");
+        add(CONFIG + "starlight_portal_core_coordinate_scale", "Starlight Portal Core Coordinate Scale");
 
         /*
             JEI

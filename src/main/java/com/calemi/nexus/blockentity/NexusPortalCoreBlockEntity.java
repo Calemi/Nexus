@@ -5,13 +5,14 @@ import com.calemi.ccore.api.location.Location;
 import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
 import com.calemi.nexus.capability.NexusCapabilityHandler;
-import com.calemi.nexus.util.NexusMessengers;
 import com.calemi.nexus.client.model.NexusPortalCoreBakedModel;
+import com.calemi.nexus.config.NexusConfig;
+import com.calemi.nexus.util.NexusMessengers;
+import com.calemi.nexus.util.NexusSoundHelper;
+import com.calemi.nexus.util.TeleportHelper;
 import com.calemi.nexus.util.scanner.PortalScanner;
 import com.calemi.nexus.util.scanner.PortalSpaceScanner;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
-import com.calemi.nexus.util.NexusSoundHelper;
-import com.calemi.nexus.util.TeleportHelper;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -39,6 +40,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import org.jetbrains.annotations.Nullable;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -96,10 +98,12 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
     }
 
     public boolean isValidCamoState(BlockState state) {
+        if (!NexusConfig.server.portalCoreCamo.get()) return false;
         if (state == null) return true;
         if (state.getBlock() == Blocks.AIR) return false;
         if (state.getBlock() instanceof NexusPortalCoreBlock) return false;
         if (state.getRenderShape() != RenderShape.MODEL) return false;
+        if (getCamoState() != null && getCamoState().is(state.getBlock())) return false;
         return state.isCollisionShapeFullBlock(getLevel(), getBlockPos());
     }
 
@@ -228,7 +232,7 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
     }
 
     public List<BlockPos> getPortalPositions() {
-        PortalScanner scanner = new PortalScanner(new Location(level, getProjectionPosition()), getProjectionAxis(), true, 1000);
+        PortalScanner scanner = new PortalScanner(new Location(level, getProjectionPosition()), getProjectionAxis(), true, NexusConfig.server.maxPortalSize.get());
         scanner.start();
         return scanner.getCollectedPositions();
     }
@@ -256,6 +260,14 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
         if (level == null) return;
 
         BlockPos projectionPosition = getProjectionPosition();
+
+        BlockState projectionState = level.getBlockState(projectionPosition);
+
+        if (!(projectionState.getBlock() instanceof NexusPortalBlock) && !level.getBlockState(projectionPosition).isAir()) {
+            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.light_portal.obstructed").withStyle(ChatFormatting.RED), feedbackEntity);
+            NexusSoundHelper.playErrorSound(getLocation());
+            return;
+        }
 
         if (isPortalActive()) {
             unlightPortal();
@@ -288,11 +300,22 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
         BlockPos projectionPosition = getProjectionPosition();
         Direction.Axis projectionAxis = getProjectionAxis();
 
-        PortalSpaceScanner scanner = new PortalSpaceScanner(new Location(level, projectionPosition), projectionAxis, 1000);
+        PortalSpaceScanner scanner = new PortalSpaceScanner(new Location(level, projectionPosition), projectionAxis, NexusConfig.server.maxPortalSize.get() + 1);
         scanner.start();
 
-        if (!scanner.isHalted()) {
+        List<BlockPos> collectedPositions = scanner.getCollectedPositions();
 
+        if (scanner.isHalted()) {
+            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.light_portal.invalid_frame").withStyle(ChatFormatting.RED), feedbackEntity);
+            NexusSoundHelper.playErrorSound(getLocation());
+        }
+
+        else if (collectedPositions.size() > scanner.getMaxCollectionSize() - 1) {
+            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.light_portal.overflowing_frame").withStyle(ChatFormatting.RED), feedbackEntity);
+            NexusSoundHelper.playErrorSound(getLocation());
+        }
+
+        else {
             scanner.getCollectedPositions().forEach(blockPos -> {
 
                 Block portalBlock = NexusPortalBlock.fromDye(portalColorPattern.getOrDefault(blockPos, getPortalColorBase()));
@@ -305,11 +328,6 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
 
             NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.light_portal.success").withStyle(ChatFormatting.GREEN), feedbackEntity);
             NexusSoundHelper.playSuccessSound(getLocation());
-        }
-
-        else {
-            NexusMessengers.NEXUS_PORTAL_CORE.send(Component.translatable("message.nexus.light_portal.invalid_frame").withStyle(ChatFormatting.RED), feedbackEntity);
-            NexusSoundHelper.playErrorSound(getLocation());
         }
     }
 

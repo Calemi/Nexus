@@ -1,13 +1,14 @@
 package com.calemi.nexus.block;
 
 import com.calemi.ccore.api.location.Location;
+import com.calemi.ccore.api.string.StringHelper;
+import com.calemi.nexus.blockentity.NexusBlockEntities;
 import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.Nexus;
-import com.calemi.nexus.blockentity.NexusBlockEntities;
-import com.calemi.nexus.world.dimension.NexusDimensions;
 import com.calemi.nexus.screen.NexusPortalCoreScreen;
-import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import com.calemi.nexus.util.NexusSoundHelper;
+import com.calemi.nexus.world.dimension.NexusDimensionHelper;
+import com.calemi.nexus.world.dimension.NexusDimensions;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -40,6 +41,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -51,15 +53,15 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
 
     public static final BooleanProperty POWERED = BlockStateProperties.POWERED;
 
-    private int coordinateScale;
+    private ModConfigSpec.ConfigValue<Integer> configOption;
 
-    public NexusPortalCoreBlock(int coordinateScale) {
+    public NexusPortalCoreBlock(ModConfigSpec.ConfigValue<Integer> configOption) {
         this(BlockBehaviour.Properties.of()
                 .mapColor(MapColor.QUARTZ)
                 .requiresCorrectToolForDrops()
                 .noOcclusion()
                 .strength(1.5F, 6.0F));
-        this.coordinateScale = coordinateScale;
+        this.configOption = configOption;
         registerDefaultState(stateDefinition.any().setValue(FACING, Direction.UP).setValue(AXIS, Direction.Axis.X).setValue(POWERED, false));
     }
 
@@ -68,12 +70,12 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
     }
 
     public int getCoordinateScale() {
-        return coordinateScale;
+        return configOption.get();
     }
 
     @Override
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltipComponents, TooltipFlag tooltipFlag) {
-        tooltipComponents.add(Component.translatable("hover_text.nexus.nexus_portal_core").append(": x" + getCoordinateScale()).withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("hover_text.nexus.nexus_portal_core").append(": x" + StringHelper.insertCommas(getCoordinateScale())).withStyle(ChatFormatting.GRAY));
     }
 
     @Override
@@ -135,7 +137,7 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
 
         if (level.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originBlockEntity) {
 
-            if (player.isCrouching()) {
+            if (player.isCrouching() && originBlockEntity.getCamoState() != null) {
 
                 originBlockEntity.setCamoState(null);
                 originBlockEntity.setChanged();
@@ -178,6 +180,8 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
 
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
+
+        if (!level.isClientSide()) return;
 
         if (level.getBlockEntity(pos) instanceof NexusPortalCoreBlockEntity blockEntity) {
 

@@ -1,15 +1,11 @@
 package com.calemi.nexus.util;
 
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
-import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.RelativeMovement;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.phys.Vec3;
 
 import java.util.EnumSet;
@@ -23,7 +19,6 @@ public class TeleportHelper {
         double z = destination.getZ();
 
         x += 0.5D;
-        y += 1.0D;
         z += 0.5D;
 
         return new Vec3(x, y, z);

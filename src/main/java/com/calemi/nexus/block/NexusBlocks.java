@@ -2,6 +2,7 @@ package com.calemi.nexus.block;
 
 import com.calemi.nexus.block.wood.NexusWoodTypes;
 import com.calemi.nexus.client.partclie.NexusParticles;
+import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.item.NexusItems;
 import com.calemi.nexus.block.family.NexusBlockSetTypes;
 import com.calemi.nexus.main.Nexus;
@@ -29,22 +30,22 @@ public class NexusBlocks {
 
 
     public static final DeferredBlock<Block> NEXUS_PORTAL_CORE             = regBlock("nexus_portal_core", () ->
-            new NexusPortalCoreBlock(1));
+            new NexusPortalCoreBlock(NexusConfig.server.portalCoreCoordinateScale));
 
     public static final DeferredBlock<Block> IRON_NEXUS_PORTAL_CORE        = regBlock("iron_nexus_portal_core", () ->
-            new NexusPortalCoreBlock(8));
+            new NexusPortalCoreBlock(NexusConfig.server.ironPortalCoreCoordinateScale));
 
     public static final DeferredBlock<Block> GOLD_NEXUS_PORTAL_CORE        = regBlock("gold_nexus_portal_core", () ->
-            new NexusPortalCoreBlock(16));
+            new NexusPortalCoreBlock(NexusConfig.server.goldPortalCoreCoordinateScale));
 
     public static final DeferredBlock<Block> DIAMOND_NEXUS_PORTAL_CORE     = regBlock("diamond_nexus_portal_core", () ->
-            new NexusPortalCoreBlock(32));
+            new NexusPortalCoreBlock(NexusConfig.server.diamondPortalCoreCoordinateScale));
 
     public static final DeferredBlock<Block> NETHERITE_NEXUS_PORTAL_CORE   = regBlock("netherite_nexus_portal_core", () ->
-            new NexusPortalCoreBlock(64));
+            new NexusPortalCoreBlock(NexusConfig.server.netheritePortalCoreCoordinateScale));
 
     public static final DeferredBlock<Block> STARLIGHT_NEXUS_PORTAL_CORE   = regBlock("starlight_nexus_portal_core", () ->
-            new NexusPortalCoreBlock(128));
+            new NexusPortalCoreBlock(NexusConfig.server.starlightPortalCoreCoordinateScale));
 
 
 

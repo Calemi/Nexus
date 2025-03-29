@@ -1,6 +1,7 @@
 package com.calemi.nexus.client.render;
 
 import com.calemi.nexus.block.NexusPortalCoreBlock;
+import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
@@ -19,6 +20,8 @@ public class RenderNexusPortalCoreWorldOverlay {
 
     @SubscribeEvent
     public void onRenderLevelStageEvent(RenderLevelStageEvent event) {
+
+        if (!NexusConfig.client.portalCoreWorldOverlay.get()) return;
 
         if (event.getStage() == RenderLevelStageEvent.Stage.AFTER_TRANSLUCENT_BLOCKS) {
 
