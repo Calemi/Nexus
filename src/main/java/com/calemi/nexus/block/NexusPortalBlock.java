@@ -65,7 +65,7 @@ public class NexusPortalBlock extends BaseEntityBlock implements Portal {
     }
 
     public static Block fromDye(DyeColor color) {
-        return NexusLists.NEXUS_PORTAL_BLOCKS.stream().map(m -> (NexusPortalBlock)m.get()).filter(block -> block.getColor() == color).findFirst().orElse(null);
+        return NexusLists.NEXUS_PORTAL_BLOCKS.stream().map(block -> (NexusPortalBlock)block).filter(block -> block.getColor() == color).findFirst().orElse(null);
     }
 
     public static NexusPortalCoreBlockEntity getPortalCore(Level level, BlockPos pos) {

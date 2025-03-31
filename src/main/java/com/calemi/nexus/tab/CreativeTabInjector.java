@@ -22,13 +22,16 @@ public class CreativeTabInjector {
 
             List<Item> entries = new ArrayList<>();
 
-            entries.addAll(NexusLists.toItemListFromDefBlock(NexusBlockFamilies.COBBLED_WARPSLATE.getAllBlocks()));
-            entries.addAll(NexusLists.toItemListFromDefBlock(NexusBlockFamilies.POLISHED_WARPSLATE.getAllBlocks()));
-            entries.addAll(NexusLists.toItemListFromDefBlock(NexusBlockFamilies.WARPSLATE_TILE.getAllBlocks()));
+            entries.addAll(NexusBlockFamilies.COBBLED_WARPSLATE.getAllTabItems());
+            entries.addAll(NexusBlockFamilies.POLISHED_WARPSLATE.getAllTabItems());
+            entries.addAll(NexusBlockFamilies.WARPSLATE_TILE.getAllTabItems());
+            entries.addAll(NexusBlockFamilies.POLISHED_CALCITE.getAllTabItems());
+            entries.addAll(NexusBlockFamilies.CALCITE_BRICKS.getAllTabItems());
+            entries.addAll(NexusBlockFamilies.CALCITE_TILES.getAllTabItems());
 
             add(event, Items.REINFORCED_DEEPSLATE, entries);
 
-            add(event, Items.WARPED_BUTTON, NexusLists.toItemListFromDefBlock(NexusLists.CHRONOWARPED_LOGS));
+            add(event, Items.WARPED_BUTTON, NexusLists.toItemListFromBlock(NexusLists.CHRONOWARPED_LOGS));
             add(event, NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.asItem(),
                     NexusBlocks.WARPBLOSSOM_PLANKS.asItem(),
                     NexusBlocks.WARPBLOSSOM_STAIRS.asItem(),

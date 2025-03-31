@@ -1,8 +1,12 @@
 package com.calemi.nexus.block.family;
 
-import com.calemi.ccore.api.family.CBlockFamily;
+import com.calemi.ccore.api.block.family.CBlockFamily;
+import com.calemi.ccore.api.block.family.CBlockFamily.FamilyType;
+import com.calemi.ccore.api.block.family.CBlockFamily.MemberType;
+import com.calemi.ccore.api.block.family.CBlockFamilyMember;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.tag.NexusTags;
+import net.minecraft.world.level.block.Blocks;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,54 +15,97 @@ public class NexusBlockFamilies {
 
     public static final List<CBlockFamily> ALL = new ArrayList<>();
 
-    public static final CBlockFamily COBBLED_WARPSLATE = register(new CBlockFamily.Builder(CBlockFamily.Type.COBBLESTONE)
-            .base(NexusBlocks.COBBLED_WARPSLATE)
-            .stairs(NexusBlocks.COBBLED_WARPSLATE_STAIRS)
-            .slab(NexusBlocks.COBBLED_WARPSLATE_SLAB)
-            .wall(NexusBlocks.COBBLED_WARPSLATE_WALL)
-            .chiseled(NexusBlocks.CHISELED_WARPSLATE)
+    public static final CBlockFamily CALCITE = register(new CBlockFamily.Builder(FamilyType.STONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(Blocks.CALCITE).dontGenOrShow())
     );
 
-    public static final CBlockFamily POLISHED_WARPSLATE = register(new CBlockFamily.Builder(CBlockFamily.Type.STONE)
-            .base(NexusBlocks.POLISHED_WARPSLATE)
-            .stairs(NexusBlocks.POLISHED_WARPSLATE_STAIRS)
-            .slab(NexusBlocks.POLISHED_WARPSLATE_SLAB)
-            .wall(NexusBlocks.POLISHED_WARPSLATE_WALL)
+    public static final CBlockFamily POLISHED_CALCITE = register(new CBlockFamily.Builder(FamilyType.STONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_CALCITE))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_CALCITE_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_CALCITE_SLAB))
+            .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_CALCITE_WALL))
+            .member(MemberType.PILLAR, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_PILLAR))
+            .member(MemberType.CHISELED, new CBlockFamilyMember.Builder(NexusBlocks.CHISELED_CALCITE))
+            .ancestor(CALCITE)
     );
 
-    public static final CBlockFamily WARPSLATE_BRICK = register(new CBlockFamily.Builder(CBlockFamily.Type.STONE)
-            .base(NexusBlocks.WARPSLATE_BRICKS)
-            .cracked(NexusBlocks.CRACKED_WARPSLATE_BRICKS)
-            .stairs(NexusBlocks.WARPSLATE_BRICK_STAIRS)
-            .slab(NexusBlocks.WARPSLATE_BRICK_SLAB)
-            .wall(NexusBlocks.WARPSLATE_BRICK_WALL)
+    public static final CBlockFamily CALCITE_BRICKS = register(new CBlockFamily.Builder(FamilyType.STONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_BRICKS))
+            .member(MemberType.CRACKED, new CBlockFamilyMember.Builder(NexusBlocks.CRACKED_CALCITE_BRICKS))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_BRICK_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_BRICK_SLAB))
+            .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_BRICK_WALL))
+            .ancestor(CALCITE)
+            .ancestor(POLISHED_CALCITE)
     );
 
-    public static final CBlockFamily WARPSLATE_TILE = register(new CBlockFamily.Builder(CBlockFamily.Type.STONE)
-            .base(NexusBlocks.WARPSLATE_TILES)
-            .cracked(NexusBlocks.CRACKED_WARPSLATE_TILES)
-            .stairs(NexusBlocks.WARPSLATE_TILE_STAIRS)
-            .slab(NexusBlocks.WARPSLATE_TILE_SLAB)
-            .wall(NexusBlocks.WARPSLATE_TILE_WALL)
+    public static final CBlockFamily CALCITE_TILES = register(new CBlockFamily.Builder(FamilyType.STONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_TILES))
+            .member(MemberType.CRACKED, new CBlockFamilyMember.Builder(NexusBlocks.CRACKED_CALCITE_TILES))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_TILE_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_TILE_SLAB))
+            .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_TILE_WALL))
+            .ancestor(CALCITE)
+            .ancestor(POLISHED_CALCITE)
+            .ancestor(CALCITE_BRICKS)
     );
 
-    public static final CBlockFamily WARPBLOSSOM = register(new CBlockFamily.Builder(CBlockFamily.Type.PLANKS)
-            .log(NexusBlocks.WARPBLOSSOM_LOG)
-            .wood(NexusBlocks.WARPBLOSSOM_WOOD)
-            .strippedLog(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG)
-            .strippedWood(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD)
-            .base(NexusBlocks.WARPBLOSSOM_PLANKS)
+    public static final CBlockFamily COBBLED_WARPSLATE = register(new CBlockFamily.Builder(FamilyType.COBBLESTONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.COBBLED_WARPSLATE))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.COBBLED_WARPSLATE_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.COBBLED_WARPSLATE_SLAB))
+            .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.COBBLED_WARPSLATE_WALL))
+            .member(MemberType.CHISELED, new CBlockFamilyMember.Builder(NexusBlocks.CHISELED_WARPSLATE))
+    );
+
+    public static final CBlockFamily POLISHED_WARPSLATE = register(new CBlockFamily.Builder(FamilyType.STONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_WARPSLATE))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_WARPSLATE_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_WARPSLATE_SLAB))
+            .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.POLISHED_WARPSLATE_WALL))
+            .ancestor(COBBLED_WARPSLATE)
+    );
+
+    public static final CBlockFamily WARPSLATE_BRICK = register(new CBlockFamily.Builder(FamilyType.STONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_BRICKS))
+            .member(MemberType.CRACKED, new CBlockFamilyMember.Builder(NexusBlocks.CRACKED_WARPSLATE_BRICKS))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_BRICK_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_BRICK_SLAB))
+            .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_BRICK_WALL))
+            .ancestor(COBBLED_WARPSLATE)
+            .ancestor(POLISHED_WARPSLATE)
+    );
+
+    public static final CBlockFamily WARPSLATE_TILE = register(new CBlockFamily.Builder(FamilyType.STONE)
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_TILES))
+            .member(MemberType.CRACKED, new CBlockFamilyMember.Builder(NexusBlocks.CRACKED_WARPSLATE_TILES))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_TILE_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_TILE_SLAB))
+            .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_TILE_WALL))
+            .ancestor(COBBLED_WARPSLATE)
+            .ancestor(POLISHED_WARPSLATE)
+            .ancestor(WARPSLATE_BRICK)
+    );
+
+    public static final CBlockFamily WARPBLOSSOM = register(new CBlockFamily.Builder(FamilyType.PLANKS)
             .logTag(NexusTags.Items.WARPBLOSSOM_LOGS)
-            .stairs(NexusBlocks.WARPBLOSSOM_STAIRS)
-            .slab(NexusBlocks.WARPBLOSSOM_SLAB)
-            .fence(NexusBlocks.WARPBLOSSOM_FENCE)
-            .fenceGate(NexusBlocks.WARPBLOSSOM_FENCE_GATE)
-            .door(NexusBlocks.WARPBLOSSOM_DOOR)
-            .trapdoor(NexusBlocks.WARPBLOSSOM_TRAPDOOR)
-            .pressurePlate(NexusBlocks.WARPBLOSSOM_PRESSURE_PLATE)
-            .button(NexusBlocks.WARPBLOSSOM_BUTTON)
-            .sign(NexusBlocks.WARPBLOSSOM_SIGN, NexusBlocks.WARPBLOSSOM_WALL_SIGN)
-            .hangingSign(NexusBlocks.WARPBLOSSOM_HANGING_SIGN, NexusBlocks.WARPBLOSSOM_WALL_HANGING_SIGN)
+            .member(MemberType.LOG, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_LOG))
+            .member(MemberType.WOOD, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_WOOD))
+            .member(MemberType.STRIPPED_LOG, new CBlockFamilyMember.Builder(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG))
+            .member(MemberType.STRIPPED_WOOD, new CBlockFamilyMember.Builder(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD))
+            .member(MemberType.BASE, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_PLANKS))
+            .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_STAIRS))
+            .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_SLAB))
+            .member(MemberType.FENCE, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_FENCE))
+            .member(MemberType.FENCE_GATE, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_FENCE_GATE))
+            .member(MemberType.DOOR, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_DOOR))
+            .member(MemberType.TRAPDOOR, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_TRAPDOOR))
+            .member(MemberType.PRESSURE_PLATE, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_PRESSURE_PLATE))
+            .member(MemberType.BUTTON, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_BUTTON))
+            .member(MemberType.SIGN, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_SIGN))
+            .member(MemberType.WALL_SIGN, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_WALL_SIGN))
+            .member(MemberType.HANGING_SIGN, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_HANGING_SIGN))
+            .member(MemberType.WALL_HANGING_SIGN, new CBlockFamilyMember.Builder(NexusBlocks.WARPBLOSSOM_WALL_HANGING_SIGN))
     );
 
     public static CBlockFamily register(CBlockFamily.Builder builder) {
@@ -67,7 +114,7 @@ public class NexusBlockFamilies {
         return family;
     }
 
-    public static List<CBlockFamily> getFamiliesOfType(CBlockFamily.Type type) {
-        return ALL.stream().filter(family -> family.getType().equals(type)).toList();
+    public static List<CBlockFamily> getFamiliesOfType(FamilyType type) {
+        return ALL.stream().filter(family -> family.getFamilyType().equals(type)).toList();
     }
 }

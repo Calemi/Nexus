@@ -14,7 +14,6 @@ public class NexusItemModelProvider extends ItemModelProvider {
 
     @Override
     protected void registerModels() {
-
-        NexusLists.ALL_ITEMS.forEach(item -> basicItem(item.get()));
+        NexusLists.ALL_ITEMS.forEach(this::basicItem);
     }
 }

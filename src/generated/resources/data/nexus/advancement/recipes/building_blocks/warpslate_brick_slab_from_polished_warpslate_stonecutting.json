@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_polished_warpslate": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nexus:polished_warpslate"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nexus:warpslate_brick_slab_from_polished_warpslate_stonecutting"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_polished_warpslate"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nexus:warpslate_brick_slab_from_polished_warpslate_stonecutting"
+    ]
+  }
+}

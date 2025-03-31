@@ -1,10 +1,11 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.ccore.api.family.CBlockFamily;
-import com.calemi.nexus.block.NexusPortalBlock;
-import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.ccore.api.block.family.CBlockFamily;
+import com.calemi.ccore.api.block.family.CBlockFamilyMember;
 import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.block.NexusPortalBlock;
+import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
@@ -17,7 +18,6 @@ import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredBlock;
 
 import java.util.Arrays;
 
@@ -33,76 +33,112 @@ public class NexusBlockStateProvider extends BlockStateProvider {
     @Override
     protected void registerStatesAndModels() {
 
-        NexusBlockFamilies.ALL.forEach(this::family);
+        NexusBlockFamilies.ALL.forEach(family -> family.getMembers().forEach((type, member) -> family(family, type, member)));
 
         NexusLists.NEXUS_PORTAL_CORE_BLOCKS.forEach(this::nexusPortalCore);
         NexusLists.NEXUS_PORTAL_BLOCKS.forEach(this::nexusPortal);
 
-        grass(NexusBlocks.CHRONOWARPED_GRASS, "chronowarped_dirt");
-        all(NexusBlocks.CHRONOWARPED_DIRT);
-        all(NexusBlocks.CHRONOWARPED_SAND);
+        grass(NexusBlocks.CHRONOWARPED_GRASS.get(), NexusBlocks.CHRONOWARPED_DIRT.get());
+        all(NexusBlocks.CHRONOWARPED_DIRT.get());
+        all(NexusBlocks.CHRONOWARPED_SAND.get());
 
-        all(NexusBlocks.CHRONO_BLOCK);
-        all(NexusBlocks.BUDDING_CHRONO);
-        crystal(NexusBlocks.SMALL_CHRONO_BUD);
-        crystal(NexusBlocks.MEDIUM_CHRONO_BUD);
-        crystal(NexusBlocks.LARGE_CHRONO_BUD);
-        crystal(NexusBlocks.CHRONO_CLUSTER);
+        all(NexusBlocks.CHRONO_BLOCK.get());
+        all(NexusBlocks.BUDDING_CHRONO.get());
+        crystal(NexusBlocks.SMALL_CHRONO_BUD.get());
+        crystal(NexusBlocks.MEDIUM_CHRONO_BUD.get());
+        crystal(NexusBlocks.LARGE_CHRONO_BUD.get());
+        crystal(NexusBlocks.CHRONO_CLUSTER.get());
 
-        deepslate(NexusBlocks.WARPSLATE);
+        deepslate((RotatedPillarBlock) NexusBlocks.WARPSLATE.get());
 
-        allCutout(NexusBlocks.WARPBLOSSOM_LEAVES);
+        allCutout(NexusBlocks.WARPBLOSSOM_LEAVES.get());
 
-        sapling(NexusBlocks.WARPBLOSSOM_SAPLING);
-        flowerPot(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING, NexusBlocks.WARPBLOSSOM_SAPLING);
+        sapling(NexusBlocks.WARPBLOSSOM_SAPLING.get());
+        flowerPot(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING.get(), NexusBlocks.WARPBLOSSOM_SAPLING.get());
 
-        petal(NexusBlocks.PURPLE_PETALS);
+        petal(NexusBlocks.PURPLE_PETALS.get());
     }
 
-    private void family(CBlockFamily family) {
+    private void family(CBlockFamily family, CBlockFamily.MemberType type, CBlockFamilyMember member) {
 
-        DeferredBlock<Block> baseBlock = family.get(CBlockFamily.Variant.BASE);
-        DeferredBlock<Block> log = family.get(CBlockFamily.Variant.LOG);
-        DeferredBlock<Block> wood = family.get(CBlockFamily.Variant.WOOD);
-        DeferredBlock<Block> strippedLog = family.get(CBlockFamily.Variant.STRIPPED_LOG);
-        DeferredBlock<Block> strippedWood = family.get(CBlockFamily.Variant.STRIPPED_WOOD);
-        DeferredBlock<Block> cracked = family.get(CBlockFamily.Variant.CRACKED);
-        DeferredBlock<Block> chiseled = family.get(CBlockFamily.Variant.CHISELED);
-        DeferredBlock<Block> stairs = family.get(CBlockFamily.Variant.STAIRS);
-        DeferredBlock<Block> slab = family.get(CBlockFamily.Variant.SLAB);
-        DeferredBlock<Block> wall = family.get(CBlockFamily.Variant.WALL);
-        DeferredBlock<Block> fence = family.get(CBlockFamily.Variant.FENCE);
-        DeferredBlock<Block> fenceGate = family.get(CBlockFamily.Variant.FENCE_GATE);
-        DeferredBlock<Block> door = family.get(CBlockFamily.Variant.DOOR);
-        DeferredBlock<Block> trapDoor = family.get(CBlockFamily.Variant.TRAPDOOR);
-        DeferredBlock<Block> pressurePlate = family.get(CBlockFamily.Variant.PRESSURE_PLATE);
-        DeferredBlock<Block> button = family.get(CBlockFamily.Variant.BUTTON);
-        DeferredBlock<Block> sign = family.get(CBlockFamily.Variant.SIGN);
-        DeferredBlock<Block> wallSign = family.get(CBlockFamily.Variant.WALL_SIGN);
-        DeferredBlock<Block> hangingSign = family.get(CBlockFamily.Variant.HANGING_SIGN);
-        DeferredBlock<Block> wallHangingSign = family.get(CBlockFamily.Variant.WALL_HANGING_SIGN);
+        if (!member.genBlockState()) return;
 
-        if (log != null && wood != null) log(log, wood);
-        if (strippedLog != null && strippedWood != null) log(strippedLog, strippedWood);
-        if (baseBlock != null) all(baseBlock);
-        if (cracked != null) all(cracked);
-        if (chiseled != null) all(chiseled);
-        if (stairs != null) stairs(stairs, baseBlock);
-        if (slab != null) slab(slab, baseBlock);
-        if (wall != null) wall(wall, baseBlock);
-        if (fence != null) fence(fence, baseBlock);
-        if (fenceGate != null) fenceGate(fenceGate, baseBlock);
-        if (door != null) door(door);
-        if (trapDoor != null) trapDoor(trapDoor);
-        if (pressurePlate != null) pressurePlate(pressurePlate, baseBlock);
-        if (button != null) button(button, baseBlock);
-        if (sign != null) sign(sign, wallSign, baseBlock);
-        if (hangingSign != null) hangingSign(hangingSign, wallHangingSign, baseBlock);
+        if (type.equals(CBlockFamily.MemberType.LOG)) {
+            Block wood = family.getBlock(CBlockFamily.MemberType.WOOD);
+            if (wood != null) log((RotatedPillarBlock) member.getBlock(), (RotatedPillarBlock) wood);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.STRIPPED_LOG)) {
+            Block wood = family.getBlock(CBlockFamily.MemberType.STRIPPED_WOOD);
+            if (wood != null) log((RotatedPillarBlock) member.getBlock(), (RotatedPillarBlock) wood);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.BASE) || type.equals(CBlockFamily.MemberType.CRACKED) || type.equals(CBlockFamily.MemberType.CHISELED)) {
+            all(member.getBlock());
+        }
+
+        if (type.equals(CBlockFamily.MemberType.PILLAR)) {
+            pillar((RotatedPillarBlock) member.getBlock());
+        }
+
+        if (type.equals(CBlockFamily.MemberType.STAIRS)) {
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) stairs((StairBlock) member.getBlock(), base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.SLAB)) {
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) slab((SlabBlock) member.getBlock(), base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.WALL)) {
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) wall((WallBlock) member.getBlock(), base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.FENCE)) {
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) fence((FenceBlock) member.getBlock(), base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.FENCE_GATE)) {
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) fenceGate((FenceGateBlock) member.getBlock(), base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.DOOR)) {
+            door((DoorBlock) member.getBlock());
+        }
+
+        if (type.equals(CBlockFamily.MemberType.TRAPDOOR)) {
+            trapdoor((TrapDoorBlock) member.getBlock());
+        }
+
+        if (type.equals(CBlockFamily.MemberType.PRESSURE_PLATE)) {
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) pressurePlate((PressurePlateBlock) member.getBlock(), base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.BUTTON)) {
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) button((ButtonBlock) member.getBlock(), base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.SIGN)) {
+            Block wallSign = family.getBlock(CBlockFamily.MemberType.WALL_SIGN);
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) sign((StandingSignBlock) member.getBlock(), (WallSignBlock) wallSign, base);
+        }
+
+        if (type.equals(CBlockFamily.MemberType.HANGING_SIGN)) {
+            Block wallHangingSign = family.getBlock(CBlockFamily.MemberType.WALL_HANGING_SIGN);
+            Block base = family.getBlock(CBlockFamily.MemberType.BASE);
+            if (base != null) hangingSign((CeilingHangingSignBlock) member.getBlock(), (WallHangingSignBlock) wallHangingSign, base);
+        }
     }
 
-    private void all(DeferredBlock<?> deferredBlock) {
+    private void all(Block block) {
 
-        Block block = deferredBlock.get();
         String blockName = name(block);
 
         String blockPath = "block/" + blockName;
@@ -112,9 +148,8 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(block, model);
     }
 
-    private void allCutout(DeferredBlock<?> deferredBlock) {
+    private void allCutout(Block block) {
 
-        Block block = deferredBlock.get();
         String blockName = name(block);
 
         String blockPath = "block/" + blockName;
@@ -124,9 +159,8 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockWithItem(block, model);
     }
 
-    private void sapling(DeferredBlock<?> deferredBlock) {
+    private void sapling(Block block) {
 
-        Block block = deferredBlock.get();
         String blockName = name(block);
 
         String blockPath = "block/" + blockName;
@@ -137,10 +171,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         flatItem(blockName, "block");
     }
 
-    private void log(DeferredBlock<?> deferredLog, DeferredBlock<?> deferredWood) {
-
-        RotatedPillarBlock log = (RotatedPillarBlock) deferredLog.get();
-        RotatedPillarBlock wood = (RotatedPillarBlock) deferredWood.get();
+    private void log(RotatedPillarBlock log, RotatedPillarBlock wood) {
 
         String logName = name(log);
         String woodName = name(wood);
@@ -159,61 +190,50 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(wood, woodModel);
     }
 
-    private void stairs(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+    private void stairs(StairBlock block, Block blockMaterial) {
 
-        StairBlock block = (StairBlock) deferredBlock.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+        ResourceLocation modelTexture = texture(blockMaterial, "block/");
+        stairsBlock(block, modelTexture);
 
-        String blockName = name(block);
-        String blockMaterialName = name(blockMaterial);
-
-        String blockMaterialPath = "block/" + blockMaterialName;
-        ResourceLocation blockMaterialRL = rl(blockMaterialPath);
-
-        ModelFile itemModel = models().stairs(blockName, blockMaterialRL, blockMaterialRL, blockMaterialRL);
-
-        stairsBlock(block, blockMaterialRL);
+        String itemModelName = name(block);
+        ModelFile itemModel = models().stairs(itemModelName, modelTexture, modelTexture, modelTexture);
         simpleBlockItem(block, itemModel);
     }
 
-    private void slab(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+    private void slab(SlabBlock block, Block blockMaterial) {
 
-        SlabBlock block = (SlabBlock) deferredBlock.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+        ResourceLocation modelTexture = texture(blockMaterial, "block/");
+        slabBlock(block, modelTexture, modelTexture);
 
-        String blockName = name(block);
-        String blockMaterialName = name(blockMaterial);
-
-        String blockMaterialPath = "block/" + blockMaterialName;
-        ResourceLocation blockMaterialRL = rl(blockMaterialPath);
-
-        ModelFile itemModel = models().slab(blockName, blockMaterialRL, blockMaterialRL, blockMaterialRL);
-
-        slabBlock(block, blockMaterialRL, blockMaterialRL);
+        String itemModelName = name(block);
+        ModelFile itemModel = models().slab(itemModelName, modelTexture, modelTexture, modelTexture);
         simpleBlockItem(block, itemModel);
     }
 
-    private void wall(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+    private void wall(WallBlock block, Block blockMaterial) {
 
-        WallBlock block = (WallBlock) deferredBlock.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+        ResourceLocation modelTexture = texture(blockMaterial, "block/");
+        wallBlock(block, modelTexture);
 
-        String blockName = name(block);
-        String blockMaterialName = name(blockMaterial);
-
-        String blockMaterialPath = "block/" + blockMaterialName;
-        ResourceLocation blockMaterialRL = rl(blockMaterialPath);
-
-        ModelFile itemModel = models().wallInventory(blockName, blockMaterialRL);
-
-        wallBlock(block, blockMaterialRL);
+        String itemModelName = name(block);
+        ModelFile itemModel = models().wallInventory(itemModelName, modelTexture);
         simpleBlockItem(block, itemModel);
     }
 
-    private void fence(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
+    private void pillar(RotatedPillarBlock block) {
 
-        FenceBlock block = (FenceBlock) deferredBlock.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+        ResourceLocation modelTexture = texture(block, "block/");
+        ResourceLocation modelTextureTop = texture(block, "block/", "_top");
+
+        axisBlock(block, modelTexture, modelTextureTop);
+
+        String itemModelName = name(block);
+        ModelFile itemModel = models().cubeColumn(itemModelName, modelTexture, modelTextureTop);
+
+        simpleBlockItem(block, itemModel);
+    }
+
+    private void fence(FenceBlock block, Block blockMaterial) {
 
         String blockName = name(block);
         String blockMaterialName = name(blockMaterial);
@@ -227,10 +247,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void fenceGate(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
-
-        FenceGateBlock block = (FenceGateBlock) deferredBlock.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+    private void fenceGate(FenceGateBlock block, Block blockMaterial) {
 
         String blockName = name(block);
         String blockMaterialName = name(blockMaterial);
@@ -244,9 +261,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void door(DeferredBlock<?> deferredBlock) {
-
-        DoorBlock block = (DoorBlock) deferredBlock.get();
+    private void door(DoorBlock block) {
 
         String blockName = name(block);
 
@@ -258,9 +273,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         flatItem(blockName, "item");
     }
 
-    private void trapDoor(DeferredBlock<?> deferredBlock) {
-
-        TrapDoorBlock block = (TrapDoorBlock) deferredBlock.get();
+    private void trapdoor(TrapDoorBlock block) {
 
         String blockName = name(block);
 
@@ -273,10 +286,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void pressurePlate(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
-
-        PressurePlateBlock block = (PressurePlateBlock) deferredBlock.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+    private void pressurePlate(PressurePlateBlock block, Block blockMaterial) {
 
         String blockName = name(block);
         String blockMaterialName = name(blockMaterial);
@@ -290,10 +300,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void button(DeferredBlock<?> deferredBlock, DeferredBlock<?> deferredBlockMaterial) {
-
-        ButtonBlock block = (ButtonBlock) deferredBlock.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+    private void button(ButtonBlock block, Block blockMaterial) {
 
         String blockName = name(block);
         String blockMaterialName = name(blockMaterial);
@@ -308,11 +315,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, itemModel);
     }
 
-    private void sign(DeferredBlock<?> deferredBlockSign, DeferredBlock<?> deferredBlockWallSign, DeferredBlock<?> deferredBlockMaterial) {
-
-        StandingSignBlock blockSign = (StandingSignBlock) deferredBlockSign.get();
-        WallSignBlock blockWallSign = (WallSignBlock) deferredBlockWallSign.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+    private void sign(StandingSignBlock blockSign, WallSignBlock blockWallSign, Block blockMaterial) {
 
         String blockSignName = name(blockSign);
         String blockMaterialName = name(blockMaterial);
@@ -324,11 +327,7 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         flatItem(blockSignName, "item");
     }
 
-    private void hangingSign(DeferredBlock<?> deferredBlockHangingSign, DeferredBlock<?> deferredBlockHangingWallSign, DeferredBlock<?> deferredBlockMaterial) {
-
-        CeilingHangingSignBlock blockHangingSign = (CeilingHangingSignBlock) deferredBlockHangingSign.get();
-        WallHangingSignBlock blockHangingWallSign = (WallHangingSignBlock) deferredBlockHangingWallSign.get();
-        Block blockMaterial = deferredBlockMaterial.get();
+    private void hangingSign(CeilingHangingSignBlock blockHangingSign, WallHangingSignBlock blockHangingWallSign, Block blockMaterial) {
 
         String blockHangingSignName = name(blockHangingSign);
         String blockMaterialName = name(blockMaterial);
@@ -341,9 +340,8 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         flatItem(blockHangingSignName, "item");
     }
 
-    private void deepslate(DeferredBlock<?> deferredBlock) {
+    private void deepslate(RotatedPillarBlock block) {
 
-        RotatedPillarBlock block = (RotatedPillarBlock) deferredBlock.get();
         String blockName = name(block);
 
         String blockSidePath = "block/" + blockName;
@@ -375,31 +373,30 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, model);
     }
 
-    private void grass(DeferredBlock<?> deferredBlock, String dirtName) {
+    private void grass(Block grassBlock, Block dirtBlock) {
 
-        Block block = deferredBlock.get();
-        String blockName = name(block);
+        String blockName = name(grassBlock);
 
-        String blockPath = "block/" + blockName;
+        ResourceLocation modelTextureSide = texture(grassBlock, "block/", "_side");
+        ResourceLocation modelTextureTop = texture(grassBlock, "block/", "_top");
+        ResourceLocation modelTextureBottom = texture(dirtBlock, "block/");
 
-        String dirtPath = "block/" + dirtName;
+        ModelFile model = models().cubeBottomTop(blockName, modelTextureSide, modelTextureBottom, modelTextureTop);
 
-        ModelFile model = models().cubeBottomTop(blockName, rl(blockPath + "_side"), rl(dirtPath), rl(blockPath + "_top"));
-
-        simpleBlockWithItem(block, model);
+        simpleBlockWithItem(grassBlock, model);
     }
 
-    private void crystal(DeferredBlock<?> deferredBlock) {
+    private void crystal(Block block) {
 
-        Block blockCrystal = deferredBlock.get();
-
-        String blockCrystalName = name(blockCrystal);
-        String blockCrystalPath = "block/" + blockCrystalName;
+        String blockName = name(block);
+        String blockCrystalPath = "block/" + blockName;
 
         String modelParent = "minecraft:block/cross";
-        ModelFile model = models().withExistingParent(blockCrystalPath, modelParent).texture("cross", rl(blockCrystalPath)).renderType("cutout");
+        ResourceLocation modelTexture = texture(block, "block/");
 
-        getVariantBuilder(blockCrystal)
+        ModelFile model = models().withExistingParent(blockCrystalPath, modelParent).texture("cross", modelTexture).renderType("cutout");
+
+        getVariantBuilder(block)
                 .partialState().with(BlockStateProperties.FACING, Direction.DOWN)
                 .modelForState().modelFile(model).rotationX(180).addModel()
                 .partialState().with(BlockStateProperties.FACING, Direction.EAST)
@@ -413,12 +410,11 @@ public class NexusBlockStateProvider extends BlockStateProvider {
                 .partialState().with(BlockStateProperties.FACING, Direction.WEST)
                 .modelForState().modelFile(model).rotationX(90).rotationY(270).addModel();
 
-        flatItem(blockCrystalName, "block");
+        flatItem(blockName, "block");
     }
 
-    private void petal(DeferredBlock<?> deferredBlock) {
+    private void petal(Block block) {
 
-        Block block = deferredBlock.get();
         String blockName = name(block);
 
         Direction[] directions = {Direction.NORTH, Direction.EAST, Direction.SOUTH, Direction.WEST};
@@ -457,34 +453,29 @@ public class NexusBlockStateProvider extends BlockStateProvider {
                 .renderType("cutout");
     }
 
-    private void flowerPot(DeferredBlock<?> deferredBlockPottedFlower, DeferredBlock<?> deferredBlockFlower) {
-
-        Block blockPottedFlower = deferredBlockPottedFlower.get();
-        Block blockFlower = deferredBlockFlower.get();
+    private void flowerPot(Block blockPottedFlower, Block blockFlower) {
 
         String pottedFlowerName = name(blockPottedFlower);
         String flowerName = name(blockFlower);
 
         String pottedFlowerPath = "block/" + pottedFlowerName;
-        String flowerPath = "block/" + flowerName;
-
-        ResourceLocation flowerTextureRL = rl(flowerPath);
 
         String modelParent = "minecraft:block/flower_pot_cross";
+        ResourceLocation modelTextureFlower = texture(blockFlower, "block/");
 
-        ModelFile model = models().withExistingParent(pottedFlowerPath, modelParent).texture("plant", flowerTextureRL).renderType("cutout");
+        ModelFile model = models().withExistingParent(pottedFlowerPath, modelParent).texture("plant", modelTextureFlower).renderType("cutout");
 
         simpleBlock(blockPottedFlower, model);
     }
 
-    private void nexusPortalCore(DeferredBlock<?> deferredBlock) {
+    private void nexusPortalCore(Block block) {
 
-        Block block = deferredBlock.get();
         String blockName = name(block);
 
-        String blockPath = "block/" + blockName;
+        ResourceLocation modelTextureSide = texture(block, "block/", "_side");
+        ResourceLocation modelTextureTop = texture(block, "block/", "_top");
 
-        ModelFile model = models().cubeTop(blockName, rl(blockPath + "_side"), rl(blockPath + "_top"));
+        ModelFile model = models().cubeTop(blockName, modelTextureSide, modelTextureTop);
 
         getVariantBuilder(block).forAllStates(state -> {
 
@@ -501,17 +492,16 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         simpleBlockItem(block, model);
     }
 
-    private void nexusPortal(DeferredBlock<?> deferredBlock) {
+    private void nexusPortal(Block block) {
 
-        Block block = deferredBlock.get();
         String blockName = name(block);
 
-        String blockPath = "block/" + blockName;
-        String parent = ID + ":block/nexus_portal";
+        String modelParent = ID + ":block/nexus_portal";
+        ResourceLocation modelTexture = texture(block, "block/");
 
-        ModelFile model = models().withExistingParent(blockName, parent)
-                .texture("particle", rl(blockPath))
-                .texture("portal", rl(blockPath))
+        ModelFile model = models().withExistingParent(blockName, modelParent)
+                .texture("particle", modelTexture)
+                .texture("portal", modelTexture)
                 .renderType("translucent");
 
         getVariantBuilder(block)
@@ -527,6 +517,15 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         itemModels().getBuilder(name)
                 .parent(new ModelFile.UncheckedModelFile("item/generated"))
                 .texture("layer0", NexusRef.rl(textureSource + "/" + name));
+    }
+
+    private ResourceLocation texture(Block block, String pathPrefix) {
+        return texture(block, pathPrefix, "");
+    }
+
+    private ResourceLocation texture(Block block, String pathPrefix, String pathSuffix) {
+        ResourceLocation blockKey = key(block);
+        return ResourceLocation.fromNamespaceAndPath(blockKey.getNamespace(), pathPrefix + blockKey.getPath() + pathSuffix);
     }
 
     private ResourceLocation key(Block block) {

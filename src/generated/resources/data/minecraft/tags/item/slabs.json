@@ -1,5 +1,8 @@
 {
   "values": [
+    "nexus:polished_calcite_slab",
+    "nexus:calcite_brick_slab",
+    "nexus:calcite_tile_slab",
     "nexus:cobbled_warpslate_slab",
     "nexus:polished_warpslate_slab",
     "nexus:warpslate_brick_slab",

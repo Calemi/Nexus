@@ -1,11 +1,11 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.ccore.api.block.family.CBlockFamily;
 import com.calemi.nexus.block.NexusBlocks;
-import com.calemi.nexus.util.NexusLists;
+import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.tag.NexusTags;
-import com.calemi.ccore.api.family.CBlockFamily;
+import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.tags.BlockTags;
@@ -13,7 +13,6 @@ import net.minecraft.world.level.block.Block;
 import net.neoforged.neoforge.common.Tags;
 import net.neoforged.neoforge.common.data.BlockTagsProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -42,9 +41,7 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.WARPSLATE.get())
                 .add(NexusBlocks.CHISELED_WARPSLATE.get())
                 .addOptionalTag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
-                .addAll(NexusLists.toResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)))
-                .addAll(NexusLists.toResourceKeyList((NexusLists.toDefBlockListFromBlockSet(NexusBlockFamilies.getFamiliesOfType(CBlockFamily.Type.COBBLESTONE)))))
-                .addAll(NexusLists.toResourceKeyList((NexusLists.toDefBlockListFromBlockSet(NexusBlockFamilies.getFamiliesOfType(CBlockFamily.Type.STONE)))));
+                .addAll(NexusLists.toResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)));
 
         tag(NexusTags.Blocks.WARPBLOSSOM_LOGS)
                 .add(NexusBlocks.WARPBLOSSOM_LOG.get())
@@ -53,8 +50,7 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.get());
 
         tag(NexusTags.Blocks.WOODLIKE)
-                .addOptionalTag(NexusTags.Blocks.WARPBLOSSOM_LOGS)
-                .addAll(NexusLists.toResourceKeyList((NexusLists.toDefBlockListFromBlockSet(NexusBlockFamilies.getFamiliesOfType(CBlockFamily.Type.PLANKS)))));
+                .addOptionalTag(NexusTags.Blocks.WARPBLOSSOM_LOGS);
 
         tag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
                 .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
@@ -66,143 +62,137 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
             BLOCK FAMILIES
          */
 
-        for (CBlockFamily family : NexusBlockFamilies.ALL) {
+        NexusBlockFamilies.ALL.forEach(family -> {
 
-            DeferredBlock<Block> baseBlock = family.get(CBlockFamily.Variant.BASE);
-            DeferredBlock<Block> log = family.get(CBlockFamily.Variant.LOG);
-            DeferredBlock<Block> wood = family.get(CBlockFamily.Variant.WOOD);
-            DeferredBlock<Block> strippedLog = family.get(CBlockFamily.Variant.STRIPPED_LOG);
-            DeferredBlock<Block> strippedWood = family.get(CBlockFamily.Variant.STRIPPED_WOOD);
-            DeferredBlock<Block> crackedBlock = family.get(CBlockFamily.Variant.CRACKED);
-            DeferredBlock<Block> stairs = family.get(CBlockFamily.Variant.STAIRS);
-            DeferredBlock<Block> slab = family.get(CBlockFamily.Variant.SLAB);
-            DeferredBlock<Block> wall = family.get(CBlockFamily.Variant.WALL);
-            DeferredBlock<Block> fence = family.get(CBlockFamily.Variant.FENCE);
-            DeferredBlock<Block> fenceGate = family.get(CBlockFamily.Variant.FENCE_GATE);
-            DeferredBlock<Block> door = family.get(CBlockFamily.Variant.DOOR);
-            DeferredBlock<Block> trapDoor = family.get(CBlockFamily.Variant.TRAPDOOR);
-            DeferredBlock<Block> pressurePlate = family.get(CBlockFamily.Variant.PRESSURE_PLATE);
-            DeferredBlock<Block> button = family.get(CBlockFamily.Variant.BUTTON);
-            DeferredBlock<Block> sign = family.get(CBlockFamily.Variant.SIGN);
-            DeferredBlock<Block> wallSign = family.get(CBlockFamily.Variant.WALL_SIGN);
-            DeferredBlock<Block> hangingSign = family.get(CBlockFamily.Variant.HANGING_SIGN);
-            DeferredBlock<Block> wallHangingSign = family.get(CBlockFamily.Variant.WALL_HANGING_SIGN);
+            family.getMembers().forEach((type, member) -> {
 
-            if (baseBlock != null) {
+                if (!member.genBlockTags()) return;
 
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.PLANKS).add(baseBlock.get());
+                Block block = member.getBlock();
+
+                if (family.getFamilyType().isStone()) {
+                    tag(NexusTags.Blocks.STONELIKE).add(block);
                 }
-            }
 
-            if (log != null) {
-                tag(BlockTags.LOGS_THAT_BURN).add(log.get());
-
-            }
-
-            if (wood != null) {
-                tag(BlockTags.LOGS_THAT_BURN).add(wood.get());
-            }
-
-            if (strippedLog != null) {
-                tag(BlockTags.LOGS_THAT_BURN).add(strippedLog.get());
-                tag(Tags.Blocks.STRIPPED_LOGS).add(strippedLog.get());
-            }
-
-            if (strippedWood != null) {
-                tag(BlockTags.LOGS_THAT_BURN).add(strippedWood.get());
-                tag(Tags.Blocks.STRIPPED_WOODS).add(strippedWood.get());
-            }
-
-            if (stairs != null) {
-                tag(BlockTags.STAIRS).add(stairs.get());
-
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.WOODEN_STAIRS).add(stairs.get());
+                if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                    tag(NexusTags.Blocks.WOODLIKE).add(block);
                 }
-            }
 
-            if (slab != null) {
-                tag(BlockTags.SLABS).add(slab.get());
+                if (type.equals(CBlockFamily.MemberType.BASE)) {
 
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.WOODEN_SLABS).add(slab.get());
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.PLANKS).add(block);
+                    }
                 }
-            }
 
-            if (wall != null) {
-                tag(BlockTags.WALLS).add(wall.get());
-            }
-
-            if (fence != null) {
-
-                tag(BlockTags.FENCES).add(fence.get());
-                tag(Tags.Blocks.FENCES).add(fence.get());
-
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.WOODEN_FENCES).add(fence.get());
-                    tag(Tags.Blocks.FENCES_WOODEN).add(fence.get());
+                if (type.equals(CBlockFamily.MemberType.LOG)) {
+                    tag(BlockTags.LOGS_THAT_BURN).add(block);
                 }
-            }
 
-            if (fenceGate != null) {
-
-                tag(BlockTags.FENCE_GATES).add(fenceGate.get());
-                tag(Tags.Blocks.FENCE_GATES).add(fenceGate.get());
-
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(Tags.Blocks.FENCE_GATES_WOODEN).add(fenceGate.get());
+                if (type.equals(CBlockFamily.MemberType.WOOD)) {
+                    tag(BlockTags.LOGS_THAT_BURN).add(block);
                 }
-            }
 
-            if (door != null) {
-                tag(BlockTags.DOORS).add(door.get());
-
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.WOODEN_DOORS).add(door.get());
+                if (type.equals(CBlockFamily.MemberType.STRIPPED_LOG)) {
+                    tag(BlockTags.LOGS_THAT_BURN).add(block);
+                    tag(Tags.Blocks.STRIPPED_LOGS).add(block);
                 }
-            }
 
-            if (trapDoor != null) {
-                tag(BlockTags.TRAPDOORS).add(trapDoor.get());
-
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.WOODEN_TRAPDOORS).add(trapDoor.get());
+                if (type.equals(CBlockFamily.MemberType.STRIPPED_WOOD)) {
+                    tag(BlockTags.LOGS_THAT_BURN).add(block);
+                    tag(Tags.Blocks.STRIPPED_WOODS).add(block);
                 }
-            }
 
-            if (pressurePlate != null) {
-                tag(BlockTags.PRESSURE_PLATES).add(pressurePlate.get());
+                if (type.equals(CBlockFamily.MemberType.STAIRS)) {
+                    tag(BlockTags.STAIRS).add(block);
 
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.WOODEN_PRESSURE_PLATES).add(pressurePlate.get());
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.WOODEN_STAIRS).add(block);
+                    }
                 }
-            }
 
-            if (button != null) {
-                tag(BlockTags.BUTTONS).add(button.get());
+                if (type.equals(CBlockFamily.MemberType.SLAB)) {
+                    tag(BlockTags.SLABS).add(block);
 
-                if (family.getType() == CBlockFamily.Type.PLANKS) {
-                    tag(BlockTags.WOODEN_BUTTONS).add(button.get());
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.WOODEN_SLABS).add(block);
+                    }
                 }
-            }
 
-            if (sign != null) {
-                tag(BlockTags.STANDING_SIGNS).add(sign.get());
-            }
+                if (type.equals(CBlockFamily.MemberType.WALL)) {
+                    tag(BlockTags.WALLS).add(block);
+                }
 
-            if (wallSign != null) {
-                tag(BlockTags.WALL_SIGNS).add(wallSign.get());
-            }
+                if (type.equals(CBlockFamily.MemberType.FENCE)) {
 
-            if (hangingSign != null) {
-                tag(BlockTags.CEILING_HANGING_SIGNS).add(hangingSign.get());
-            }
+                    tag(BlockTags.FENCES).add(block);
+                    tag(Tags.Blocks.FENCES).add(block);
 
-            if (wallHangingSign != null) {
-                tag(BlockTags.WALL_HANGING_SIGNS).add(wallHangingSign.get());
-            }
-        }
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.WOODEN_FENCES).add(block);
+                        tag(Tags.Blocks.FENCES_WOODEN).add(block);
+                    }
+                }
+
+                if (type.equals(CBlockFamily.MemberType.FENCE_GATE)) {
+
+                    tag(BlockTags.FENCE_GATES).add(block);
+                    tag(Tags.Blocks.FENCE_GATES).add(block);
+
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(Tags.Blocks.FENCE_GATES_WOODEN).add(block);
+                    }
+                }
+
+                if (type.equals(CBlockFamily.MemberType.DOOR)) {
+                    tag(BlockTags.DOORS).add(block);
+
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.WOODEN_DOORS).add(block);
+                    }
+                }
+
+                if (type.equals(CBlockFamily.MemberType.TRAPDOOR)) {
+                    tag(BlockTags.TRAPDOORS).add(block);
+
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.WOODEN_TRAPDOORS).add(block);
+                    }
+                }
+
+                if (type.equals(CBlockFamily.MemberType.PRESSURE_PLATE)) {
+                    tag(BlockTags.PRESSURE_PLATES).add(block);
+
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.WOODEN_PRESSURE_PLATES).add(block);
+                    }
+                }
+
+                if (type.equals(CBlockFamily.MemberType.BUTTON)) {
+                    tag(BlockTags.BUTTONS).add(block);
+
+                    if (family.getFamilyType() == CBlockFamily.FamilyType.PLANKS) {
+                        tag(BlockTags.WOODEN_BUTTONS).add(block);
+                    }
+                }
+
+                if (type.equals(CBlockFamily.MemberType.SIGN)) {
+                    tag(BlockTags.STANDING_SIGNS).add(block);
+                }
+
+                if (type.equals(CBlockFamily.MemberType.WALL_SIGN)) {
+                    tag(BlockTags.WALL_SIGNS).add(block);
+                }
+
+                if (type.equals(CBlockFamily.MemberType.HANGING_SIGN)) {
+                    tag(BlockTags.CEILING_HANGING_SIGNS).add(block);
+                }
+
+                if (type.equals(CBlockFamily.MemberType.WALL_HANGING_SIGN)) {
+                    tag(BlockTags.WALL_HANGING_SIGNS).add(block);
+                }
+            });
+        });
 
         /*
             MINECRAFT TAGS

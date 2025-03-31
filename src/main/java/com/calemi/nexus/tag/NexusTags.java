@@ -4,6 +4,7 @@ import com.calemi.nexus.main.NexusRef;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.Block;
 
 public class NexusTags {
@@ -23,5 +24,10 @@ public class NexusTags {
     public static class Items {
 
         public static final TagKey<Item> WARPBLOSSOM_LOGS = TagKey.create(Registries.ITEM, NexusRef.rl("warpblossom_logs"));
+    }
+
+    public static class Biomes {
+
+        public static final TagKey<Biome> VALID_RUINED_NEXUS_PORTAL_BIOMES = TagKey.create(Registries.BIOME, NexusRef.rl("has_structure/ruined_nexus_portal"));
     }
 }

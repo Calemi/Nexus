@@ -30,11 +30,11 @@ public class NexusDimensions {
     public static final ResourceKey<Level> NEXUS_LEVEL = NexusRef.createKey(NEXUS_RL, Registries.DIMENSION);
     public static final ResourceKey<LevelStem> NEXUS_LEVEL_STEM = NexusRef.createKey(NEXUS_RL, Registries.LEVEL_STEM);
 
-    public static void initDimensionType(BootstrapContext<DimensionType> context) {
+    public static void bootstrapDimensionType(BootstrapContext<DimensionType> context) {
         context.register(NEXUS_DIMENSION_TYPE, nexusDimensionType());
     }
 
-    public static void initLevelStem(BootstrapContext<LevelStem> context) {
+    public static void bootstrapLevelStem(BootstrapContext<LevelStem> context) {
 
         HolderGetter<DimensionType> dimensionTypes = context.lookup(Registries.DIMENSION_TYPE);
         HolderGetter<Biome> biomes = context.lookup(Registries.BIOME);

@@ -8,6 +8,7 @@ import net.minecraft.data.loot.LootTableProvider;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.neoforge.common.data.DatapackBuiltinEntriesProvider;
 import net.neoforged.neoforge.common.data.ExistingFileHelper;
 import net.neoforged.neoforge.data.event.GatherDataEvent;
 
@@ -24,41 +25,59 @@ public class NexusDataGen {
         DataGenerator generator = event.getGenerator();
         PackOutput output = event.getGenerator().getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
-        CompletableFuture<HolderLookup.Provider> lookupProvider = event.getLookupProvider();
-        NexusBlockTagProvider blockTagProvider = new NexusBlockTagProvider(output, lookupProvider, existingFileHelper);
+
+        /*
+            CLIENT
+         */
+
+        //LANGUAGE
+        generator.addProvider(event.includeClient(), new NexusEnglishLanguageProvider(output));
 
         //BLOCKSTATES
         generator.addProvider(event.includeClient(), new NexusBlockStateProvider(output, existingFileHelper));
+
+        //ITEM MODELS
+        generator.addProvider(event.includeClient(), new NexusItemModelProvider(output, existingFileHelper));
+
+        //PARTICLES
+        generator.addProvider(event.includeClient(), new NexusParticleDescriptionProvider(output, existingFileHelper));
+
+        /*
+            REGISTRY
+         */
+
+        DatapackBuiltinEntriesProvider datapackProvider = new NexusDatapackProvider(output, event.getLookupProvider());
+        CompletableFuture<HolderLookup.Provider> lookupProvider = datapackProvider.getRegistryProvider();
+
+        NexusBlockTagProvider blockTagProvider = new NexusBlockTagProvider(output, lookupProvider, existingFileHelper);
+
+        //DATA PACK
+        generator.addProvider(event.includeServer(), datapackProvider);
+
+        /*
+            SERVER
+         */
+
+        //DATAMAPS
+        generator.addProvider(event.includeServer(), new NexusDataMapProvider(output, lookupProvider));
+
+        //BLOCK TAGS
+        generator.addProvider(event.includeServer(), blockTagProvider);
+
+        //BIOME TAGS
+        generator.addProvider(event.includeServer(), new NexusBiomeTagProvider(output, lookupProvider, existingFileHelper));
+
+        //ITEM TAGS
+        generator.addProvider(event.includeServer(), new NexusItemTagProvider(output, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
+
+        //GLOBAL LOOT MODIFIERS
+        generator.addProvider(event.includeServer(), new NexusGlobalLootModifierProvider(output, lookupProvider));
 
         //BLOCK LOOT TABLES
         generator.addProvider(event.includeServer(), new LootTableProvider(output, Collections.emptySet(),
                 List.of(new LootTableProvider.SubProviderEntry(NexusBlockLootTableProvider::new, LootContextParamSets.BLOCK)), lookupProvider));
 
-        //ITEM MODELS
-        generator.addProvider(event.includeClient(), new NexusItemModelProvider(output, existingFileHelper));
-
-        //BLOCK TAGS
-        generator.addProvider(event.includeServer(), blockTagProvider);
-
-        //ITEM TAGS
-        generator.addProvider(event.includeServer(), new NexusItemTagProvider(output, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
-
-        //PARTICLES
-        generator.addProvider(event.includeClient(), new NexusParticleDescriptionProvider(output, existingFileHelper));
-
         //RECIPES
         generator.addProvider(event.includeServer(), new NexusRecipeProvider(output, lookupProvider));
-
-        //GLOBAL LOOT MODIFIERS
-        generator.addProvider(event.includeServer(), new NexusGlobalLootModifierProvider(output, lookupProvider));
-
-        //LANGUAGE
-        generator.addProvider(event.includeClient(), new NexusEnglishLanguageProvider(output));
-
-        //DATAMAPS
-        generator.addProvider(event.includeServer(), new NexusDataMapProvider(output, lookupProvider));
-
-        //DATAPACK
-        generator.addProvider(event.includeServer(), new NexusDatapackProvider(output, lookupProvider));
     }
 }

@@ -1,0 +1,14 @@
+{
+  "placement": {
+    "type": "minecraft:random_spread",
+    "salt": 627627627,
+    "separation": 16,
+    "spacing": 32
+  },
+  "structures": [
+    {
+      "structure": "nexus:ruined_nexus_portal",
+      "weight": 1
+    }
+  ]
+}

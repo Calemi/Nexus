@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "X": {
+      "item": "nexus:polished_calcite_slab"
+    }
+  },
+  "pattern": [
+    "X",
+    "X"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nexus:chiseled_calcite"
+  }
+}

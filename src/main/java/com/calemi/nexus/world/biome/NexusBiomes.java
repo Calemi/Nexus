@@ -19,7 +19,7 @@ public class NexusBiomes {
 
     public static final ResourceKey<Biome> CHRONOWARPED_FIELDS = NexusRef.createKey("chronowarped_fields", Registries.BIOME);
 
-    public static void init(BootstrapContext<Biome> context) {
+    public static void bootstrap(BootstrapContext<Biome> context) {
 
         HolderGetter<PlacedFeature> featureGetter = context.lookup(Registries.PLACED_FEATURE);
         HolderGetter<ConfiguredWorldCarver<?>> carverGetter = context.lookup(Registries.CONFIGURED_CARVER);

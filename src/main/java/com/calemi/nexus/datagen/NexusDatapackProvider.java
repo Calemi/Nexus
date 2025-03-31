@@ -6,6 +6,9 @@ import com.calemi.nexus.world.dimension.NexusDimensions;
 import com.calemi.nexus.world.feature.configured.NexusConfiguredFeatures;
 import com.calemi.nexus.world.feature.placed.NexusPlacedFeatures;
 import com.calemi.nexus.world.noise.NexusNoiseSettings;
+import com.calemi.nexus.world.structure.NexusStructureSets;
+import com.calemi.nexus.world.structure.NexusTemplatePools;
+import com.calemi.nexus.world.structure.NexusStructures;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.RegistrySetBuilder;
 import net.minecraft.core.registries.Registries;
@@ -20,10 +23,13 @@ public class NexusDatapackProvider extends DatapackBuiltinEntriesProvider {
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
             .add(Registries.CONFIGURED_FEATURE, NexusConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, NexusPlacedFeatures::bootstrap)
-            .add(Registries.BIOME, NexusBiomes::init)
-            .add(Registries.DIMENSION_TYPE, NexusDimensions::initDimensionType)
-            .add(Registries.LEVEL_STEM, NexusDimensions::initLevelStem)
-            .add(Registries.NOISE_SETTINGS, NexusNoiseSettings::init);
+            .add(Registries.STRUCTURE, NexusStructures::bootstrap)
+            .add(Registries.STRUCTURE_SET, NexusStructureSets::bootstrap)
+            .add(Registries.TEMPLATE_POOL, NexusTemplatePools::bootstrap)
+            .add(Registries.BIOME, NexusBiomes::bootstrap)
+            .add(Registries.DIMENSION_TYPE, NexusDimensions::bootstrapDimensionType)
+            .add(Registries.LEVEL_STEM, NexusDimensions::bootstrapLevelStem)
+            .add(Registries.NOISE_SETTINGS, NexusNoiseSettings::bootstrap);
 
     public NexusDatapackProvider(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, BUILDER, Set.of(NexusRef.ID));

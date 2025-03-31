@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/outer_stairs",
+  "textures": {
+    "bottom": "nexus:block/polished_calcite",
+    "side": "nexus:block/polished_calcite",
+    "top": "nexus:block/polished_calcite"
+  }
+}

@@ -1,10 +1,11 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.ccore.api.family.CBlockFamily;
-import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.block.family.NexusBlockFamilies;
+import com.calemi.ccore.api.block.family.CBlockFamily;
+import com.calemi.ccore.api.block.family.CBlockFamily.MemberType;
 import com.calemi.nexus.block.NexusBlocks;
+import com.calemi.nexus.block.family.NexusBlockFamilies;
 import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.main.NexusRef;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -16,7 +17,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.CompletableFuture;
@@ -104,11 +104,9 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .unlockedBy("has_chrono_upgrade", has(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE))
                 .save(recipeOutput);
 
-        smeltingResultFromBase(recipeOutput, NexusBlocks.WARPSLATE, NexusBlocks.COBBLED_WARPSLATE);
+        twoByTwoPacker(recipeOutput, RecipeCategory.DECORATIONS, NexusBlocks.CHRONO_BLOCK, NexusItems.CHRONO_SHARD);
 
-        twoByTwo(NexusBlocks.POLISHED_WARPSLATE, 4, NexusBlocks.COBBLED_WARPSLATE, null, recipeOutput);
-        twoByTwo(NexusBlocks.WARPSLATE_BRICKS, 4, NexusBlocks.POLISHED_WARPSLATE, null, recipeOutput);
-        twoByTwo(NexusBlocks.WARPSLATE_TILES, 4, NexusBlocks.WARPSLATE_BRICKS, null, recipeOutput);
+        smeltingResultFromBase(recipeOutput, NexusBlocks.WARPSLATE, NexusBlocks.COBBLED_WARPSLATE);
 
         /*
             ITEMS
@@ -117,35 +115,55 @@ public class NexusRecipeProvider extends RecipeProvider {
         woodenBoat(recipeOutput, NexusItems.WARPBLOSSOM_BOAT, NexusBlocks.WARPBLOSSOM_PLANKS);
         chestBoat(recipeOutput, NexusItems.WARPBLOSSOM_CHEST_BOAT, NexusItems.WARPBLOSSOM_BOAT);
 
-        oneToOneConversionRecipe(recipeOutput, Items.PURPLE_DYE, NexusBlocks.PURPLE_PETALS, "purple_dye", 1);
+        oneToOne(recipeOutput, Items.PURPLE_DYE, NexusBlocks.PURPLE_PETALS, "purple_dye", 1);
     }
 
     private void family(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        DeferredBlock<Block> baseBlock = family.get(CBlockFamily.Variant.BASE);
-        DeferredBlock<Block> log = family.get(CBlockFamily.Variant.LOG);
-        DeferredBlock<Block> wood = family.get(CBlockFamily.Variant.WOOD);
-        DeferredBlock<Block> strippedLog = family.get(CBlockFamily.Variant.STRIPPED_LOG);
-        DeferredBlock<Block> strippedWood = family.get(CBlockFamily.Variant.STRIPPED_WOOD);
-        DeferredBlock<Block> crackedBlock = family.get(CBlockFamily.Variant.CRACKED);
-        DeferredBlock<Block> chiseled = family.get(CBlockFamily.Variant.CHISELED);
-        DeferredBlock<Block> stairs = family.get(CBlockFamily.Variant.STAIRS);
-        DeferredBlock<Block> slab = family.get(CBlockFamily.Variant.SLAB);
-        DeferredBlock<Block> wall = family.get(CBlockFamily.Variant.WALL);
-        DeferredBlock<Block> fence = family.get(CBlockFamily.Variant.FENCE);
-        DeferredBlock<Block> fenceGate = family.get(CBlockFamily.Variant.FENCE_GATE);
-        DeferredBlock<Block> door = family.get(CBlockFamily.Variant.DOOR);
-        DeferredBlock<Block> trapDoor = family.get(CBlockFamily.Variant.TRAPDOOR);
-        DeferredBlock<Block> pressurePlate = family.get(CBlockFamily.Variant.PRESSURE_PLATE);
-        DeferredBlock<Block> button = family.get(CBlockFamily.Variant.BUTTON);
-        DeferredBlock<Block> sign = family.get(CBlockFamily.Variant.SIGN);
-        DeferredBlock<Block> hangingSign = family.get(CBlockFamily.Variant.HANGING_SIGN);
+        Block baseBlock = family.getBlock(MemberType.BASE);
+        Block log = family.getBlock(MemberType.LOG);
+        Block wood = family.getBlock(MemberType.WOOD);
+        Block strippedLog = family.getBlock(MemberType.STRIPPED_LOG);
+        Block strippedWood = family.getBlock(MemberType.STRIPPED_WOOD);
+        Block crackedBlock = family.getBlock(MemberType.CRACKED);
+        Block chiseled = family.getBlock(MemberType.CHISELED);
+        Block pillar = family.getBlock(MemberType.PILLAR);
+        Block stairs = family.getBlock(MemberType.STAIRS);
+        Block slab = family.getBlock(MemberType.SLAB);
+        Block wall = family.getBlock(MemberType.WALL);
+        Block fence = family.getBlock(MemberType.FENCE);
+        Block fenceGate = family.getBlock(MemberType.FENCE_GATE);
+        Block door = family.getBlock(MemberType.DOOR);
+        Block trapDoor = family.getBlock(MemberType.TRAPDOOR);
+        Block pressurePlate = family.getBlock(MemberType.PRESSURE_PLATE);
+        Block button = family.getBlock(MemberType.BUTTON);
+        Block sign = family.getBlock(MemberType.SIGN);
+        Block hangingSign = family.getBlock(MemberType.HANGING_SIGN);
+
+        for (CBlockFamily ancestor : family.getAncestors()) {
+
+            Block ancestorBaseBlock = ancestor.getBlock(MemberType.BASE);
+
+            if (ancestorBaseBlock == null) continue;
+
+            if (baseBlock != null) {
+                twoByTwo(baseBlock, 4, ancestorBaseBlock, null, recipeOutput);
+                stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, baseBlock, ancestorBaseBlock);
+            }
+
+            if (stairs != null) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, stairs, ancestorBaseBlock);
+            if (slab != null) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, slab, ancestorBaseBlock, 2);
+            if (wall != null) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, wall, ancestorBaseBlock);
+            if (chiseled != null) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, chiseled, ancestorBaseBlock);
+            if (pillar != null) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, pillar, ancestorBaseBlock);
+        }
 
         if (log != null && baseBlock != null && family.getLogTag() != null) planks(family, recipeOutput);
         if (log != null && wood != null) wood(family, recipeOutput);
         if (strippedLog != null && strippedWood != null) strippedWood(family, recipeOutput);
         if (crackedBlock != null) smeltingResultFromBase(recipeOutput, crackedBlock, baseBlock);
         if (chiseled != null) chiseled(family, recipeOutput);
+        if (pillar != null) pillar(family, recipeOutput);
         if (stairs != null) stairs(family, recipeOutput);
         if (slab != null) slab(family, recipeOutput);
         if (wall != null) wall(family, recipeOutput);
@@ -159,6 +177,24 @@ public class NexusRecipeProvider extends RecipeProvider {
         if (hangingSign != null) hangingSign(family, recipeOutput);
     }
 
+    protected void stonecutter(RecipeOutput recipeOutput, RecipeCategory category, ItemLike result, ItemLike material) {
+        stonecutter(recipeOutput, category, result, material, 1);
+    }
+
+    protected void stonecutter(RecipeOutput recipeOutput, RecipeCategory category, ItemLike result, ItemLike material, int resultCount) {
+        SingleItemRecipeBuilder.stonecutting(Ingredient.of(material), category, result, resultCount)
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getConversionRecipeName(result, material) + "_stonecutting"));
+    }
+
+    protected static void oneToOne(RecipeOutput recipeOutput, ItemLike result, ItemLike ingredient, @Nullable String group, int resultCount) {
+        ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result, resultCount)
+                .requires(ingredient)
+                .group(group)
+                .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput, NexusRef.rl(getConversionRecipeName(result, ingredient)));
+    }
+
     private void twoByTwo(ItemLike result, int count, ItemLike ingredient, @Nullable String group, RecipeOutput recipeOutput) {
         ShapedRecipeBuilder.shaped(RecipeCategory.BUILDING_BLOCKS, result, count)
                 .define('#', ingredient)
@@ -166,7 +202,7 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .pattern("##")
                 .group(group)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result) + "_from_" + getItemName(ingredient)));
     }
 
     private void oneByTwoVertical(ItemLike result, int count, ItemLike ingredient, RecipeOutput recipeOutput) {
@@ -175,172 +211,189 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .pattern("X")
                 .pattern("X")
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void wood(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.WOOD).get();
-        Block ingredient =family.get(CBlockFamily.Variant.LOG).get();
+        Block result = family.getBlock(MemberType.WOOD);
+        Block ingredient =family.getBlock(MemberType.LOG);
 
         twoByTwo(result, 3, ingredient, "bark", recipeOutput);
     }
 
     private void strippedWood(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.STRIPPED_WOOD).get();
-        Block ingredient = family.get(CBlockFamily.Variant.STRIPPED_LOG).get();
+        Block result = family.getBlock(MemberType.STRIPPED_WOOD);
+        Block ingredient = family.getBlock(MemberType.STRIPPED_LOG);
 
         twoByTwo(result, 3, ingredient, "bark", recipeOutput);
     }
 
     private void planks(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.BASE);
         TagKey<Item> ingredient = family.getLogTag();
 
         ShapelessRecipeBuilder.shapeless(RecipeCategory.BUILDING_BLOCKS, result, 4)
                 .requires(ingredient)
                 .group("planks")
                 .unlockedBy("has_logs", has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void chiseled(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.CHISELED).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
-        Block slab = family.get(CBlockFamily.Variant.SLAB).get();
+        Block result = family.getBlock(MemberType.CHISELED);
+        Block ingredient = family.getBlock(MemberType.BASE);
+        Block slab = family.getBlock(MemberType.SLAB);
 
-        stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+        stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
         oneByTwoVertical(result, 1, slab, recipeOutput);
+    }
+
+    private void pillar(CBlockFamily family, RecipeOutput recipeOutput) {
+
+        Block result = family.getBlock(MemberType.PILLAR);
+        Block ingredient = family.getBlock(MemberType.BASE);
+
+        stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+        oneByTwoVertical(result, 1, ingredient, recipeOutput);
     }
 
     private void stairs(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.STAIRS).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.STAIRS);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         stairBuilder(result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_stairs" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_stairs" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
 
-        if (family.getType().isStone()) stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+        if (family.getFamilyType().isStone()) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
     }
 
     private void slab(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.SLAB).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.SLAB);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         slabBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_slab" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_slab" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
 
-        if (family.getType().isStone()) stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+        if (family.getFamilyType().isStone()) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient, 2);
     }
 
     private void wall(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.WALL).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.WALL);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         wallBuilder(RecipeCategory.BUILDING_BLOCKS, result, Ingredient.of(ingredient))
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
 
-        if (family.getType().isStone()) stonecutterResultFromBase(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
+        if (family.getFamilyType().isStone()) stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
     }
 
     private void fence(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.FENCE).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.FENCE);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         fenceBuilder(result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_fence" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_fence" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void fenceGate(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.FENCE_GATE).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.FENCE_GATE);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         fenceGateBuilder(result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_fence_gate" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_fence_gate" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void door(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.DOOR).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.DOOR);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         doorBuilder(result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_door" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_door" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void trapDoor(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.TRAPDOOR).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.TRAPDOOR);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         trapdoorBuilder(result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_trapdoor" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_trapdoor" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void pressurePlate(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.PRESSURE_PLATE).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.PRESSURE_PLATE);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         pressurePlateBuilder(RecipeCategory.REDSTONE, result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_pressure_plate" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_pressure_plate" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void button(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.BUTTON).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.BUTTON);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         buttonBuilder(result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_button" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_button" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void sign(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.SIGN).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.SIGN);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
         signBuilder(result, Ingredient.of(ingredient))
-                .group(family.getType().equals(CBlockFamily.Type.PLANKS) ? "wooden_sign" : null)
+                .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_sign" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
     private void hangingSign(CBlockFamily family, RecipeOutput recipeOutput) {
 
-        Block result = family.get(CBlockFamily.Variant.HANGING_SIGN).get();
-        Block ingredient = family.get(CBlockFamily.Variant.BASE).get();
+        Block result = family.getBlock(MemberType.HANGING_SIGN);
+        Block ingredient = family.getBlock(MemberType.BASE);
 
-        hangingSign(recipeOutput, result, ingredient);
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 6)
+                .group("hanging_sign")
+                .define('#', ingredient)
+                .define('X', Items.CHAIN)
+                .pattern("X X")
+                .pattern("###")
+                .pattern("###")
+                .unlockedBy("has_stripped_logs", has(ingredient))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
-    private void portalCore(ItemLike output, Ingredient prevPortalCore, Ingredient tier, Ingredient center, RecipeOutput recipeOutput) {
-        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, output, 2)
+    private void portalCore(ItemLike result, Ingredient prevPortalCore, Ingredient tier, Ingredient center, RecipeOutput recipeOutput) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, result, 2)
                 .define('I', NexusItems.CHRONO_SHARD)
                 .define('T', tier)
                 .define('C', prevPortalCore)
@@ -349,6 +402,6 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .pattern("ISI")
                 .pattern("TCT")
                 .unlockedBy("has_chrono_shard", has(NexusItems.CHRONO_SHARD))
-                .save(recipeOutput);
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 }

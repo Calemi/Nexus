@@ -1,22 +1,22 @@
 package com.calemi.nexus.util;
 
-import com.calemi.nexus.block.family.NexusBlockFamilies;
-import com.calemi.nexus.main.Nexus;
-import com.calemi.ccore.api.family.CBlockFamily;
+import com.calemi.ccore.api.block.family.CBlockFamily;
 import com.calemi.nexus.block.NexusBlocks;
-import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.block.family.NexusBlockFamilies;
 import com.calemi.nexus.client.partclie.NexusParticles;
+import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.main.Nexus;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.SimpleParticleType;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.registries.DeferredBlock;
+import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredItem;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,93 +27,95 @@ public class NexusLists {
         BLOCKS
      */
 
-    public static final List<DeferredBlock<Block>> NEXUS_PORTAL_CORE_BLOCKS = new ArrayList<>();
+    public static final List<Block> NEXUS_PORTAL_CORE_BLOCKS = new ArrayList<>();
 
     static {
-        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.NEXUS_PORTAL_CORE);
-        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.IRON_NEXUS_PORTAL_CORE);
-        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.GOLD_NEXUS_PORTAL_CORE);
-        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.DIAMOND_NEXUS_PORTAL_CORE);
-        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.NETHERITE_NEXUS_PORTAL_CORE);
-        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.STARLIGHT_NEXUS_PORTAL_CORE);
+        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.NEXUS_PORTAL_CORE.get());
+        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.IRON_NEXUS_PORTAL_CORE.get());
+        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.GOLD_NEXUS_PORTAL_CORE.get());
+        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.DIAMOND_NEXUS_PORTAL_CORE.get());
+        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.NETHERITE_NEXUS_PORTAL_CORE.get());
+        NEXUS_PORTAL_CORE_BLOCKS.add(NexusBlocks.STARLIGHT_NEXUS_PORTAL_CORE.get());
     }
 
-    public static final List<DeferredBlock<Block>> NEXUS_PORTAL_BLOCKS = new ArrayList<>();
+    public static final List<Block> NEXUS_PORTAL_BLOCKS = new ArrayList<>();
 
     static {
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.WHITE_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.ORANGE_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.MAGENTA_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.LIGHT_BLUE_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.YELLOW_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.LIME_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.PINK_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.GRAY_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.LIGHT_GRAY_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.CYAN_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.PURPLE_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.BLUE_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.BROWN_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.GREEN_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.RED_NEXUS_PORTAL);
-        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.BLACK_NEXUS_PORTAL);
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.WHITE_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.ORANGE_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.MAGENTA_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.LIGHT_BLUE_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.YELLOW_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.LIME_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.PINK_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.GRAY_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.LIGHT_GRAY_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.CYAN_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.PURPLE_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.BLUE_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.BROWN_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.GREEN_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.RED_NEXUS_PORTAL.get());
+        NEXUS_PORTAL_BLOCKS.add(NexusBlocks.BLACK_NEXUS_PORTAL.get());
     }
 
-    public static final List<DeferredBlock<Block>> CHRONO_CLUSTER_BLOCKS = new ArrayList<>();
+    public static final List<Block> CHRONO_CLUSTER_BLOCKS = new ArrayList<>();
 
     static {
-        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.SMALL_CHRONO_BUD);
-        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.MEDIUM_CHRONO_BUD);
-        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.LARGE_CHRONO_BUD);
-        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.CHRONO_CLUSTER);
+        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.SMALL_CHRONO_BUD.get());
+        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.MEDIUM_CHRONO_BUD.get());
+        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.LARGE_CHRONO_BUD.get());
+        CHRONO_CLUSTER_BLOCKS.add(NexusBlocks.CHRONO_CLUSTER.get());
     }
 
-    public static final List<DeferredBlock<Block>> CHRONOWARPED_LOGS = new ArrayList<>();
+    public static final List<Block> CHRONOWARPED_LOGS = new ArrayList<>();
 
     static {
-        CHRONOWARPED_LOGS.add(NexusBlocks.WARPBLOSSOM_LOG);
-        CHRONOWARPED_LOGS.add(NexusBlocks.WARPBLOSSOM_WOOD);
-        CHRONOWARPED_LOGS.add(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG);
-        CHRONOWARPED_LOGS.add(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD);
+        CHRONOWARPED_LOGS.add(NexusBlocks.WARPBLOSSOM_LOG.get());
+        CHRONOWARPED_LOGS.add(NexusBlocks.WARPBLOSSOM_WOOD.get());
+        CHRONOWARPED_LOGS.add(NexusBlocks.STRIPPED_WARPBLOSSOM_LOG.get());
+        CHRONOWARPED_LOGS.add(NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.get());
     }
 
-    public static final List<DeferredBlock<Block>> ALL_BLOCKS = new ArrayList<>();
+    public static final List<Block> ALL_BLOCKS_BUT_FAMILIES = new ArrayList<>();
 
     static {
-        ALL_BLOCKS.addAll(NEXUS_PORTAL_CORE_BLOCKS);
-        ALL_BLOCKS.addAll(NEXUS_PORTAL_BLOCKS);
-        ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_GRASS);
-        ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_DIRT);
-        ALL_BLOCKS.add(NexusBlocks.CHRONOWARPED_SAND);
-        ALL_BLOCKS.add(NexusBlocks.CHRONO_BLOCK);
-        ALL_BLOCKS.add(NexusBlocks.BUDDING_CHRONO);
-        ALL_BLOCKS.addAll(CHRONO_CLUSTER_BLOCKS);
-        ALL_BLOCKS.add(NexusBlocks.WARPSLATE);
-        ALL_BLOCKS.addAll(NexusBlockFamilies.COBBLED_WARPSLATE.getAllBlocks());
-        ALL_BLOCKS.addAll(NexusBlockFamilies.POLISHED_WARPSLATE.getAllBlocks());
-        ALL_BLOCKS.addAll(NexusBlockFamilies.WARPSLATE_BRICK.getAllBlocks());
-        ALL_BLOCKS.addAll(NexusBlockFamilies.WARPSLATE_TILE.getAllBlocks());
-        ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
-        ALL_BLOCKS.add(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING);
-        ALL_BLOCKS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
-        ALL_BLOCKS.add(NexusBlocks.PURPLE_PETALS);
-        ALL_BLOCKS.addAll(NexusBlockFamilies.WARPBLOSSOM.getAllBlocks());
+        ALL_BLOCKS_BUT_FAMILIES.addAll(NEXUS_PORTAL_CORE_BLOCKS);
+        ALL_BLOCKS_BUT_FAMILIES.addAll(NEXUS_PORTAL_BLOCKS);
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHRONOWARPED_GRASS.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHRONOWARPED_DIRT.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHRONOWARPED_SAND.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHRONO_BLOCK.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.BUDDING_CHRONO.get());
+        ALL_BLOCKS_BUT_FAMILIES.addAll(CHRONO_CLUSTER_BLOCKS);
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.WARPSLATE.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.WARPBLOSSOM_SAPLING.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.WARPBLOSSOM_LEAVES.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.PURPLE_PETALS.get());
     }
 
-    public static final List<DeferredItem<Item>> ALL_ITEMS = new ArrayList<>();
+    public static final List<Block> ALL_BLOCKS = new ArrayList<>();
 
     static {
-        ALL_ITEMS.add(NexusItems.CHRONO_SHARD);
-        ALL_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE);
-        ALL_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT);
-        ALL_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT);
+        ALL_BLOCKS.addAll(ALL_BLOCKS_BUT_FAMILIES);
+        NexusBlockFamilies.ALL.forEach(family -> ALL_BLOCKS.addAll(family.getAllBlocks()));
+    }
+
+    public static final List<Item> ALL_ITEMS = new ArrayList<>();
+
+    static {
+        ALL_ITEMS.add(NexusItems.CHRONO_SHARD.get());
+        ALL_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+        ALL_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT.get());
+        ALL_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
     }
 
     public static final List<Item> ALL_BLOCKS_AND_ITEMS = new ArrayList<>();
 
     static {
-        ALL_BLOCKS_AND_ITEMS.addAll(toItemListFromDefBlock(ALL_BLOCKS));
-        ALL_BLOCKS_AND_ITEMS.addAll(toItemListFromDefItem(ALL_ITEMS));
+        ALL_BLOCKS_AND_ITEMS.addAll(toItemListFromBlock(ALL_BLOCKS));
+        ALL_BLOCKS_AND_ITEMS.addAll(ALL_ITEMS);
 
         Nexus.LOGGER.debug("ALL BLOCKS AND ITEMS");
         ALL_BLOCKS_AND_ITEMS.forEach(item -> Nexus.LOGGER.debug("entry: {}", item.getDescriptionId()));
@@ -122,7 +124,7 @@ public class NexusLists {
     public static final List<ItemLike> TAB_NEXUS_MAIN_ITEMS = new ArrayList<>();
 
     static {
-        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromDefBlock(NEXUS_PORTAL_CORE_BLOCKS));
+        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromBlock(NEXUS_PORTAL_CORE_BLOCKS));
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_SHARD);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_GRASS);
@@ -131,15 +133,18 @@ public class NexusLists {
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONO_BLOCK);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.BUDDING_CHRONO);
         TAB_NEXUS_MAIN_ITEMS.addAll(CHRONO_CLUSTER_BLOCKS);
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.POLISHED_CALCITE.getAllTabItems());
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.CALCITE_BRICKS.getAllTabItems());
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.CALCITE_TILES.getAllTabItems());
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPSLATE);
-        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.COBBLED_WARPSLATE));
-        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.POLISHED_WARPSLATE));
-        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.WARPSLATE_BRICK));
-        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.WARPSLATE_TILE));
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.COBBLED_WARPSLATE.getAllTabItems());
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.POLISHED_WARPSLATE.getAllTabItems());
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.WARPSLATE_BRICK.getAllTabItems());
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.WARPSLATE_TILE.getAllTabItems());
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.PURPLE_PETALS);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
-        TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromFamily(NexusBlockFamilies.WARPBLOSSOM));
+        TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.WARPBLOSSOM.getAllTabItems());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT);
     }
@@ -173,41 +178,29 @@ public class NexusLists {
         METHODS
      */
 
-    public static List<ResourceKey<Block>> toResourceKeyList(List<DeferredBlock<Block>> blocks) {
-        return new ArrayList<>(blocks.stream().map(DeferredBlock::getKey).toList());
+    public static List<ResourceKey<Block>> toResourceKeyList(List<Block> blocks) {
+        return new ArrayList<>(blocks.stream().map(block -> BuiltInRegistries.BLOCK.getResourceKey(block).orElse(null)).toList());
     }
 
-    public static List<Block> toBlockList(List<DeferredBlock<Block>> blocks) {
-        return new ArrayList<>(blocks.stream().map(DeferredHolder::get).toList());
-    }
-
-    public static List<DeferredBlock<Block>> toDefBlockListFromBlockSet(List<CBlockFamily> blockSet) {
-        List<DeferredBlock<Block>> list = new ArrayList<>();
+    public static List<Block> toBlockListFromBlockSet(List<CBlockFamily> blockSet) {
+        List<Block> list = new ArrayList<>();
         blockSet.forEach(set -> list.addAll(set.getAllBlocks()));
         return list;
     }
 
-    public static Block[] toBlockArray(List<DeferredBlock<Block>> blocks) {
-        return blocks.stream().map(DeferredHolder::get).toArray(Block[]::new);
+    public static Block[] toBlockArray(List <Block> blocks) {
+        return blocks.toArray(Block[]::new);
     }
 
-    public static Item[] toItemArray(List<DeferredBlock<Block>> blocks) {
-        return blocks.stream().map(DeferredBlock::asItem).toArray(Item[]::new);
+    public static Item[] toItemArray(List<Block> blocks) {
+        return blocks.stream().map(Block::asItem).toArray(Item[]::new);
     }
 
-    public static List<Item> toItemListFromDefBlock(List<DeferredBlock<Block>> blocks) {
-        return new ArrayList<>(blocks.stream().map(DeferredBlock::asItem).filter(item -> item instanceof BlockItem).toList());
+    public static List<Item> toItemListFromBlock(List<Block> blocks) {
+        return new ArrayList<>(blocks.stream().map(Block::asItem).filter(item -> item instanceof BlockItem).toList());
     }
 
-    public static List<Item> toItemListFromDefItem(List<DeferredItem<Item>> items) {
-        return new ArrayList<>(items.stream().map(DeferredItem::get).toList());
-    }
-
-    public static List<Item> toItemListFromFamily(CBlockFamily family) {
-        return toItemListFromDefBlock(family.getAllBlocks());
-    }
-
-    public static List<ItemStack> toItemStackListFromDefBlock(List<DeferredBlock<Block>> blocks) {
+    public static List<ItemStack> toItemStackListFromBlock(List<Block> blocks) {
         return new ArrayList<>(blocks.stream().map(block -> new ItemStack(block.asItem())).toList());
     }
 

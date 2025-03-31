@@ -52,27 +52,27 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
         NexusLists.ALL_BLOCKS.forEach(block -> {
 
-            Nexus.LOGGER.debug("Generating en_us for " + BuiltInRegistries.BLOCK.getKey(block.get()).getPath());
+            Nexus.LOGGER.debug("Generating en_us for {}", BuiltInRegistries.BLOCK.getKey(block).getPath());
 
-            if (block.equals(NexusBlocks.WARPBLOSSOM_WALL_SIGN)) {
+            if (block.equals(NexusBlocks.WARPBLOSSOM_WALL_SIGN.get())) {
                 return;
             }
 
-            if (block.equals(NexusBlocks.WARPBLOSSOM_WALL_HANGING_SIGN)) {
+            if (block.equals(NexusBlocks.WARPBLOSSOM_WALL_HANGING_SIGN.get())) {
                 return;
             }
 
-            addAutoBlock(block.get());
+            addAutoBlock(block);
         });
 
         NexusLists.ALL_ITEMS.forEach(item -> {
 
-            if (item.equals(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE)) {
-                addItem(item, "Smithing Template");
+            if (item.equals(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.asItem())) {
+                add(item, "Smithing Template");
                 return;
             }
 
-            addAutoItem(item.get());
+            addAutoItem(item);
         });
 
         /*

@@ -1,13 +1,14 @@
 package com.calemi.nexus.block;
 
+import com.calemi.nexus.block.family.NexusBlockSetTypes;
 import com.calemi.nexus.block.wood.NexusWoodTypes;
 import com.calemi.nexus.client.partclie.NexusParticles;
 import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.item.NexusItems;
-import com.calemi.nexus.block.family.NexusBlockSetTypes;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.world.feature.tree.NexusTreeGrowers;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.util.ColorRGBA;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.DyeColor;
@@ -118,16 +119,70 @@ public class NexusBlocks {
             new BuddingChronoBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.BUDDING_AMETHYST)));
 
     public static final DeferredBlock<Block> SMALL_CHRONO_BUD              = regBlock("small_chrono_bud", () ->
-            new AmethystClusterBlock(3.0F, 4.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.SMALL_AMETHYST_BUD)));
+            new AmethystClusterBlock(3.0F, 4.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.SMALL_AMETHYST_BUD).lightLevel(state -> 2)));
 
     public static final DeferredBlock<Block> MEDIUM_CHRONO_BUD             = regBlock("medium_chrono_bud", () ->
-            new AmethystClusterBlock(4.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.MEDIUM_AMETHYST_BUD)));
+            new AmethystClusterBlock(4.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.MEDIUM_AMETHYST_BUD).lightLevel(state -> 4)));
 
     public static final DeferredBlock<Block> LARGE_CHRONO_BUD              = regBlock("large_chrono_bud", () ->
-            new AmethystClusterBlock(5.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.LARGE_AMETHYST_BUD)));
+            new AmethystClusterBlock(5.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.LARGE_AMETHYST_BUD).lightLevel(state -> 6)));
 
     public static final DeferredBlock<Block> CHRONO_CLUSTER                = regBlock("chrono_cluster", () ->
-            new AmethystClusterBlock(7.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER)));
+            new AmethystClusterBlock(7.0F, 3.0F, BlockBehaviour.Properties.ofFullCopy(Blocks.AMETHYST_CLUSTER).lightLevel(state -> 8)));
+
+
+
+    public static final DeferredBlock<Block> POLISHED_CALCITE              = regBlock("polished_calcite", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE)));
+
+    public static final DeferredBlock<Block> POLISHED_CALCITE_STAIRS       = regBlock("polished_calcite_stairs", () ->
+            stair(POLISHED_CALCITE.get()));
+
+    public static final DeferredBlock<Block> POLISHED_CALCITE_SLAB         = regBlock("polished_calcite_slab", () ->
+            slab(POLISHED_CALCITE.get()));
+
+    public static final DeferredBlock<Block> POLISHED_CALCITE_WALL         = regBlock("polished_calcite_wall", () ->
+            wall(POLISHED_CALCITE.get()));
+
+    public static final DeferredBlock<Block> CALCITE_PILLAR = regBlock("calcite_pillar", () ->
+            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(POLISHED_CALCITE.get())));
+
+    public static final DeferredBlock<Block> CHISELED_CALCITE = regBlock("chiseled_calcite", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.CALCITE)));
+
+
+
+    public static final DeferredBlock<Block> CALCITE_BRICKS                = regBlock("calcite_bricks", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(POLISHED_CALCITE.get())));
+
+    public static final DeferredBlock<Block> CRACKED_CALCITE_BRICKS        = regBlock("cracked_calcite_bricks", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(CALCITE_BRICKS.get())));
+
+    public static final DeferredBlock<Block> CALCITE_BRICK_STAIRS          = regBlock("calcite_brick_stairs", () ->
+            stair(CALCITE_BRICKS.get()));
+
+    public static final DeferredBlock<Block> CALCITE_BRICK_SLAB            = regBlock("calcite_brick_slab", () ->
+            slab(CALCITE_BRICKS.get()));
+
+    public static final DeferredBlock<Block> CALCITE_BRICK_WALL            = regBlock("calcite_brick_wall", () ->
+            wall(CALCITE_BRICKS.get()));
+
+
+
+    public static final DeferredBlock<Block> CALCITE_TILES                = regBlock("calcite_tiles", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(CALCITE_BRICKS.get())));
+
+    public static final DeferredBlock<Block> CRACKED_CALCITE_TILES        = regBlock("cracked_calcite_tiles", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(CALCITE_TILES.get())));
+
+    public static final DeferredBlock<Block> CALCITE_TILE_STAIRS          = regBlock("calcite_tile_stairs", () ->
+            stair(CALCITE_TILES.get()));
+
+    public static final DeferredBlock<Block> CALCITE_TILE_SLAB            = regBlock("calcite_tile_slab", () ->
+            slab(CALCITE_TILES.get()));
+
+    public static final DeferredBlock<Block> CALCITE_TILE_WALL            = regBlock("calcite_tile_wall", () ->
+            wall(CALCITE_TILES.get()));
 
 
 
@@ -148,8 +203,6 @@ public class NexusBlocks {
     public static final DeferredBlock<Block> COBBLED_WARPSLATE_WALL        = regBlock("cobbled_warpslate_wall", () ->
             wall(COBBLED_WARPSLATE.get()));
 
-
-
     public static final DeferredBlock<Block> CHISELED_WARPSLATE            = regBlock("chiseled_warpslate", () ->
             new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.DEEPSLATE_BRICKS)));
 
@@ -169,23 +222,6 @@ public class NexusBlocks {
 
 
 
-    public static final DeferredBlock<Block> WARPSLATE_TILES               = regBlock("warpslate_tiles", () ->
-            new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.DEEPSLATE_TILES)));
-
-    public static final DeferredBlock<Block> CRACKED_WARPSLATE_TILES       = regBlock("cracked_warpslate_tiles", () ->
-            new Block(BlockBehaviour.Properties.ofFullCopy(WARPSLATE_TILES.get())));
-
-    public static final DeferredBlock<Block> WARPSLATE_TILE_STAIRS         = regBlock("warpslate_tile_stairs", () ->
-            stair(POLISHED_WARPSLATE.get()));
-
-    public static final DeferredBlock<Block> WARPSLATE_TILE_SLAB           = regBlock("warpslate_tile_slab", () ->
-            slab(POLISHED_WARPSLATE.get()));
-
-    public static final DeferredBlock<Block> WARPSLATE_TILE_WALL           = regBlock("warpslate_tile_wall", () ->
-            wall(POLISHED_WARPSLATE.get()));
-
-
-
     public static final DeferredBlock<Block> WARPSLATE_BRICKS              = regBlock("warpslate_bricks", () ->
             new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.DEEPSLATE_TILES)));
 
@@ -199,6 +235,23 @@ public class NexusBlocks {
             slab(POLISHED_WARPSLATE.get()));
 
     public static final DeferredBlock<Block> WARPSLATE_BRICK_WALL          = regBlock("warpslate_brick_wall", () ->
+            wall(POLISHED_WARPSLATE.get()));
+
+
+
+    public static final DeferredBlock<Block> WARPSLATE_TILES               = regBlock("warpslate_tiles", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(COBBLED_WARPSLATE.get()).sound(SoundType.DEEPSLATE_TILES)));
+
+    public static final DeferredBlock<Block> CRACKED_WARPSLATE_TILES       = regBlock("cracked_warpslate_tiles", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(WARPSLATE_TILES.get())));
+
+    public static final DeferredBlock<Block> WARPSLATE_TILE_STAIRS         = regBlock("warpslate_tile_stairs", () ->
+            stair(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> WARPSLATE_TILE_SLAB           = regBlock("warpslate_tile_slab", () ->
+            slab(POLISHED_WARPSLATE.get()));
+
+    public static final DeferredBlock<Block> WARPSLATE_TILE_WALL           = regBlock("warpslate_tile_wall", () ->
             wall(POLISHED_WARPSLATE.get()));
 
 
@@ -343,6 +396,8 @@ public class NexusBlocks {
         BLOCKS.register(Nexus.MOD_EVENT_BUS);
 
         ((FlowerPotBlock)Blocks.FLOWER_POT).addPlant(NexusRef.rl("warpblossom_sapling"), POTTED_WARPBLOSSOM_SAPLING);
+
+        Nexus.LOGGER.debug(BuiltInRegistries.BLOCK.wrapAsHolder(Blocks.CALCITE));
 
         Nexus.LOGGER.info("Registering: Blocks - End");
     }

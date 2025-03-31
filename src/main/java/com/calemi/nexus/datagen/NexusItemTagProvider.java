@@ -34,6 +34,8 @@ public class NexusItemTagProvider extends ItemTagsProvider {
         tag(ItemTags.STONE_TOOL_MATERIALS)
                 .add(NexusBlocks.COBBLED_WARPSLATE.asItem());
 
+        tag(Tags.Items.GEMS).add(NexusItems.CHRONO_SHARD.get());
+
         tag(ItemTags.BOATS).add(NexusItems.WARPBLOSSOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
 

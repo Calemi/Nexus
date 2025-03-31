@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-27T12:21:08.1764589	Tags for minecraft:item mod id nexus
+// 1.21.1	2025-03-30T14:32:24.0727715	Tags for minecraft:item mod id nexus
 9d4136bd48a42e895b3730be0cbca7f8da6fec48 data/c/tags/item/budding_blocks.json
 2230eb61f10aa8dd9d43cc065c00ea621a26e5b3 data/c/tags/item/buds.json
 4d43007c8519b43c54452d6ef6b8d57dbae1bb39 data/c/tags/item/clusters.json
@@ -7,6 +7,7 @@ ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/c/tags/item/fences.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/c/tags/item/fences/wooden.json
 d2ac2365e8f20a7fcbd83ee6557409d5d41a49e2 data/c/tags/item/fence_gates.json
 d2ac2365e8f20a7fcbd83ee6557409d5d41a49e2 data/c/tags/item/fence_gates/wooden.json
+e3d38c9cf8b51e19657524ae147cdf9d9a3e9d98 data/c/tags/item/gems.json
 d9376b938737560d696b410181953cac6267f19e data/c/tags/item/sands.json
 73a343b1a305200794277704c711fb60b44ac7f8 data/c/tags/item/stripped_logs.json
 1b2cef64a4688f4f5341a1d8ccdda5e4763a976b data/c/tags/item/stripped_woods.json
@@ -23,12 +24,12 @@ ca88d3545330077fbbcb7c8b273942c3e896e713 data/minecraft/tags/item/hanging_signs.
 d9376b938737560d696b410181953cac6267f19e data/minecraft/tags/item/sand.json
 4bc96a4aa9d67392d36e6fa62a55397e7c0e6958 data/minecraft/tags/item/saplings.json
 50278897411770a9df12f0b120c2323f99dc49fc data/minecraft/tags/item/signs.json
-7391b104ea28e9c4ff528f8a0698ada63a3366bb data/minecraft/tags/item/slabs.json
+b94b73c6e0c9b361c599c48181dfca4bd94269a3 data/minecraft/tags/item/slabs.json
 d9376b938737560d696b410181953cac6267f19e data/minecraft/tags/item/smelts_to_glass.json
-2edb88e986c0e378a65c3f9b9a057efd63bdb673 data/minecraft/tags/item/stairs.json
+a225aadbc4c30c2807a35dbbd40145c310fb3c92 data/minecraft/tags/item/stairs.json
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/minecraft/tags/item/stone_crafting_materials.json
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/minecraft/tags/item/stone_tool_materials.json
-5e10e6b03dd40b640711bda33f2005d9ff2ba3d6 data/minecraft/tags/item/walls.json
+fb4d901941cf9406303b0f1236c58c6688dfcca6 data/minecraft/tags/item/walls.json
 11447634b78fe1c3ceb9ccf5fbb07d8e51f6958a data/minecraft/tags/item/wooden_buttons.json
 36a3a5f7da66e78c9ea099721b78d8713b13fc30 data/minecraft/tags/item/wooden_doors.json
 ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/minecraft/tags/item/wooden_fences.json

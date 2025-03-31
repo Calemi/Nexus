@@ -19,7 +19,7 @@ public class NexusNoiseSettings {
 
     public static final ResourceKey<NoiseGeneratorSettings> NEXUS = NexusRef.createKey("the_nexus", Registries.NOISE_SETTINGS);
 
-    public static void init(BootstrapContext<NoiseGeneratorSettings> context) {
+    public static void bootstrap(BootstrapContext<NoiseGeneratorSettings> context) {
 
         HolderGetter<DensityFunction> densityFunctions = context.lookup(Registries.DENSITY_FUNCTION);
         HolderGetter<NormalNoise.NoiseParameters> noise = context.lookup(Registries.NOISE);

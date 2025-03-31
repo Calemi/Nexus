@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-27T12:42:37.5465193	Registries
+// 1.21.1	2025-03-30T21:23:51.3826387	Registries
 935b732e9f183b3e303aa4d8a930415dee17b031 data/nexus/dimension/the_nexus.json
 bcce14ab7fd826f9432e14153ee93dea15d3e422 data/nexus/dimension_type/the_nexus.json
 edf029478bca61bdd924c38a5353170bdd0a0579 data/nexus/worldgen/biome/chronowarped_fields.json
@@ -13,3 +13,6 @@ f2c733a1ab6d0df685ae470dc13bc87788b8d64b data/nexus/worldgen/configured_feature/
 a6b70661257441872b0f2eb5b425d27a8738d7f4 data/nexus/worldgen/placed_feature/chrono_cluster_submerged.json
 29c68e569a16d01bbeac55e95541249097bffea4 data/nexus/worldgen/placed_feature/flower_purple_petal.json
 2e851e1c4c5c4e3848691ce3b01f7aede9e6e31c data/nexus/worldgen/placed_feature/warpblossom.json
+150a54f681f567887f77eccd8550638bf848fb1e data/nexus/worldgen/structure/ruined_nexus_portal.json
+c6e3aebd34dcdf17f9b0e218fe9fd89a775156f1 data/nexus/worldgen/structure_set/ruined_nexus_portal.json
+16c7e5293ac31a31f6d6f6a1ea41e0675382a3f6 data/nexus/worldgen/template_pool/ruined_nexus_portal.json
