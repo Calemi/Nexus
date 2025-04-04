@@ -85,6 +85,11 @@ public class CreativeTabInjector {
 
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             add(event, Items.CHERRY_CHEST_BOAT, NexusItems.WARPBLOSSOM_BOAT.get(), NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
+            add(event, Items.CLOCK, NexusItems.SPEEDOMETER.get());
+        }
+
+        if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+            add(event, Items.TURTLE_HELMET, NexusItems.FALLBREAKERS.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {

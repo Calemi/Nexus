@@ -10,6 +10,7 @@ import com.calemi.nexus.tag.NexusTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
@@ -126,6 +127,15 @@ public class NexusRecipeProvider extends RecipeProvider {
         threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusBlocks.CHARGED_ACCELERITE_BLOCK, NexusItems.CHARGED_ACCELERITE_INGOT);
         oneToOne(recipeOutput, NexusItems.CHARGED_ACCELERITE_INGOT, NexusBlocks.CHARGED_ACCELERITE_BLOCK, null, 9);
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusItems.TOTEM_OF_WARPING, 1)
+                .define('C', NexusItems.CHRONO_SHARD)
+                .define('T', Items.TOTEM_OF_UNDYING)
+                .pattern(" C ")
+                .pattern("CTC")
+                .pattern(" C ")
+                .unlockedBy("has_totem_of_undying", has(Items.TOTEM_OF_UNDYING))
+                .save(recipeOutput);
+
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusItems.SPEEDOMETER, 1)
                 .define('I', NexusTags.Items.ACCELERITE_INGOTS)
                 .define('S', Items.AMETHYST_SHARD.asItem())
@@ -133,6 +143,14 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .pattern("ISI")
                 .pattern(" I ")
                 .unlockedBy("has_accelerite", has(NexusTags.Items.ACCELERITE_INGOTS))
+                .save(recipeOutput);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusItems.FALLBREAKERS, 1)
+                .define('S', Tags.Items.GEMS_AMETHYST)
+                .define('W', ItemTags.WOOL)
+                .pattern("S S")
+                .pattern("W W")
+                .unlockedBy("has_amethyst_shard", has(Tags.Items.GEMS_AMETHYST))
                 .save(recipeOutput);
 
         woodenBoat(recipeOutput, NexusItems.WARPBLOSSOM_BOAT, NexusBlocks.WARPBLOSSOM_PLANKS);

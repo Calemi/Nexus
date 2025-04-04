@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": {
+      "item": "nexus:chrono_shard"
+    },
+    "T": {
+      "item": "minecraft:totem_of_undying"
+    }
+  },
+  "pattern": [
+    " C ",
+    "CTC",
+    " C "
+  ],
+  "result": {
+    "count": 1,
+    "id": "nexus:totem_of_warping"
+  }
+}

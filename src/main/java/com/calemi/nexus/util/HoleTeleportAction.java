@@ -1,5 +1,6 @@
 package com.calemi.nexus.util;
 
+import com.calemi.ccore.api.location.Location;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import com.calemi.nexus.world.dimension.NexusDimensions;
 import net.minecraft.world.entity.Entity;
@@ -27,7 +28,9 @@ public class HoleTeleportAction {
 
             if (entity.getBlockY() <= nexusMinY - 5) {
 
+                NexusSoundHelper.playTeleportSound(new Location(entity));
                 TeleportHelper.teleportToWorld(entity, entity.blockPosition().offset(0, overworldHeight + 128, 0), Level.OVERWORLD);
+                NexusSoundHelper.playTeleportSound(new Location(entity));
             }
         }
     }

@@ -10,8 +10,7 @@ import com.calemi.nexus.client.partclie.NexusParticles;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreHUDOverlay;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreWorldOverlay;
 import com.calemi.nexus.config.NexusConfig;
-import com.calemi.nexus.item.AcceleriteItemChargeAction;
-import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.item.*;
 import com.calemi.nexus.item.axe.NexusStrippables;
 import com.calemi.nexus.item.property.NexusItemProperties;
 import com.calemi.nexus.loot.condition.NexusLootItemConditions;
@@ -53,6 +52,7 @@ public class Nexus {
         modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 
         NexusItems.init();
+        NexusArmorMaterials.init();
         NexusBlocks.init();
         NexusBlockEntities.init();
         NexusCreativeModeTabs.init();
@@ -88,6 +88,8 @@ public class Nexus {
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockAction());
         FORGE_EVENT_BUS.register(new HoleTeleportAction());
         FORGE_EVENT_BUS.register(new AcceleriteItemChargeAction());
+        FORGE_EVENT_BUS.register(new TotemOfWarpingImmunityAction());
+        FORGE_EVENT_BUS.register(new FallbreakersImmunityAction());
 
         LOGGER.info("Registering: Common - End");
     }
@@ -97,6 +99,7 @@ public class Nexus {
         LOGGER.info("Registering: Client - Start");
 
         FORGE_EVENT_BUS.register(new RenderNexusPortalCoreWorldOverlay());
+        FORGE_EVENT_BUS.register(new FallbreakersTooltip());
 
         LOGGER.info("Registering: Client - End");
     }

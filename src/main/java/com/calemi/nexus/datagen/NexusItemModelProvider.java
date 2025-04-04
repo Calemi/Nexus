@@ -1,9 +1,12 @@
 package com.calemi.nexus.datagen;
 
+import com.calemi.nexus.item.FallbreakersItem;
 import com.calemi.nexus.item.SpeedometerItem;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.util.NexusLists;
 import net.minecraft.data.PackOutput;
+import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.neoforge.client.model.generators.ItemModelBuilder;
 import net.neoforged.neoforge.client.model.generators.ItemModelProvider;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -37,6 +40,30 @@ public class NexusItemModelProvider extends ItemModelProvider {
                 generatedModels.put(NexusRef.rl("speedometer"), speedometer);
 
                 return;
+            }
+
+            if (item instanceof FallbreakersItem) {
+
+                ItemModelBuilder fallbreakers = factory.apply(NexusRef.rl("item/fallbreakers"))
+                        .parent(new ModelFile.UncheckedModelFile("item/generated"))
+                        .texture("layer0", NexusRef.rl("item/fallbreakers"));;
+
+                for (int i = 0; i < ItemModelGenerators.GENERATED_TRIM_MODELS.size(); i++) {
+
+                    ItemModelGenerators.TrimModelData trimData = ItemModelGenerators.GENERATED_TRIM_MODELS.get(i);
+                    String parentTrimName = trimData.name() + (trimData.name().equals("iron") ? "_darker" : "");
+                    String trimName = trimData.name() + (trimData.name().equals("amethyst") ? "_darker" : "");
+
+                    ItemModelBuilder trimModel = getBuilder("item/fallbreakers_" + trimName + "_trim")
+                            .parent(new ModelFile.UncheckedModelFile("item/iron_boots_" + parentTrimName + "_trim"))
+                            .texture("layer0", NexusRef.rl("item/fallbreakers"));
+
+                    ItemModelBuilder.OverrideBuilder override = fallbreakers.override();
+                    override.predicate(ResourceLocation.withDefaultNamespace("trim_type"), trimData.itemModelIndex());
+                    override.model(trimModel);
+                }
+
+                generatedModels.put(NexusRef.rl("fallbreakers"), fallbreakers);
             }
 
             basicItem(item);

@@ -6,10 +6,7 @@ import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.item.boat.NexusBoatTypes;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
-import net.minecraft.world.item.DoubleHighBlockItem;
-import net.minecraft.world.item.HangingSignItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.SignItem;
+import net.minecraft.world.item.*;
 import net.neoforged.neoforge.registries.DeferredItem;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -33,9 +30,14 @@ public class NexusItems {
     public static final DeferredItem<Item> CHARGED_ACCELERITE_INGOT = regItem("charged_accelerite_ingot",
             () -> new Item(new Item.Properties()));
 
+    public static final DeferredItem<Item> TOTEM_OF_WARPING = regItem("totem_of_warping",
+            () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
+
     public static final DeferredItem<Item> SPEEDOMETER = regItem("speedometer",
             () -> new SpeedometerItem(new Item.Properties().stacksTo(1)));
 
+    public static final DeferredItem<Item> FALLBREAKERS = regItem("fallbreakers",
+            () -> new FallbreakersItem(new Item.Properties().stacksTo(1)));
 
     public static final DeferredItem<Item> WARPBLOSSOM_DOOR = regItem("warpblossom_door",
             () -> new DoubleHighBlockItem(NexusBlocks.WARPBLOSSOM_DOOR.get(), new Item.Properties()));

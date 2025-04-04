@@ -29,6 +29,7 @@ public class AcceleriteItemChargeAction {
 
         if (level.isClientSide()) return;
         if (!(entity instanceof ServerPlayer serverPlayer)) return;
+        if (serverPlayer.isSpectator()) return;
 
         if (level.getGameTime() != lastGameTime) {
                         
@@ -70,7 +71,7 @@ public class AcceleriteItemChargeAction {
 
                 if (currentChargeCooldown <= 0) {
                     currentSpeedChargeItem.onSpeedRequirementMet(serverPlayer, currentChargingStack);
-                    currentChargeCooldown = Mth.clamp(10 - ((currentSpeed - requiredSpeed) * 5), 0, 10);
+                    currentChargeCooldown = Mth.clamp(10 - ((currentSpeed - requiredSpeed) * 5), 5, 10);
                 }
             }
         }

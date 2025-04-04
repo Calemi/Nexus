@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "S": {
+      "tag": "c:gems/amethyst"
+    },
+    "W": {
+      "tag": "minecraft:wool"
+    }
+  },
+  "pattern": [
+    "S S",
+    "W W"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nexus:fallbreakers"
+  }
+}

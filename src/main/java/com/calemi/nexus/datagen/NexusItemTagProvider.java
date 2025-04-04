@@ -41,6 +41,10 @@ public class NexusItemTagProvider extends ItemTagsProvider {
         tag(Tags.Items.INGOTS).add(NexusItems.DORMANT_ACCELERITE_INGOT.get(), NexusItems.CHARGED_ACCELERITE_INGOT.get());
         tag(Tags.Items.GEMS).add(NexusItems.CHRONO_SHARD.get());
 
+        tag(Tags.Items.ENCHANTABLES).add(NexusItems.FALLBREAKERS.get());
+        tag(Tags.Items.ARMORS).add(NexusItems.FALLBREAKERS.get());
+        tag(ItemTags.FOOT_ARMOR).add(NexusItems.FALLBREAKERS.get());
+
         tag(ItemTags.BOATS).add(NexusItems.WARPBLOSSOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
 

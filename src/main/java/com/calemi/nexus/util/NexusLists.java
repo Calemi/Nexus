@@ -113,7 +113,9 @@ public class NexusLists {
         ALL_ITEMS.add(NexusItems.RAW_ACCELERITE.get());
         ALL_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT.get());
         ALL_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT.get());
+        ALL_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         ALL_ITEMS.add(NexusItems.SPEEDOMETER.get());
+        ALL_ITEMS.add(NexusItems.FALLBREAKERS.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
     }
@@ -155,7 +157,9 @@ public class NexusLists {
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.RAW_ACCELERITE);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.SPEEDOMETER.get());
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.FALLBREAKERS.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.PURPLE_PETALS);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_LEAVES);

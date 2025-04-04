@@ -86,6 +86,8 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
         add(CHRONO_UPGRADE + "additions_slot_description", "Add Ender Pearl");
 
         add(getPrefixedKey("hover_text", "nexus_portal_core"), "Coordinate Scale");
+        add(getPrefixedKey("hover_text", "fallbreakers_1"), "Fall Damage Immunity");
+        add(getPrefixedKey("hover_text", "fallbreakers_2"), "Breaks on Impact");
 
         /*
             CREATIVE TABS

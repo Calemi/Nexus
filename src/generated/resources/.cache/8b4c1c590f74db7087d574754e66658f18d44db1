@@ -1,8 +1,19 @@
-// 1.21.1	2025-04-04T02:55:08.961428	Item Models: nexus
+// 1.21.1	2025-04-04T17:14:52.4697665	Item Models: nexus
 c9222ae0034ac1992d745d0637018d5fd52e1f7b assets/nexus/models/item/charged_accelerite_ingot.json
 44764e188c59892327753994d18998b0c33d9953 assets/nexus/models/item/chrono_shard.json
 fd79b33d8b79c67a9b5630a644ff8f7499e9fb9b assets/nexus/models/item/chrono_upgrade_smithing_template.json
 2de7e14e1e7656103b9c5efa293b9b3b2fb9416d assets/nexus/models/item/dormant_accelerite_ingot.json
+4ed8d24b6ae75abfdd12634f731d6cae575f83eb assets/nexus/models/item/fallbreakers.json
+d7aa51a3bc37ad18552aba3fa9b8f73ca9aa1fb3 assets/nexus/models/item/fallbreakers_amethyst_darker_trim.json
+971e904eb17be16b760ca14e8c6c9b90d9b9027c assets/nexus/models/item/fallbreakers_copper_trim.json
+cfa0f0729a4fabb3cc5e54f0e8944408eeaf650b assets/nexus/models/item/fallbreakers_diamond_trim.json
+55dd14bac395956085e526d70e5738ecf27b6475 assets/nexus/models/item/fallbreakers_emerald_trim.json
+cb91c3d32fad1cd79ff85cf741c2875660a8356d assets/nexus/models/item/fallbreakers_gold_trim.json
+9d6a55240463a759cb1c18184cdf978c3e9a7e78 assets/nexus/models/item/fallbreakers_iron_trim.json
+76e77d943222adabf17246a4c81e5f3db2cad883 assets/nexus/models/item/fallbreakers_lapis_trim.json
+54fa032c778f63de7c2f07077fb67e0dbbfa0f7c assets/nexus/models/item/fallbreakers_netherite_trim.json
+31529bdd1e8b36de518094f31d3edb4ccf5d28a4 assets/nexus/models/item/fallbreakers_quartz_trim.json
+e4ff5f9a7117e18f37760045bcea2796f1dc7c96 assets/nexus/models/item/fallbreakers_redstone_trim.json
 bb0b9312030889360c9e02d94703bfb85b7a81c5 assets/nexus/models/item/raw_accelerite.json
 166319d6e15c23c023f11502b71d256e18e58a90 assets/nexus/models/item/speedometer.json
 43a4292cf8c5f9e25675f5db0494865198c1cfb8 assets/nexus/models/item/speedometer_01.json
@@ -20,5 +31,6 @@ d972abc47cbdda02cf73d1206962aca736117b5b assets/nexus/models/item/speedometer_06
 d520d22e616f04cf81a77382fab39afcba1b1f61 assets/nexus/models/item/speedometer_13.json
 ea648acfeae3c0dc40c36ef8c7a304b93c5c5ad6 assets/nexus/models/item/speedometer_14.json
 3d8aad1edd5d7bd4ea1b5cc9eee1ffaf0d3c3451 assets/nexus/models/item/speedometer_15.json
+8f9362c2422ed0e16fb2003d7d5eb5053cfd38fc assets/nexus/models/item/totem_of_warping.json
 6f470e6c27e2dd387396396f70f308f99c5a977b assets/nexus/models/item/warpblossom_boat.json
 4785ccd96731fbb15855e66c08ecd8ee15c95ffa assets/nexus/models/item/warpblossom_chest_boat.json
