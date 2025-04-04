@@ -15,7 +15,6 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.registries.DeferredHolder;
 
 import java.util.ArrayList;
@@ -89,6 +88,10 @@ public class NexusLists {
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.BUDDING_CHRONO.get());
         ALL_BLOCKS_BUT_FAMILIES.addAll(CHRONO_CLUSTER_BLOCKS);
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.WARPSLATE.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.WARPSLATE_ACCELERITE_ORE.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.RAW_ACCELERITE_BLOCK.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.DORMANT_ACCELERITE_BLOCK.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHARGED_ACCELERITE_BLOCK.get());
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.WARPBLOSSOM_SAPLING.get());
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.POTTED_WARPBLOSSOM_SAPLING.get());
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.WARPBLOSSOM_LEAVES.get());
@@ -107,6 +110,10 @@ public class NexusLists {
     static {
         ALL_ITEMS.add(NexusItems.CHRONO_SHARD.get());
         ALL_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+        ALL_ITEMS.add(NexusItems.RAW_ACCELERITE.get());
+        ALL_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT.get());
+        ALL_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT.get());
+        ALL_ITEMS.add(NexusItems.SPEEDOMETER.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
     }
@@ -141,6 +148,14 @@ public class NexusLists {
         TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.POLISHED_WARPSLATE.getAllTabItems());
         TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.WARPSLATE_BRICK.getAllTabItems());
         TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.WARPSLATE_TILE.getAllTabItems());
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPSLATE_ACCELERITE_ORE);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.RAW_ACCELERITE_BLOCK);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.DORMANT_ACCELERITE_BLOCK);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHARGED_ACCELERITE_BLOCK);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.RAW_ACCELERITE);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.SPEEDOMETER.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.PURPLE_PETALS);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_LEAVES);

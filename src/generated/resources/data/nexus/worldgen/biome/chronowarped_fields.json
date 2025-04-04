@@ -10,7 +10,9 @@
     "water_fog_color": 7372031
   },
   "features": [
-    [],
+    [
+      "nexus:chasm"
+    ],
     [],
     [],
     [],

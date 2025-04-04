@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nexus:raw_accelerite_block"
+    }
+  ],
+  "result": {
+    "count": 9,
+    "id": "nexus:raw_accelerite"
+  }
+}

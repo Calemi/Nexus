@@ -24,6 +24,19 @@ public class NexusItems {
     public static final DeferredItem<Item> CHRONO_UPGRADE_SMITHING_TEMPLATE = regItem("chrono_upgrade_smithing_template",
             () -> SmithingTemplateHelper.createCustomUpgradeTemplate(NexusRef.ID, "chrono", List.of("amethyst_shard"), List.of("ender_pearl")));
 
+    public static final DeferredItem<Item> RAW_ACCELERITE = regItem("raw_accelerite",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> DORMANT_ACCELERITE_INGOT = regItem("dormant_accelerite_ingot",
+            () -> new DormantAcceleriteIngotItem(new Item.Properties()));
+
+    public static final DeferredItem<Item> CHARGED_ACCELERITE_INGOT = regItem("charged_accelerite_ingot",
+            () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> SPEEDOMETER = regItem("speedometer",
+            () -> new SpeedometerItem(new Item.Properties().stacksTo(1)));
+
+
     public static final DeferredItem<Item> WARPBLOSSOM_DOOR = regItem("warpblossom_door",
             () -> new DoubleHighBlockItem(NexusBlocks.WARPBLOSSOM_DOOR.get(), new Item.Properties()));
 

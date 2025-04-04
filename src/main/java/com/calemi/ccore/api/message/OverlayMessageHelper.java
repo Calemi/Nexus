@@ -24,5 +24,4 @@ public class OverlayMessageHelper {
         ClientboundSetActionBarTextPacket packet = new ClientboundSetActionBarTextPacket(text);
         player.connection.send(packet);
     }
-
 }

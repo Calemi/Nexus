@@ -256,6 +256,20 @@ public class NexusBlocks {
 
 
 
+    public static final DeferredBlock<Block> WARPSLATE_ACCELERITE_ORE      = regBlock("warpslate_accelerite_ore", () ->
+            new AcceleriteOreBlock(BlockBehaviour.Properties.ofFullCopy(WARPSLATE.get()).requiresCorrectToolForDrops().lightLevel(state -> 9)));
+
+    public static final DeferredBlock<Block> RAW_ACCELERITE_BLOCK          = regBlock("raw_accelerite_block", () ->
+            new ChargedAcceleriteBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.RAW_GOLD_BLOCK).requiresCorrectToolForDrops().lightLevel(state -> 9)));
+
+    public static final DeferredBlock<Block> DORMANT_ACCELERITE_BLOCK      = regBlock("dormant_accelerite_block", () ->
+            new Block(BlockBehaviour.Properties.ofFullCopy(Blocks.GOLD_BLOCK).requiresCorrectToolForDrops()));
+
+    public static final DeferredBlock<Block> CHARGED_ACCELERITE_BLOCK      = regBlock("charged_accelerite_block", () ->
+            new ChargedAcceleriteBlock(BlockBehaviour.Properties.ofFullCopy(DORMANT_ACCELERITE_BLOCK.get()).requiresCorrectToolForDrops().lightLevel(state -> 9)));
+
+
+
     public static final DeferredBlock<Block> WARPBLOSSOM_LOG               = regBlock("warpblossom_log", () ->
             new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.OAK_LOG)));
 

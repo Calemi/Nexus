@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "nexus:block/raw_accelerite_block"
+    }
+  }
+}

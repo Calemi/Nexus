@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-30T20:33:56.9042969	Loot Tables
+// 1.21.1	2025-04-02T16:33:21.4198379	Loot Tables
 93ffdf1f32405ab207db0f8286f7428bd256908f data/nexus/loot_table/blocks/black_nexus_portal.json
 a974bda0c332511a28710c029742702a1d8679f7 data/nexus/loot_table/blocks/blue_nexus_portal.json
 0be69c72cd9ad0ae7003e4a81a86710c395d7206 data/nexus/loot_table/blocks/brown_nexus_portal.json
@@ -12,6 +12,7 @@ a9b5895a35ca7e63f7e2f671ec36f5476593b4f0 data/nexus/loot_table/blocks/calcite_br
 0fb82481981fd6fdf5a360ddc8b8264dbf7d6350 data/nexus/loot_table/blocks/calcite_tile_slab.json
 450aedb645a735a616b5314e73e80f4dac64e3c1 data/nexus/loot_table/blocks/calcite_tile_stairs.json
 306ee7324c27fd67b6a5fa64177b2a7a1f5014f5 data/nexus/loot_table/blocks/calcite_tile_wall.json
+d17687bcb4cce6730a9ab5b445b09dc4322787d8 data/nexus/loot_table/blocks/charged_accelerite_block.json
 d9d4f1a0b07d0e11c1ff51678929c5cbb7e70de4 data/nexus/loot_table/blocks/chiseled_calcite.json
 73b49000c84b42ee93dabd71baf82d2e63cb6016 data/nexus/loot_table/blocks/chiseled_warpslate.json
 1ad3e44377cc2f50e5e94e06e6471c125a20a4d7 data/nexus/loot_table/blocks/chronowarped_dirt.json
@@ -29,6 +30,7 @@ ffe73fe82c03faa4f28bc35046b942fb18bc0ec9 data/nexus/loot_table/blocks/cracked_ca
 b5881891d9157462a03c004433d4340aa621d7d1 data/nexus/loot_table/blocks/cracked_warpslate_tiles.json
 c778bb482ce41ad3259ad53610f9ab514292e44f data/nexus/loot_table/blocks/cyan_nexus_portal.json
 ec6a18bc257db475bf99ff855a0cf60940fb8c11 data/nexus/loot_table/blocks/diamond_nexus_portal_core.json
+02f5381e23091e5c7e00d44d0f43868a23a0c1c0 data/nexus/loot_table/blocks/dormant_accelerite_block.json
 aacf833294c6c8d02fe9123d7c07222343fab48f data/nexus/loot_table/blocks/gold_nexus_portal_core.json
 570419affb0d39ddccf49fc83be23cda35a9e831 data/nexus/loot_table/blocks/gray_nexus_portal.json
 26140f444074486c92be367c52503c2d3ccdd515 data/nexus/loot_table/blocks/green_nexus_portal.json
@@ -54,6 +56,7 @@ ad6736d78ce45ab3826e51371a39812d576e20d8 data/nexus/loot_table/blocks/polished_w
 660a336a64af9639022e2969881d04277ff61d8b data/nexus/loot_table/blocks/potted_warpblossom_sapling.json
 ff74ec79b5eda336cffd50285b98d54d7c993ddb data/nexus/loot_table/blocks/purple_nexus_portal.json
 179b06de85414cbf8f890a0790227f0eb8a308f6 data/nexus/loot_table/blocks/purple_petals.json
+74c0c284d4e09e96222dbb92e78b8f5856fd4439 data/nexus/loot_table/blocks/raw_accelerite_block.json
 7bf6e64da1f52d218fe7a49195ab687295f8b98b data/nexus/loot_table/blocks/red_nexus_portal.json
 66ac82d0bbaf892825b0cd65d124d4e470fadd82 data/nexus/loot_table/blocks/small_chrono_bud.json
 0964ab1d785954cd33542df6f72a849d510f7bf9 data/nexus/loot_table/blocks/starlight_nexus_portal_core.json
@@ -75,6 +78,7 @@ e19f519a86fe58c121cfa7d8d4d852b6c19fb6ae data/nexus/loot_table/blocks/warpblosso
 98108a10bdc7f35ae089d4665a4cd4048e1a1451 data/nexus/loot_table/blocks/warpblossom_trapdoor.json
 b354315074bf149088888bcc99ae1388cf0cd9db data/nexus/loot_table/blocks/warpblossom_wood.json
 2922c779018d15093b113dc7f76290657ead8e65 data/nexus/loot_table/blocks/warpslate.json
+cdc0f42a57f162c3dfbd0646c033f34e8502ccaa data/nexus/loot_table/blocks/warpslate_accelerite_ore.json
 8fcf9f313d7a228b979b061bc55b4ec447070248 data/nexus/loot_table/blocks/warpslate_bricks.json
 7cf133db786f3f5e3a8c0774cafb23cff7fb708b data/nexus/loot_table/blocks/warpslate_brick_slab.json
 35523bb0e96ac4a597d4b0bec3442eed80f100f0 data/nexus/loot_table/blocks/warpslate_brick_stairs.json

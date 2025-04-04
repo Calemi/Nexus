@@ -39,7 +39,7 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.CHRONO_BLOCK.get())
                 .add(NexusBlocks.BUDDING_CHRONO.get())
                 .add(NexusBlocks.WARPSLATE.get())
-                .add(NexusBlocks.CHISELED_WARPSLATE.get())
+                .add(NexusBlocks.WARPSLATE_ACCELERITE_ORE.get())
                 .addOptionalTag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
                 .addAll(NexusLists.toResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)));
 
@@ -211,6 +211,14 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.NEEDS_STONE_TOOL)
                 .addOptionalTag(NexusTags.Blocks.NEXUS_PORTAL_CORES);
 
+        tag(BlockTags.NEEDS_IRON_TOOL)
+                .add(
+                        NexusBlocks.WARPSLATE_ACCELERITE_ORE.get(),
+                        NexusBlocks.RAW_ACCELERITE_BLOCK.get(),
+                        NexusBlocks.DORMANT_ACCELERITE_BLOCK.get(),
+                        NexusBlocks.CHARGED_ACCELERITE_BLOCK.get()
+                );
+
         tag(BlockTags.DIRT)
                 .add(NexusBlocks.CHRONOWARPED_DIRT.get(), NexusBlocks.CHRONOWARPED_GRASS.get());
 
@@ -222,6 +230,16 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
 
         tag(Tags.Blocks.SANDS)
                 .add(NexusBlocks.CHRONOWARPED_SAND.get());
+
+        tag(Tags.Blocks.ORES)
+                .add(NexusBlocks.WARPSLATE_ACCELERITE_ORE.get());
+
+        tag(Tags.Blocks.STORAGE_BLOCKS)
+                .add(
+                        NexusBlocks.RAW_ACCELERITE_BLOCK.get(),
+                        NexusBlocks.DORMANT_ACCELERITE_BLOCK.get(),
+                        NexusBlocks.CHARGED_ACCELERITE_BLOCK.get()
+                );
 
         tag(BlockTags.SCULK_REPLACEABLE)
                 .add(NexusBlocks.CHRONOWARPED_SAND.get());

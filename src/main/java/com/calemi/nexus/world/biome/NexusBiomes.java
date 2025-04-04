@@ -48,6 +48,7 @@ public class NexusBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.AMETHYST_CLUSTER_SUBMERGED_PLACED_KEY)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.CHRONO_CLUSTER_PLACED_KEY)
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.CHRONO_CLUSTER_SUBMERGED_PLACED_KEY)
+                        .addFeature(GenerationStep.Decoration.RAW_GENERATION, NexusPlacedFeatures.CHASM)
                         .build())
                 .mobSpawnSettings(new MobSpawnSettings.Builder().build())
                 .build();

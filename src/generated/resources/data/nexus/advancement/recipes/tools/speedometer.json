@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_accelerite": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#nexus:accelerite_ingots"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "nexus:speedometer"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_accelerite"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "nexus:speedometer"
+    ]
+  }
+}

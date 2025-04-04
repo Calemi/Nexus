@@ -51,6 +51,11 @@ public class NexusBlockStateProvider extends BlockStateProvider {
 
         deepslate((RotatedPillarBlock) NexusBlocks.WARPSLATE.get());
 
+        all(NexusBlocks.WARPSLATE_ACCELERITE_ORE.get());
+        all(NexusBlocks.RAW_ACCELERITE_BLOCK.get());
+        all(NexusBlocks.DORMANT_ACCELERITE_BLOCK.get());
+        all(NexusBlocks.CHARGED_ACCELERITE_BLOCK.get());
+
         allCutout(NexusBlocks.WARPBLOSSOM_LEAVES.get());
 
         sapling(NexusBlocks.WARPBLOSSOM_SAPLING.get());

@@ -114,6 +114,9 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
         add(SCREEN_NEXUS_PORTAL_CORE_BUTTON_UNLINK + "info_2", "Hold shift to take the linked Nexus Portal Core.");
         add(SCREEN_NEXUS_PORTAL_CORE_BUTTON_CLOSE + "title", "Close");
 
+        add(getPrefixedKey("hud", "calculated_destination"), "Calculated Destination");
+        add(getPrefixedKey("hud", "speed"), "Speed");
+
         /*
             BIOMES
          */
@@ -168,6 +171,7 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
         add(JEI_DESCRIPTION + "chrono_upgrade_smithing_template", "Used to craft Chrono Shards. Found in Trial Chamber Chest & Vaults.");
         add(JEI_DESCRIPTION + "nexus_portal_core", "Allows traversal to The Nexus. Each portal core has its own coordinate scale. The blocks traveled in The Nexus are multiplied by this scale when leaving the dimension. You can use it in an Anvil to give your portal a name when placed. You can also disguise this block as another by using with a held block.");
+        add(JEI_DESCRIPTION + "accelerite_ingot", "To obtain a Charged Accelerite Ingot from a Dormant one, you must reach a certain speed while it is in your inventory.");
 
         /*
             JADE

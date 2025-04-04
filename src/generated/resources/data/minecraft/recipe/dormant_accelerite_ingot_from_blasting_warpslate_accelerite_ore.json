@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:blasting",
+  "category": "misc",
+  "cookingtime": 100,
+  "experience": 1.0,
+  "group": "accelerite_ingot",
+  "ingredient": {
+    "item": "nexus:warpslate_accelerite_ore"
+  },
+  "result": {
+    "count": 1,
+    "id": "nexus:dormant_accelerite_ingot"
+  }
+}

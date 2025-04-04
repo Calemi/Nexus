@@ -10,8 +10,10 @@ import com.calemi.nexus.client.partclie.NexusParticles;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreHUDOverlay;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreWorldOverlay;
 import com.calemi.nexus.config.NexusConfig;
+import com.calemi.nexus.item.AcceleriteItemChargeAction;
 import com.calemi.nexus.item.NexusItems;
 import com.calemi.nexus.item.axe.NexusStrippables;
+import com.calemi.nexus.item.property.NexusItemProperties;
 import com.calemi.nexus.loot.condition.NexusLootItemConditions;
 import com.calemi.nexus.loot.modifier.NexusLootModifiers;
 import com.calemi.nexus.packet.NexusPackets;
@@ -77,6 +79,7 @@ public class Nexus {
 
         LOGGER.info("Registering: Common - Start");
 
+        NexusItemProperties.init();
         NexusStrippables.init();
 
         MOD_EVENT_BUS.register(new NexusPackets());
@@ -84,6 +87,7 @@ public class Nexus {
         FORGE_EVENT_BUS.register(new RenderNexusPortalCoreHUDOverlay());
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockAction());
         FORGE_EVENT_BUS.register(new HoleTeleportAction());
+        FORGE_EVENT_BUS.register(new AcceleriteItemChargeAction());
 
         LOGGER.info("Registering: Common - End");
     }

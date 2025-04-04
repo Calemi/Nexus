@@ -1,4 +1,4 @@
-// 1.21.1	2025-03-30T14:32:24.0727715	Tags for minecraft:item mod id nexus
+// 1.21.1	2025-04-04T03:12:05.9203252	Tags for minecraft:item mod id nexus
 9d4136bd48a42e895b3730be0cbca7f8da6fec48 data/c/tags/item/budding_blocks.json
 2230eb61f10aa8dd9d43cc065c00ea621a26e5b3 data/c/tags/item/buds.json
 4d43007c8519b43c54452d6ef6b8d57dbae1bb39 data/c/tags/item/clusters.json
@@ -8,7 +8,11 @@ ff86b3b9c9b3c10ef5ebc9d4bbbd722a6228b9ad data/c/tags/item/fences/wooden.json
 d2ac2365e8f20a7fcbd83ee6557409d5d41a49e2 data/c/tags/item/fence_gates.json
 d2ac2365e8f20a7fcbd83ee6557409d5d41a49e2 data/c/tags/item/fence_gates/wooden.json
 e3d38c9cf8b51e19657524ae147cdf9d9a3e9d98 data/c/tags/item/gems.json
+13a804acebb319ed821ef65591fa3f50fc184f37 data/c/tags/item/ingots.json
+eb79e963f2272d8d26bc2f5638f167f75e17abfa data/c/tags/item/ores.json
+54ec59d059c6dbd30bfbf9daf8cfc12b52686d6b data/c/tags/item/raw_materials.json
 d9376b938737560d696b410181953cac6267f19e data/c/tags/item/sands.json
+95d99fd081ecbbeaf390b99906af349f1b1b31c9 data/c/tags/item/storage_blocks.json
 73a343b1a305200794277704c711fb60b44ac7f8 data/c/tags/item/stripped_logs.json
 1b2cef64a4688f4f5341a1d8ccdda5e4763a976b data/c/tags/item/stripped_woods.json
 21d7b15305a3d62976e49d6c2765002882d7d7e2 data/minecraft/tags/item/boats.json
@@ -37,4 +41,5 @@ cd1b19c03c6569a29ecc59e0c4c49615c6c38e7c data/minecraft/tags/item/wooden_pressur
 1a69d5fc648d7369fb727514352cd60a95c162e4 data/minecraft/tags/item/wooden_slabs.json
 73ea23cf761bd4676297508b856e0d0e0c2fa183 data/minecraft/tags/item/wooden_stairs.json
 fdf8ec281d3a67cb162e4d4a72809754aa567352 data/minecraft/tags/item/wooden_trapdoors.json
+13a804acebb319ed821ef65591fa3f50fc184f37 data/nexus/tags/item/accelerite_ingots.json
 5ab779a99ff22b6681fac922b544ccfd5dc454ca data/nexus/tags/item/warpblossom_logs.json

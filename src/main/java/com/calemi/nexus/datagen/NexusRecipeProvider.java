@@ -6,6 +6,7 @@ import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.block.family.NexusBlockFamilies;
 import com.calemi.nexus.item.NexusItems;
 import com.calemi.nexus.main.NexusRef;
+import com.calemi.nexus.tag.NexusTags;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.recipes.*;
@@ -19,6 +20,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.neoforged.neoforge.common.Tags;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.concurrent.CompletableFuture;
 
 public class NexusRecipeProvider extends RecipeProvider {
@@ -111,6 +113,27 @@ public class NexusRecipeProvider extends RecipeProvider {
         /*
             ITEMS
          */
+
+        oreSmelting(recipeOutput, List.of(NexusItems.RAW_ACCELERITE.get(), NexusBlocks.WARPSLATE_ACCELERITE_ORE.asItem()), RecipeCategory.MISC, NexusItems.DORMANT_ACCELERITE_INGOT.get(), 1F, 200, "accelerite_ingot");
+        oreBlasting(recipeOutput, List.of(NexusItems.RAW_ACCELERITE.get(), NexusBlocks.WARPSLATE_ACCELERITE_ORE.asItem()), RecipeCategory.MISC, NexusItems.DORMANT_ACCELERITE_INGOT.get(), 1F, 100, "accelerite_ingot");
+
+        threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusBlocks.RAW_ACCELERITE_BLOCK, NexusItems.RAW_ACCELERITE);
+        oneToOne(recipeOutput, NexusItems.RAW_ACCELERITE, NexusBlocks.RAW_ACCELERITE_BLOCK, null, 9);
+
+        threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusBlocks.DORMANT_ACCELERITE_BLOCK, NexusItems.DORMANT_ACCELERITE_INGOT);
+        oneToOne(recipeOutput, NexusItems.DORMANT_ACCELERITE_INGOT, NexusBlocks.DORMANT_ACCELERITE_BLOCK, null, 9);
+
+        threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusBlocks.CHARGED_ACCELERITE_BLOCK, NexusItems.CHARGED_ACCELERITE_INGOT);
+        oneToOne(recipeOutput, NexusItems.CHARGED_ACCELERITE_INGOT, NexusBlocks.CHARGED_ACCELERITE_BLOCK, null, 9);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusItems.SPEEDOMETER, 1)
+                .define('I', NexusTags.Items.ACCELERITE_INGOTS)
+                .define('S', Items.AMETHYST_SHARD.asItem())
+                .pattern(" I ")
+                .pattern("ISI")
+                .pattern(" I ")
+                .unlockedBy("has_accelerite", has(NexusTags.Items.ACCELERITE_INGOTS))
+                .save(recipeOutput);
 
         woodenBoat(recipeOutput, NexusItems.WARPBLOSSOM_BOAT, NexusBlocks.WARPBLOSSOM_PLANKS);
         chestBoat(recipeOutput, NexusItems.WARPBLOSSOM_CHEST_BOAT, NexusItems.WARPBLOSSOM_BOAT);

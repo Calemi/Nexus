@@ -32,6 +32,7 @@ public class NexusConfiguredFeatures {
     public static final ResourceKey<ConfiguredFeature<?, ?>> FLOWER_PURPLE_PETAL_CONFIGURED_KEY = NexusRef.createKey("flower_purple_petal", Registries.CONFIGURED_FEATURE);
     public static final ResourceKey<ConfiguredFeature<?, ?>> AMETHYST_CLUSTER_CONFIGURED_KEY = NexusRef.createKey("amethyst_cluster", Registries.CONFIGURED_FEATURE);
     public static final ResourceKey<ConfiguredFeature<?, ?>> CHRONO_CLUSTER_CONFIGURED_KEY = NexusRef.createKey("chrono_cluster", Registries.CONFIGURED_FEATURE);
+    public static final ResourceKey<ConfiguredFeature<?, ?>> CHASM_CONFIGURED_KEY = NexusRef.createKey("chasm", Registries.CONFIGURED_FEATURE);
 
     public static void bootstrap(BootstrapContext<ConfiguredFeature<?, ?>> context) {
 
@@ -72,6 +73,8 @@ public class NexusConfiguredFeatures {
                 NexusBlocks.LARGE_CHRONO_BUD.get(),
                 NexusBlocks.CHRONO_CLUSTER.get(),
                 NexusBlocks.BUDDING_CHRONO.get());
+
+        register(context, CHASM_CONFIGURED_KEY, NexusFeatures.CHASM.get(), new ChasmConfiguration(7, 14, 80, 100));
     }
 
     private static void registerCluster(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureRK, Block smallBud, Block mediumBud, Block largeBud, Block cluster, Block budding) {
@@ -93,9 +96,5 @@ public class NexusConfiguredFeatures {
 
     public static <FC extends FeatureConfiguration, F extends Feature<FC>> void register(BootstrapContext<ConfiguredFeature<?, ?>> context, ResourceKey<ConfiguredFeature<?, ?>> key, F feature, FC config) {
         context.register(key, new ConfiguredFeature<>(feature, config));
-    }
-
-    public static <F extends Feature<?>> void registerFeature(BootstrapContext<Feature<?>> context, ResourceKey<Feature<?>> key, F feature) {
-        context.register(key, feature);
     }
 }

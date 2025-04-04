@@ -49,6 +49,7 @@ public class NexusConfig {
         public final ModConfigSpec.ConfigValue<Integer> diamondPortalCoreCoordinateScale;
         public final ModConfigSpec.ConfigValue<Integer> netheritePortalCoreCoordinateScale;
         public final ModConfigSpec.ConfigValue<Integer> starlightPortalCoreCoordinateScale;
+        public final ModConfigSpec.ConfigValue<Double> dormantAcceleriteIngotChargeSpeedRequirement;
 
         public CategoryServer (ModConfigSpec.Builder builder) {
 
@@ -75,6 +76,11 @@ public class NexusConfig {
             diamondPortalCoreCoordinateScale = portalCoreCoordinateScale(builder, "Diamond", "diamond", 32);
             netheritePortalCoreCoordinateScale = portalCoreCoordinateScale(builder, "netherite", "Netherite", 64);
             starlightPortalCoreCoordinateScale = portalCoreCoordinateScale(builder, "starlight", "Starlight", 128);
+
+            dormantAcceleriteIngotChargeSpeedRequirement = builder.translation(getPrefixedKey("dormant_accelerite_ingot_charge_speed_requirement"))
+                    .comment("Dormant Accelerite Ingot Charge Speed Requirement")
+                    .comment("The player's speed requirement in order to charge a Dormant Accelerite Ingot.")
+                    .defineInRange("dormantAcceleriteIngotChargeSpeedRequirement", 1F, 0.001F, Float.MAX_VALUE);
         }
     }
 

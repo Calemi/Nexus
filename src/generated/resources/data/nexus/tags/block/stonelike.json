@@ -3,7 +3,7 @@
     "nexus:chrono_block",
     "nexus:budding_chrono",
     "nexus:warpslate",
-    "nexus:chiseled_warpslate",
+    "nexus:warpslate_accelerite_ore",
     {
       "id": "#nexus:nexus_portal_cores",
       "required": false

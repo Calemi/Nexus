@@ -1,0 +1,98 @@
+{
+  "parent": "minecraft:item/generated",
+  "overrides": [
+    {
+      "model": "nexus:item/speedometer_01",
+      "predicate": {
+        "nexus:speed": 0.0625
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_02",
+      "predicate": {
+        "nexus:speed": 0.125
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_03",
+      "predicate": {
+        "nexus:speed": 0.1875
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_04",
+      "predicate": {
+        "nexus:speed": 0.25
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_05",
+      "predicate": {
+        "nexus:speed": 0.3125
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_06",
+      "predicate": {
+        "nexus:speed": 0.375
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_07",
+      "predicate": {
+        "nexus:speed": 0.4375
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_08",
+      "predicate": {
+        "nexus:speed": 0.5
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_09",
+      "predicate": {
+        "nexus:speed": 0.5625
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_10",
+      "predicate": {
+        "nexus:speed": 0.625
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_11",
+      "predicate": {
+        "nexus:speed": 0.6875
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_12",
+      "predicate": {
+        "nexus:speed": 0.75
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_13",
+      "predicate": {
+        "nexus:speed": 0.8125
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_14",
+      "predicate": {
+        "nexus:speed": 0.875
+      }
+    },
+    {
+      "model": "nexus:item/speedometer_15",
+      "predicate": {
+        "nexus:speed": 0.9375
+      }
+    }
+  ],
+  "textures": {
+    "layer0": "nexus:item/speedometer_00"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "minecraft:dormant_accelerite_ingot_from_smelting_warpslate_accelerite_ore"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    },
+    "has_warpslate_accelerite_ore": {
+      "conditions": {
+        "items": [
+          {
+            "items": "nexus:warpslate_accelerite_ore"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_warpslate_accelerite_ore"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "minecraft:dormant_accelerite_ingot_from_smelting_warpslate_accelerite_ore"
+    ]
+  }
+}

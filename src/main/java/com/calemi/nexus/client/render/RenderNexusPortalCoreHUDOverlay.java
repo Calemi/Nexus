@@ -29,7 +29,7 @@ public class RenderNexusPortalCoreHUDOverlay {
 
                 BlockPos destinationPosition = NexusDimensionHelper.getDynamicBlockDestination(serverPlayer.level(), player.blockPosition(), originBlock.getCoordinateScale());
 
-                OverlayMessageHelper.displayMsg(Component.literal("Calculated Destination: [x")
+                OverlayMessageHelper.displayMsg(Component.translatable("hud.nexus.calculated_destination").append(": [x")
                         .append("" + ChatFormatting.GOLD + destinationPosition.getX() + ChatFormatting.WHITE + " z" + ChatFormatting.GOLD + destinationPosition.getZ() + ChatFormatting.WHITE + "]"),  serverPlayer);
             }
         }

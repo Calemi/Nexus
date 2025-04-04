@@ -1,0 +1,37 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    },
+    {
+      "item": "nexus:charged_accelerite_ingot"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "nexus:charged_accelerite_block"
+  }
+}

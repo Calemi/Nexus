@@ -43,17 +43,31 @@ public class CreativeTabInjector {
                     NexusBlocks.WARPBLOSSOM_PRESSURE_PLATE.asItem(),
                     NexusBlocks.WARPBLOSSOM_BUTTON.asItem()
             );
+
+            add(event, Items.NETHERITE_BLOCK, NexusBlocks.DORMANT_ACCELERITE_BLOCK.asItem(), NexusBlocks.CHARGED_ACCELERITE_BLOCK.asItem());
+            add(event, Items.AMETHYST_BLOCK, NexusBlocks.CHRONO_BLOCK.asItem());
         }
 
         if (event.getTabKey() == CreativeModeTabs.NATURAL_BLOCKS) {
-            add(event, Items.MYCELIUM, NexusBlocks.CHRONOWARPED_GRASS.get().asItem());
-            add(event, Items.MUD, NexusBlocks.CHRONOWARPED_DIRT.get().asItem());
-            add(event, Items.RED_SAND, NexusBlocks.CHRONOWARPED_SAND.get().asItem());
-            add(event, Items.DEEPSLATE, NexusBlocks.WARPSLATE.get().asItem());
-            add(event, Items.WARPED_STEM, NexusBlocks.WARPBLOSSOM_LOG.get().asItem());
-            add(event, Items.CHERRY_LEAVES, NexusBlocks.WARPBLOSSOM_LEAVES.get().asItem());
-            add(event, Items.CHERRY_SAPLING, NexusBlocks.WARPBLOSSOM_SAPLING.get().asItem());
-            add(event, Items.PINK_PETALS, NexusBlocks.PURPLE_PETALS.get().asItem());
+            add(event, Items.MYCELIUM, NexusBlocks.CHRONOWARPED_GRASS.asItem());
+            add(event, Items.MUD, NexusBlocks.CHRONOWARPED_DIRT.asItem());
+            add(event, Items.RED_SAND, NexusBlocks.CHRONOWARPED_SAND.asItem());
+            add(event, Items.DEEPSLATE, NexusBlocks.WARPSLATE.asItem());
+            add(event, Items.WARPED_STEM, NexusBlocks.WARPBLOSSOM_LOG.asItem());
+            add(event, Items.CHERRY_LEAVES, NexusBlocks.WARPBLOSSOM_LEAVES.asItem());
+            add(event, Items.CHERRY_SAPLING, NexusBlocks.WARPBLOSSOM_SAPLING.asItem());
+            add(event, Items.PINK_PETALS, NexusBlocks.PURPLE_PETALS.asItem());
+
+            add(event, Items.RAW_GOLD_BLOCK, NexusBlocks.RAW_ACCELERITE_BLOCK.asItem());
+
+            add(event, Items.AMETHYST_CLUSTER,
+                    NexusBlocks.CHRONO_BLOCK.asItem(),
+                    NexusBlocks.BUDDING_CHRONO.asItem(),
+                    NexusBlocks.SMALL_CHRONO_BUD.asItem(),
+                    NexusBlocks.MEDIUM_CHRONO_BUD.asItem(),
+                    NexusBlocks.LARGE_CHRONO_BUD.asItem(),
+                    NexusBlocks.CHRONO_CLUSTER.asItem()
+            );
         }
 
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
@@ -76,6 +90,9 @@ public class CreativeTabInjector {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
             add(event, Items.AMETHYST_SHARD, NexusItems.CHRONO_SHARD.get());
             add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
+
+            add(event, Items.RAW_GOLD, NexusItems.RAW_ACCELERITE.get());
+            add(event, Items.NETHERITE_INGOT, NexusItems.DORMANT_ACCELERITE_INGOT.get(), NexusItems.CHARGED_ACCELERITE_INGOT.get());
         }
     }
 

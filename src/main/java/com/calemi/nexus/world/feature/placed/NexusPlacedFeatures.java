@@ -27,13 +27,22 @@ public class NexusPlacedFeatures {
     public static final ResourceKey<PlacedFeature> AMETHYST_CLUSTER_SUBMERGED_PLACED_KEY = registerKey("amethyst_cluster_submerged");
     public static final ResourceKey<PlacedFeature> CHRONO_CLUSTER_PLACED_KEY = registerKey("chrono_cluster");
     public static final ResourceKey<PlacedFeature> CHRONO_CLUSTER_SUBMERGED_PLACED_KEY = registerKey("chrono_cluster_submerged");
+    public static final ResourceKey<PlacedFeature> CHASM = registerKey("chasm");
 
     public static void bootstrap(BootstrapContext<PlacedFeature> context) {
 
         var configuredFeatures = context.lookup(Registries.CONFIGURED_FEATURE);
 
+        /*
+            WARPBLOSSOM TREES
+         */
+
         register(context, WARPBLOSSOM_PLACED_KEY, configuredFeatures.getOrThrow(NexusConfiguredFeatures.WARPBLOSSOM_CONFIGURED_KEY),
                 VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.05F, 0), NexusBlocks.WARPBLOSSOM_SAPLING.get()));
+
+        /*
+            PURPLE PETALS
+         */
 
         List<PlacementModifier> flowerPurplePetalModifiers = new ArrayList<>();
 
@@ -45,10 +54,27 @@ public class NexusPlacedFeatures {
 
         register(context, FLOWER_PURPLE_PETAL_PLACED_KEY, configuredFeatures.getOrThrow(NexusConfiguredFeatures.FLOWER_PURPLE_PETAL_CONFIGURED_KEY), flowerPurplePetalModifiers);
 
+        /*
+            CRYSTAL CLUSTERS
+         */
+
         registerCluster(context, AMETHYST_CLUSTER_PLACED_KEY, NexusConfiguredFeatures.AMETHYST_CLUSTER_CONFIGURED_KEY, false, 2, 0.0D);
         registerCluster(context, AMETHYST_CLUSTER_SUBMERGED_PLACED_KEY, NexusConfiguredFeatures.AMETHYST_CLUSTER_CONFIGURED_KEY, true, 3, 0.0D);
         registerCluster(context, CHRONO_CLUSTER_PLACED_KEY, NexusConfiguredFeatures.CHRONO_CLUSTER_CONFIGURED_KEY, false, 1, -0.25D);
         registerCluster(context, CHRONO_CLUSTER_SUBMERGED_PLACED_KEY, NexusConfiguredFeatures.CHRONO_CLUSTER_CONFIGURED_KEY, true, 2, 0.25D);
+
+        /*
+            CHASMS
+         */
+
+        List<PlacementModifier> chasmModifiers = new ArrayList<>();
+
+        chasmModifiers.add(RarityFilter.onAverageOnceEvery(300));
+        chasmModifiers.add(InSquarePlacement.spread());
+        chasmModifiers.add(PlacementUtils.HEIGHTMAP);
+        chasmModifiers.add(BiomeFilter.biome());
+
+        register(context, CHASM, configuredFeatures.getOrThrow(NexusConfiguredFeatures.CHASM_CONFIGURED_KEY), chasmModifiers);
     }
 
     private static void registerCluster(BootstrapContext<PlacedFeature> context, ResourceKey<PlacedFeature> placedFeatureRK, ResourceKey<ConfiguredFeature<?, ?>> configuredFeatureRK, boolean submerged, int count, double noiseLevel) {

@@ -1,0 +1,9 @@
+{
+  "type": "nexus:chasm",
+  "config": {
+    "radiusMaxXZ": 14,
+    "radiusMaxY": 100,
+    "radiusMinXZ": 7,
+    "radiusMinY": 80
+  }
+}

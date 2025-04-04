@@ -26,7 +26,8 @@ public class NexusItemTagProvider extends ItemTagsProvider {
     @Override
     protected void addTags(HolderLookup.Provider provider) {
 
-        copy(NexusTags.Blocks.WARPBLOSSOM_LOGS, NexusTags.Items.WARPBLOSSOM_LOGS);
+        tag(NexusTags.Items.ACCELERITE_INGOTS)
+                .add(NexusItems.DORMANT_ACCELERITE_INGOT.get(), NexusItems.CHARGED_ACCELERITE_INGOT.get());
 
         tag(ItemTags.STONE_CRAFTING_MATERIALS)
                 .add(NexusBlocks.COBBLED_WARPSLATE.asItem());
@@ -34,12 +35,18 @@ public class NexusItemTagProvider extends ItemTagsProvider {
         tag(ItemTags.STONE_TOOL_MATERIALS)
                 .add(NexusBlocks.COBBLED_WARPSLATE.asItem());
 
+        copy(NexusTags.Blocks.WARPBLOSSOM_LOGS, NexusTags.Items.WARPBLOSSOM_LOGS);
+
+        tag(Tags.Items.RAW_MATERIALS).add(NexusItems.RAW_ACCELERITE.get());
+        tag(Tags.Items.INGOTS).add(NexusItems.DORMANT_ACCELERITE_INGOT.get(), NexusItems.CHARGED_ACCELERITE_INGOT.get());
         tag(Tags.Items.GEMS).add(NexusItems.CHRONO_SHARD.get());
 
         tag(ItemTags.BOATS).add(NexusItems.WARPBLOSSOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
 
         copy(Tags.Blocks.SANDS, Tags.Items.SANDS);
+        copy(Tags.Blocks.STORAGE_BLOCKS, Tags.Items.STORAGE_BLOCKS);
+        copy(Tags.Blocks.ORES, Tags.Items.ORES);
         copy(BlockTags.DIRT, ItemTags.DIRT);
         copy(BlockTags.SAND, ItemTags.SAND);
         copy(BlockTags.SMELTS_TO_GLASS, ItemTags.SMELTS_TO_GLASS);

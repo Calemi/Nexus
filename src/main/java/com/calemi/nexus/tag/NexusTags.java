@@ -23,6 +23,8 @@ public class NexusTags {
 
     public static class Items {
 
+        public static final TagKey<Item> ACCELERITE_INGOTS = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_ingots"));
+
         public static final TagKey<Item> WARPBLOSSOM_LOGS = TagKey.create(Registries.ITEM, NexusRef.rl("warpblossom_logs"));
     }
 

@@ -89,6 +89,12 @@ public class NexusBlockLootTableProvider extends BlockLootSubProvider {
                 return;
             }
 
+            Block warpslateAcceleriteOre = NexusBlocks.WARPSLATE_ACCELERITE_ORE.get();
+            if (block.equals(warpslateAcceleriteOre)) {
+                add(warpslateAcceleriteOre, createOreDrop(warpslateAcceleriteOre, NexusItems.RAW_ACCELERITE.get()));
+                return;
+            }
+
             Block pottedWarpblossomSapling = NexusBlocks.POTTED_WARPBLOSSOM_SAPLING.get();
             if (block.equals(pottedWarpblossomSapling)) {
                 add(pottedWarpblossomSapling, createPotFlowerItemTable(NexusBlocks.WARPBLOSSOM_SAPLING));

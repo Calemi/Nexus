@@ -1,5 +1,24 @@
-// 1.21.1	2025-03-25T21:25:01.3037211	Item Models: nexus
+// 1.21.1	2025-04-04T02:55:08.961428	Item Models: nexus
+c9222ae0034ac1992d745d0637018d5fd52e1f7b assets/nexus/models/item/charged_accelerite_ingot.json
 44764e188c59892327753994d18998b0c33d9953 assets/nexus/models/item/chrono_shard.json
 fd79b33d8b79c67a9b5630a644ff8f7499e9fb9b assets/nexus/models/item/chrono_upgrade_smithing_template.json
+2de7e14e1e7656103b9c5efa293b9b3b2fb9416d assets/nexus/models/item/dormant_accelerite_ingot.json
+bb0b9312030889360c9e02d94703bfb85b7a81c5 assets/nexus/models/item/raw_accelerite.json
+166319d6e15c23c023f11502b71d256e18e58a90 assets/nexus/models/item/speedometer.json
+43a4292cf8c5f9e25675f5db0494865198c1cfb8 assets/nexus/models/item/speedometer_01.json
+893d040700edd405863a41861a5e268206162405 assets/nexus/models/item/speedometer_02.json
+da30b18c0248e136cceba256ae77ff51410dce79 assets/nexus/models/item/speedometer_03.json
+575c86a9a194b3905d037486867b5f6b74a97e6e assets/nexus/models/item/speedometer_04.json
+ea2e90dc127144bd10f113957239397f52fbb518 assets/nexus/models/item/speedometer_05.json
+d972abc47cbdda02cf73d1206962aca736117b5b assets/nexus/models/item/speedometer_06.json
+34ec5e711557e90c94d152e0b45d7b785d02899f assets/nexus/models/item/speedometer_07.json
+70d2d891f1831024d0af86776c6d568d0c9505da assets/nexus/models/item/speedometer_08.json
+591ac6f5363b6b1285a09a8ea3bd964f8d6e6af9 assets/nexus/models/item/speedometer_09.json
+9c781423bf06377b1c8885a7635d90a848aedee5 assets/nexus/models/item/speedometer_10.json
+073969f032090ce8954e180e6fed5e4c4e5f1ff3 assets/nexus/models/item/speedometer_11.json
+68c1b2a8122899c32658bead650c42e0b502379b assets/nexus/models/item/speedometer_12.json
+d520d22e616f04cf81a77382fab39afcba1b1f61 assets/nexus/models/item/speedometer_13.json
+ea648acfeae3c0dc40c36ef8c7a304b93c5c5ad6 assets/nexus/models/item/speedometer_14.json
+3d8aad1edd5d7bd4ea1b5cc9eee1ffaf0d3c3451 assets/nexus/models/item/speedometer_15.json
 6f470e6c27e2dd387396396f70f308f99c5a977b assets/nexus/models/item/warpblossom_boat.json
 4785ccd96731fbb15855e66c08ecd8ee15c95ffa assets/nexus/models/item/warpblossom_chest_boat.json
