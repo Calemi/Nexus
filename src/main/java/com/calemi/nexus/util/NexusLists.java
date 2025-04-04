@@ -108,11 +108,13 @@ public class NexusLists {
     public static final List<Item> ALL_ITEMS = new ArrayList<>();
 
     static {
+        ALL_ITEMS.add(NexusItems.CHRONO_SHARD_FRAGMENT.get());
         ALL_ITEMS.add(NexusItems.CHRONO_SHARD.get());
         ALL_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
         ALL_ITEMS.add(NexusItems.RAW_ACCELERITE.get());
         ALL_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT.get());
         ALL_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_SWORD.get());
         ALL_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         ALL_ITEMS.add(NexusItems.SPEEDOMETER.get());
         ALL_ITEMS.add(NexusItems.FALLBREAKERS.get());
@@ -134,6 +136,7 @@ public class NexusLists {
 
     static {
         TAB_NEXUS_MAIN_ITEMS.addAll(toItemListFromBlock(NEXUS_PORTAL_CORE_BLOCKS));
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_SHARD_FRAGMENT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_SHARD);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_GRASS);
@@ -157,6 +160,7 @@ public class NexusLists {
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.RAW_ACCELERITE);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_SWORD);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.SPEEDOMETER.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.FALLBREAKERS.get());

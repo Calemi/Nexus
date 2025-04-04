@@ -3,27 +3,41 @@
   "pools": [
     {
       "bonus_rolls": 0.0,
-      "conditions": [
-        {
-          "condition": "minecraft:match_tool",
-          "predicate": {
-            "predicates": {
-              "minecraft:enchantments": [
-                {
-                  "enchantments": "minecraft:silk_touch",
-                  "levels": {
-                    "min": 1
-                  }
-                }
-              ]
-            }
-          }
-        }
-      ],
       "entries": [
         {
-          "type": "minecraft:item",
-          "name": "nexus:small_chrono_bud"
+          "type": "minecraft:alternatives",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:match_tool",
+                  "predicate": {
+                    "predicates": {
+                      "minecraft:enchantments": [
+                        {
+                          "enchantments": "minecraft:silk_touch",
+                          "levels": {
+                            "min": 1
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              ],
+              "name": "nexus:chrono_cluster"
+            },
+            {
+              "type": "minecraft:item",
+              "conditions": [
+                {
+                  "condition": "minecraft:survives_explosion"
+                }
+              ],
+              "name": "nexus:chrono_shard_fragment"
+            }
+          ]
         }
       ],
       "rolls": 1.0

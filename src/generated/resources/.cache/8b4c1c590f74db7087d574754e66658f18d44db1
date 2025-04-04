@@ -1,6 +1,8 @@
-// 1.21.1	2025-04-04T17:14:52.4697665	Item Models: nexus
+// 1.21.1	2025-04-04T18:33:38.159524	Item Models: nexus
+9147ef8d4750a4a23362b0d0eff20f15d8647aee assets/nexus/models/item/accelerite_sword.json
 c9222ae0034ac1992d745d0637018d5fd52e1f7b assets/nexus/models/item/charged_accelerite_ingot.json
 44764e188c59892327753994d18998b0c33d9953 assets/nexus/models/item/chrono_shard.json
+c6d0a1d504d20775f9516e1a1b13f3de2468d51b assets/nexus/models/item/chrono_shard_fragment.json
 fd79b33d8b79c67a9b5630a644ff8f7499e9fb9b assets/nexus/models/item/chrono_upgrade_smithing_template.json
 2de7e14e1e7656103b9c5efa293b9b3b2fb9416d assets/nexus/models/item/dormant_accelerite_ingot.json
 4ed8d24b6ae75abfdd12634f731d6cae575f83eb assets/nexus/models/item/fallbreakers.json

@@ -7,6 +7,8 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.data.worldgen.BootstrapContext;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
 import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.biome.BiomeGenerationSettings;
 import net.minecraft.world.level.biome.BiomeSpecialEffects;
@@ -50,7 +52,7 @@ public class NexusBiomes {
                         .addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, NexusPlacedFeatures.CHRONO_CLUSTER_SUBMERGED_PLACED_KEY)
                         .addFeature(GenerationStep.Decoration.RAW_GENERATION, NexusPlacedFeatures.CHASM)
                         .build())
-                .mobSpawnSettings(new MobSpawnSettings.Builder().build())
+                .mobSpawnSettings(new MobSpawnSettings.Builder().addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SHEEP, 12, 4, 4)).build())
                 .build();
     }
 }

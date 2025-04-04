@@ -58,6 +58,7 @@ public class CreativeTabInjector {
             add(event, Items.CHERRY_SAPLING, NexusBlocks.WARPBLOSSOM_SAPLING.asItem());
             add(event, Items.PINK_PETALS, NexusBlocks.PURPLE_PETALS.asItem());
 
+            add(event, Items.ANCIENT_DEBRIS, NexusBlocks.WARPSLATE_ACCELERITE_ORE.asItem());
             add(event, Items.RAW_GOLD_BLOCK, NexusBlocks.RAW_ACCELERITE_BLOCK.asItem());
 
             add(event, Items.AMETHYST_CLUSTER,
@@ -90,6 +91,7 @@ public class CreativeTabInjector {
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
             add(event, Items.TURTLE_HELMET, NexusItems.FALLBREAKERS.get());
+            add(event, Items.NETHERITE_SWORD, NexusItems.ACCELERITE_SWORD.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {

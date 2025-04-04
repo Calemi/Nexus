@@ -1,6 +1,8 @@
-package com.calemi.nexus.util;
+package com.calemi.nexus.entity;
 
 import com.calemi.ccore.api.location.Location;
+import com.calemi.nexus.util.NexusSoundHelper;
+import com.calemi.nexus.util.TeleportHelper;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import com.calemi.nexus.world.dimension.NexusDimensions;
 import net.minecraft.world.entity.Entity;

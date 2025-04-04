@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-02T16:33:21.4328395	Tags for minecraft:block mod id nexus
+// 1.21.1	2025-04-04T17:59:27.8540004	Tags for minecraft:block mod id nexus
 9d4136bd48a42e895b3730be0cbca7f8da6fec48 data/c/tags/block/budding_blocks.json
 2230eb61f10aa8dd9d43cc065c00ea621a26e5b3 data/c/tags/block/buds.json
 4d43007c8519b43c54452d6ef6b8d57dbae1bb39 data/c/tags/block/clusters.json
@@ -12,6 +12,7 @@ d9376b938737560d696b410181953cac6267f19e data/c/tags/block/sands.json
 95d99fd081ecbbeaf390b99906af349f1b1b31c9 data/c/tags/block/storage_blocks.json
 73a343b1a305200794277704c711fb60b44ac7f8 data/c/tags/block/stripped_logs.json
 1b2cef64a4688f4f5341a1d8ccdda5e4763a976b data/c/tags/block/stripped_woods.json
+56fd0288696b8f692619b6b6272a58fe09c5c71d data/minecraft/tags/block/animals_spawnable_on.json
 11447634b78fe1c3ceb9ccf5fbb07d8e51f6958a data/minecraft/tags/block/buttons.json
 ca88d3545330077fbbcb7c8b273942c3e896e713 data/minecraft/tags/block/ceiling_hanging_signs.json
 e488e4ac2d5c8112f214028b3c6b8aa60116bc4c data/minecraft/tags/block/crystal_sound_blocks.json

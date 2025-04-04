@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "nexus:chrono_shard"
+        "recipe": "nexus:chrono_shard_from_chrono_shard_fragment"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
@@ -26,7 +26,7 @@
   ],
   "rewards": {
     "recipes": [
-      "nexus:chrono_shard"
+      "nexus:chrono_shard_from_chrono_shard_fragment"
     ]
   }
 }

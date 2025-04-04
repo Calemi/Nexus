@@ -17,7 +17,10 @@ public class NexusItems {
 
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(NexusRef.ID);
 
+    public static final DeferredItem<Item> CHRONO_SHARD_FRAGMENT = regItem("chrono_shard_fragment", () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> CHRONO_SHARD = regItem("chrono_shard", () -> new Item(new Item.Properties()));
+
     public static final DeferredItem<Item> CHRONO_UPGRADE_SMITHING_TEMPLATE = regItem("chrono_upgrade_smithing_template",
             () -> SmithingTemplateHelper.createCustomUpgradeTemplate(NexusRef.ID, "chrono", List.of("amethyst_shard"), List.of("ender_pearl")));
 
@@ -29,6 +32,9 @@ public class NexusItems {
 
     public static final DeferredItem<Item> CHARGED_ACCELERITE_INGOT = regItem("charged_accelerite_ingot",
             () -> new Item(new Item.Properties()));
+
+    public static final DeferredItem<Item> ACCELERITE_SWORD = regItem("accelerite_sword",
+            () -> new SwordItem(NexusTiers.ACCELERITE, new Item.Properties().attributes(SwordItem.createAttributes(NexusTiers.ACCELERITE, 3, -2.4F))));
 
     public static final DeferredItem<Item> TOTEM_OF_WARPING = regItem("totem_of_warping",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));

@@ -247,6 +247,9 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
         tag(BlockTags.SNIFFER_DIGGABLE_BLOCK)
                 .add(NexusBlocks.CHRONOWARPED_DIRT.get(), NexusBlocks.CHRONOWARPED_GRASS.get());
 
+        tag(BlockTags.ANIMALS_SPAWNABLE_ON)
+                .add(NexusBlocks.CHRONOWARPED_GRASS.get());
+
         tag(Tags.Blocks.COBBLESTONES_DEEPSLATE)
                 .add(NexusBlocks.COBBLED_WARPSLATE.get());
 

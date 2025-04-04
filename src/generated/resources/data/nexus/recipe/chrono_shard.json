@@ -1,16 +1,37 @@
 {
-  "type": "minecraft:smithing_transform",
-  "addition": {
-    "tag": "c:ender_pearls"
-  },
-  "base": {
-    "tag": "c:gems/amethyst"
-  },
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    },
+    {
+      "item": "nexus:chrono_shard_fragment"
+    }
+  ],
   "result": {
     "count": 1,
     "id": "nexus:chrono_shard"
-  },
-  "template": {
-    "item": "nexus:chrono_upgrade_smithing_template"
   }
 }

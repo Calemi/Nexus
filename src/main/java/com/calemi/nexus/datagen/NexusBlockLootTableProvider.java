@@ -79,7 +79,7 @@ public class NexusBlockLootTableProvider extends BlockLootSubProvider {
                     return;
                 }
 
-                add(block, createSilkTouchOnlyTable(block));
+                add(block, createSingleItemTableWithSilkTouch(chronoCluster, NexusItems.CHRONO_SHARD_FRAGMENT));
                 return;
             }
 

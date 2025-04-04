@@ -10,6 +10,7 @@ import com.calemi.nexus.client.partclie.NexusParticles;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreHUDOverlay;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreWorldOverlay;
 import com.calemi.nexus.config.NexusConfig;
+import com.calemi.nexus.entity.NexusSheepSpawnColor;
 import com.calemi.nexus.item.*;
 import com.calemi.nexus.item.axe.NexusStrippables;
 import com.calemi.nexus.item.property.NexusItemProperties;
@@ -18,7 +19,7 @@ import com.calemi.nexus.loot.modifier.NexusLootModifiers;
 import com.calemi.nexus.packet.NexusPackets;
 import com.calemi.nexus.tab.CreativeTabInjector;
 import com.calemi.nexus.tab.NexusCreativeModeTabs;
-import com.calemi.nexus.util.HoleTeleportAction;
+import com.calemi.nexus.entity.HoleTeleportAction;
 import com.calemi.nexus.world.feature.NexusFeatures;
 import com.calemi.nexus.world.feature.tree.NexusFoliagePlacers;
 import net.neoforged.bus.api.IEventBus;
@@ -90,6 +91,7 @@ public class Nexus {
         FORGE_EVENT_BUS.register(new AcceleriteItemChargeAction());
         FORGE_EVENT_BUS.register(new TotemOfWarpingImmunityAction());
         FORGE_EVENT_BUS.register(new FallbreakersImmunityAction());
+        FORGE_EVENT_BUS.register(new NexusSheepSpawnColor());
 
         LOGGER.info("Registering: Common - End");
     }

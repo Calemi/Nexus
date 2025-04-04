@@ -87,6 +87,9 @@ public class NexusRecipeProvider extends RecipeProvider {
                 recipeOutput
         );
 
+        threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusItems.CHRONO_SHARD, NexusItems.CHRONO_SHARD_FRAGMENT);
+        oneToOne(recipeOutput, NexusItems.CHRONO_SHARD, NexusItems.CHRONO_SHARD_FRAGMENT, null, 1);
+
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE),
                         Ingredient.of(Tags.Items.GEMS_AMETHYST),
@@ -95,7 +98,7 @@ public class NexusRecipeProvider extends RecipeProvider {
                         NexusItems.CHRONO_SHARD.get()
                 )
                 .unlocks("has_ender_pearl", has(Tags.Items.ENDER_PEARLS))
-                .save(recipeOutput, NexusRef.rl("chrono_shard"));
+                .save(recipeOutput, NexusRef.rl("chrono_shard_from_smithing"));
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE, 2)
                 .define('T', NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE)
@@ -126,6 +129,8 @@ public class NexusRecipeProvider extends RecipeProvider {
 
         threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusBlocks.CHARGED_ACCELERITE_BLOCK, NexusItems.CHARGED_ACCELERITE_INGOT);
         oneToOne(recipeOutput, NexusItems.CHARGED_ACCELERITE_INGOT, NexusBlocks.CHARGED_ACCELERITE_BLOCK, null, 9);
+
+        sword(recipeOutput, NexusItems.ACCELERITE_SWORD, NexusItems.CHARGED_ACCELERITE_INGOT, Items.STICK);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusItems.TOTEM_OF_WARPING, 1)
                 .define('C', NexusItems.CHRONO_SHARD)
@@ -252,6 +257,17 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .pattern("X")
                 .pattern("X")
                 .unlockedBy(getHasName(ingredient), has(ingredient))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void sword(RecipeOutput recipeOutput, ItemLike result, ItemLike material, ItemLike stick) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .define('S', stick)
+                .pattern("X")
+                .pattern("X")
+                .pattern("S")
+                .unlockedBy(getHasName(material), has(material))
                 .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 

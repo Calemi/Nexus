@@ -1,7 +1,7 @@
-// 1.21.1	2025-04-02T14:48:44.7433689	Registries
+// 1.21.1	2025-04-04T18:02:39.5939217	Registries
 935b732e9f183b3e303aa4d8a930415dee17b031 data/nexus/dimension/the_nexus.json
 bcce14ab7fd826f9432e14153ee93dea15d3e422 data/nexus/dimension_type/the_nexus.json
-58ab0eef2bc0ceedd200961c6c7f92676e59c46b data/nexus/worldgen/biome/chronowarped_fields.json
+9f11754ad162319b087454591b8170dfd1dce681 data/nexus/worldgen/biome/chronowarped_fields.json
 fa8ed75952ebda4e0b0d55e4edaa1c4d7101b24e data/nexus/worldgen/configured_feature/amethyst_cluster.json
 f9f2bd60490c52191cd21339bc5d9f157d7e3356 data/nexus/worldgen/configured_feature/chasm.json
 72b2138f5107189589dfe69202a2ce621fdfc676 data/nexus/worldgen/configured_feature/chrono_cluster.json

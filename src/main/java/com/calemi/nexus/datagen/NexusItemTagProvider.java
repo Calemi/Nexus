@@ -45,6 +45,9 @@ public class NexusItemTagProvider extends ItemTagsProvider {
         tag(Tags.Items.ARMORS).add(NexusItems.FALLBREAKERS.get());
         tag(ItemTags.FOOT_ARMOR).add(NexusItems.FALLBREAKERS.get());
 
+        tag(ItemTags.SWORDS).add(NexusItems.ACCELERITE_SWORD.get());
+        tag(Tags.Items.MELEE_WEAPON_TOOLS).add(NexusItems.ACCELERITE_SWORD.get());
+
         tag(ItemTags.BOATS).add(NexusItems.WARPBLOSSOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
 

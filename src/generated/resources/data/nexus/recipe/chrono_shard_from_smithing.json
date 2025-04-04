@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:smithing_transform",
+  "addition": {
+    "tag": "c:ender_pearls"
+  },
+  "base": {
+    "tag": "c:gems/amethyst"
+  },
+  "result": {
+    "count": 1,
+    "id": "nexus:chrono_shard"
+  },
+  "template": {
+    "item": "nexus:chrono_upgrade_smithing_template"
+  }
+}

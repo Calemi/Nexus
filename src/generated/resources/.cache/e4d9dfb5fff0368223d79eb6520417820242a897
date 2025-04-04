@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-04T16:05:26.7508675	Tags for minecraft:item mod id nexus
+// 1.21.1	2025-04-04T17:47:47.5505123	Tags for minecraft:item mod id nexus
 253cc9620386ec4e07a8ab228e83f4d069ec6aff data/c/tags/item/armors.json
 9d4136bd48a42e895b3730be0cbca7f8da6fec48 data/c/tags/item/budding_blocks.json
 2230eb61f10aa8dd9d43cc065c00ea621a26e5b3 data/c/tags/item/buds.json
@@ -17,6 +17,7 @@ d9376b938737560d696b410181953cac6267f19e data/c/tags/item/sands.json
 95d99fd081ecbbeaf390b99906af349f1b1b31c9 data/c/tags/item/storage_blocks.json
 73a343b1a305200794277704c711fb60b44ac7f8 data/c/tags/item/stripped_logs.json
 1b2cef64a4688f4f5341a1d8ccdda5e4763a976b data/c/tags/item/stripped_woods.json
+bfb41d7a4e3c17eb8da66ef2c344c2b2eb3376b5 data/c/tags/item/tools/melee_weapon.json
 21d7b15305a3d62976e49d6c2765002882d7d7e2 data/minecraft/tags/item/boats.json
 46f51084edc7029c563ea53d843f0387158769c7 data/minecraft/tags/item/chest_boats.json
 15aea02a6a3db8cb56ad1cad21cf988cff4f07c6 data/minecraft/tags/item/dirt.json
@@ -36,6 +37,7 @@ d9376b938737560d696b410181953cac6267f19e data/minecraft/tags/item/smelts_to_glas
 a225aadbc4c30c2807a35dbbd40145c310fb3c92 data/minecraft/tags/item/stairs.json
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/minecraft/tags/item/stone_crafting_materials.json
 d80959c7663f88a752e0eba3a54d3762a2ce1cf5 data/minecraft/tags/item/stone_tool_materials.json
+bfb41d7a4e3c17eb8da66ef2c344c2b2eb3376b5 data/minecraft/tags/item/swords.json
 fb4d901941cf9406303b0f1236c58c6688dfcca6 data/minecraft/tags/item/walls.json
 11447634b78fe1c3ceb9ccf5fbb07d8e51f6958a data/minecraft/tags/item/wooden_buttons.json
 36a3a5f7da66e78c9ea099721b78d8713b13fc30 data/minecraft/tags/item/wooden_doors.json
