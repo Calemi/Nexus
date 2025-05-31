@@ -70,6 +70,9 @@ public class NexusDataGen {
         //ITEM TAGS
         generator.addProvider(event.includeServer(), new NexusItemTagProvider(output, lookupProvider, blockTagProvider.contentsGetter(), existingFileHelper));
 
+        //ENCHANTMENT TAGS
+        generator.addProvider(event.includeServer(), new NexusEnchantmentTagsProvider(output, lookupProvider, existingFileHelper));
+
         //GLOBAL LOOT MODIFIERS
         generator.addProvider(event.includeServer(), new NexusGlobalLootModifierProvider(output, lookupProvider));
 

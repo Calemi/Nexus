@@ -1,5 +1,9 @@
 {
   "values": [
-    "nexus:fallbreakers"
+    "nexus:fallbreakers",
+    "nexus:accelerite_helmet",
+    "nexus:accelerite_chestplate",
+    "nexus:accelerite_leggings",
+    "nexus:accelerite_boots"
   ]
 }

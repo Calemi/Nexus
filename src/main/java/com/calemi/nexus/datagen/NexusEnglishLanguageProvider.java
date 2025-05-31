@@ -15,6 +15,8 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
     private final String CHRONO_UPGRADE = getPrefixedKey("item", "smithing_template.chrono_upgrade.");
 
+    private final String ENCHANTMENT = getPrefixedKey("enchantment", "");
+
     private final String SCREEN = getPrefixedKey("screen", "");
     private final String SCREEN_NEXUS_PORTAL_CORE = SCREEN + "nexus_portal_core.";
     private final String SCREEN_NEXUS_PORTAL_CORE_TEXT = SCREEN_NEXUS_PORTAL_CORE + "text.";
@@ -90,6 +92,15 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
         add(getPrefixedKey("hover_text", "fallbreakers_2"), "Breaks on Impact");
 
         /*
+            ENCHANTMENTS
+         */
+
+        add(ENCHANTMENT + "acceleration", "Acceleration");
+        add(ENCHANTMENT + "acceleration.desc", "Attacking, mining, or getting hurt (on armor) applies a stacking that increases move, attack, and mining speed.");
+        add(ENCHANTMENT + "speed_mending", "Speed Mending");
+        add(ENCHANTMENT + "speed_mending.desc", "The item is slowly repaired when reaching a certain speed.");
+
+        /*
             CREATIVE TABS
          */
 
@@ -118,6 +129,11 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
         add(getPrefixedKey("hud", "calculated_destination"), "Calculated Destination");
         add(getPrefixedKey("hud", "speed"), "Speed");
+
+        /*
+            MOB EFFECTS
+         */
+        add(getPrefixedKey("effect", "acceleration"), "Acceleration");
 
         /*
             BIOMES

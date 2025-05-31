@@ -72,6 +72,9 @@ dependencies {
 
     runtimeOnly "curse.maven:sodium-394468:${project.sodium_file_id}"
     runtimeOnly "curse.maven:elevator-250832:${project.elevator_file_id}"
+    runtimeOnly "curse.maven:bookshelf-228525:${project.bookshelf_file_id}"
+    runtimeOnly "curse.maven:prickle-1023259:${project.prickle_file_id}"
+    runtimeOnly "curse.maven:enchdesc-250419:${project.enchdesc_file_id}"
 }
 
 tasks.withType(ProcessResources).configureEach {

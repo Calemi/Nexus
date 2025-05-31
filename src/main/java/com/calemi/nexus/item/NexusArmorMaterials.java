@@ -35,8 +35,29 @@ public class NexusArmorMaterials {
                             NexusRef.rl("fallbreakers")
                     )
             ),
-            0,
-            0
+            0.0F,
+            0.0F
+    ));
+
+    public static final Holder<ArmorMaterial> ACCELERITE = ARMOR_MATERIALS.register("accelerite", () -> new ArmorMaterial(
+
+            Util.make(new EnumMap<>(ArmorItem.Type.class), map -> {
+                map.put(ArmorItem.Type.BOOTS, 2);
+                map.put(ArmorItem.Type.LEGGINGS, 5);
+                map.put(ArmorItem.Type.CHESTPLATE, 6);
+                map.put(ArmorItem.Type.HELMET, 2);
+                map.put(ArmorItem.Type.BODY, 5);
+            }),
+            9,
+            SoundEvents.ARMOR_EQUIP_IRON,
+            () -> Ingredient.of(NexusItems.CHARGED_ACCELERITE_INGOT),
+            List.of(
+                    new ArmorMaterial.Layer(
+                            NexusRef.rl("accelerite")
+                    )
+            ),
+            0.0F,
+            0.0F
     ));
 
     public static void init() {

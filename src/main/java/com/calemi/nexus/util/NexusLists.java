@@ -115,11 +115,20 @@ public class NexusLists {
         ALL_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT.get());
         ALL_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT.get());
         ALL_ITEMS.add(NexusItems.ACCELERITE_SWORD.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_SHOVEL.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_PICKAXE.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_AXE.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_HOE.get());
         ALL_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         ALL_ITEMS.add(NexusItems.SPEEDOMETER.get());
         ALL_ITEMS.add(NexusItems.FALLBREAKERS.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_HELMET.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_CHESTPLATE.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_LEGGINGS.get());
+        ALL_ITEMS.add(NexusItems.ACCELERITE_BOOTS.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
+        ALL_ITEMS.add(NexusItems.WARPBLOSSOM_STICK.get());
     }
 
     public static final List<Item> ALL_BLOCKS_AND_ITEMS = new ArrayList<>();
@@ -161,15 +170,24 @@ public class NexusLists {
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_SWORD);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_SHOVEL);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_PICKAXE);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_AXE);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_HOE);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.SPEEDOMETER.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.FALLBREAKERS.get());
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_HELMET.get());
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_CHESTPLATE.get());
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_LEGGINGS.get());
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_BOOTS.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.PURPLE_PETALS);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
         TAB_NEXUS_MAIN_ITEMS.addAll(NexusBlockFamilies.WARPBLOSSOM.getAllTabItems());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.WARPBLOSSOM_STICK);
     }
 
     /*

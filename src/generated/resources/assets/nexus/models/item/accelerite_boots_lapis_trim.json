@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/iron_boots_lapis_trim",
+  "textures": {
+    "layer0": "nexus:item/accelerite_boots"
+  }
+}

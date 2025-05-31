@@ -1,6 +1,7 @@
 package com.calemi.nexus.item;
 
 import com.calemi.ccore.api.location.Location;
+import com.calemi.nexus.packet.TotemOfWarpingPayload;
 import com.calemi.nexus.util.NexusSoundHelper;
 import com.calemi.nexus.util.TeleportHelper;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
@@ -68,6 +69,7 @@ public class TotemOfWarpingImmunityAction {
                     serverplayer.awardStat(Stats.ITEM_USED.get(NexusItems.TOTEM_OF_WARPING.get()), 1);
                     CriteriaTriggers.USED_TOTEM.trigger(serverplayer, totem);
                     entity.gameEvent(GameEvent.ITEM_INTERACT_FINISH);
+                    serverplayer.connection.send(new TotemOfWarpingPayload());
                 }
 
                 entity.setHealth(1.0F);
@@ -75,7 +77,6 @@ public class TotemOfWarpingImmunityAction {
                 entity.addEffect(new MobEffectInstance(MobEffects.REGENERATION, 900, 1));
                 entity.addEffect(new MobEffectInstance(MobEffects.ABSORPTION, 100, 1));
                 entity.addEffect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 800, 0));
-                entity.level().broadcastEntityEvent(entity, (byte)35);
             }
         }
     }

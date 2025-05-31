@@ -37,16 +37,76 @@ public class NexusItemTagProvider extends ItemTagsProvider {
 
         copy(NexusTags.Blocks.WARPBLOSSOM_LOGS, NexusTags.Items.WARPBLOSSOM_LOGS);
 
+        tag(NexusTags.Items.ACCELERITE_ARMOR).add(
+                NexusItems.ACCELERITE_HELMET.get(),
+                NexusItems.ACCELERITE_CHESTPLATE.get(),
+                NexusItems.ACCELERITE_LEGGINGS.get(),
+                NexusItems.ACCELERITE_BOOTS.get()
+        );
+
+        tag(NexusTags.Items.ACCELERITE_SWORD).add(
+                NexusItems.ACCELERITE_SWORD.get()
+        );
+
+        tag(NexusTags.Items.ACCELERITE_TOOLS).add(
+                NexusItems.ACCELERITE_SHOVEL.get(),
+                NexusItems.ACCELERITE_PICKAXE.get(),
+                NexusItems.ACCELERITE_AXE.get(),
+                NexusItems.ACCELERITE_HOE.get()
+        );
+
+        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addTag(NexusTags.Items.ACCELERITE_ARMOR);
+        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addTag(NexusTags.Items.ACCELERITE_SWORD);
+        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addTag(NexusTags.Items.ACCELERITE_TOOLS);
+
+        tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).addTag(ItemTags.ARMOR_ENCHANTABLE);
+        tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).addTag(ItemTags.WEAPON_ENCHANTABLE);
+        tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).addTag(ItemTags.MINING_ENCHANTABLE);
+        tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).remove(NexusTags.Items.ACCELERITE_EQUIPMENT);
+
+        tag(NexusTags.Items.SPEED_MENDING_ENCHANTABLE).addTag(ItemTags.DURABILITY_ENCHANTABLE);
+        tag(NexusTags.Items.SPEED_MENDING_ENCHANTABLE).remove(NexusTags.Items.ACCELERITE_EQUIPMENT);
+
         tag(Tags.Items.RAW_MATERIALS).add(NexusItems.RAW_ACCELERITE.get());
         tag(Tags.Items.INGOTS).add(NexusItems.DORMANT_ACCELERITE_INGOT.get(), NexusItems.CHARGED_ACCELERITE_INGOT.get());
         tag(Tags.Items.GEMS).add(NexusItems.CHRONO_SHARD.get());
 
-        tag(Tags.Items.ENCHANTABLES).add(NexusItems.FALLBREAKERS.get());
-        tag(Tags.Items.ARMORS).add(NexusItems.FALLBREAKERS.get());
+        tag(ItemTags.HEAD_ARMOR).add(NexusItems.ACCELERITE_HELMET.get());
+        tag(ItemTags.CHEST_ARMOR).add(NexusItems.ACCELERITE_CHESTPLATE.get());
+        tag(ItemTags.LEG_ARMOR).add(NexusItems.ACCELERITE_LEGGINGS.get());
+        tag(ItemTags.FOOT_ARMOR).add(NexusItems.ACCELERITE_BOOTS.get());
         tag(ItemTags.FOOT_ARMOR).add(NexusItems.FALLBREAKERS.get());
+
+        tag(Tags.Items.ARMORS).add(
+                NexusItems.FALLBREAKERS.get(),
+                NexusItems.ACCELERITE_HELMET.get(),
+                NexusItems.ACCELERITE_CHESTPLATE.get(),
+                NexusItems.ACCELERITE_LEGGINGS.get(),
+                NexusItems.ACCELERITE_BOOTS.get()
+        );
+
+        tag(Tags.Items.ENCHANTABLES).add(
+                NexusItems.FALLBREAKERS.get(),
+                NexusItems.ACCELERITE_HELMET.get(),
+                NexusItems.ACCELERITE_CHESTPLATE.get(),
+                NexusItems.ACCELERITE_LEGGINGS.get(),
+                NexusItems.ACCELERITE_BOOTS.get()
+        );
+
+        tag(Tags.Items.RODS_WOODEN).add(NexusItems.WARPBLOSSOM_STICK.get());
 
         tag(ItemTags.SWORDS).add(NexusItems.ACCELERITE_SWORD.get());
         tag(Tags.Items.MELEE_WEAPON_TOOLS).add(NexusItems.ACCELERITE_SWORD.get());
+
+        tag(ItemTags.PICKAXES).add(NexusItems.ACCELERITE_PICKAXE.get());
+        tag(ItemTags.CLUSTER_MAX_HARVESTABLES).add(NexusItems.ACCELERITE_PICKAXE.get());
+        tag(Tags.Items.MINING_TOOL_TOOLS).add(NexusItems.ACCELERITE_PICKAXE.get());
+
+        tag(ItemTags.SHOVELS).add(NexusItems.ACCELERITE_SHOVEL.get());
+
+        tag(ItemTags.AXES).add(NexusItems.ACCELERITE_AXE.get());
+
+        tag(ItemTags.HOES).add(NexusItems.ACCELERITE_HOE.get());
 
         tag(ItemTags.BOATS).add(NexusItems.WARPBLOSSOM_BOAT.get());
         tag(ItemTags.CHEST_BOATS).add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());

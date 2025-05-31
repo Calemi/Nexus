@@ -87,19 +87,36 @@ public class CreativeTabInjector {
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
             add(event, Items.CHERRY_CHEST_BOAT, NexusItems.WARPBLOSSOM_BOAT.get(), NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
             add(event, Items.CLOCK, NexusItems.SPEEDOMETER.get());
+            add(event, Items.NETHERITE_HOE,
+                    NexusItems.ACCELERITE_SHOVEL.get(),
+                    NexusItems.ACCELERITE_PICKAXE.get(),
+                    NexusItems.ACCELERITE_AXE.get(),
+                    NexusItems.ACCELERITE_HOE.get()
+            );
         }
 
         if (event.getTabKey() == CreativeModeTabs.COMBAT) {
+
+            add(event, Items.NETHERITE_BOOTS,
+                    NexusItems.ACCELERITE_HELMET.get(),
+                    NexusItems.ACCELERITE_CHESTPLATE.get(),
+                    NexusItems.ACCELERITE_LEGGINGS.get(),
+                    NexusItems.ACCELERITE_BOOTS.get()
+            );
+
             add(event, Items.TURTLE_HELMET, NexusItems.FALLBREAKERS.get());
             add(event, Items.NETHERITE_SWORD, NexusItems.ACCELERITE_SWORD.get());
+            add(event, Items.NETHERITE_AXE, NexusItems.ACCELERITE_AXE.get());
+            add(event, Items.TOTEM_OF_UNDYING, NexusItems.TOTEM_OF_WARPING.get());
         }
 
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            add(event, Items.AMETHYST_SHARD, NexusItems.CHRONO_SHARD.get());
-            add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
 
             add(event, Items.RAW_GOLD, NexusItems.RAW_ACCELERITE.get());
+            add(event, Items.AMETHYST_SHARD, NexusItems.CHRONO_SHARD.get());
             add(event, Items.NETHERITE_INGOT, NexusItems.DORMANT_ACCELERITE_INGOT.get(), NexusItems.CHARGED_ACCELERITE_INGOT.get());
+            add(event, Items.STICK, NexusItems.WARPBLOSSOM_STICK.get());
+            add(event, Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE, NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get());
         }
     }
 

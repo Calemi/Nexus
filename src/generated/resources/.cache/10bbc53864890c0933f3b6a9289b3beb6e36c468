@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-04T17:59:27.8540004	Tags for minecraft:block mod id nexus
+// 1.21.1	2025-05-29T15:48:31.1930651	Tags for minecraft:block mod id nexus
 9d4136bd48a42e895b3730be0cbca7f8da6fec48 data/c/tags/block/budding_blocks.json
 2230eb61f10aa8dd9d43cc065c00ea621a26e5b3 data/c/tags/block/buds.json
 4d43007c8519b43c54452d6ef6b8d57dbae1bb39 data/c/tags/block/clusters.json
@@ -55,6 +55,8 @@ cd1b19c03c6569a29ecc59e0c4c49615c6c38e7c data/minecraft/tags/block/wooden_pressu
 73ea23cf761bd4676297508b856e0d0e0c2fa183 data/minecraft/tags/block/wooden_stairs.json
 fdf8ec281d3a67cb162e4d4a72809754aa567352 data/minecraft/tags/block/wooden_trapdoors.json
 a302615a2c754e3e388a89b2683a294ca1d35cda data/nexus/tags/block/dirtlike.json
+3da029d4591aa8f3228d05e198d5582cde6fd635 data/nexus/tags/block/incorrect_for_accelerite_tool.json
+32b13946c4cd1f944b029659ccce5fcb2adad4ff data/nexus/tags/block/needs_accelerite_tool.json
 f26dc240901feafa860046c88cf99c20e743207f data/nexus/tags/block/nexus_portals.json
 e0656899361f4de718357ecb86dc639da33f05c0 data/nexus/tags/block/nexus_portal_cores.json
 277332acc4aaa805480cd9d2863132805cfa9f4e data/nexus/tags/block/stonelike.json

@@ -88,7 +88,7 @@ public class NexusRecipeProvider extends RecipeProvider {
         );
 
         threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusItems.CHRONO_SHARD, NexusItems.CHRONO_SHARD_FRAGMENT);
-        oneToOne(recipeOutput, NexusItems.CHRONO_SHARD, NexusItems.CHRONO_SHARD_FRAGMENT, null, 1);
+        oneToOne(recipeOutput, NexusItems.CHRONO_SHARD_FRAGMENT, NexusItems.CHRONO_SHARD, null, 9);
 
         SmithingTransformRecipeBuilder.smithing(
                         Ingredient.of(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE),
@@ -130,7 +130,18 @@ public class NexusRecipeProvider extends RecipeProvider {
         threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusBlocks.CHARGED_ACCELERITE_BLOCK, NexusItems.CHARGED_ACCELERITE_INGOT);
         oneToOne(recipeOutput, NexusItems.CHARGED_ACCELERITE_INGOT, NexusBlocks.CHARGED_ACCELERITE_BLOCK, null, 9);
 
-        sword(recipeOutput, NexusItems.ACCELERITE_SWORD, NexusItems.CHARGED_ACCELERITE_INGOT, Items.STICK);
+        oneByTwoVertical(recipeOutput, NexusItems.WARPBLOSSOM_STICK, 4, NexusBlocks.WARPBLOSSOM_PLANKS);
+
+        sword(recipeOutput, NexusItems.ACCELERITE_SWORD, NexusItems.CHARGED_ACCELERITE_INGOT);
+        shovel(recipeOutput, NexusItems.ACCELERITE_SHOVEL, NexusItems.CHARGED_ACCELERITE_INGOT);
+        pickaxe(recipeOutput, NexusItems.ACCELERITE_PICKAXE, NexusItems.CHARGED_ACCELERITE_INGOT);
+        axe(recipeOutput, NexusItems.ACCELERITE_AXE, NexusItems.CHARGED_ACCELERITE_INGOT);
+        hoe(recipeOutput, NexusItems.ACCELERITE_HOE, NexusItems.CHARGED_ACCELERITE_INGOT);
+
+        helmet(recipeOutput, NexusItems.ACCELERITE_HELMET, NexusItems.CHARGED_ACCELERITE_INGOT);
+        chestplate(recipeOutput, NexusItems.ACCELERITE_CHESTPLATE, NexusItems.CHARGED_ACCELERITE_INGOT);
+        leggings(recipeOutput, NexusItems.ACCELERITE_LEGGINGS, NexusItems.CHARGED_ACCELERITE_INGOT);
+        boots(recipeOutput, NexusItems.ACCELERITE_BOOTS, NexusItems.CHARGED_ACCELERITE_INGOT);
 
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusItems.TOTEM_OF_WARPING, 1)
                 .define('C', NexusItems.CHRONO_SHARD)
@@ -251,7 +262,7 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .save(recipeOutput, NexusRef.rl(getItemName(result) + "_from_" + getItemName(ingredient)));
     }
 
-    private void oneByTwoVertical(ItemLike result, int count, ItemLike ingredient, RecipeOutput recipeOutput) {
+    private void oneByTwoVertical(RecipeOutput recipeOutput, ItemLike result, int count, ItemLike ingredient) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TRANSPORTATION, result, count)
                 .define('X', ingredient)
                 .pattern("X")
@@ -260,10 +271,10 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
-    protected void sword(RecipeOutput recipeOutput, ItemLike result, ItemLike material, ItemLike stick) {
+    protected void sword(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
         ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
                 .define('X', material)
-                .define('S', stick)
+                .define('S', Tags.Items.RODS_WOODEN)
                 .pattern("X")
                 .pattern("X")
                 .pattern("S")
@@ -271,10 +282,92 @@ public class NexusRecipeProvider extends RecipeProvider {
                 .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }
 
+    protected void shovel(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .define('S', Tags.Items.RODS_WOODEN)
+                .pattern(" X ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void pickaxe(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .define('S', Tags.Items.RODS_WOODEN)
+                .pattern("XXX")
+                .pattern(" S ")
+                .pattern(" S ")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void axe(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .define('S', Tags.Items.RODS_WOODEN)
+                .pattern("XX ")
+                .pattern("XS ")
+                .pattern(" S ")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void hoe(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .define('S', Tags.Items.RODS_WOODEN)
+                .pattern("XX ")
+                .pattern(" S ")
+                .pattern(" S ")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void helmet(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .pattern("XXX")
+                .pattern("X X")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void chestplate(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .pattern("X X")
+                .pattern("XXX")
+                .pattern("XXX")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void leggings(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .pattern("XXX")
+                .pattern("X X")
+                .pattern("X X")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
+    protected void boots(RecipeOutput recipeOutput, ItemLike result, ItemLike material) {
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, result, 1)
+                .define('X', material)
+                .pattern("X X")
+                .pattern("X X")
+                .unlockedBy(getHasName(material), has(material))
+                .save(recipeOutput, NexusRef.rl(getItemName(result)));
+    }
+
     private void wood(CBlockFamily family, RecipeOutput recipeOutput) {
 
         Block result = family.getBlock(MemberType.WOOD);
-        Block ingredient =family.getBlock(MemberType.LOG);
+        Block ingredient = family.getBlock(MemberType.LOG);
 
         twoByTwo(result, 3, ingredient, "bark", recipeOutput);
     }
@@ -306,7 +399,7 @@ public class NexusRecipeProvider extends RecipeProvider {
         Block slab = family.getBlock(MemberType.SLAB);
 
         stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
-        oneByTwoVertical(result, 1, slab, recipeOutput);
+        oneByTwoVertical(recipeOutput, result, 1, slab);
     }
 
     private void pillar(CBlockFamily family, RecipeOutput recipeOutput) {
@@ -315,7 +408,7 @@ public class NexusRecipeProvider extends RecipeProvider {
         Block ingredient = family.getBlock(MemberType.BASE);
 
         stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, result, ingredient);
-        oneByTwoVertical(result, 1, ingredient, recipeOutput);
+        oneByTwoVertical(recipeOutput, result, 1, ingredient);
     }
 
     private void stairs(CBlockFamily family, RecipeOutput recipeOutput) {
@@ -361,7 +454,11 @@ public class NexusRecipeProvider extends RecipeProvider {
         Block result = family.getBlock(MemberType.FENCE);
         Block ingredient = family.getBlock(MemberType.BASE);
 
-        fenceBuilder(result, Ingredient.of(ingredient))
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 3)
+                .define('W', ingredient)
+                .define('#', Tags.Items.RODS_WOODEN)
+                .pattern("W#W")
+                .pattern("W#W")
                 .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_fence" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(recipeOutput, NexusRef.rl(getItemName(result)));
@@ -372,7 +469,11 @@ public class NexusRecipeProvider extends RecipeProvider {
         Block result = family.getBlock(MemberType.FENCE_GATE);
         Block ingredient = family.getBlock(MemberType.BASE);
 
-        fenceGateBuilder(result, Ingredient.of(ingredient))
+        ShapedRecipeBuilder.shaped(RecipeCategory.REDSTONE, result)
+                .define('#', Tags.Items.RODS_WOODEN)
+                .define('W', ingredient)
+                .pattern("#W#")
+                .pattern("#W#")
                 .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_fence_gate" : null)
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(recipeOutput, NexusRef.rl(getItemName(result)));
@@ -427,8 +528,13 @@ public class NexusRecipeProvider extends RecipeProvider {
         Block result = family.getBlock(MemberType.SIGN);
         Block ingredient = family.getBlock(MemberType.BASE);
 
-        signBuilder(result, Ingredient.of(ingredient))
+        ShapedRecipeBuilder.shaped(RecipeCategory.DECORATIONS, result, 3)
                 .group(family.getFamilyType().equals(CBlockFamily.FamilyType.PLANKS) ? "wooden_sign" : null)
+                .define('#', ingredient)
+                .define('X', Tags.Items.RODS_WOODEN)
+                .pattern("###")
+                .pattern("###")
+                .pattern(" X ")
                 .unlockedBy(getHasName(ingredient), has(ingredient))
                 .save(recipeOutput, NexusRef.rl(getItemName(result)));
     }

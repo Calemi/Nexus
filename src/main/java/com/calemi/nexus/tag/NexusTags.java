@@ -19,6 +19,9 @@ public class NexusTags {
 
         public static final TagKey<Block> NEXUS_PORTAL_CORES = TagKey.create(Registries.BLOCK, NexusRef.rl("nexus_portal_cores"));
         public static final TagKey<Block> NEXUS_PORTALS = TagKey.create(Registries.BLOCK, NexusRef.rl("nexus_portals"));
+
+        public static final TagKey<Block> NEEDS_ACCELERITE_TOOL = TagKey.create(Registries.BLOCK, NexusRef.rl("needs_accelerite_tool"));
+        public static final TagKey<Block> INCORRECT_FOR_ACCELERITE_TOOL = TagKey.create(Registries.BLOCK, NexusRef.rl("incorrect_for_accelerite_tool"));
     }
 
     public static class Items {
@@ -26,6 +29,14 @@ public class NexusTags {
         public static final TagKey<Item> ACCELERITE_INGOTS = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_ingots"));
 
         public static final TagKey<Item> WARPBLOSSOM_LOGS = TagKey.create(Registries.ITEM, NexusRef.rl("warpblossom_logs"));
+
+        public static final TagKey<Item> ACCELERITE_ARMOR = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_armor"));
+        public static final TagKey<Item> ACCELERITE_SWORD = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_sword"));
+        public static final TagKey<Item> ACCELERITE_TOOLS = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_tools"));
+        public static final TagKey<Item> ACCELERITE_EQUIPMENT = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_equipment"));
+
+        public static final TagKey<Item> ACCELERATION_ENCHANTABLE = TagKey.create(Registries.ITEM, NexusRef.rl("acceleration_enchantable"));
+        public static final TagKey<Item> SPEED_MENDING_ENCHANTABLE = TagKey.create(Registries.ITEM, NexusRef.rl("speed_mending_enchantable"));
     }
 
     public static class Biomes {

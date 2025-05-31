@@ -10,6 +10,7 @@ import com.calemi.nexus.client.partclie.NexusParticles;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreHUDOverlay;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreWorldOverlay;
 import com.calemi.nexus.config.NexusConfig;
+import com.calemi.nexus.effect.NexusMobEffects;
 import com.calemi.nexus.entity.NexusSheepSpawnColor;
 import com.calemi.nexus.item.*;
 import com.calemi.nexus.item.axe.NexusStrippables;
@@ -57,6 +58,7 @@ public class Nexus {
         NexusBlocks.init();
         NexusBlockEntities.init();
         NexusCreativeModeTabs.init();
+        NexusMobEffects.init();
         NexusLootModifiers.init();
         NexusLootItemConditions.init();
         NexusAttachments.init();
@@ -89,6 +91,7 @@ public class Nexus {
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockAction());
         FORGE_EVENT_BUS.register(new HoleTeleportAction());
         FORGE_EVENT_BUS.register(new AcceleriteItemChargeAction());
+        FORGE_EVENT_BUS.register(new AcceleriteEffectAction());
         FORGE_EVENT_BUS.register(new TotemOfWarpingImmunityAction());
         FORGE_EVENT_BUS.register(new FallbreakersImmunityAction());
         FORGE_EVENT_BUS.register(new NexusSheepSpawnColor());

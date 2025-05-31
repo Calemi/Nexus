@@ -34,7 +34,19 @@ public class NexusItems {
             () -> new Item(new Item.Properties()));
 
     public static final DeferredItem<Item> ACCELERITE_SWORD = regItem("accelerite_sword",
-            () -> new SwordItem(NexusTiers.ACCELERITE, new Item.Properties().attributes(SwordItem.createAttributes(NexusTiers.ACCELERITE, 3, -2.4F))));
+            () -> new AcceleriteSwordItem(new Item.Properties().attributes(SwordItem.createAttributes(NexusTiers.ACCELERITE, 3, -2.4F))));
+
+    public static final DeferredItem<Item> ACCELERITE_SHOVEL = regItem("accelerite_shovel",
+            () -> new AcceleriteShovelItem(new Item.Properties().attributes(ShovelItem.createAttributes(NexusTiers.ACCELERITE, 1.5F, -3.0F))));
+
+    public static final DeferredItem<Item> ACCELERITE_PICKAXE = regItem("accelerite_pickaxe",
+            () -> new AcceleritePickaxeItem(new Item.Properties().attributes(PickaxeItem.createAttributes(NexusTiers.ACCELERITE, 1.0F, -2.8F))));
+
+    public static final DeferredItem<Item> ACCELERITE_AXE = regItem("accelerite_axe",
+            () -> new AcceleriteAxeItem(new Item.Properties().attributes(AxeItem.createAttributes(NexusTiers.ACCELERITE, 6.0F, -3.1F))));
+
+    public static final DeferredItem<Item> ACCELERITE_HOE = regItem("accelerite_hoe",
+            () -> new AcceleriteHoeItem(new Item.Properties().attributes(HoeItem.createAttributes(NexusTiers.ACCELERITE, -2.0F, -1.0F))));
 
     public static final DeferredItem<Item> TOTEM_OF_WARPING = regItem("totem_of_warping",
             () -> new Item(new Item.Properties().stacksTo(1).rarity(Rarity.UNCOMMON)));
@@ -44,6 +56,18 @@ public class NexusItems {
 
     public static final DeferredItem<Item> FALLBREAKERS = regItem("fallbreakers",
             () -> new FallbreakersItem(new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> ACCELERITE_HELMET = regItem("accelerite_helmet",
+            () -> new AcceleriteArmorItem(ArmorItem.Type.HELMET, new Item.Properties().durability(ArmorItem.Type.HELMET.getDurability(20))));
+
+    public static final DeferredItem<Item> ACCELERITE_CHESTPLATE = regItem("accelerite_chestplate",
+            () -> new AcceleriteArmorItem(ArmorItem.Type.CHESTPLATE, new Item.Properties().durability(ArmorItem.Type.CHESTPLATE.getDurability(20))));
+
+    public static final DeferredItem<Item> ACCELERITE_LEGGINGS = regItem("accelerite_leggings",
+            () -> new AcceleriteArmorItem(ArmorItem.Type.LEGGINGS, new Item.Properties().durability(ArmorItem.Type.LEGGINGS.getDurability(20))));
+
+    public static final DeferredItem<Item> ACCELERITE_BOOTS = regItem("accelerite_boots",
+            () -> new AcceleriteArmorItem(ArmorItem.Type.BOOTS, new Item.Properties().durability(ArmorItem.Type.BOOTS.getDurability(20))));
 
     public static final DeferredItem<Item> WARPBLOSSOM_DOOR = regItem("warpblossom_door",
             () -> new DoubleHighBlockItem(NexusBlocks.WARPBLOSSOM_DOOR.get(), new Item.Properties()));
@@ -59,6 +83,9 @@ public class NexusItems {
 
     public static final DeferredItem<Item> WARPBLOSSOM_CHEST_BOAT = regItem("warpblossom_chest_boat",
             () -> new CBoatItem(NexusBoatTypes.WARPBLOSSOM, true, new Item.Properties().stacksTo(1)));
+
+    public static final DeferredItem<Item> WARPBLOSSOM_STICK = regItem("warpblossom_stick",
+            () -> new Item(new Item.Properties()));
 
     public static DeferredItem<Item> regItem(String name, Supplier<Item> sup) {
         return ITEMS.register(name, sup);

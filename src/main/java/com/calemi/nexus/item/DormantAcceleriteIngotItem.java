@@ -8,7 +8,7 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
-public class DormantAcceleriteIngotItem extends Item implements ChargeableBySpeed {
+public class DormantAcceleriteIngotItem extends Item implements ChargeableBySpeedItem {
 
     public DormantAcceleriteIngotItem(Item.Properties properties) {
         super(properties);

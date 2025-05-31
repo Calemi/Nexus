@@ -3,7 +3,7 @@ package com.calemi.nexus.item;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 
-public interface ChargeableBySpeed {
+public interface ChargeableBySpeedItem {
 
     void onSpeedRequirementMet(ServerPlayer player, ItemStack stack);
 

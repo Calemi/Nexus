@@ -1,0 +1,10 @@
+{
+  "remove": [
+    "#nexus:accelerite_equipment"
+  ],
+  "values": [
+    "#minecraft:enchantable/armor",
+    "#minecraft:enchantable/weapon",
+    "#minecraft:enchantable/mining"
+  ]
+}

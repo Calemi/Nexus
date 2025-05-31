@@ -1,0 +1,20 @@
+{
+  "anvil_cost": 8,
+  "description": {
+    "translate": "enchantment.nexus.acceleration"
+  },
+  "max_cost": {
+    "base": 20,
+    "per_level_above_first": 9
+  },
+  "max_level": 3,
+  "min_cost": {
+    "base": 5,
+    "per_level_above_first": 9
+  },
+  "slots": [
+    "any"
+  ],
+  "supported_items": "#nexus:acceleration_enchantable",
+  "weight": 1
+}

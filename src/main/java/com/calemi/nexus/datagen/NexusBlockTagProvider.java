@@ -58,6 +58,13 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
         tag(NexusTags.Blocks.NEXUS_PORTALS)
                 .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
 
+        tag(NexusTags.Blocks.NEEDS_ACCELERITE_TOOL)
+                .addTag(BlockTags.NEEDS_IRON_TOOL);
+
+        tag(NexusTags.Blocks.INCORRECT_FOR_ACCELERITE_TOOL)
+                .addTag(BlockTags.INCORRECT_FOR_IRON_TOOL)
+                .remove(NexusTags.Blocks.NEEDS_ACCELERITE_TOOL);
+
         /*
             BLOCK FAMILIES
          */

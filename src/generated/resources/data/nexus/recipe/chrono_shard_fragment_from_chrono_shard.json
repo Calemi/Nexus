@@ -3,11 +3,11 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "nexus:chrono_shard_fragment"
+      "item": "nexus:chrono_shard"
     }
   ],
   "result": {
-    "count": 1,
-    "id": "nexus:chrono_shard"
+    "count": 9,
+    "id": "nexus:chrono_shard_fragment"
   }
 }

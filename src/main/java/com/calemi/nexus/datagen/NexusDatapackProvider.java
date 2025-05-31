@@ -1,5 +1,6 @@
 package com.calemi.nexus.datagen;
 
+import com.calemi.nexus.item.enchantment.NexusEnchantments;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.world.biome.NexusBiomes;
 import com.calemi.nexus.world.dimension.NexusDimensions;
@@ -21,6 +22,7 @@ import java.util.concurrent.CompletableFuture;
 public class NexusDatapackProvider extends DatapackBuiltinEntriesProvider {
 
     public static final RegistrySetBuilder BUILDER = new RegistrySetBuilder()
+            .add(Registries.ENCHANTMENT, NexusEnchantments::bootstrap)
             .add(Registries.CONFIGURED_FEATURE, NexusConfiguredFeatures::bootstrap)
             .add(Registries.PLACED_FEATURE, NexusPlacedFeatures::bootstrap)
             .add(Registries.STRUCTURE, NexusStructures::bootstrap)
