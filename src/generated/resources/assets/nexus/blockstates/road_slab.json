@@ -1,0 +1,13 @@
+{
+  "variants": {
+    "type=bottom": {
+      "model": "nexus:block/road_slab"
+    },
+    "type=double": {
+      "model": "nexus:block/road"
+    },
+    "type=top": {
+      "model": "nexus:block/road_slab_top"
+    }
+  }
+}

@@ -2,5 +2,6 @@ package com.calemi.nexus.item;
 
 public interface AccelerationEffectItem {
 
-    int getEffectDuration();
+    int getAccelerationEffectDuration();
+    int getMaxAccelerationEffectStacks();
 }

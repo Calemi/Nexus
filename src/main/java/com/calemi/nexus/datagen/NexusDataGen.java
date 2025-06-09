@@ -36,6 +36,12 @@ public class NexusDataGen {
         //BLOCKSTATES
         generator.addProvider(event.includeClient(), new NexusBlockStateProvider(output, existingFileHelper));
 
+        //FUSION MODELS
+        generator.addProvider(event.includeClient(), new NexusFusionModelProvider(output, existingFileHelper));
+
+        //FUSION METADATA
+        generator.addProvider(event.includeClient(), new NexusFusionMetadataProvider(output));
+
         //ITEM MODELS
         generator.addProvider(event.includeClient(), new NexusItemModelProvider(output, existingFileHelper));
 

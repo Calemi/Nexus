@@ -181,7 +181,7 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
     @Override
     protected void neighborChanged(BlockState state, Level level, BlockPos pos, Block neighborBlock, BlockPos neighborPos, boolean movedByPiston) {
 
-        if (!level.isClientSide()) return;
+        if (level.isClientSide()) return;
 
         if (level.getBlockEntity(pos) instanceof NexusPortalCoreBlockEntity blockEntity) {
 

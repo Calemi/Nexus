@@ -1,0 +1,47 @@
+{
+  "type": "fusion:connecting",
+  "parent": "minecraft:block/cube_all",
+  "connections": {
+    "type": "fusion:or",
+    "predicates": [
+      {
+        "type": "fusion:and",
+        "predicates": [
+          {
+            "type": "fusion:is_same_block"
+          },
+          {
+            "type": "fusion:or",
+            "predicates": [
+              {
+                "type": "fusion:is_same_state"
+              },
+              {
+                "type": "fusion:match_state",
+                "block": "nexus:jump_pad",
+                "properties": {
+                  "charged": [
+                    "true"
+                  ]
+                }
+              },
+              {
+                "type": "fusion:match_state",
+                "block": "nexus:jump_pad",
+                "properties": {
+                  "charged": [
+                    "false"
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "loader": "fusion:model",
+  "textures": {
+    "all": "nexus:block/jump_pad"
+  }
+}

@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-30T14:08:06.4834404	Tags for minecraft:item mod id nexus
+// 1.21.1	2025-06-09T16:10:01.6501499	Tags for minecraft:item mod id nexus
 7e3b58c9759d7353b63411d7a9d2b29d1cf447e0 data/c/tags/item/armors.json
 9d4136bd48a42e895b3730be0cbca7f8da6fec48 data/c/tags/item/budding_blocks.json
 2230eb61f10aa8dd9d43cc065c00ea621a26e5b3 data/c/tags/item/buds.json
@@ -58,9 +58,9 @@ cd1b19c03c6569a29ecc59e0c4c49615c6c38e7c data/minecraft/tags/item/wooden_pressur
 fdf8ec281d3a67cb162e4d4a72809754aa567352 data/minecraft/tags/item/wooden_trapdoors.json
 1f1e8ebe90ca23975733946c28d9a0d3e91b4c63 data/nexus/tags/item/acceleration_enchantable.json
 d7afba2271a45026cedd4f1fd046f2e22f07c07f data/nexus/tags/item/accelerite_armor.json
-c2f5fd50c2cfd19061f79f86a2b980852cde46e3 data/nexus/tags/item/accelerite_equipment.json
+1dd4a3ae7bc17c932a56d11092bddde96eddaaeb data/nexus/tags/item/accelerite_diggers.json
+1f786788ba7a6ca44282ec4fe4d3b532a2d92f09 data/nexus/tags/item/accelerite_equipment.json
 13a804acebb319ed821ef65591fa3f50fc184f37 data/nexus/tags/item/accelerite_ingots.json
-bfb41d7a4e3c17eb8da66ef2c344c2b2eb3376b5 data/nexus/tags/item/accelerite_sword.json
-1dd4a3ae7bc17c932a56d11092bddde96eddaaeb data/nexus/tags/item/accelerite_tools.json
+8330634bce61c44abb1de037a1fd901a5c2d3a07 data/nexus/tags/item/accelerite_tools.json
 15c0ed336c8c7e93f4e0e94218912972d6d90ec0 data/nexus/tags/item/speed_mending_enchantable.json
 5ab779a99ff22b6681fac922b544ccfd5dc454ca data/nexus/tags/item/warpblossom_logs.json

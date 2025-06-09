@@ -1,5 +1,6 @@
 package com.calemi.nexus.item;
 
+import com.calemi.nexus.config.NexusConfig;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.ShovelItem;
@@ -22,11 +23,16 @@ public class AcceleriteShovelItem extends ShovelItem implements ChargeableBySpee
 
     @Override
     public double getRequiredSpeed() {
-        return 0.5F;
+        return NexusConfig.server.acceleriteShovelRepairSpeedRequirement.get();
     }
 
     @Override
-    public int getEffectDuration() {
-        return 100;
+    public int getAccelerationEffectDuration() {
+        return NexusConfig.server.acceleriteShovelEffectDuration.get();
+    }
+
+    @Override
+    public int getMaxAccelerationEffectStacks() {
+        return NexusConfig.server.maxAcceleriteShovelEffectStack.get() - 1;
     }
 }

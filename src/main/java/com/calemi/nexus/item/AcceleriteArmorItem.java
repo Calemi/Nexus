@@ -1,5 +1,6 @@
 package com.calemi.nexus.item;
 
+import com.calemi.nexus.config.NexusConfig;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ItemStack;
@@ -22,11 +23,16 @@ public class AcceleriteArmorItem extends ArmorItem implements ChargeableBySpeedI
 
     @Override
     public double getRequiredSpeed() {
-        return 0.5F;
+        return NexusConfig.server.acceleriteArmorRepairSpeedRequirement.get();
     }
 
     @Override
-    public int getEffectDuration() {
-        return 100;
+    public int getAccelerationEffectDuration() {
+        return NexusConfig.server.acceleriteArmorEffectDuration.get();
+    }
+
+    @Override
+    public int getMaxAccelerationEffectStacks() {
+        return NexusConfig.server.maxAcceleriteArmorEffectStack.get() - 1;
     }
 }

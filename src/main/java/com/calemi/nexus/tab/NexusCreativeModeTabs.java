@@ -19,7 +19,7 @@ public class NexusCreativeModeTabs {
     public static final Supplier<CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("nexus_main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + NexusRef.ID + ".main"))
             .icon(() -> new ItemStack(NexusItems.CHRONO_SHARD.get()))
-            .displayItems((params, output) -> output.acceptAll(NexusLists.toItemStackListFromItem(NexusLists.TAB_NEXUS_MAIN_ITEMS)))
+            .displayItems((params, output) -> output.acceptAll(NexusLists.toItemStackListFromItemLike(NexusLists.TAB_NEXUS_MAIN_ITEMS)))
             .build()
     );
 

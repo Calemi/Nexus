@@ -1,15 +1,9 @@
 package com.calemi.nexus.item;
 
-import com.calemi.nexus.util.AccelerationMobEffectHelper;
-import net.minecraft.core.BlockPos;
+import com.calemi.nexus.config.NexusConfig;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.PickaxeItem;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.state.BlockState;
 
 public class AcceleritePickaxeItem extends PickaxeItem implements ChargeableBySpeedItem, AccelerationEffectItem {
 
@@ -29,11 +23,16 @@ public class AcceleritePickaxeItem extends PickaxeItem implements ChargeableBySp
 
     @Override
     public double getRequiredSpeed() {
-        return 0.5F;
+        return NexusConfig.server.acceleritePickaxeRepairSpeedRequirement.get();
     }
 
     @Override
-    public int getEffectDuration() {
-        return 100;
+    public int getAccelerationEffectDuration() {
+        return NexusConfig.server.acceleritePickaxeEffectDuration.get();
+    }
+
+    @Override
+    public int getMaxAccelerationEffectStacks() {
+        return NexusConfig.server.maxAcceleritePickaxeEffectStack.get() - 1;
     }
 }

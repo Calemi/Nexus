@@ -1,0 +1,9 @@
+{
+  "animation": {
+    "frametime": 10
+  },
+  "fusion": {
+    "type": "fusion:connecting",
+    "layout": "pieced"
+  }
+}

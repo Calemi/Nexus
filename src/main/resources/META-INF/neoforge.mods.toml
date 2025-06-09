@@ -31,3 +31,9 @@ versionRange="${ccore_version_range}"
 ordering="NONE"
 side="BOTH"
 
+[[dependencies.${mod_id}]]
+modId="fusion"
+mandatory=true
+versionRange="${fusion_version_range}"
+ordering="NONE"
+side="CLIENT"

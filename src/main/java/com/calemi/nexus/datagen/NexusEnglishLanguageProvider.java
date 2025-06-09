@@ -1,5 +1,6 @@
 package com.calemi.nexus.datagen;
 
+import com.calemi.ccore.api.string2.StringHelper2;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.block.NexusBlocks;
@@ -96,7 +97,7 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
          */
 
         add(ENCHANTMENT + "acceleration", "Acceleration");
-        add(ENCHANTMENT + "acceleration.desc", "Attacking, mining, or getting hurt (on armor) applies a stacking that increases move, attack, and mining speed.");
+        add(ENCHANTMENT + "acceleration.desc", "Attacking, mining, or taking damage (for armor) applies a stacking effect that increases move, attack, and mining speed.");
         add(ENCHANTMENT + "speed_mending", "Speed Mending");
         add(ENCHANTMENT + "speed_mending.desc", "The item is slowly repaired when reaching a certain speed.");
 
@@ -134,6 +135,8 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
             MOB EFFECTS
          */
         add(getPrefixedKey("effect", "acceleration"), "Acceleration");
+        add(getPrefixedKey("effect", "road"), "Road");
+        add(getPrefixedKey("effect", "jump_pad"), "Jump Pad");
 
         /*
             BIOMES
@@ -168,20 +171,58 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
             CONFIG
          */
 
+
+
         //CLIENT
-        add(CONFIG + "portal_core_hud_overlay", "Portal Core HUD Overlay");
-        add(CONFIG + "portal_core_world_overlay", "Portal Core World Overlay");
+        addAutoConfig("portalCoreHUDOverlay");
+        addAutoConfig("portalCoreWorldOverlay");
 
         //SERVER
-        add(CONFIG + "max_portal_size", "Max Portal Size");
-        add(CONFIG + "portal_transition_time", "Portal Transition Time");
-        add(CONFIG + "portal_core_camo", "Portal Core Camo");
-        add(CONFIG + "portal_core_coordinate_scale", "Portal Core Coordinate Scale");
-        add(CONFIG + "iron_portal_core_coordinate_scale", "Iron Portal Core Coordinate Scale");
-        add(CONFIG + "gold_portal_core_coordinate_scale", "Gold Portal Core Coordinate Scale");
-        add(CONFIG + "diamond_portal_core_coordinate_scale", "Diamond Portal Core Coordinate Scale");
-        add(CONFIG + "netherite_portal_core_coordinate_scale", "Netherite Portal Core Coordinate Scale");
-        add(CONFIG + "starlight_portal_core_coordinate_scale", "Starlight Portal Core Coordinate Scale");
+        addAutoConfig("maxPortalSize");
+        addAutoConfig("portalTransitionTime");
+        addAutoConfig("nexusPortalCoreCamo");
+
+        addAutoConfig("nexusPortalCoreCoordinateScale");
+        addAutoConfig("ironPortalCoreCoordinateScale");
+        addAutoConfig("goldPortalCoreCoordinateScale");
+        addAutoConfig("diamondPortalCoreCoordinateScale");
+        addAutoConfig("netheritePortalCoreCoordinateScale");
+        addAutoConfig("starlightPortalCoreCoordinateScale");
+
+        addAutoConfig("roadBaseEffectStack");
+        addAutoConfig("roadSprintEffectStackAdd");
+        addAutoConfig("roadAcceleriteArmorEffectStackAdd");
+        addAutoConfig("roadUpgradeEffectStackPerBlock");
+
+        addAutoConfig("jumpPadBaseEffectStack");
+        addAutoConfig("jumpPadUpgradeEffectStackPerBlock");
+
+        addAutoConfig("acceleriteOreFromMovingWarpslateChance");
+        addAutoConfig("dormantAcceleriteIngotChargeSpeedRequirement");
+
+        addAutoConfig("maxAcceleriteSwordEffectStack");
+        addAutoConfig("maxAcceleriteShovelEffectStack");
+        addAutoConfig("maxAcceleritePickaxeEffectStack");
+        addAutoConfig("maxAcceleriteAxeEffectStack");
+        addAutoConfig("maxAcceleriteHoeEffectStack");
+        addAutoConfig("maxAcceleriteArmorEffectStack");
+        addAutoConfig("maxAccelerationEnchantEffectStack");
+
+        addAutoConfig("acceleriteSwordEffectDuration");
+        addAutoConfig("acceleriteShovelEffectDuration");
+        addAutoConfig("acceleritePickaxeEffectDuration");
+        addAutoConfig("acceleriteAxeEffectDuration");
+        addAutoConfig("acceleriteHoeEffectDuration");
+        addAutoConfig("acceleriteArmorEffectDuration");
+        addAutoConfig("accelerationEnchantEffectDuration");
+
+        addAutoConfig("acceleriteSwordRepairSpeedRequirement");
+        addAutoConfig("acceleriteShovelRepairSpeedRequirement");
+        addAutoConfig("acceleritePickaxeRepairSpeedRequirement");
+        addAutoConfig("acceleriteAxeRepairSpeedRequirement");
+        addAutoConfig("acceleriteHoeRepairSpeedRequirement");
+        addAutoConfig("acceleriteArmorRepairSpeedRequirement");
+        addAutoConfig("accelerationEnchantRepairSpeedRequirement");
 
         /*
             JEI
@@ -189,7 +230,16 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
         add(JEI_DESCRIPTION + "chrono_upgrade_smithing_template", "Used to craft Chrono Shards. Found in Trial Chamber Chest & Vaults.");
         add(JEI_DESCRIPTION + "nexus_portal_core", "Allows traversal to The Nexus. Each portal core has its own coordinate scale. The blocks traveled in The Nexus are multiplied by this scale when leaving the dimension. You can use it in an Anvil to give your portal a name when placed. You can also disguise this block as another by using with a held block.");
+        add(JEI_DESCRIPTION + "accelerite_ore", "Accelerite Ore is found in Nexus Chasms. These chasms spawn in The Nexus dimension and are massive holes that reach down to the void.");
+        add(JEI_DESCRIPTION + "accelerite_ore_from_warpslate", "Accelerite Ore can also be obtained moving Warpslate with a Piston. Config Value Chance: %s%%");
         add(JEI_DESCRIPTION + "accelerite_ingot", "To obtain a Charged Accelerite Ingot from a Dormant one, you must reach a certain speed while it is in your inventory.");
+        add(JEI_DESCRIPTION + "accelerite_tools_acceleration", "Attacking or mining with Accelerite tools applies a stacking effect that increases move, attack, and mining speed.");
+        add(JEI_DESCRIPTION + "accelerite_armor_acceleration", "Taking damage while wearing Accelerite armor has a chance to apply a stacking effect that increases move, attack, and mining speed. Each piece of armor grants +25% to the chance for a total of 100% for a full set.");
+        add(JEI_DESCRIPTION + "accelerite_equipment_repair", "Accelerite equipment is slowly repaired when reaching a certain speed.");
+        add(JEI_DESCRIPTION + "road", "Roads grant any entity walking on it a speed boost. Sprinting will greatly increase the effect.");
+        add(JEI_DESCRIPTION + "road_armor", "Wearing a full set of Accelerite armor will increase the effect stacks of Roads by %s.");
+        add(JEI_DESCRIPTION + "road_upgrade", "The effects from Roads & Jump Pads can be upgraded by placing a Charged Accelerite Block under it. Each blocks placed under will increase the effect by (%s for Roads, %s for Jump Pads)");
+        add(JEI_DESCRIPTION + "jump_pad", "Jump Pads grant any entity walking on it a jump boost. Entities will also not take any damage when falling on them.");
 
         /*
             JADE
@@ -205,6 +255,10 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
     private void addAutoItem(Item item) {
         add(item, autoString(BuiltInRegistries.ITEM.getKey(item).getPath(), "item"));
+    }
+
+    private void addAutoConfig(String camelCaseName) {
+        add(CONFIG + StringHelper2.camelToSnake(camelCaseName), StringHelper2.camelToTitle(camelCaseName));
     }
 
     private String getPrefixedKey(String prefix, String name) {

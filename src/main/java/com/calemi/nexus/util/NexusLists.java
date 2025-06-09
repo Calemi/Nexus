@@ -81,6 +81,9 @@ public class NexusLists {
     static {
         ALL_BLOCKS_BUT_FAMILIES.addAll(NEXUS_PORTAL_CORE_BLOCKS);
         ALL_BLOCKS_BUT_FAMILIES.addAll(NEXUS_PORTAL_BLOCKS);
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.ROAD.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.ROAD_SLAB.get());
+        ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.JUMP_PAD.get());
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHRONOWARPED_GRASS.get());
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHRONOWARPED_DIRT.get());
         ALL_BLOCKS_BUT_FAMILIES.add(NexusBlocks.CHRONOWARPED_SAND.get());
@@ -105,6 +108,38 @@ public class NexusLists {
         NexusBlockFamilies.ALL.forEach(family -> ALL_BLOCKS.addAll(family.getAllBlocks()));
     }
 
+    public static final List<Item> ACCELERITE_DIGGERS = new ArrayList<>();
+
+    static {
+        ACCELERITE_DIGGERS.add(NexusItems.ACCELERITE_SHOVEL.get());
+        ACCELERITE_DIGGERS.add(NexusItems.ACCELERITE_PICKAXE.get());
+        ACCELERITE_DIGGERS.add(NexusItems.ACCELERITE_AXE.get());
+        ACCELERITE_DIGGERS.add(NexusItems.ACCELERITE_HOE.get());
+    }
+
+    public static final List<Item> ACCELERITE_TOOLS = new ArrayList<>();
+
+    static {
+        ACCELERITE_TOOLS.add(NexusItems.ACCELERITE_SWORD.get());
+        ACCELERITE_TOOLS.addAll(ACCELERITE_DIGGERS);
+    }
+
+    public static final List<Item> ACCELERITE_ARMOR = new ArrayList<>();
+
+    static {
+        ACCELERITE_ARMOR.add(NexusItems.ACCELERITE_HELMET.get());
+        ACCELERITE_ARMOR.add(NexusItems.ACCELERITE_CHESTPLATE.get());
+        ACCELERITE_ARMOR.add(NexusItems.ACCELERITE_LEGGINGS.get());
+        ACCELERITE_ARMOR.add(NexusItems.ACCELERITE_BOOTS.get());
+    }
+
+    public static final List<Item> ACCELERITE_EQUIPMENT = new ArrayList<>();
+
+    static {
+        ACCELERITE_EQUIPMENT.addAll(ACCELERITE_TOOLS);
+        ACCELERITE_EQUIPMENT.addAll(ACCELERITE_ARMOR);
+    }
+
     public static final List<Item> ALL_ITEMS = new ArrayList<>();
 
     static {
@@ -114,18 +149,10 @@ public class NexusLists {
         ALL_ITEMS.add(NexusItems.RAW_ACCELERITE.get());
         ALL_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT.get());
         ALL_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_SWORD.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_SHOVEL.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_PICKAXE.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_AXE.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_HOE.get());
+        ALL_ITEMS.addAll(ACCELERITE_EQUIPMENT);
         ALL_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         ALL_ITEMS.add(NexusItems.SPEEDOMETER.get());
         ALL_ITEMS.add(NexusItems.FALLBREAKERS.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_HELMET.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_CHESTPLATE.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_LEGGINGS.get());
-        ALL_ITEMS.add(NexusItems.ACCELERITE_BOOTS.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_BOAT.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_CHEST_BOAT.get());
         ALL_ITEMS.add(NexusItems.WARPBLOSSOM_STICK.get());
@@ -148,6 +175,9 @@ public class NexusLists {
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_SHARD_FRAGMENT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_SHARD);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.ROAD);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.ROAD_SLAB);
+        TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.JUMP_PAD);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_GRASS);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_DIRT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.CHRONOWARPED_SAND);
@@ -170,17 +200,11 @@ public class NexusLists {
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.DORMANT_ACCELERITE_INGOT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.CHARGED_ACCELERITE_INGOT);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_SWORD);
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_SHOVEL);
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_PICKAXE);
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_AXE);
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_HOE);
+        TAB_NEXUS_MAIN_ITEMS.addAll(ACCELERITE_TOOLS);
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.TOTEM_OF_WARPING.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.SPEEDOMETER.get());
         TAB_NEXUS_MAIN_ITEMS.add(NexusItems.FALLBREAKERS.get());
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_HELMET.get());
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_CHESTPLATE.get());
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_LEGGINGS.get());
-        TAB_NEXUS_MAIN_ITEMS.add(NexusItems.ACCELERITE_BOOTS.get());
+        TAB_NEXUS_MAIN_ITEMS.addAll(ACCELERITE_ARMOR);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.PURPLE_PETALS);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_SAPLING);
         TAB_NEXUS_MAIN_ITEMS.add(NexusBlocks.WARPBLOSSOM_LEAVES);
@@ -219,8 +243,12 @@ public class NexusLists {
         METHODS
      */
 
-    public static List<ResourceKey<Block>> toResourceKeyList(List<Block> blocks) {
+    public static List<ResourceKey<Block>> toBlockResourceKeyList(List<Block> blocks) {
         return new ArrayList<>(blocks.stream().map(block -> BuiltInRegistries.BLOCK.getResourceKey(block).orElse(null)).toList());
+    }
+
+    public static List<ResourceKey<Item>> toItemResourceKeyList(List<Item> blocks) {
+        return new ArrayList<>(blocks.stream().map(item -> BuiltInRegistries.ITEM.getResourceKey(item).orElse(null)).toList());
     }
 
     public static List<Block> toBlockListFromBlockSet(List<CBlockFamily> blockSet) {
@@ -245,7 +273,11 @@ public class NexusLists {
         return new ArrayList<>(blocks.stream().map(block -> new ItemStack(block.asItem())).toList());
     }
 
-    public static List<ItemStack> toItemStackListFromItem(List<ItemLike> items) {
+    public static List<ItemStack> toItemStackListFromItem(List<Item> items) {
+        return new ArrayList<>(items.stream().map((ItemStack::new)).toList());
+    }
+
+    public static List<ItemStack> toItemStackListFromItemLike(List<ItemLike> items) {
         return new ArrayList<>(items.stream().map(ItemStack::new).toList());
     }
 }

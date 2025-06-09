@@ -1,6 +1,7 @@
 package com.calemi.nexus.item;
 
 import com.calemi.ccore.api.message.OverlayMessageHelper;
+import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.item.enchantment.NexusEnchantments;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.Holder;
@@ -19,7 +20,7 @@ import net.neoforged.neoforge.event.tick.EntityTickEvent;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 
-public class AcceleriteItemChargeAction {
+public class ItemSpeedChargeAction {
 
     private long lastGameTime = 0;
     private long deltaTime = 0;
@@ -55,7 +56,7 @@ public class AcceleriteItemChargeAction {
 
         if (!currentChargingStack.isEmpty()) {
 
-            double requiredSpeed = 0.5F;
+            double requiredSpeed = NexusConfig.server.accelerationEnchantRepairSpeedRequirement.get();
 
             if (currentChargingStack.getItem() instanceof ChargeableBySpeedItem currentSpeedChargeItem) {
                 requiredSpeed = currentSpeedChargeItem.getRequiredSpeed();
@@ -148,10 +149,10 @@ public class AcceleriteItemChargeAction {
     private boolean isItemStackChargeable(ServerPlayer player, ItemStack stack) {
 
         if (stack.getItem() instanceof ChargeableBySpeedItem speedChargeItem) {
-            return speedChargeItem.canCharge(player, stack);
+            return speedChargeItem.getRequiredSpeed() > 0 && speedChargeItem.canCharge(player, stack);
         }
 
-        return getSpeedMendingEnchantmentLevel(player.level(), stack) > 0 && stack.isDamaged();
+        return NexusConfig.server.accelerationEnchantRepairSpeedRequirement.get() > 0 && getSpeedMendingEnchantmentLevel(player.level(), stack) > 0 && stack.isDamaged();
     }
 
     private int getSpeedMendingEnchantmentLevel(Level level, ItemStack stack) {

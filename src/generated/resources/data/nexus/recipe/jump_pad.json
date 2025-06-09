@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": {
+      "item": "nexus:cobbled_warpslate"
+    },
+    "X": {
+      "item": "nexus:chrono_shard"
+    }
+  },
+  "pattern": [
+    "XWX",
+    "WWW",
+    "XWX"
+  ],
+  "result": {
+    "count": 1,
+    "id": "nexus:jump_pad"
+  }
+}

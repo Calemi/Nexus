@@ -41,7 +41,8 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.WARPSLATE.get())
                 .add(NexusBlocks.WARPSLATE_ACCELERITE_ORE.get())
                 .addOptionalTag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
-                .addAll(NexusLists.toResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)));
+                .addOptionalTag(NexusTags.Blocks.ROADLIKE)
+                .addAll(NexusLists.toBlockResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)));
 
         tag(NexusTags.Blocks.WARPBLOSSOM_LOGS)
                 .add(NexusBlocks.WARPBLOSSOM_LOG.get())
@@ -52,11 +53,19 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
         tag(NexusTags.Blocks.WOODLIKE)
                 .addOptionalTag(NexusTags.Blocks.WARPBLOSSOM_LOGS);
 
+        tag(NexusTags.Blocks.ROADLIKE)
+                .add(NexusBlocks.ROAD.get())
+                .add(NexusBlocks.ROAD_SLAB.get())
+                .add(NexusBlocks.JUMP_PAD.get());
+
         tag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
-                .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+                .addAll(NexusLists.toBlockResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
 
         tag(NexusTags.Blocks.NEXUS_PORTALS)
-                .addAll(NexusLists.toResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
+                .addAll(NexusLists.toBlockResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
+
+        tag(NexusTags.Blocks.UPGRADES_ROAD_BLOCK)
+                .add(NexusBlocks.CHARGED_ACCELERITE_BLOCK.get());
 
         tag(NexusTags.Blocks.NEEDS_ACCELERITE_TOOL)
                 .addTag(BlockTags.NEEDS_IRON_TOOL);

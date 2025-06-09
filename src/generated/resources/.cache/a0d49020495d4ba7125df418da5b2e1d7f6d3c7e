@@ -1,4 +1,4 @@
-// 1.21.1	2025-04-02T16:33:21.4348409	Block States: nexus
+// 1.21.1	2025-06-07T15:36:21.3557649	Block States: nexus
 6a0bccdc3120c22159efad9f8da448b0ce421657 assets/nexus/blockstates/black_nexus_portal.json
 f68515dad137ce2f5de967ef1ca739069cf5b10a assets/nexus/blockstates/blue_nexus_portal.json
 cc42854960c46c9023b064c2b30eea4695a18700 assets/nexus/blockstates/brown_nexus_portal.json
@@ -35,6 +35,7 @@ d8a7aebd198b266e3fb06d15644d8476efe89ed9 assets/nexus/blockstates/cracked_warpsl
 ca43bac29c54cc9c5cfd9979156f2f1ed37aac93 assets/nexus/blockstates/gray_nexus_portal.json
 97089b91ef33e4bf0330e856a087bc3b8af0cdfc assets/nexus/blockstates/green_nexus_portal.json
 c66c8f0638b7ca8525b79e3384de05c3fd4ad3d4 assets/nexus/blockstates/iron_nexus_portal_core.json
+7311310c3b18a1b650389b65a055a4f8ce7e7809 assets/nexus/blockstates/jump_pad.json
 d25dbcf7edb69d66b86ffe66016f7f9d8fbad92a assets/nexus/blockstates/large_chrono_bud.json
 2be42795477f2e37183c081e43bfb92f30fa1e17 assets/nexus/blockstates/light_blue_nexus_portal.json
 f452d3782fb9996a33317fdcaceb54781f6ef72a assets/nexus/blockstates/light_gray_nexus_portal.json
@@ -58,6 +59,8 @@ ef5c8302d776b19f82a270b1750d739da348af6f assets/nexus/blockstates/purple_nexus_p
 38a8388aafcfb499580eaef07368e2afdb36c695 assets/nexus/blockstates/purple_petals.json
 2726f2f64c1cb23c723668dc9217314171283cbf assets/nexus/blockstates/raw_accelerite_block.json
 bc1f77d7bd71a9bb54c6636d34672ff4cf41522b assets/nexus/blockstates/red_nexus_portal.json
+5fe94f15f59079d60b198c4579ea4aacaae10bcb assets/nexus/blockstates/road.json
+0d923ad79a23600bf0a501dcd7578c74b9b09b37 assets/nexus/blockstates/road_slab.json
 30709670d43e607c8305abee5098e41e379143dc assets/nexus/blockstates/small_chrono_bud.json
 0b71d50190b4b52bbc6a50a659dceeb35520543b assets/nexus/blockstates/starlight_nexus_portal_core.json
 073f7ff61ae0785d0949c9350722955204d479c6 assets/nexus/blockstates/stripped_warpblossom_log.json
@@ -281,6 +284,7 @@ e402a0265f89c714e665fb662574818e9b936827 assets/nexus/models/item/cracked_warpsl
 70348cf943e27cf800f10f432e154af888ad49a3 assets/nexus/models/item/dormant_accelerite_block.json
 066a6a03e8b0b012a90f194906d1fb10543d2945 assets/nexus/models/item/gold_nexus_portal_core.json
 42da8f734440c988ce44873948c5d21c5d518039 assets/nexus/models/item/iron_nexus_portal_core.json
+183bec649650494d9a7c32df2660f31d2f80d899 assets/nexus/models/item/jump_pad.json
 bc7b675e70f5ac9d3027e45c97a1261711439a63 assets/nexus/models/item/large_chrono_bud.json
 557294a1e4ede65eccd999639538849d4cf299a0 assets/nexus/models/item/medium_chrono_bud.json
 dc51d1109c1352bee903b624c9d72caa9d474fb9 assets/nexus/models/item/netherite_nexus_portal_core.json
@@ -295,6 +299,8 @@ b71ca5a32e9f0bb9592047c801b6169f61a7519e assets/nexus/models/item/polished_calci
 eddefa91e8abf51dc2f8fee70762fda728c7ad47 assets/nexus/models/item/polished_warpslate_wall.json
 2ee5d9294ef538167861682fd30fe4eae6fb2dec assets/nexus/models/item/purple_petals.json
 1239593a50371290ceda3dc77196e169770b3be9 assets/nexus/models/item/raw_accelerite_block.json
+15f9807454a17e5df19f54b86ba245998a89048b assets/nexus/models/item/road.json
+65783ad40b12d1b80d6344a7cebec740be460040 assets/nexus/models/item/road_slab.json
 18772316972ecd4b462dbba33f248299f516f4c0 assets/nexus/models/item/small_chrono_bud.json
 2c51cc5cf50eae2a2142ee9079591c23d67b1f0a assets/nexus/models/item/starlight_nexus_portal_core.json
 8ee2ab204a5c31e59b5f5ebde9dec08a837eee2e assets/nexus/models/item/stripped_warpblossom_log.json

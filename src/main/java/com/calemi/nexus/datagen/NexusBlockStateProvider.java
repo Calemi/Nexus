@@ -13,6 +13,7 @@ import net.minecraft.data.PackOutput;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.SlabType;
 import net.neoforged.neoforge.client.model.generators.BlockStateProvider;
 import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
@@ -37,6 +38,10 @@ public class NexusBlockStateProvider extends BlockStateProvider {
 
         NexusLists.NEXUS_PORTAL_CORE_BLOCKS.forEach(this::nexusPortalCore);
         NexusLists.NEXUS_PORTAL_BLOCKS.forEach(this::nexusPortal);
+
+        roadBlock(NexusBlocks.ROAD.get());
+        roadBlockSlab(NexusBlocks.ROAD_SLAB.get(), NexusBlocks.ROAD.get());
+        roadBlock(NexusBlocks.JUMP_PAD.get());
 
         grass(NexusBlocks.CHRONOWARPED_GRASS.get(), NexusBlocks.CHRONOWARPED_DIRT.get());
         all(NexusBlocks.CHRONOWARPED_DIRT.get());
@@ -162,6 +167,43 @@ public class NexusBlockStateProvider extends BlockStateProvider {
         ModelFile model = models().cubeAll(blockName, rl(blockPath)).renderType("cutout");
 
         simpleBlockWithItem(block, model);
+    }
+
+    private void roadBlock(Block block) {
+
+        String blockName = name(block);
+
+        String blockPath = "block/" + blockName;
+
+        ModelFile model = new ModelFile.UncheckedModelFile(rl(blockPath));
+
+        getVariantBuilder(block)
+                .partialState().setModels(new ConfiguredModel(model));
+
+        simpleBlockItem(block, model);
+    }
+
+    private void roadBlockSlab(Block block, Block doubleSlabBlock) {
+
+        String blockName = name(block);
+        String doubleSlabBlockName = name(doubleSlabBlock);
+
+        String blockPath = "block/" + blockName;
+        String doubleSlabBlockPath = "block/" + doubleSlabBlockName;
+
+        ModelFile bottomModel = new ModelFile.UncheckedModelFile(rl(blockPath));
+        ModelFile topModel = new ModelFile.UncheckedModelFile(rl(blockPath + "_top"));
+        ModelFile doubleModel = new ModelFile.UncheckedModelFile(rl(doubleSlabBlockPath));
+
+        getVariantBuilder(block)
+                .partialState().with(BlockStateProperties.SLAB_TYPE, SlabType.BOTTOM)
+                .modelForState().modelFile(bottomModel).addModel()
+                .partialState().with(BlockStateProperties.SLAB_TYPE, SlabType.TOP)
+                .modelForState().modelFile(topModel).addModel()
+                .partialState().with(BlockStateProperties.SLAB_TYPE, SlabType.DOUBLE)
+                .modelForState().modelFile(doubleModel).addModel();
+
+        simpleBlockItem(block, bottomModel);
     }
 
     private void sapling(Block block) {

@@ -67,6 +67,7 @@ dependencies {
     implementation "net.neoforged:neoforge:${neo_version}"
 
     implementation "curse.maven:ccore-573646:${project.ccore_file_id}"
+    implementation "curse.maven:fusion-854949:${project.fusion_file_id}"
     implementation "curse.maven:jei-238222:${project.jei_file_id}"
     implementation "curse.maven:jade-324717:${project.jade_file_id}"
 
@@ -90,7 +91,8 @@ tasks.withType(ProcessResources).configureEach {
             mod_version            : mod_version,
             mod_authors            : mod_authors,
             mod_description        : mod_description,
-            ccore_version_range    : ccore_version_range
+            ccore_version_range    : ccore_version_range,
+            fusion_version_range   : fusion_version_range
     ]
     inputs.properties replaceProperties
 

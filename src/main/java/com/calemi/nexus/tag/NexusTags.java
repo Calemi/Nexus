@@ -14,11 +14,14 @@ public class NexusTags {
         public static final TagKey<Block> DIRTLIKE = TagKey.create(Registries.BLOCK, NexusRef.rl("dirtlike"));
         public static final TagKey<Block> STONELIKE = TagKey.create(Registries.BLOCK, NexusRef.rl("stonelike"));
         public static final TagKey<Block> WOODLIKE = TagKey.create(Registries.BLOCK, NexusRef.rl("woodlike"));
+        public static final TagKey<Block> ROADLIKE = TagKey.create(Registries.BLOCK, NexusRef.rl("roadlike"));
 
         public static final TagKey<Block> WARPBLOSSOM_LOGS = TagKey.create(Registries.BLOCK, NexusRef.rl("warpblossom_logs"));
 
         public static final TagKey<Block> NEXUS_PORTAL_CORES = TagKey.create(Registries.BLOCK, NexusRef.rl("nexus_portal_cores"));
         public static final TagKey<Block> NEXUS_PORTALS = TagKey.create(Registries.BLOCK, NexusRef.rl("nexus_portals"));
+
+        public static final TagKey<Block> UPGRADES_ROAD_BLOCK = TagKey.create(Registries.BLOCK, NexusRef.rl("upgrades_road_block"));
 
         public static final TagKey<Block> NEEDS_ACCELERITE_TOOL = TagKey.create(Registries.BLOCK, NexusRef.rl("needs_accelerite_tool"));
         public static final TagKey<Block> INCORRECT_FOR_ACCELERITE_TOOL = TagKey.create(Registries.BLOCK, NexusRef.rl("incorrect_for_accelerite_tool"));
@@ -30,9 +33,9 @@ public class NexusTags {
 
         public static final TagKey<Item> WARPBLOSSOM_LOGS = TagKey.create(Registries.ITEM, NexusRef.rl("warpblossom_logs"));
 
-        public static final TagKey<Item> ACCELERITE_ARMOR = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_armor"));
-        public static final TagKey<Item> ACCELERITE_SWORD = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_sword"));
+        public static final TagKey<Item> ACCELERITE_DIGGERS = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_diggers"));
         public static final TagKey<Item> ACCELERITE_TOOLS = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_tools"));
+        public static final TagKey<Item> ACCELERITE_ARMOR = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_armor"));
         public static final TagKey<Item> ACCELERITE_EQUIPMENT = TagKey.create(Registries.ITEM, NexusRef.rl("accelerite_equipment"));
 
         public static final TagKey<Item> ACCELERATION_ENCHANTABLE = TagKey.create(Registries.ITEM, NexusRef.rl("acceleration_enchantable"));

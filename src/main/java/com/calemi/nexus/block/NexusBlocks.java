@@ -31,7 +31,7 @@ public class NexusBlocks {
 
 
     public static final DeferredBlock<Block> NEXUS_PORTAL_CORE             = regBlock("nexus_portal_core", () ->
-            new NexusPortalCoreBlock(NexusConfig.server.portalCoreCoordinateScale));
+            new NexusPortalCoreBlock(NexusConfig.server.nexusPortalCoreCoordinateScale));
 
     public static final DeferredBlock<Block> IRON_NEXUS_PORTAL_CORE        = regBlock("iron_nexus_portal_core", () ->
             new NexusPortalCoreBlock(NexusConfig.server.ironPortalCoreCoordinateScale));
@@ -100,6 +100,17 @@ public class NexusBlocks {
 
 
 
+    public static final DeferredBlock<Block> ROAD = regBlock("road", () ->
+            new RoadBlock(BlockBehaviour.Properties.of().mapColor(MapColor.DEEPSLATE).sound(SoundType.COPPER).strength(1F, 6.0F)));
+
+    public static final DeferredBlock<Block> ROAD_SLAB = regBlock("road_slab", () ->
+            new RoadSlabBlock(BlockBehaviour.Properties.ofFullCopy(ROAD.get())));
+
+    public static final DeferredBlock<Block> JUMP_PAD            = regBlock("jump_pad", () ->
+            new JumpPadBlock(BlockBehaviour.Properties.ofFullCopy(ROAD.get())));
+
+
+
     public static final DeferredBlock<Block> CHRONOWARPED_GRASS            = regBlock("chronowarped_grass",
             ChronowarpedGrassBlock::new);
 
@@ -108,7 +119,6 @@ public class NexusBlocks {
 
     public static final DeferredBlock<Block> CHRONOWARPED_SAND             = regBlock("chronowarped_sand", () ->
             new ColoredFallingBlock(new ColorRGBA(5324121), BlockBehaviour.Properties.ofFullCopy(Blocks.SAND).mapColor(MapColor.TERRACOTTA_BLUE)));
-
 
 
 
@@ -187,7 +197,7 @@ public class NexusBlocks {
 
 
     public static final DeferredBlock<Block> WARPSLATE                     = regBlock("warpslate", () ->
-            new RotatedPillarBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE).strength(1.25F, 6.0F).mapColor(MapColor.TERRACOTTA_CYAN)));
+            new WarpslateBlock(BlockBehaviour.Properties.ofFullCopy(Blocks.DEEPSLATE).strength(1.25F, 6.0F).mapColor(MapColor.TERRACOTTA_CYAN)));
 
 
 

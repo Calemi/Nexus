@@ -12,6 +12,8 @@ public class NexusMobEffects {
     public static final DeferredRegister<MobEffect> MOB_EFFECTS = DeferredRegister.create(Registries.MOB_EFFECT, NexusRef.ID);
 
     public static final DeferredHolder<MobEffect, MobEffect> ACCELERATION = MOB_EFFECTS.register("acceleration", AccelerationMobEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> ROAD = MOB_EFFECTS.register("road", RoadMobEffect::new);
+    public static final DeferredHolder<MobEffect, MobEffect> JUMP_PAD = MOB_EFFECTS.register("jump_pad", JumpPadMobEffect::new);
 
     public static void init() {
         Nexus.LOGGER.info("Registering: Mob Effects - Start");

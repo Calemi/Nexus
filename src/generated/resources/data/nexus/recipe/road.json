@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "W": {
+      "item": "nexus:cobbled_warpslate"
+    },
+    "X": {
+      "item": "nexus:charged_accelerite_ingot"
+    }
+  },
+  "pattern": [
+    "XWX",
+    "WWW",
+    "XWX"
+  ],
+  "result": {
+    "count": 16,
+    "id": "nexus:road"
+  }
+}

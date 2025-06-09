@@ -90,8 +90,8 @@ public class Nexus {
         FORGE_EVENT_BUS.register(new RenderNexusPortalCoreHUDOverlay());
         FORGE_EVENT_BUS.register(new DyeNexusPortalBlockAction());
         FORGE_EVENT_BUS.register(new HoleTeleportAction());
-        FORGE_EVENT_BUS.register(new AcceleriteItemChargeAction());
-        FORGE_EVENT_BUS.register(new AcceleriteEffectAction());
+        FORGE_EVENT_BUS.register(new ItemSpeedChargeAction());
+        FORGE_EVENT_BUS.register(new ItemAccelerationEffectAction());
         FORGE_EVENT_BUS.register(new TotemOfWarpingImmunityAction());
         FORGE_EVENT_BUS.register(new FallbreakersImmunityAction());
         FORGE_EVENT_BUS.register(new NexusSheepSpawnColor());

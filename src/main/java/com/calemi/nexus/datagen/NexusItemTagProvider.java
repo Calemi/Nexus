@@ -4,6 +4,7 @@ import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.item.NexusItems;
 import com.calemi.nexus.tag.NexusTags;
+import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -37,27 +38,14 @@ public class NexusItemTagProvider extends ItemTagsProvider {
 
         copy(NexusTags.Blocks.WARPBLOSSOM_LOGS, NexusTags.Items.WARPBLOSSOM_LOGS);
 
-        tag(NexusTags.Items.ACCELERITE_ARMOR).add(
-                NexusItems.ACCELERITE_HELMET.get(),
-                NexusItems.ACCELERITE_CHESTPLATE.get(),
-                NexusItems.ACCELERITE_LEGGINGS.get(),
-                NexusItems.ACCELERITE_BOOTS.get()
-        );
+        tag(NexusTags.Items.ACCELERITE_ARMOR).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_ARMOR));
 
-        tag(NexusTags.Items.ACCELERITE_SWORD).add(
-                NexusItems.ACCELERITE_SWORD.get()
-        );
+        tag(NexusTags.Items.ACCELERITE_DIGGERS).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_DIGGERS));
 
-        tag(NexusTags.Items.ACCELERITE_TOOLS).add(
-                NexusItems.ACCELERITE_SHOVEL.get(),
-                NexusItems.ACCELERITE_PICKAXE.get(),
-                NexusItems.ACCELERITE_AXE.get(),
-                NexusItems.ACCELERITE_HOE.get()
-        );
+        tag(NexusTags.Items.ACCELERITE_TOOLS).add(NexusItems.ACCELERITE_SWORD.get());
+        tag(NexusTags.Items.ACCELERITE_TOOLS).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_DIGGERS));
 
-        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addTag(NexusTags.Items.ACCELERITE_ARMOR);
-        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addTag(NexusTags.Items.ACCELERITE_SWORD);
-        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addTag(NexusTags.Items.ACCELERITE_TOOLS);
+        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_EQUIPMENT));
 
         tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).addTag(ItemTags.ARMOR_ENCHANTABLE);
         tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).addTag(ItemTags.WEAPON_ENCHANTABLE);

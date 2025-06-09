@@ -87,6 +87,27 @@ public class NexusRecipeProvider extends RecipeProvider {
                 recipeOutput
         );
 
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusBlocks.ROAD, 16)
+                .define('X', NexusItems.CHARGED_ACCELERITE_INGOT)
+                .define('W', NexusBlocks.COBBLED_WARPSLATE)
+                .pattern("XWX")
+                .pattern("WWW")
+                .pattern("XWX")
+                .unlockedBy("has_charged_accelerite_ingot", has(NexusItems.CHARGED_ACCELERITE_INGOT))
+                .save(recipeOutput);
+
+        slab(recipeOutput, RecipeCategory.MISC, NexusBlocks.ROAD_SLAB, NexusBlocks.ROAD);
+        stonecutter(recipeOutput, RecipeCategory.BUILDING_BLOCKS, NexusBlocks.ROAD_SLAB, NexusBlocks.ROAD, 2);
+
+        ShapedRecipeBuilder.shaped(RecipeCategory.TOOLS, NexusBlocks.JUMP_PAD, 1)
+                .define('X', NexusItems.CHRONO_SHARD)
+                .define('W', NexusBlocks.COBBLED_WARPSLATE)
+                .pattern("XWX")
+                .pattern("WWW")
+                .pattern("XWX")
+                .unlockedBy("has_chrono_shard", has(NexusItems.CHRONO_SHARD))
+                .save(recipeOutput);
+
         threeByThreePacker(recipeOutput, RecipeCategory.MISC, NexusItems.CHRONO_SHARD, NexusItems.CHRONO_SHARD_FRAGMENT);
         oneToOne(recipeOutput, NexusItems.CHRONO_SHARD_FRAGMENT, NexusItems.CHRONO_SHARD, null, 9);
 

@@ -10,8 +10,8 @@ public class AccelerationMobEffect extends MobEffect {
 
     protected AccelerationMobEffect() {
         super(MobEffectCategory.HARMFUL, 0x56CBFD);
-        addAttributeModifier(Attributes.ATTACK_SPEED, NexusRef.rl("effect.attack_speed"), 0.25F, AttributeModifier.Operation.ADD_VALUE);
-        addAttributeModifier(Attributes.MINING_EFFICIENCY, NexusRef.rl("effect.mining_efficiency"), 0.5F, AttributeModifier.Operation.ADD_VALUE);
-        addAttributeModifier(Attributes.MOVEMENT_SPEED, NexusRef.rl("effect.movement_speed"), 0.01F, AttributeModifier.Operation.ADD_VALUE);
+        addAttributeModifier(Attributes.ATTACK_SPEED, NexusRef.rl("effect.acceleration_attack_speed"), 0.25F, AttributeModifier.Operation.ADD_VALUE);
+        addAttributeModifier(Attributes.MINING_EFFICIENCY, NexusRef.rl("effect.acceleration_mining_efficiency"), 0.5F, AttributeModifier.Operation.ADD_VALUE);
+        addAttributeModifier(Attributes.MOVEMENT_SPEED, NexusRef.rl("effect.acceleration_movement_speed"), 0.01F, AttributeModifier.Operation.ADD_VALUE);
     }
 }

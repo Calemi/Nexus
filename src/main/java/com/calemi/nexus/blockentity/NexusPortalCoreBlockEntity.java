@@ -98,7 +98,7 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
     }
 
     public boolean isValidCamoState(BlockState state) {
-        if (!NexusConfig.server.portalCoreCamo.get()) return false;
+        if (!NexusConfig.server.nexusPortalCoreCamo.get()) return false;
         if (state == null) return true;
         if (state.getBlock() == Blocks.AIR) return false;
         if (state.getBlock() instanceof NexusPortalCoreBlock) return false;

@@ -39,9 +39,7 @@ public record NexusPortalCoreTeleportPayload(BlockPos portalCorePosition) implem
 
             NexusPortalCoreBlockEntity destinationPortalCore = originPortalCore.getDestinationPortalCore();
 
-            if (destinationPortalCore == null) return;
-
-            if (destinationPortalCore.isPortalActive()) {
+            if (destinationPortalCore != null && destinationPortalCore.isPortalActive()) {
                 player.setPortalCooldown();
             }
 
