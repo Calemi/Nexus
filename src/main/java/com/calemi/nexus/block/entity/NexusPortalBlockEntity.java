@@ -1,6 +1,6 @@
-package com.calemi.nexus.blockentity;
+package com.calemi.nexus.block.entity;
 
-import com.calemi.ccore.api.blockentity.BaseBlockEntity;
+import com.calemi.ccore.api.block.entity.BaseBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;

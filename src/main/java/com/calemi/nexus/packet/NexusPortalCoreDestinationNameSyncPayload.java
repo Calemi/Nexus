@@ -1,8 +1,8 @@
 package com.calemi.nexus.packet;
 
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.screen.NexusPortalCoreScreen;
+import com.calemi.nexus.client.screen.NexusPortalCoreScreen;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;

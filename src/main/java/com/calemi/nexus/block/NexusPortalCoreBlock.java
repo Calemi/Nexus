@@ -1,11 +1,11 @@
 package com.calemi.nexus.block;
 
-import com.calemi.ccore.api.location.Location;
+import com.calemi.ccore.api.location.BlockLocation;
 import com.calemi.ccore.api.string.StringHelper;
-import com.calemi.nexus.blockentity.NexusBlockEntities;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.block.entity.NexusBlockEntities;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.Nexus;
-import com.calemi.nexus.screen.NexusPortalCoreScreen;
+import com.calemi.nexus.client.screen.NexusPortalCoreScreen;
 import com.calemi.nexus.util.NexusSoundHelper;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import com.calemi.nexus.world.dimension.NexusDimensions;
@@ -142,7 +142,7 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
                 originBlockEntity.setCamoState(null);
                 originBlockEntity.setChanged();
 
-                NexusSoundHelper.playTeleportSound(new Location(level, originPos));
+                NexusSoundHelper.playTeleportSound(new BlockLocation(level, originPos));
                 Nexus.LOGGER.debug("Removed camo state.");
             }
 

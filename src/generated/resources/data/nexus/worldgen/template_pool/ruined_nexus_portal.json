@@ -9,6 +9,39 @@
         },
         "projection": "rigid"
       },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "nexus:ruined_nexus_portal/portal_vertical_2",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 1
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "nexus:ruined_nexus_portal/portal_horizontal_1",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
+      "weight": 2
+    },
+    {
+      "element": {
+        "element_type": "minecraft:single_pool_element",
+        "location": "nexus:ruined_nexus_portal/portal_horizontal_2",
+        "processors": {
+          "processors": []
+        },
+        "projection": "rigid"
+      },
       "weight": 1
     }
   ],

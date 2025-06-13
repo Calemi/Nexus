@@ -1,11 +1,11 @@
 package com.calemi.nexus.packet;
 
 import com.calemi.ccore.api.container.CContainerHelper;
-import com.calemi.ccore.api.location.Location;
+import com.calemi.ccore.api.location.BlockLocation;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
-import com.calemi.nexus.util.NexusMessengers;
+import com.calemi.nexus.util.message.NexusMessengers;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import com.calemi.nexus.util.NexusSoundHelper;
 import net.minecraft.ChatFormatting;
@@ -43,7 +43,7 @@ public record NexusPortalCoreGenerateLinkPayload(BlockPos portalCorePosition) im
             BlockPos originPos = payload.portalCorePosition();
             Player player = context.player();
             ServerLevel originLevel = (ServerLevel) player.level();
-            Location originLocation = new Location(originLevel, originPos);
+            BlockLocation originLocation = new BlockLocation(originLevel, originPos);
 
             if (!(originLevel.getBlockEntity(originPos) instanceof NexusPortalCoreBlockEntity originBlockEntity)) {
                 return;

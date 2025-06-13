@@ -1,5 +1,6 @@
 package com.calemi.nexus.client;
 
+import com.calemi.ccore.api.string.StringHelper;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.block.NexusBlocks;

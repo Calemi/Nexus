@@ -1,9 +1,10 @@
-package com.calemi.nexus.screen;
+package com.calemi.nexus.client.screen;
 
-import com.calemi.ccore.api.screen.BaseScreen;
-import com.calemi.ccore.api.screen.ScreenHelper;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.ccore.api.client.screen.BaseScreen;
+import com.calemi.ccore.api.client.screen.ScreenHelper;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.capability.UnlockedDimensionsList;
+import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.packet.*;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import net.minecraft.ChatFormatting;
@@ -52,6 +53,7 @@ public class NexusPortalCoreScreen extends BaseScreen {
 
         List<ResourceLocation> dimensions = new ArrayList<>(UnlockedDimensionsList.get(player).getUnlockedDimensions());
 
+        dimensions.removeIf((dimension) -> !NexusConfig.isDestinationDimensionAllowed(dimension));
         dimensions.remove(player.level().dimension().location());
 
         dimensionSelectButton = addRenderableWidget(

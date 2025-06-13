@@ -1,10 +1,10 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.ccore.api.string2.StringHelper2;
-import com.calemi.nexus.main.Nexus;
-import com.calemi.nexus.main.NexusRef;
+import com.calemi.ccore.api.string.StringHelper;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.item.NexusItems;
+import com.calemi.nexus.main.Nexus;
+import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
@@ -111,7 +111,7 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
             SCREENS
          */
 
-        add(SCREEN + "title", "Nexus Portal Core");
+        add(SCREEN_NEXUS_PORTAL_CORE + "title", "Nexus Portal Core");
         add(SCREEN_NEXUS_PORTAL_CORE_TEXT + "no_destination", "No Destination");
         add(SCREEN_NEXUS_PORTAL_CORE_TEXT + "current_destination", "Current Destination");
         add(SCREEN_NEXUS_PORTAL_CORE_BUTTON_DIMENSION_SELECT + "title", "Target Dimension");
@@ -153,6 +153,7 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
         add(MESSAGE + "invalid_destination", "Destination is outside the world border for that dimension! Removing invalid link...");
         add(MESSAGE + "no_core", "Destination Nexus Portal Core could not be found! Removing invalid link...");
         add(MESSAGE + "no_link", "Destination Nexus Portal Core is not linked to this one! Removing invalid link...");
+        add(MESSAGE_TELEPORT + "prohibited_dimension", "You can't travel to this dimension. It is not allowed!");
         add(MESSAGE_TELEPORT + "locked_dimension", "You can't travel to this dimension. You haven't been there before!");
         add(MESSAGE_GENERATE_LINK + "no_core", "You do not have a Nexus Portal Core in your main-hand!");
         add(MESSAGE_GENERATE_LINK + "no_valid_spawn", "Could not find suitable y-level to generate Destination Nexus Portal Core!");
@@ -178,6 +179,9 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
         addAutoConfig("portalCoreWorldOverlay");
 
         //SERVER
+        addAutoConfig("outsideDimensionList");
+        addAutoConfig("outsideDimensionBlacklist");
+
         addAutoConfig("maxPortalSize");
         addAutoConfig("portalTransitionTime");
         addAutoConfig("nexusPortalCoreCamo");
@@ -258,7 +262,7 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
     }
 
     private void addAutoConfig(String camelCaseName) {
-        add(CONFIG + StringHelper2.camelToSnake(camelCaseName), StringHelper2.camelToTitle(camelCaseName));
+        add(CONFIG + StringHelper.camelToSnake(camelCaseName), StringHelper.camelToTitle(camelCaseName));
     }
 
     private String getPrefixedKey(String prefix, String name) {

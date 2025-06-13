@@ -1,8 +1,8 @@
 package com.calemi.nexus.block;
 
-import com.calemi.ccore.api.location.Location;
-import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.ccore.api.location.BlockLocation;
+import com.calemi.nexus.block.entity.NexusPortalBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.util.scanner.PortalScanner;
 import net.minecraft.core.BlockPos;
@@ -50,7 +50,7 @@ public class DyeNexusPortalBlockAction {
                 }
 
                 else {
-                    PortalScanner scanner = new PortalScanner(new Location(level, pos), state.getValue(NexusPortalBlock.AXIS), false,1000);
+                    PortalScanner scanner = new PortalScanner(new BlockLocation(level, pos), state.getValue(NexusPortalBlock.AXIS), false,1000);
                     scanner.start();
                     scanner.getCollectedPositions().forEach(blockPos -> dyePortalBlock(dyedPortalBlock, blockPos, state, level));
                 }

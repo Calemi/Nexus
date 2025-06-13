@@ -28,7 +28,10 @@ public class NexusTemplatePools {
         context.register(RUINED_NEXUS_PORTAL, new StructureTemplatePool(
                 emptyPoolHolder,
                 List.of(
-                        Pair.of(StructurePoolElement.single("nexus:ruined_nexus_portal/portal_1"), 1)
+                        Pair.of(StructurePoolElement.single("nexus:ruined_nexus_portal/portal_vertical_1"), 2),
+                        Pair.of(StructurePoolElement.single("nexus:ruined_nexus_portal/portal_vertical_2"), 1),
+                        Pair.of(StructurePoolElement.single("nexus:ruined_nexus_portal/portal_horizontal_1"), 2),
+                        Pair.of(StructurePoolElement.single("nexus:ruined_nexus_portal/portal_horizontal_2"), 1)
                 ),
                 StructureTemplatePool.Projection.RIGID
         ));

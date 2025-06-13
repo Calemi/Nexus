@@ -128,6 +128,8 @@
   "config.nexus.netherite_portal_core_coordinate_scale": "Netherite Portal Core Coordinate Scale",
   "config.nexus.nexus_portal_core_camo": "Nexus Portal Core Camo",
   "config.nexus.nexus_portal_core_coordinate_scale": "Nexus Portal Core Coordinate Scale",
+  "config.nexus.outside_dimension_blacklist": "Outside Dimension Blacklist",
+  "config.nexus.outside_dimension_list": "Outside Dimension List",
   "config.nexus.portal_core_hud_overlay": "Portal Core HUD Overlay",
   "config.nexus.portal_core_world_overlay": "Portal Core World Overlay",
   "config.nexus.portal_transition_time": "Portal Transition Time",
@@ -146,7 +148,7 @@
   "description.nexus.jump_pad": "Jump Pads grant any entity walking on it a jump boost. Entities will also not take any damage when falling on them.",
   "description.nexus.nexus_portal_core": "Allows traversal to The Nexus. Each portal core has its own coordinate scale. The blocks traveled in The Nexus are multiplied by this scale when leaving the dimension. You can use it in an Anvil to give your portal a name when placed. You can also disguise this block as another by using with a held block.",
   "description.nexus.road": "Roads grant any entity walking on it a speed boost. Sprinting will greatly increase the effect.",
-  "description.nexus.road_armor": "Wearing a full set of Accelerite armor will increase a the stacks of the Road's effect by %s.",
+  "description.nexus.road_armor": "Wearing a full set of Accelerite armor will increase the effect stacks of Roads by %s.",
   "description.nexus.road_upgrade": "The effects from Roads & Jump Pads can be upgraded by placing a Charged Accelerite Block under it. Each blocks placed under will increase the effect by (%s for Roads, %s for Jump Pads)",
   "effect.nexus.acceleration": "Acceleration",
   "effect.nexus.jump_pad": "Jump Pad",
@@ -201,6 +203,7 @@
   "message.nexus.no_core": "Destination Nexus Portal Core could not be found! Removing invalid link...",
   "message.nexus.no_link": "Destination Nexus Portal Core is not linked to this one! Removing invalid link...",
   "message.nexus.teleport.locked_dimension": "You can't travel to this dimension. You haven't been there before!",
+  "message.nexus.teleport.prohibited_dimension": "You can't travel to this dimension. It is not allowed!",
   "message.nexus.unlink.success": "Successfully unlinked!",
   "message.nexus.unlock_dimension": "You can now travel to this dimension from The Nexus.",
   "networking.nexus.unlocked_dimension_list_message.failed": "Failed to synchronize unlocked dimension list! %s",
@@ -219,6 +222,6 @@
   "screen.nexus.nexus_portal_core.button.unlink.info_2": "Hold shift to take the linked Nexus Portal Core.",
   "screen.nexus.nexus_portal_core.text.current_destination": "Current Destination",
   "screen.nexus.nexus_portal_core.text.no_destination": "No Destination",
-  "screen.nexus.title": "Nexus Portal Core",
+  "screen.nexus.nexus_portal_core.title": "Nexus Portal Core",
   "upgrade.nexus.smithing_upgrade": "Chrono Upgrade"
 }

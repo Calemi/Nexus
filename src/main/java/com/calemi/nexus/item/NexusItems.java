@@ -1,7 +1,7 @@
 package com.calemi.nexus.item;
 
-import com.calemi.ccore.api.item2.CBoatItem;
-import com.calemi.ccore.api.item2.SmithingTemplateHelper;
+import com.calemi.ccore.api.item.CBoatItem;
+import com.calemi.ccore.api.item.SmithingTemplateHelper;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.item.boat.NexusBoatTypes;
 import com.calemi.nexus.main.Nexus;

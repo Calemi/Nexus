@@ -9,10 +9,10 @@
       "item": "nexus:chrono_shard"
     },
     "S": {
-      "item": "minecraft:echo_shard"
+      "item": "minecraft:nether_star"
     },
     "T": {
-      "item": "minecraft:barrier"
+      "item": "minecraft:echo_shard"
     }
   },
   "pattern": [

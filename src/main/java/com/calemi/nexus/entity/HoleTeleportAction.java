@@ -1,6 +1,6 @@
 package com.calemi.nexus.entity;
 
-import com.calemi.ccore.api.location.Location;
+import com.calemi.ccore.api.location.BlockLocation;
 import com.calemi.nexus.util.NexusSoundHelper;
 import com.calemi.nexus.util.TeleportHelper;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
@@ -30,9 +30,9 @@ public class HoleTeleportAction {
 
             if (entity.getBlockY() <= nexusMinY - 5) {
 
-                NexusSoundHelper.playTeleportSound(new Location(entity));
+                NexusSoundHelper.playTeleportSound(new BlockLocation(entity));
                 TeleportHelper.teleportToWorld(entity, entity.blockPosition().offset(0, overworldHeight + 128, 0), Level.OVERWORLD);
-                NexusSoundHelper.playTeleportSound(new Location(entity));
+                NexusSoundHelper.playTeleportSound(new BlockLocation(entity));
             }
         }
     }

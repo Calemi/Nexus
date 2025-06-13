@@ -1,7 +1,7 @@
 package com.calemi.nexus.item;
 
 import com.calemi.ccore.api.item.ItemHelper;
-import com.calemi.ccore.api.sound2.SoundProfile2;
+import com.calemi.ccore.api.sound.SoundProfile;
 import com.calemi.nexus.config.NexusConfig;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -20,7 +20,7 @@ public class DormantAcceleriteIngotItem extends Item implements ChargeableBySpee
         stack.shrink(1);
         ItemHelper.giveItem(player, new ItemStack(NexusItems.CHARGED_ACCELERITE_INGOT.get()));
 
-        new SoundProfile2()
+        new SoundProfile()
                 .setEvent(SoundEvents.ZOMBIE_VILLAGER_CURE)
                 .setLevel(player)
                 .setPosition(player.position().add(player.getKnownMovement()))

@@ -1,7 +1,7 @@
 package com.calemi.nexus.block;
 
-import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.util.NexusLists;
 import com.calemi.nexus.client.partclie.NexusParticles;

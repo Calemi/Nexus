@@ -1,4 +1,4 @@
-// 1.21.1	2025-05-30T16:26:46.141467	Registries
+// 1.21.1	2025-06-12T20:39:57.6305761	Registries
 935b732e9f183b3e303aa4d8a930415dee17b031 data/nexus/dimension/the_nexus.json
 bcce14ab7fd826f9432e14153ee93dea15d3e422 data/nexus/dimension_type/the_nexus.json
 7c51ea5810d0078c71561d4ec01f1f4b0b5fda31 data/nexus/enchantment/acceleration.json
@@ -19,4 +19,4 @@ a6b70661257441872b0f2eb5b425d27a8738d7f4 data/nexus/worldgen/placed_feature/chro
 2e851e1c4c5c4e3848691ce3b01f7aede9e6e31c data/nexus/worldgen/placed_feature/warpblossom.json
 150a54f681f567887f77eccd8550638bf848fb1e data/nexus/worldgen/structure/ruined_nexus_portal.json
 c6e3aebd34dcdf17f9b0e218fe9fd89a775156f1 data/nexus/worldgen/structure_set/ruined_nexus_portal.json
-16c7e5293ac31a31f6d6f6a1ea41e0675382a3f6 data/nexus/worldgen/template_pool/ruined_nexus_portal.json
+d62527e54b63c43bb7782fc812535fb9d201bbb9 data/nexus/worldgen/template_pool/ruined_nexus_portal.json

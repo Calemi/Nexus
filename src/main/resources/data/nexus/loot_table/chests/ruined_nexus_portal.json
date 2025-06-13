@@ -1,0 +1,353 @@
+{
+  "type": "minecraft:chest",
+  "pools": [
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 2,
+        "max": 4
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "nexus:cobbled_warpslate",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 32
+              },
+              "add": false
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:obsidian",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 4
+              },
+              "add": false
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:group",
+          "children": [
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:white_wool",
+              "functions": []
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:cyan_wool",
+              "functions": []
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:purple_wool",
+              "functions": []
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:lime_wool",
+              "functions": []
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:light_blue_wool",
+              "functions": []
+            },
+            {
+              "type": "minecraft:item",
+              "name": "minecraft:magenta_wool"
+            }
+          ],
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 8
+              }
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:amethyst_shard",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 16
+              },
+              "add": false
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:chrono_shard_fragment",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 6
+              },
+              "add": false
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:purple_petals",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 16
+              },
+              "add": false
+            }
+          ],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:fallbreakers",
+          "functions": [],
+          "conditions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "nexus:acceleration": 1
+              }
+            }
+          ],
+          "conditions": []
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 1,
+        "max": 4
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "nexus:nexus_portal_core",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": 2,
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:road",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 16
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:jump_pad",
+          "functions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:chrono_shard",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 4
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:raw_accelerite",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 4
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:dormant_accelerite_ingot",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 4
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:charged_accelerite_ingot",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 2
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:chrono_upgrade_smithing_template",
+          "functions": [
+            {
+              "function": "minecraft:set_count",
+              "count": {
+                "type": "minecraft:uniform",
+                "min": 1,
+                "max": 8
+              },
+              "add": false
+            }
+          ]
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:speedometer",
+          "functions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_hoe",
+          "functions": []
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "nexus:acceleration": 2
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "rolls": {
+        "type": "minecraft:uniform",
+        "min": 0,
+        "max": 2
+      },
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_sword"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_shovel"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_pickaxe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_axe"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_helmet"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_chestplate"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_leggings"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:accelerite_boots"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "nexus:charged_accelerite_block"
+        },
+        {
+          "type": "minecraft:item",
+          "name": "minecraft:enchanted_book",
+          "functions": [
+            {
+              "function": "minecraft:set_enchantments",
+              "enchantments": {
+                "nexus:acceleration": 3
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "functions": []
+}

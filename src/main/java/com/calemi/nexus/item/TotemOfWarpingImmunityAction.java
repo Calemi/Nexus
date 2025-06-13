@@ -1,6 +1,6 @@
 package com.calemi.nexus.item;
 
-import com.calemi.ccore.api.location.Location;
+import com.calemi.ccore.api.location.BlockLocation;
 import com.calemi.nexus.packet.TotemOfWarpingPayload;
 import com.calemi.nexus.util.NexusSoundHelper;
 import com.calemi.nexus.util.TeleportHelper;
@@ -56,9 +56,9 @@ public class TotemOfWarpingImmunityAction {
                         int yLevel = NexusDimensionHelper.getSolidGroundLevel(destinationLevel, entity.blockPosition());
 
                         if (yLevel != Integer.MAX_VALUE) {
-                            NexusSoundHelper.playTeleportSound(new Location(entity));
+                            NexusSoundHelper.playTeleportSound(new BlockLocation(entity));
                             TeleportHelper.teleportToWorld(entity, new BlockPos(entity.getBlockX(), yLevel, entity.getBlockZ()), NexusDimensions.NEXUS_LEVEL);
-                            NexusSoundHelper.playTeleportSound(new Location(entity));
+                            NexusSoundHelper.playTeleportSound(new BlockLocation(entity));
                         }
                     }
                 }

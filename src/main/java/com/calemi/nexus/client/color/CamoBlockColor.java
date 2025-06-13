@@ -1,7 +1,7 @@
 package com.calemi.nexus.client.color;
 
 import com.calemi.nexus.block.NexusPortalCoreBlock;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.color.block.BlockColor;
 import net.minecraft.core.BlockPos;

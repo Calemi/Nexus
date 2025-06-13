@@ -1,10 +1,14 @@
 package com.calemi.nexus.config;
 
-import com.calemi.ccore.api.string2.StringHelper2;
+import com.calemi.ccore.api.string.StringHelper;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
+import com.calemi.nexus.world.dimension.NexusDimensions;
+import net.minecraft.resources.ResourceLocation;
 import net.neoforged.fml.config.ModConfig;
 import net.neoforged.neoforge.common.ModConfigSpec;
+
+import java.util.List;
 
 public class NexusConfig {
 
@@ -39,6 +43,9 @@ public class NexusConfig {
     }
 
     public static class CategoryServer {
+
+        public final ModConfigSpec.ConfigValue<List<? extends String>> outsideDimensionList;
+        public final ModConfigSpec.ConfigValue<Boolean> outsideDimensionBlacklist;
 
         public final ModConfigSpec.ConfigValue<Integer> maxPortalSize;
         public final ModConfigSpec.ConfigValue<Integer> portalTransitionTime;
@@ -88,6 +95,18 @@ public class NexusConfig {
         public final ModConfigSpec.ConfigValue<Double> accelerationEnchantRepairSpeedRequirement;
 
         public CategoryServer (ModConfigSpec.Builder builder) {
+
+            outsideDimensionList = stringListValue(builder, "outsideDimensionList",
+                    List.of("minecraft:overworld", "minecraft:the_nether", "minecraft:the_end"),
+                    "Used to prevent or allow certain dimensions from being used as an outside dimension for Nexus Portal Cores.",
+                    "Outside dimensions are destinations that entities end up at when using a Nexus Portal Core to teleport from the Nexus.",
+                    "Entries must be in resource location format (modname:dimension_name)",
+                    "Can be used as a blacklist or whitelist."
+            );
+
+            outsideDimensionBlacklist = booleanValue(builder, "outsideDimensionBlacklist", false,
+                    "Changes the Outside Dimension List (above) to prevent all listed dimensions from use instead of allowing."
+            );
 
             maxPortalSize = intValue(builder, "maxPortalSize", 1024, 1, 4096,
                     "The max size (in total blocks) a Nexus Portal can be."
@@ -185,7 +204,7 @@ public class NexusConfig {
 
         String camelCaseName = typeKey + "PortalCoreCoordinateScale";
 
-        String titleName = StringHelper2.camelToTitle(camelCaseName);
+        String titleName = StringHelper.camelToTitle(camelCaseName);
 
         return intValue(builder, camelCaseName, defaultValue, 1, 1000000,
                 "The distance in the Nexus, that will be multiplied by this value when determining the outside destination.",
@@ -238,14 +257,25 @@ public class NexusConfig {
                 .defineInRange(camelCaseName, defaultValue, min, max);
     }
 
+    private static ModConfigSpec.ConfigValue<List<? extends String>> stringListValue(ModConfigSpec.Builder builder, String camelCaseName, List<String> defaultValues, String... desc) {
+        return startBuilder(builder, camelCaseName, desc)
+            .defineListAllowEmpty(camelCaseName, () -> defaultValues, () -> "", obj -> obj instanceof String);
+    }
+
     private static ModConfigSpec.Builder startBuilder(ModConfigSpec.Builder builder, String camelCaseName, String... desc) {
         return builder
-                .translation(getPrefixedKey(StringHelper2.camelToSnake(camelCaseName)))
-                .comment(StringHelper2.camelToTitle(camelCaseName))
+                .translation(getPrefixedKey(StringHelper.camelToSnake(camelCaseName)))
+                .comment(StringHelper.camelToTitle(camelCaseName))
                 .comment(desc);
     }
 
     private static String getPrefixedKey(String suffix) {
         return "config." + NexusRef.ID + "." + suffix;
+    }
+
+    public static boolean isDestinationDimensionAllowed(ResourceLocation outsideDimensionRL) {
+        if (outsideDimensionRL.equals(NexusDimensions.NEXUS_RL)) return true;
+        boolean isInList = server.outsideDimensionList.get().contains(outsideDimensionRL.toString());
+        return server.outsideDimensionBlacklist.get() != isInList;
     }
 }

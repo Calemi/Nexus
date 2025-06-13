@@ -18,6 +18,14 @@ repositories {
         name "CurseMaven"
         url "https://www.cursemaven.com"
     }
+    maven {
+        name "Create"
+        url = "https://maven.createmod.net"
+    }
+    maven {
+        // NeoForge config api port, needed by ponder
+        url = "https://raw.githubusercontent.com/Fuzss/modresources/main/maven"
+    }
 }
 
 base {
@@ -70,12 +78,15 @@ dependencies {
     implementation "curse.maven:fusion-854949:${project.fusion_file_id}"
     implementation "curse.maven:jei-238222:${project.jei_file_id}"
     implementation "curse.maven:jade-324717:${project.jade_file_id}"
+    implementation "curse.maven:create-328085:${project.create_file_id}"
+    implementation ("net.createmod.ponder:Ponder-NeoForge-${minecraft_version}:${ponder_version}")
 
     runtimeOnly "curse.maven:sodium-394468:${project.sodium_file_id}"
     runtimeOnly "curse.maven:elevator-250832:${project.elevator_file_id}"
     runtimeOnly "curse.maven:bookshelf-228525:${project.bookshelf_file_id}"
     runtimeOnly "curse.maven:prickle-1023259:${project.prickle_file_id}"
     runtimeOnly "curse.maven:enchdesc-250419:${project.enchdesc_file_id}"
+    runtimeOnly "curse.maven:compactmachines-224218:${project.compactmachines_file_id}"
 }
 
 tasks.withType(ProcessResources).configureEach {

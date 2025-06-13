@@ -1,7 +1,7 @@
 package com.calemi.nexus.compat;
 
 import com.calemi.nexus.block.NexusPortalBlock;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;

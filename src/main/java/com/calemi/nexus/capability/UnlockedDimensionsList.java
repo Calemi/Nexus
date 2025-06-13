@@ -1,5 +1,6 @@
 package com.calemi.nexus.capability;
 
+import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.world.dimension.NexusDimensions;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
@@ -37,7 +38,7 @@ public class UnlockedDimensionsList implements INBTSerializable<CompoundTag> {
 
     public boolean unlock(ResourceLocation dimensionResourceLocation) {
 
-        if (!isUnlocked(dimensionResourceLocation)) {
+        if (!isUnlocked(dimensionResourceLocation) && NexusConfig.isDestinationDimensionAllowed(dimensionResourceLocation)) {
 
             unlockedDimensions.add(dimensionResourceLocation);
             return true;

@@ -1,4 +1,4 @@
-package com.calemi.nexus.blockentity;
+package com.calemi.nexus.block.entity;
 
 import com.calemi.nexus.block.NexusBlocks;
 import net.minecraft.world.level.block.entity.BlockEntityType;

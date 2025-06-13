@@ -2,7 +2,7 @@ package com.calemi.nexus.capability;
 
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.packet.UnlockedDimensionsListSyncPayload;
-import com.calemi.nexus.util.NexusMessengers;
+import com.calemi.nexus.util.message.NexusMessengers;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;

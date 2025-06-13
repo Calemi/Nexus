@@ -1,7 +1,7 @@
 package com.calemi.nexus.util.scanner;
 
-import com.calemi.ccore.api.location.Location;
-import com.calemi.ccore.api.scanner2.BlockScanner2;
+import com.calemi.ccore.api.location.BlockLocation;
+import com.calemi.ccore.api.scanner.BlockScanner;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;
@@ -9,11 +9,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PortalSpaceScanner extends BlockScanner2 {
+public class PortalSpaceScanner extends BlockScanner {
 
     private final Direction.Axis axis;
 
-    public PortalSpaceScanner(Location origin, Direction.Axis axis, int maxCollectionSize) {
+    public PortalSpaceScanner(BlockLocation origin, Direction.Axis axis, int maxCollectionSize) {
         super(origin, maxCollectionSize);
         this.axis = axis;
     }
@@ -41,7 +41,7 @@ public class PortalSpaceScanner extends BlockScanner2 {
     }
 
     @Override
-    public List<BlockPos> nextLocationsToScan(BlockPos prevBlockPos) {
+    public List<BlockPos> nextPositionsToScan(BlockPos prevBlockPos) {
 
         List<BlockPos> positions = new ArrayList<>();
 

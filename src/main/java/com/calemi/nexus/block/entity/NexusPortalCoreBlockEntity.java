@@ -1,13 +1,13 @@
-package com.calemi.nexus.blockentity;
+package com.calemi.nexus.block.entity;
 
-import com.calemi.ccore.api.blockentity.BaseBlockEntity;
-import com.calemi.ccore.api.location.Location;
+import com.calemi.ccore.api.block.entity.BaseBlockEntity;
+import com.calemi.ccore.api.location.BlockLocation;
 import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
 import com.calemi.nexus.capability.NexusCapabilityHandler;
 import com.calemi.nexus.client.model.NexusPortalCoreBakedModel;
 import com.calemi.nexus.config.NexusConfig;
-import com.calemi.nexus.util.NexusMessengers;
+import com.calemi.nexus.util.message.NexusMessengers;
 import com.calemi.nexus.util.NexusSoundHelper;
 import com.calemi.nexus.util.TeleportHelper;
 import com.calemi.nexus.util.scanner.PortalScanner;
@@ -232,7 +232,7 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
     }
 
     public List<BlockPos> getPortalPositions() {
-        PortalScanner scanner = new PortalScanner(new Location(level, getProjectionPosition()), getProjectionAxis(), true, NexusConfig.server.maxPortalSize.get());
+        PortalScanner scanner = new PortalScanner(new BlockLocation(level, getProjectionPosition()), getProjectionAxis(), true, NexusConfig.server.maxPortalSize.get());
         scanner.start();
         return scanner.getCollectedPositions();
     }
@@ -300,7 +300,7 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
         BlockPos projectionPosition = getProjectionPosition();
         Direction.Axis projectionAxis = getProjectionAxis();
 
-        PortalSpaceScanner scanner = new PortalSpaceScanner(new Location(level, projectionPosition), projectionAxis, NexusConfig.server.maxPortalSize.get() + 1);
+        PortalSpaceScanner scanner = new PortalSpaceScanner(new BlockLocation(level, projectionPosition), projectionAxis, NexusConfig.server.maxPortalSize.get() + 1);
         scanner.start();
 
         List<BlockPos> collectedPositions = scanner.getCollectedPositions();
@@ -339,17 +339,28 @@ public class NexusPortalCoreBlockEntity extends BaseBlockEntity {
 
         if (feedbackEntity instanceof Player) player = (Player) feedbackEntity;
 
-        if (player != null && !NexusCapabilityHandler.isDimensionUnlocked(player, getDestinationDimensionRL())) {
-            feedbackEntity.sendSystemMessage(Component.translatable("message.nexus.teleport.locked_dimension").withStyle(ChatFormatting.RED));
-            NexusSoundHelper.playErrorSound(new Location(feedbackEntity));
-            return;
+        if (player != null) {
+
+            ResourceLocation destinationDimensionRL = getDestinationDimensionRL();
+
+            if (!NexusConfig.isDestinationDimensionAllowed(destinationDimensionRL)) {
+                feedbackEntity.sendSystemMessage(Component.translatable("message.nexus.teleport.prohibited_dimension").withStyle(ChatFormatting.RED));
+                NexusSoundHelper.playErrorSound(new BlockLocation(feedbackEntity));
+                return;
+            }
+
+            if (!NexusCapabilityHandler.isDimensionUnlocked(player, destinationDimensionRL)) {
+                feedbackEntity.sendSystemMessage(Component.translatable("message.nexus.teleport.locked_dimension").withStyle(ChatFormatting.RED));
+                NexusSoundHelper.playErrorSound(new BlockLocation(feedbackEntity));
+                return;
+            }
         }
 
         NexusPortalCoreBlockEntity destinationPortalCore = getDestinationPortalCore();
 
-        if (player != null) NexusSoundHelper.playTeleportSound(new Location(feedbackEntity));
+        if (player != null) NexusSoundHelper.playTeleportSound(new BlockLocation(feedbackEntity));
         TeleportHelper.teleportToWorld(feedbackEntity, destinationPortalCore.getProjectionPosition(), getDestinationDimensionRK());
-        if (player != null) NexusSoundHelper.playTeleportSound(new Location(feedbackEntity));
+        if (player != null) NexusSoundHelper.playTeleportSound(new BlockLocation(feedbackEntity));
     }
 
     public static MutableComponent getFormattedCurrentDestinationText() {

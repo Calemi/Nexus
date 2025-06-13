@@ -72,6 +72,12 @@ public class CreativeTabInjector {
         }
 
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            add(event, Items.SCAFFOLDING,
+                    NexusBlocks.ROAD.asItem(),
+                    NexusBlocks.ROAD_SLAB.asItem(),
+                    NexusBlocks.JUMP_PAD.asItem()
+            );
+
             add(event, Items.END_PORTAL_FRAME, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
 
             add(event, Items.WARPED_HANGING_SIGN.asItem(),

@@ -1,22 +1,20 @@
 package com.calemi.nexus.main;
 
-import com.calemi.ccore.api.init.CEntities;
 import com.calemi.nexus.block.DyeNexusPortalBlockAction;
 import com.calemi.nexus.block.NexusBlocks;
-import com.calemi.nexus.blockentity.BlockEntityTypeInjector;
-import com.calemi.nexus.blockentity.NexusBlockEntities;
+import com.calemi.nexus.block.entity.BlockEntityTypeInjector;
+import com.calemi.nexus.block.entity.NexusBlockEntities;
 import com.calemi.nexus.capability.NexusAttachments;
 import com.calemi.nexus.client.partclie.NexusParticles;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreHUDOverlay;
 import com.calemi.nexus.client.render.RenderNexusPortalCoreWorldOverlay;
+import com.calemi.nexus.compat.NexusCreateCompatibility;
 import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.effect.NexusMobEffects;
 import com.calemi.nexus.entity.NexusSheepSpawnColor;
 import com.calemi.nexus.item.*;
 import com.calemi.nexus.item.axe.NexusStrippables;
 import com.calemi.nexus.item.property.NexusItemProperties;
-import com.calemi.nexus.loot.condition.NexusLootItemConditions;
-import com.calemi.nexus.loot.modifier.NexusLootModifiers;
 import com.calemi.nexus.packet.NexusPackets;
 import com.calemi.nexus.tab.CreativeTabInjector;
 import com.calemi.nexus.tab.NexusCreativeModeTabs;
@@ -25,6 +23,7 @@ import com.calemi.nexus.world.feature.NexusFeatures;
 import com.calemi.nexus.world.feature.tree.NexusFoliagePlacers;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -59,15 +58,10 @@ public class Nexus {
         NexusBlockEntities.init();
         NexusCreativeModeTabs.init();
         NexusMobEffects.init();
-        NexusLootModifiers.init();
-        NexusLootItemConditions.init();
         NexusAttachments.init();
         NexusParticles.init();
         NexusFeatures.init();
         NexusFoliagePlacers.init();
-
-        //TODO: MOVE TO CCORE
-        CEntities.init();
 
         MOD_EVENT_BUS.addListener(this::commonSetup);
         MOD_EVENT_BUS.addListener(this::clientSetup);
@@ -95,6 +89,10 @@ public class Nexus {
         FORGE_EVENT_BUS.register(new TotemOfWarpingImmunityAction());
         FORGE_EVENT_BUS.register(new FallbreakersImmunityAction());
         FORGE_EVENT_BUS.register(new NexusSheepSpawnColor());
+
+        if (ModList.get().isLoaded("create")) {
+            NexusCreateCompatibility.init();
+        }
 
         LOGGER.info("Registering: Common - End");
     }

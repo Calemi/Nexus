@@ -18,7 +18,7 @@ public class NexusDataMapProvider extends DataMapProvider {
     }
 
     @Override
-    protected void gather() {
+    protected void gather(HolderLookup.Provider provider) {
 
         builder(NeoForgeDataMaps.COMPOSTABLES)
                 .replace(false)

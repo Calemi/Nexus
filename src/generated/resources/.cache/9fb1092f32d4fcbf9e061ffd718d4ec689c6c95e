@@ -1,4 +1,4 @@
-// 1.21.1	2025-06-07T19:34:46.7347269	Recipes
+// 1.21.1	2025-06-12T22:23:59.4840691	Recipes
 f5f67e912ad0cbb467a4897427a23501a0f3a689 data/minecraft/advancement/recipes/misc/dormant_accelerite_ingot_from_blasting_raw_accelerite.json
 56c6fc879bb4b77ecab8eb5b947526326be4b3ff data/minecraft/advancement/recipes/misc/dormant_accelerite_ingot_from_blasting_warpslate_accelerite_ore.json
 aeda6a0010e9ecc793193e0cf0a01c4dd2554f45 data/minecraft/advancement/recipes/misc/dormant_accelerite_ingot_from_smelting_raw_accelerite.json
@@ -281,7 +281,7 @@ a8eff9fbd3e7fe6c687e5b32612b0bbd023492bf data/nexus/recipe/road.json
 d6dcc79d0f4c397bd43e4234b828e636feb06538 data/nexus/recipe/road_slab.json
 9c12d5dff27e8e167047c82f7a483e350b183d07 data/nexus/recipe/road_slab_from_road_stonecutting.json
 9c50858ecb8c757c9bae54aef9ca92330baa1b4c data/nexus/recipe/speedometer.json
-408061812d5b1fd1067cb82924741a6749950341 data/nexus/recipe/starlight_nexus_portal_core.json
+7eb600fbe0cc6832d8dc2bd6d8be645e013ebc74 data/nexus/recipe/starlight_nexus_portal_core.json
 da2330efd3774573caf46b5336f620b260428ae2 data/nexus/recipe/stripped_warpblossom_wood_from_stripped_warpblossom_log.json
 344a3f92fdf6ee5015e1dd02826808cce2d9df3b data/nexus/recipe/totem_of_warping.json
 bf00cfe4f4eb220c028adeb0393e602cdf794375 data/nexus/recipe/warpblossom_boat.json

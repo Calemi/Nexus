@@ -1,4 +1,4 @@
-package com.calemi.nexus.blockentity;
+package com.calemi.nexus.block.entity;
 
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;

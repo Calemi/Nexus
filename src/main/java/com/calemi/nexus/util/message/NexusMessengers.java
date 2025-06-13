@@ -1,4 +1,4 @@
-package com.calemi.nexus.util;
+package com.calemi.nexus.util.message;
 
 import com.calemi.ccore.api.message.Messenger;
 import com.calemi.nexus.block.NexusBlocks;

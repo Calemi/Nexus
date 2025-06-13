@@ -2,8 +2,8 @@ package com.calemi.nexus.compat;
 
 import com.calemi.nexus.block.NexusPortalBlock;
 import com.calemi.nexus.block.NexusPortalCoreBlock;
-import com.calemi.nexus.blockentity.NexusPortalBlockEntity;
-import com.calemi.nexus.blockentity.NexusPortalCoreBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalBlockEntity;
+import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.NexusRef;
 import net.minecraft.resources.ResourceLocation;
 import snownee.jade.api.IWailaClientRegistration;
