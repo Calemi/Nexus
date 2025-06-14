@@ -50,23 +50,20 @@ public class Nexus {
         MOD_CONTAINER = modContainer;
 
         NexusConfig.init();
-        modContainer.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
-
         NexusItems.init();
         NexusArmorMaterials.init();
-        NexusBlocks.init();
         NexusBlockEntities.init();
+        NexusBlocks.init();
         NexusCreativeModeTabs.init();
         NexusMobEffects.init();
         NexusAttachments.init();
-        NexusParticles.init();
         NexusFeatures.init();
         NexusFoliagePlacers.init();
+        NexusParticles.init();
 
         MOD_EVENT_BUS.addListener(this::commonSetup);
         MOD_EVENT_BUS.addListener(this::clientSetup);
 
-        MOD_EVENT_BUS.addListener(NexusParticles::registerParticleProviders);
         MOD_EVENT_BUS.addListener(BlockEntityTypeInjector::addBlockEntityTypes);
 
         LOGGER.info("Registering: Main - End");
@@ -76,7 +73,6 @@ public class Nexus {
 
         LOGGER.info("Registering: Common - Start");
 
-        NexusItemProperties.init();
         NexusStrippables.init();
 
         MOD_EVENT_BUS.register(new NexusPackets());
@@ -100,6 +96,10 @@ public class Nexus {
     public void clientSetup(final FMLClientSetupEvent event) {
 
         LOGGER.info("Registering: Client - Start");
+
+        NexusItemProperties.init();
+
+        MOD_CONTAINER.registerExtensionPoint(IConfigScreenFactory.class, ConfigurationScreen::new);
 
         FORGE_EVENT_BUS.register(new RenderNexusPortalCoreWorldOverlay());
         FORGE_EVENT_BUS.register(new FallbreakersTooltip());

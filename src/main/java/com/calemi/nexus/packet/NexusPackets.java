@@ -24,6 +24,7 @@ public class NexusPackets {
         registrar.playToServer(NexusPortalCoreUnlinkPayload.TYPE, NexusPortalCoreUnlinkPayload.CODEC, NexusPortalCoreUnlinkPayload::handle);
         registrar.playBidirectional(NexusPortalCoreDestinationNameSyncPayload.TYPE, NexusPortalCoreDestinationNameSyncPayload.CODEC, NexusPortalCoreDestinationNameSyncPayload::handle);
         registrar.playToClient(TotemOfWarpingPayload.TYPE, TotemOfWarpingPayload.CODEC, TotemOfWarpingPayload::handle);
+        registrar.playToServer(NexusPortalCoreHUDOverlayPayload.TYPE, NexusPortalCoreHUDOverlayPayload.CODEC, NexusPortalCoreHUDOverlayPayload::handle);
 
         Nexus.LOGGER.info("Registering: Packets - End");
     }

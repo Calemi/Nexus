@@ -35,8 +35,8 @@ public class NexusBlockFamilies {
             .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_BRICK_STAIRS))
             .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_BRICK_SLAB))
             .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_BRICK_WALL))
-            .ancestor(CALCITE)
             .ancestor(POLISHED_CALCITE)
+            .ancestor(CALCITE)
     );
 
     public static final CBlockFamily CALCITE_TILES = register(new CBlockFamily.Builder(FamilyType.STONE)
@@ -45,9 +45,9 @@ public class NexusBlockFamilies {
             .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_TILE_STAIRS))
             .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_TILE_SLAB))
             .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.CALCITE_TILE_WALL))
-            .ancestor(CALCITE)
-            .ancestor(POLISHED_CALCITE)
             .ancestor(CALCITE_BRICKS)
+            .ancestor(POLISHED_CALCITE)
+            .ancestor(CALCITE)
     );
 
     public static final CBlockFamily COBBLED_WARPSLATE = register(new CBlockFamily.Builder(FamilyType.COBBLESTONE)
@@ -72,8 +72,8 @@ public class NexusBlockFamilies {
             .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_BRICK_STAIRS))
             .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_BRICK_SLAB))
             .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_BRICK_WALL))
-            .ancestor(COBBLED_WARPSLATE)
             .ancestor(POLISHED_WARPSLATE)
+            .ancestor(COBBLED_WARPSLATE)
     );
 
     public static final CBlockFamily WARPSLATE_TILE = register(new CBlockFamily.Builder(FamilyType.STONE)
@@ -82,9 +82,9 @@ public class NexusBlockFamilies {
             .member(MemberType.STAIRS, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_TILE_STAIRS))
             .member(MemberType.SLAB, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_TILE_SLAB))
             .member(MemberType.WALL, new CBlockFamilyMember.Builder(NexusBlocks.WARPSLATE_TILE_WALL))
-            .ancestor(COBBLED_WARPSLATE)
-            .ancestor(POLISHED_WARPSLATE)
             .ancestor(WARPSLATE_BRICK)
+            .ancestor(POLISHED_WARPSLATE)
+            .ancestor(COBBLED_WARPSLATE)
     );
 
     public static final CBlockFamily WARPBLOSSOM = register(new CBlockFamily.Builder(FamilyType.PLANKS)

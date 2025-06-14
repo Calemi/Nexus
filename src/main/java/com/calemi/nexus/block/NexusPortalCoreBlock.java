@@ -2,16 +2,15 @@ package com.calemi.nexus.block;
 
 import com.calemi.ccore.api.location.BlockLocation;
 import com.calemi.ccore.api.string.StringHelper;
+import com.calemi.nexus.util.NexusScreenHelper;
 import com.calemi.nexus.block.entity.NexusBlockEntities;
 import com.calemi.nexus.block.entity.NexusPortalCoreBlockEntity;
 import com.calemi.nexus.main.Nexus;
-import com.calemi.nexus.client.screen.NexusPortalCoreScreen;
 import com.calemi.nexus.util.NexusSoundHelper;
 import com.calemi.nexus.world.dimension.NexusDimensionHelper;
 import com.calemi.nexus.world.dimension.NexusDimensions;
 import com.mojang.serialization.MapCodec;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.component.DataComponents;
@@ -147,7 +146,7 @@ public class NexusPortalCoreBlock extends AbstractCamoBlock {
             }
 
             else if (level.isClientSide()) {
-                Minecraft.getInstance().setScreen(new NexusPortalCoreScreen(originBlockEntity));
+                NexusScreenHelper.openNexusPortalCoreScreen(originBlockEntity);
             }
         }
 

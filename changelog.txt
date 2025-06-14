@@ -1,0 +1,5 @@
+[v1.0.1]
+- Fixed many major server related bugs.
+
+[v1.0.0]
+- Initial build.

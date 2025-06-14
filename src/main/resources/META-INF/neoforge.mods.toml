@@ -33,7 +33,7 @@ side="BOTH"
 
 [[dependencies.${mod_id}]]
 modId="fusion"
-mandatory=true
+type="required"
 versionRange="${fusion_version_range}"
 ordering="NONE"
 side="CLIENT"
