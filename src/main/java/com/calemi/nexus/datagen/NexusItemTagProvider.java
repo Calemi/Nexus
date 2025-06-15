@@ -1,5 +1,6 @@
 package com.calemi.nexus.datagen;
 
+import com.calemi.ccore.api.list.ListHelper;
 import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.item.NexusItems;
@@ -38,14 +39,14 @@ public class NexusItemTagProvider extends ItemTagsProvider {
 
         copy(NexusTags.Blocks.WARPBLOSSOM_LOGS, NexusTags.Items.WARPBLOSSOM_LOGS);
 
-        tag(NexusTags.Items.ACCELERITE_ARMOR).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_ARMOR));
+        tag(NexusTags.Items.ACCELERITE_ARMOR).addAll(ListHelper.toItemResourceKeyList(NexusLists.ACCELERITE_ARMOR));
 
-        tag(NexusTags.Items.ACCELERITE_DIGGERS).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_DIGGERS));
+        tag(NexusTags.Items.ACCELERITE_DIGGERS).addAll(ListHelper.toItemResourceKeyList(NexusLists.ACCELERITE_DIGGERS));
 
         tag(NexusTags.Items.ACCELERITE_TOOLS).add(NexusItems.ACCELERITE_SWORD.get());
-        tag(NexusTags.Items.ACCELERITE_TOOLS).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_DIGGERS));
+        tag(NexusTags.Items.ACCELERITE_TOOLS).addAll(ListHelper.toItemResourceKeyList(NexusLists.ACCELERITE_DIGGERS));
 
-        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addAll(NexusLists.toItemResourceKeyList(NexusLists.ACCELERITE_EQUIPMENT));
+        tag(NexusTags.Items.ACCELERITE_EQUIPMENT).addAll(ListHelper.toItemResourceKeyList(NexusLists.ACCELERITE_EQUIPMENT));
 
         tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).addTag(ItemTags.ARMOR_ENCHANTABLE);
         tag(NexusTags.Items.ACCELERATION_ENCHANTABLE).addTag(ItemTags.WEAPON_ENCHANTABLE);

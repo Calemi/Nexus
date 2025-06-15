@@ -1,7 +1,7 @@
 package com.calemi.nexus.util.scanner;
 
+import com.calemi.ccore.api.block.scanner.BlockScanner;
 import com.calemi.ccore.api.location.BlockLocation;
-import com.calemi.ccore.api.scanner.BlockScanner;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.state.BlockState;

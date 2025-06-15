@@ -1,3 +1,6 @@
+[v1.0.2]
+- Updated CCore to v1.1.5.
+
 [v1.0.1]
 - Fixed many major server related bugs.
 

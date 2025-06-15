@@ -1,6 +1,7 @@
 package com.calemi.nexus.datagen;
 
 import com.calemi.ccore.api.block.family.CBlockFamily;
+import com.calemi.ccore.api.list.ListHelper;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.block.family.NexusBlockFamilies;
 import com.calemi.nexus.main.NexusRef;
@@ -42,7 +43,7 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.WARPSLATE_ACCELERITE_ORE.get())
                 .addOptionalTag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
                 .addOptionalTag(NexusTags.Blocks.ROADLIKE)
-                .addAll(NexusLists.toBlockResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)));
+                .addAll(ListHelper.toBlockResourceKeyList((NexusLists.CHRONO_CLUSTER_BLOCKS)));
 
         tag(NexusTags.Blocks.WARPBLOSSOM_LOGS)
                 .add(NexusBlocks.WARPBLOSSOM_LOG.get())
@@ -59,10 +60,10 @@ public class NexusBlockTagProvider extends BlockTagsProvider {
                 .add(NexusBlocks.JUMP_PAD.get());
 
         tag(NexusTags.Blocks.NEXUS_PORTAL_CORES)
-                .addAll(NexusLists.toBlockResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+                .addAll(ListHelper.toBlockResourceKeyList(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
 
         tag(NexusTags.Blocks.NEXUS_PORTALS)
-                .addAll(NexusLists.toBlockResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
+                .addAll(ListHelper.toBlockResourceKeyList(NexusLists.NEXUS_PORTAL_BLOCKS));
 
         tag(NexusTags.Blocks.UPGRADES_ROAD_BLOCK)
                 .add(NexusBlocks.CHARGED_ACCELERITE_BLOCK.get());

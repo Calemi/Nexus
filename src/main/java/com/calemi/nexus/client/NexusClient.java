@@ -1,5 +1,6 @@
 package com.calemi.nexus.client;
 
+import com.calemi.ccore.api.list.ListHelper;
 import com.calemi.ccore.api.string.StringHelper;
 import com.calemi.nexus.client.partclie.ColoredPortalParticleProvider;
 import com.calemi.nexus.client.partclie.NexusParticles;
@@ -27,7 +28,7 @@ public class NexusClient {
 
         Nexus.LOGGER.info("Registering: Block Colors - Start");
 
-        event.register(new CamoBlockColor(), NexusLists.toBlockArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+        event.register(new CamoBlockColor(), ListHelper.toBlockArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
 
         event.register((state, blockAndTintGetter, pos, tintIndex) -> {
             if (tintIndex != 0) return blockAndTintGetter != null && pos != null ? BiomeColors.getAverageGrassColor(blockAndTintGetter, pos) : GrassColor.getDefaultColor();

@@ -1,5 +1,6 @@
 package com.calemi.nexus.tab;
 
+import com.calemi.ccore.api.list.ListHelper;
 import com.calemi.nexus.util.NexusLists;
 import com.calemi.nexus.main.Nexus;
 import com.calemi.nexus.main.NexusRef;
@@ -19,7 +20,7 @@ public class NexusCreativeModeTabs {
     public static final Supplier<CreativeModeTab> MAIN_TAB = CREATIVE_MODE_TABS.register("nexus_main", () -> CreativeModeTab.builder()
             .title(Component.translatable("itemGroup." + NexusRef.ID + ".main"))
             .icon(() -> new ItemStack(NexusItems.CHRONO_SHARD.get()))
-            .displayItems((params, output) -> output.acceptAll(NexusLists.toItemStackListFromItemLike(NexusLists.TAB_NEXUS_MAIN_ITEMS)))
+            .displayItems((params, output) -> output.acceptAll(ListHelper.toItemStackListFromItemLike(NexusLists.TAB_NEXUS_MAIN_ITEMS)))
             .build()
     );
 

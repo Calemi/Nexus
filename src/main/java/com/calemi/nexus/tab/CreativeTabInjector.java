@@ -1,5 +1,6 @@
 package com.calemi.nexus.tab;
 
+import com.calemi.ccore.api.list.ListHelper;
 import com.calemi.nexus.block.family.NexusBlockFamilies;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.item.NexusItems;
@@ -31,7 +32,7 @@ public class CreativeTabInjector {
 
             add(event, Items.REINFORCED_DEEPSLATE, entries);
 
-            add(event, Items.WARPED_BUTTON, NexusLists.toItemListFromBlock(NexusLists.CHRONOWARPED_LOGS));
+            add(event, Items.WARPED_BUTTON, ListHelper.toItemListFromBlock(NexusLists.CHRONOWARPED_LOGS));
             add(event, NexusBlocks.STRIPPED_WARPBLOSSOM_WOOD.asItem(),
                     NexusBlocks.WARPBLOSSOM_PLANKS.asItem(),
                     NexusBlocks.WARPBLOSSOM_STAIRS.asItem(),
@@ -78,7 +79,7 @@ public class CreativeTabInjector {
                     NexusBlocks.JUMP_PAD.asItem()
             );
 
-            add(event, Items.END_PORTAL_FRAME, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+            add(event, Items.END_PORTAL_FRAME, ListHelper.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
 
             add(event, Items.WARPED_HANGING_SIGN.asItem(),
                     NexusBlocks.WARPBLOSSOM_SIGN.asItem(),
@@ -87,7 +88,7 @@ public class CreativeTabInjector {
         }
 
         if (event.getTabKey() == CreativeModeTabs.REDSTONE_BLOCKS) {
-            add(event, Items.CAULDRON, NexusLists.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
+            add(event, Items.CAULDRON, ListHelper.toItemArray(NexusLists.NEXUS_PORTAL_CORE_BLOCKS));
         }
 
         if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {

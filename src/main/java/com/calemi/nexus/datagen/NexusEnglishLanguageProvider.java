@@ -1,6 +1,6 @@
 package com.calemi.nexus.datagen;
 
-import com.calemi.ccore.api.string.StringHelper;
+import com.calemi.ccore.api.datagen.CLanguageProvider;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.item.NexusItems;
 import com.calemi.nexus.main.Nexus;
@@ -8,11 +8,8 @@ import com.calemi.nexus.main.NexusRef;
 import com.calemi.nexus.util.NexusLists;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
-import net.neoforged.neoforge.common.data.LanguageProvider;
 
-public class NexusEnglishLanguageProvider extends LanguageProvider {
+public class NexusEnglishLanguageProvider extends CLanguageProvider {
 
     private final String CHRONO_UPGRADE = getPrefixedKey("item", "smithing_template.chrono_upgrade.");
 
@@ -43,7 +40,7 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
     private final String JADE = "config.jade.plugin_" + NexusRef.ID + ".";
 
     public NexusEnglishLanguageProvider(PackOutput output) {
-        super(output, NexusRef.ID, "en_us");
+        super(NexusRef.ID, output, "en_us");
     }
 
     @Override
@@ -251,36 +248,5 @@ public class NexusEnglishLanguageProvider extends LanguageProvider {
 
         add(JADE + "nexus_portal_core", "Nexus Portal Core");
         add(JADE + "nexus_portal", "Nexus Portal");
-    }
-
-    private void addAutoBlock(Block block) {
-        add(block, autoString(BuiltInRegistries.BLOCK.getKey(block).getPath(), "block"));
-    }
-
-    private void addAutoItem(Item item) {
-        add(item, autoString(BuiltInRegistries.ITEM.getKey(item).getPath(), "item"));
-    }
-
-    private void addAutoConfig(String camelCaseName) {
-        add(CONFIG + StringHelper.camelToSnake(camelCaseName), StringHelper.camelToTitle(camelCaseName));
-    }
-
-    private String getPrefixedKey(String prefix, String name) {
-        return prefix + "." + NexusRef.ID + "." + name;
-    }
-
-    private String autoString(String descriptionId, String prefixToRemove) {
-        String[] words = descriptionId.replace(getPrefixedKey(prefixToRemove, ""), "").split("_");
-        StringBuilder result = new StringBuilder();
-
-        for (String word : words) {
-            if (!word.isEmpty()) {
-                result.append(Character.toUpperCase(word.charAt(0)))
-                        .append(word.substring(1))
-                        .append(" ");
-            }
-        }
-
-        return result.toString().trim();
     }
 }

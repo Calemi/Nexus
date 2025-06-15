@@ -1,5 +1,6 @@
 package com.calemi.nexus.compat;
 
+import com.calemi.ccore.api.list.ListHelper;
 import com.calemi.nexus.block.NexusBlocks;
 import com.calemi.nexus.config.NexusConfig;
 import com.calemi.nexus.item.NexusItems;
@@ -26,7 +27,7 @@ public class NexusJEIPlugin implements IModPlugin {
         registration.addIngredientInfo(NexusItems.CHRONO_UPGRADE_SMITHING_TEMPLATE.get(),
                 Component.translatable("description.nexus.chrono_upgrade_smithing_template"));
 
-        registration.addIngredientInfo(NexusLists.toItemStackListFromBlock(NexusLists.NEXUS_PORTAL_CORE_BLOCKS),
+        registration.addIngredientInfo(ListHelper.toItemStackListFromBlock(NexusLists.NEXUS_PORTAL_CORE_BLOCKS),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("description.nexus.nexus_portal_core"));
 
@@ -46,15 +47,15 @@ public class NexusJEIPlugin implements IModPlugin {
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("description.nexus.accelerite_ingot"));
 
-        registration.addIngredientInfo(NexusLists.toItemStackListFromItem(NexusLists.ACCELERITE_TOOLS),
+        registration.addIngredientInfo(ListHelper.toItemStackListFromItem(NexusLists.ACCELERITE_TOOLS),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("description.nexus.accelerite_tools_acceleration"));
 
-        registration.addIngredientInfo(NexusLists.toItemStackListFromItem(NexusLists.ACCELERITE_ARMOR),
+        registration.addIngredientInfo(ListHelper.toItemStackListFromItem(NexusLists.ACCELERITE_ARMOR),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("description.nexus.accelerite_armor_acceleration"));
 
-        registration.addIngredientInfo(NexusLists.toItemStackListFromItem(NexusLists.ACCELERITE_EQUIPMENT),
+        registration.addIngredientInfo(ListHelper.toItemStackListFromItem(NexusLists.ACCELERITE_EQUIPMENT),
                 VanillaTypes.ITEM_STACK,
                 Component.translatable("description.nexus.accelerite_equipment_repair"));
 
@@ -71,7 +72,7 @@ public class NexusJEIPlugin implements IModPlugin {
             List<ItemStack> roadArmor = new ArrayList<>();
             roadArmor.add(new ItemStack(NexusBlocks.ROAD.get()));
             roadArmor.add(new ItemStack(NexusBlocks.ROAD_SLAB.get()));
-            roadArmor.addAll(NexusLists.toItemStackListFromItem(NexusLists.ACCELERITE_ARMOR));
+            roadArmor.addAll(ListHelper.toItemStackListFromItem(NexusLists.ACCELERITE_ARMOR));
 
             registration.addIngredientInfo(roadArmor,
                     VanillaTypes.ITEM_STACK,
