@@ -34,8 +34,6 @@ public class NexusEnglishLanguageProvider extends CLanguageProvider {
     private final String MESSAGE_LIGHT_PORTAL = MESSAGE + "light_portal.";
     private final String MESSAGE_UNLINK = MESSAGE + "unlink.";
 
-    private final String CONFIG = getPrefixedKey("config", "");
-
     private final String JEI_DESCRIPTION = getPrefixedKey("description", "");
     private final String JADE = "config.jade.plugin_" + NexusRef.ID + ".";
 
@@ -131,6 +129,7 @@ public class NexusEnglishLanguageProvider extends CLanguageProvider {
         /*
             MOB EFFECTS
          */
+
         add(getPrefixedKey("effect", "acceleration"), "Acceleration");
         add(getPrefixedKey("effect", "road"), "Road");
         add(getPrefixedKey("effect", "jump_pad"), "Jump Pad");
@@ -168,8 +167,6 @@ public class NexusEnglishLanguageProvider extends CLanguageProvider {
         /*
             CONFIG
          */
-
-
 
         //CLIENT
         addAutoConfig("portalCoreHUDOverlay");
