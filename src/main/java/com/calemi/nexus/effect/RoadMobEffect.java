@@ -13,7 +13,7 @@ import net.minecraft.world.level.block.state.BlockState;
 public class RoadMobEffect extends MobEffect {
 
     protected RoadMobEffect() {
-        super(MobEffectCategory.HARMFUL, 0x56CBFD);
+        super(MobEffectCategory.BENEFICIAL, 0x56CBFD);
         addAttributeModifier(Attributes.MOVEMENT_SPEED, NexusRef.rl("effect.road_movement_speed"), 0.015F, AttributeModifier.Operation.ADD_VALUE);
     }
 

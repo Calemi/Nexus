@@ -9,7 +9,7 @@ import net.minecraft.world.entity.ai.attributes.Attributes;
 public class JumpPadMobEffect extends MobEffect {
 
     protected JumpPadMobEffect() {
-        super(MobEffectCategory.HARMFUL, 0x99FF6D);
+        super(MobEffectCategory.BENEFICIAL, 0x99FF6D);
         addAttributeModifier(Attributes.JUMP_STRENGTH, NexusRef.rl("effect.jump_pad_jump_strength"), 0.11F, AttributeModifier.Operation.ADD_VALUE);
     }
 }
